@@ -1,0 +1,114 @@
+
+.wrapper > input[type="file"] {
+  --color-outline: transparent;
+  --color-bg: transparent;
+}
+
+
+input[type="file"] {
+  position: relative;
+  appearance: none; // Allow styling
+  display: block; // This is what ::file-selector-button is expecting
+  cursor: pointer;
+  box-shadow: none;
+  width: 100%;
+}
+
+input[type="file"]::file-selector-button, input[type="file"]::-webkit-file-upload-button {
+  appearance: none; // Allow Styling
+  //max-height: $input-height-inner; // Don't go larger than other inputs
+  margin: calc(var(--input-padding-y) * -1) calc(var(--input-padding-x) * -1); // Offset the file input padding
+  margin-inline-end: var(--input-padding-x); // Spacing to the left of the button
+  padding: var(--input-padding-y) var(--input-padding-x);
+  font-size: 1em;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-input);
+  text-transform: uppercase;
+  cursor: pointer; // In Safari, this doesn't inherit
+  color: var(--context-color);
+  border: none;
+  border-inline-end: var(--border-width) solid var(--input-border);
+  border-radius: 0;
+  background-color: var(--input-bg);
+}
+
+.wrapper:has(input[type="file"]), .wrapper.custom-file-upload {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  //height: $height-input; // hides items in the 2nd row
+  border: none;
+
+  > input[type="file"] {
+    border-top-right-radius: 0; // To connect to remove button
+    border-bottom-right-radius: 0; // To connect to remove button
+    border-right-color: transparent;
+    background-color: transparent; // This allows the readonly text field underneath to show an existing file
+  }
+
+  > input[type="file"]::file-selector-button, input[type="file"]::-webkit-file-upload-button {
+    z-index: 3; // Stay above other elements
+  }
+
+  > input[type="file"]:hover {
+    cursor: pointer;
+  }
+
+  > button {
+    //height: $height-input;
+    font-size: 1em;
+  }
+
+  // This is the "faux" input that shows an existing file.
+  // Positioned underneath the file input, disabled so that it doesn't submit
+  > input[type="text"][disabled] {
+    position: absolute;
+    right: 0;
+    bottom: 1px;
+    left: 8.5rem;
+    grid-row: 2; // We specify the row so it doesn't push other elements around
+    grid-column: 1;
+    width: calc(100% - 11rem); // Don't overflow the visible space
+    padding-right: 3rem;
+    //max-height: $input-height-inner;
+    color: var(--input-color) !important;
+    border: none;
+    background-color: var(--input-bg) !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  > input[type="text"][disabled][readonly] {
+    color: transparent !important;
+  }
+
+  > input[type="text"][disabled] + input[type="file"] {
+    color: transparent;
+  }
+
+  > input[type="text"][disabled][readonly] + input[type="file"] {
+    color: inherit;
+  }
+
+  > button {
+    z-index: 5;
+    margin-left: -2px;
+    padding-right: var(--input-padding-x);
+    padding-left: var(--input-padding-x);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  > button input[type="checkbox"] {
+    display: none;
+  }
+
+  > button:hover {
+    cursor: pointer;
+  }
+
+  & + legend, & + label {
+    z-index: 1;
+  }
+}

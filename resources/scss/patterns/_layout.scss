@@ -1,0 +1,87 @@
+//
+// Rules CSS (Layout)
+//
+// (c) 2022 - AMJones <am@jonesiscoding.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+
+// Tokens & Modules
+@use "../tokens/system";
+
+/** Display Utilities **/
+
+*[class^="layout-"] {
+  display: var(--layout-display);
+}
+
+[aria-hidden="true"], [hidden] {
+  display: none !important;
+}
+
+/** Body Layout **/
+
+// CSS Grid Variables for Body With Drawer (Second Selector needed due to lack of :has in Firefox)
+body:has(dialog[role="navigation"]),
+body.-drawer
+{
+  --column-main: 2;
+  --column-header: span 2;
+  --column-footer: span 2;
+}
+
+// CSS Grid Variables for Body with Header and/or Footer
+body {
+  // Body With Footer
+  main + footer {
+    --row-footer: 2;
+  }
+
+  // Body with Header
+  > header ~ main {
+    --row-main: 2;
+    & + footer {
+      --row-footer: 3;
+    }
+  }
+  > header + dialog[role="navigation"] {
+    --row-sidebar: 2;
+  }
+}
+
+// Body Layout w/ Header/Footer using CSS Grid
+body {
+  grid-template-rows: var(--height-header) 1fr var(--height-footer);
+  grid-template-columns: min-content 1fr;
+  transition: #{system.$transition-base};
+  min-height: 100vh;
+  display: grid;
+
+  > header {
+    grid-row: var(--row-header);
+    grid-column: var(--column-header);
+  }
+
+  > footer {
+    grid-row: var(--row-footer);
+    grid-column: var(--column-footer);
+  }
+
+  main {
+    position: relative;
+    grid-column: var(--column-main);
+    grid-row: var(--row-main);
+    padding: var(--spacer);
+  }
+
+  dialog[role="navigation"] {
+    grid-column: var(--column-sidebar);
+    grid-row: var(--row-sidebar);
+
+    > nav {
+      grid-column: var(--column-sidebar);
+      min-width: var(--drawer-width);
+    }
+  }
+}

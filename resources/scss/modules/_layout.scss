@@ -1,0 +1,155 @@
+@use "sass:meta";
+@use "../tokens/reference" as ref;
+
+$display: block;
+$sidebar: true;
+$header: if(meta.global-variable-exists(app-header), $app-header, ref.$rules-header);
+$footer: if(meta.global-variable-exists(app-footer), $app-footer, ref.$rules-footer);
+$sidebar: if(meta.global-variable-exists(app-sidebar), $app-sidebar, ref.$rules-sidebar);
+$height-header: if(meta.global-variable-exists(app-height-header), $app-height-header, ref.$height-header);
+$height-footer: if(meta.global-variable-exists(app-height-footer), $app-height-footer, ref.$height-footer);
+$width-sidebar: if(meta.global-variable-exists(app-width-sidebar), $app-width-sidebar, ref.$width-sidebar);
+
+@if $sidebar == false {
+  $width-sidebar: null;
+}
+
+@if $header == false {
+  $height-header: null;
+}
+
+@if $footer == false {
+  $height-footer: null;
+}
+
+@mixin display() {
+  $values: (none,flex,grid,block,inline,inline-flex,inline-grid,inline-block);
+  @each $value in $values {
+    .-#{$value} {
+      --layout-display: #{$value};
+    }
+  }
+}
+
+@mixin responsive-up($bp) {
+  .-#{$bp}-hidden {
+    --layout-display: hidden;
+  }
+
+  .-#{$bp}-flex {
+    --layout-display: flex;
+  }
+
+  .-#{$bp}-grid {
+    --layout-display: grid;
+  }
+
+  .-#{$bp}-block {
+    --layout-display: block;
+  }
+
+  .-#{$bp}-inline {
+    --layout-display: inline;
+  }
+
+  .-#{$bp}-inline-block {
+    --layout-display: inline-block;
+  }
+
+  .-#{$bp}-inline-flex {
+    --layoutdisplay: inline-flex;
+  }
+
+  @if mixin-exists("custom-responsive-down-display") {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-responsive-down-display($bp);
+  }
+}
+
+@mixin responsive-up($bp) {
+  .-#{$bp}-hidden {
+    --layout-display: hidden;
+  }
+
+  .-#{$bp}-flex {
+    --layout-display: flex;
+  }
+
+  .-#{$bp}-grid {
+    --layout-display: grid;
+  }
+
+  .-#{$bp}-block {
+    --layout-display: block;
+  }
+
+  .-#{$bp}-inline {
+    --layout-display: inline;
+  }
+
+  .-#{$bp}-inline-block {
+    --layout-display: inline-block;
+  }
+
+  .-#{$bp}-inline-flex {
+    --layout-display: inline-flex;
+  }
+
+  @if($bp == xl) {
+    dialog[role="navigation"] {
+      display: contents !important;
+    }
+  }
+
+  @if mixin-exists("custom-layout-responsive-up") {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-layout-responsive-up($bp);
+  }
+}
+
+@mixin responsive-down($bp) {
+  .-#{$bp}-hidden {
+    --layout-display: hidden;
+  }
+
+  .-#{$bp}-flex {
+    --layout-display: flex;
+  }
+
+  .-#{$bp}-grid {
+    --layout-display: grid;
+  }
+
+  .-#{$bp}-block {
+    --layout-display: block;
+  }
+
+  .-#{$bp}-inline {
+    --layout-display: inline;
+  }
+
+  .-#{$bp}-inline-block {
+    --layout-display: inline-block;
+  }
+
+  .-#{$bp}-inline-flex {
+    --layout-display: inline-flex;
+  }
+
+  @if($bp == xl) {
+    dialog[role="navigation"] {
+      display: contents !important;
+    }
+  } @else if ($bp == lg) {
+    dialog[role="navigation"] {
+      &:not([open]), &[open=false] {
+        display: none !important;
+      }
+    }
+  }
+
+  @if mixin-exists("custom-layout-responsive-down") {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-layout-responsive-down($bp);
+  }
+}

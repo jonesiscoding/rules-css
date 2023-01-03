@@ -1,0 +1,38 @@
+@use "sass:math";
+@use "sass:color";
+@use "sass:map";
+@use "sass:list";
+@use "../../tokens/reference";
+@use "palette";
+
+@function -get-saturation-val($recommended: 8%, $min: .04) {
+  //$calc: percentage(1 - math.div(1,$parts));
+  $calc: 100% - $recommended;
+  $min: percentage(1 - $min);
+
+  @return $calc * -1;
+}
+
+@function generate-single($from-color, $recommended: 8%, $min: .04) {
+  //$from: hct.hct_from_color($from-color);
+  //$h: list.nth($from,1);
+  //$c: list.nth($from,2);
+  //$t: list.nth($from,3);
+  //
+  //@return hct.hct($h, math.min(math.div($c,$parts), $min * 100), $t);
+
+  //$saturation-val: -get-saturation-val($parts, $min);
+  $saturation-val: -get-saturation-val($recommended, $min);
+  @debug $saturation-val;
+
+  @return color.adjust($from-color, $saturation: $saturation-val);
+}
+
+@function weight($role) {
+  @return map-get($color-roles-neutral, quote($role));
+}
+
+@function generate($from-color, $parts: 12, $min: .04) {
+  @debug $from-color generate-single($from-color, $parts, $min);
+  @return palette.generate(generate-single($from-color, $parts, $min));
+}

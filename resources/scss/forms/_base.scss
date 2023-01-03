@@ -1,0 +1,129 @@
+@use "../tokens/system" as sys;
+
+// General Resets, Credit Twitter Bootstrap
+label {
+  display: inline-block; // Allow margin to work
+  color: var(--input-label);
+  font-size: var(--label-font-size);
+}
+
+button {
+  border-radius: 0; // Remove default for MacOS Chrome
+  &:focus {
+    outline: 1px dotted; // IE Transparent Button Focus Bug
+    outline: 5px auto -webkit-focus-ring-color; // Firefox Transparent Button Focus Bug
+  }
+}
+
+input, textarea, select {
+  --color-text: var(--theme-on-alt);
+  --color-bg: var(--theme-bg-alt);
+  --color-outline: var(--theme-outline);
+  --color-icon: var(--theme-on-alt);
+  --color-value: var(--theme-on);
+  --color-placeholder: var(--theme-on-alt);
+  --color-autofill: var(--theme-bg-alt);
+  --color-bg-disabled: rgba(var(--theme-bg-alt-red), var(--theme-bg-alt-green), var(--theme-bg-alt-blue), var(--opacity-disabled-bg));
+  --color-autofill-disabled: rgba(var(--theme-bg-alt-red), var(--theme-bg-alt-green), var(--theme-bg-alt-blue), var(--opacity-disabled-bg));
+  --color-text-disabled: rgba(var(--theme-on-alt-red), var(--theme-on-alt-green), var(--theme-on-alt-blue), var(--opacity-disabled));
+  --color-placeholder-disabled: rgba(var(--theme-on-alt-red), var(--theme-on-alt-green), var(--theme-on-alt-blue), var(--opacity-disabled));
+  --color-outline-disabled: rgba(var(--theme-outline-red), var(--theme-outline-green), var(--theme-outline-blue), var(--opacity-disabled-bg));
+  &:focus {
+    --color-outline: var(--theme-color);
+  }
+}
+
+label {
+  --color-label: var(--theme-on-alt);
+  --color-label-disabled: rgba(var(--theme-on-alt-red), var(--theme-on-alt-green), var(--theme-on-alt-blue), var(--opacity-disabled));
+}
+
+input, textarea, button, select, optgroup {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+// Color & Font Customizations
+input, textarea, select, form .wrapper {
+  color: var(--color-value);
+  background-color: var(--color-bg);
+  font-size: var(--input-font-size);
+  line-height: var(--input-line-height);
+  padding: var(--input-padding-y) var(--input-padding-x);
+  font-weight: var(--font-weight-normal);
+  border-radius: var(--border-radius);
+  border: var(--border-width) solid var(--color-outline);
+  box-shadow: none; // Override default in some browsers
+  width: var(--input-width);
+}
+
+// TODO: Read Only
+input, textarea, select  {
+  &:disabled, fieldset[disabled] & {
+    color: var(--color-value-disabled);
+    background-color: var(--color-bg-disabled);
+    border-color: var(--color-outline-disabled);
+    opacity: 1; // iOS fix for unreadable disabled content; see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#Browser_compatibility
+  }
+  &:disabled, fieldset[disabled] {
+    cursor: sys.$cursor-disabled;
+  }
+  &:disabled + label, fieldset[disabled] & + label {
+    color: var(--color-label-disabled);
+  }
+  &:focus {
+    outline-color: var(--color-outline) !important;
+  }
+}
+
+input, textarea {
+  // Chrome/Edge
+  &::-webkit-input-placeholder {
+    color: var(--color-placeholder);
+    font-weight: var(--font-weight-light);
+  }
+  // Firefox
+  &::-moz-placeholder {
+    color: var(--color-placeholder);
+    font-weight: var(--font-weight-light);
+  }
+  // IE11
+  &:-ms-input-placeholder {
+    color: var(--color-placeholder);
+    font-weight: sys.$font-weight-light;
+  }
+  // Edge 17/18
+  &:-ms-input-placeholder {
+    color: var(--color-placeholder);
+    font-weight: var(--font-weight-light);
+  }
+  // Standards
+  &::placeholder {
+    color: var(--color-placeholder);
+    font-weight: var(--font-weight-light);
+  }
+}
+
+textarea {
+  overflow: auto;   // Remove Default IE Scrollbar
+  resize: vertical; // Don't Break Layouts
+}
+
+label, fieldset:has(input[type="checkbox"]) > legend, fieldset:has(input[type="radio"]) > legend {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  padding: 0 var(--input-padding-x);
+}
+
+input[type="checkbox"] + label, input[type="radio"] + label {
+  font-size: var(--font-size);
+  font-weight: var(--font-weight-normal);
+  text-transform: initial;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-bg-autofill) inset;
+}

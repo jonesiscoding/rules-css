@@ -1,0 +1,97 @@
+@use "../tokens/system" as sys;
+
+input[type=datetime-local], input[type=time] {
+  @extend %picker;
+  &::-webkit-inner-spin-button {
+    margin-left: calc(var(--input-padding-x) / 2);
+    color: var(--input-icon);
+  }
+}
+
+input[type=date] {
+  @extend %picker;
+}
+
+input[type=datetime-local],
+input[type=date],
+input[type=time],
+{
+  padding-right: 0;
+  &::-webkit-calendar-picker-indicator {
+    position: relative;
+    right: var(--padding-x);
+    margin-right: calc((var(--icon-size) / 2 * -1) - 1px);
+    font-size: var(--icon-size);
+    opacity: .5;
+  }
+}
+
+input[type=time]::-webkit-inner-spin-button {
+  margin-right: calc(var(--input-padding-x) / 2 * -1);
+}
+
+// noinspection CssInvalidPseudoSelector */
+input::-webkit-datetime-edit {
+  // Fixes height issues
+  overflow: visible;
+  line-height: 0;
+}
+
+%datetime-bg {
+  background-size: var(--icon-size);
+  &::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
+}
+
+@if sys.$bg-image-date {
+  input[type=datetime-local], input[type=date] {
+    --input-symbol: #{sys.$bg-image-date};
+    @extend %datetime-bg;
+  }
+}
+
+@if sys.$bg-image-time {
+  input[type=time] {
+    --input-symbol: #{sys.$bg-image-time};
+    @extend %datetime-bg;
+  }
+}
+
+input[type=time] ~ dialog {
+  position: absolute;
+  width: auto;
+  height: auto;
+  backdrop-filter: none;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  top: 100%;
+  min-width: unset;
+  background-color: transparent;
+  > article {
+    min-width: unset;
+    display: grid;
+    padding: calc(var(--padding-x) / 2);
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: min-content min-content min-content;
+    column-gap: calc(var(--padding-x) / 2);
+    row-gap: 0;
+    > input {
+      grid-row: span 2;
+    }
+    > button {
+      padding: 2px;
+      font-size: var(--font-size-sm);
+      &:first-of-type {
+        border-bottom-width: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        & + button {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+    }
+  }
+}

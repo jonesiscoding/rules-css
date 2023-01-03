@@ -1,0 +1,242 @@
+//
+// Rules CSS (Buttons)
+//
+// (c) 2022 - AMJones <am@jonesiscoding.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+
+// SASS Module Import
+@use "sass:math";
+@use "sass:color";
+// Token & Module Import
+@use "../tokens/system";
+@use "../modules/buttons";
+@use "../modules/theme/elevation";
+
+/** Buttons **/
+
+// CSS Custom Variables
+button, *[role="button"], .btn {
+  --color-bg: var(--theme-bg);
+  --color-outline: transparent;
+  --color-link: var(--theme-color);
+  --color-icon: var(--theme-color);
+  // TODO: Shadow
+  // TODO: Hover Shadow
+  @include buttons.hover-after {
+    --color-tint-red: var(--theme-color-red);
+    --color-tint-green: var(--theme-color-green);
+    --color-tint-blue: var(--theme-color-blue);
+  }
+  @include buttons.focus-after {
+    --color-tint-red: var(--theme-color-red);
+    --color-tint-green: var(--theme-color-green);
+    --color-tint-blue: var(--theme-color-blue);
+  }
+  @include buttons.disabled {
+    --color-bg: rgba(var(--theme-on-red), var(--theme-on-green), var(--theme-on-blue), var(--opacity-disabled-bg));
+    --color-link: rgba(var(--theme-on-red), var(--theme-on-green), var(--theme-on-blue), var(--opacity-disabled));
+    --color-icon: rgba(var(--theme-on-red), var(--theme-on-green), var(--theme-on-blue), var(--opacity-disabled));
+  }
+  // TODO: Pressed Shadow
+  @include buttons.pressed-after {
+    --color-tint-red: var(--theme-color-red);
+    --color-tint-green: var(--theme-color-green);
+    --color-tint-blue: var(--theme-color-blue);
+  }
+
+  &.-filled, &.-fab {
+    --color-bg: var(--theme-color);
+    --color-shadow: transparent;
+    --color-outline: transparent;
+    --color-text: var(--theme-on-color);
+    --color-link: var(--theme-on-color);
+    --color-icon: var(--theme-on-color);
+    @include buttons.hover-after {
+      --color-tint-red: var(--theme-on-color-red);
+      --color-tint-green: var(--theme-on-color-green);
+      --color-tint-blue: var(--theme-on-color-blue);
+    }
+    @include buttons.focus-after {
+      --color-tint-red: var(--theme-on-color-red);
+      --color-tint-green: var(--theme-on-color-green);
+      --color-tint-blue: var(--theme-on-color-blue);
+    }
+    @include buttons.pressed {
+      --color-shadow: transparent;
+    }
+    @include buttons.pressed-after {
+      --color-tint-red: var(--theme-color-red);
+      --color-tint-green: var(--theme-color-green);
+      --color-tint-blue: var(--theme-color-blue);
+    }
+  }
+
+  &.-outline {
+    --color-bg: var(--theme-bg);
+    --color-shadow: transparent;
+    --color-outline: var(--theme-outline);
+    --color-text: var(--theme-color);
+    --color-link: var(--theme-color);
+    --color-icon: var(--theme-color);
+    @include buttons.disabled {
+      --color-outline: rgba(var(--theme-on-bg-red), var(--theme-on-bg-green), var(--theme-on-bg-blue), var(--opacity-disabled-bg));
+    }
+    @include buttons.hover {
+      --color-shadow: transparent;
+      --color-outline: var(--theme-color);
+    }
+    @include buttons.focus {
+      --color-outline: var(--theme-color);
+    }
+    @include buttons.pressed {
+      --color-shadow: transparent;
+    }
+  }
+
+  &.-flat {
+    --color-shadow: none;
+    --color-outline: none;
+    --color-bg: transparent;
+    @include buttons.hover {
+      --color-shadow: transparent;
+    }
+    @include buttons.focus {
+      --color-shadow: transparent;
+    }
+    @include buttons.pressed {
+      --color-shadow: transparent;
+    }
+  }
+
+}
+
+// Button Reset
+button {
+  position: relative;
+  border-radius: 0; // Remove default for MacOS Chrome
+  &:focus {
+    // noinspection CssOverwrittenProperties
+    outline: 1px dotted; // IE Transparent Button Focus Bug
+    //noinspection CssOverwrittenProperties
+    outline: 5px auto -webkit-focus-ring-color; // Firefox Transparent Button Focus Bug
+  }
+}
+
+// Button Styles
+%button {
+  border: var(--border-width) solid var(--color-outline);
+  background-color: var(--color-bg);
+  border-radius: var(--border-radius);
+  color: var(--color-link);
+  display: inline-flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-input);
+  line-height: var(--line-height-input);
+  white-space: nowrap;
+  align-content: center;
+  user-select: none;
+  appearance: none;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-normal);
+  cursor: default;
+  transition: system.$transition-button;
+  padding: var(--input-padding-y) var(--input-padding-x);
+  box-shadow: var(--btn-shadow);
+  letter-spacing: .04em;
+
+  & > svg {
+    color: var(--color-icon);
+  }
+
+  &:hover {
+    cursor: system.$cursor-strong;
+  }
+
+  @include elevation.tint-after-hover {
+    background-color: rgba(var(--color-tint-red), var(--color-tint-green), var(--color-tint-blue), var(--opacity-hover));
+  }
+
+  &[disabled]:not([disabled="false"]) {
+    cursor: system.$cursor-disabled;
+  }
+
+  // TODO: Figure out how to deal with this in firefox
+  &:has(> svg:first-child):not(.-icon) {
+    display: inline-grid;
+    grid-template-columns: min-content 1fr;
+    grid-gap: var(--input-padding-x);
+  }
+
+  &.-icon, &.-fab {
+    > span:not(:focus):not(:active) {
+      // Hide Label from All Except Screen Readers
+      clip: rect(0 0 0 0);
+      clip-path: inset(100%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+  }
+
+  .-block {
+    flex-grow: 1;
+    width: 100%;
+
+    & + &.-block {
+      margin-top: var(--input-padding-y);
+    }
+  }
+
+  &.-compact {
+    --input-padding-x: calc(var(--input-padding-x) / 2);
+  }
+
+  &.-dense {
+    letter-spacing: 0;
+  }
+
+  &.-lg {
+    --font-size-input: #{system.$font-lg-size};
+  }
+
+  &.-sm {
+    --font-size-input: #{system.$font-sm-size};
+    --input-padding-x: #{math.div(system.$spacer, 2)};
+  }
+
+  &.-xs {
+    --font-size-input: #{system.$font-sm-size};
+    --input-padding-x: #{math.div(system.$spacer, 4)};
+    letter-spacing: 0;
+  }
+
+  &.-flat, &.-outline {
+    transition: system.$transition-button-flat !important;
+  }
+}
+
+// Lots of things are buttons
+button, a[role="button"], input[type="button"], input[type="submit"], input[type="reset"], a[role="menuitem"], dialog[role="navigation"] a, a.btn {
+  @extend %button;
+}
+
+// Links that are buttons, but disabled need pointer events gone
+a[role="button"][disabled], a[role="button"].disabled,
+a.btn[disabled], a.btn.disabled,
+fieldset[disabled] a[role="button"], fieldset[disabled] a.btn {
+  pointer-events: none;
+}
+
+// Do not underline links that
+a[role="button"], a[role="menuitem"], dialog[role="navigation"] a, a.btn {
+  text-decoration: none;
+}

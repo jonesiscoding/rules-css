@@ -1,0 +1,79 @@
+
+// Typography
+$font-family-base:           system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-family-monospace:      "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+
+$font-size-touch:       16px;
+$font-size-root:        16px;
+$font-size-base:        1rem;
+
+$font-weight-light:     300;
+$font-weight-base:      400;
+$font-weight-medium:    500;
+$font-weight-bold:      700;
+$line-height-base:      1.25;
+$icon-size:             16px;
+
+// Spacing
+$spacer:                1rem;
+$height-header:         4rem;
+$height-footer:         4rem;
+$width-min:             320px;
+$rules-header: true;
+$rules-footer: true;
+$rules-sidebar: true;
+$width-sidebar: 20rem;
+
+// Decoration
+$width-border: 1px;
+$width-outline: 2px;
+$decoration-link: underline;
+$decoration-link-hover: underline;
+$radius-border: 4px;
+$opacity-bg-disabled: 12%;
+$opacity-text-disabled: 38%;
+$opacity-hover: 8%;
+$opacity-focus: 12%;
+$opacity-pressed: 12%;
+$opacity-busy: .5;
+
+// Transitions
+$transition-base:      all .2s ease-in-out;
+$transition-fade:      opacity .15s linear;
+$transition-collapse:  height .35s ease;
+$transition-btn:       box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-btn-flat:  background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+// Input Symbols
+$cursor-strong:         pointer; // Use null to default to no cursor changes for elements with strong affordance.
+$cursor-disabled:       not-allowed;
+$bg-image-date:         url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cpath fill='rgba(0, 0, 0, 0.5)' d='M0 0v2h7v-2h-7zm0 3v4.91c0 .05.04.09.09.09h6.81c.05 0 .09-.04.09-.09v-4.91h-7zm1 1h1v1h-1v-1zm2 0h1v1h-1v-1zm2 0h1v1h-1v-1zm-4 2h1v1h-1v-1zm2 0h1v1h-1v-1z' /%3E%3C/svg%3E");
+$bg-image-time:         url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cpath fill='rgba(0, 0, 0, 0.5)' d='M4 0c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0 1c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm-.5 1v2.22l.16.13.5.5.34.38.72-.72-.38-.34-.34-.34v-1.81h-1z' /%3E%3C/svg%3E");
+$bg-image-select:       url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%228%22%20height%3D%228%22%20viewBox%3D%220%200%208%208%22%3E%3Cpath%20fill%3D%22rgba%2873%2C%2080%2C%2087%2C%200.5%29%22%20d%3D%22M0%200l4%204%204-4h-8z%22%20transform%3D%22translate%280%202%29%22%20%2F%3E%3C%2Fsvg%3E");
+$bg-image-number:       url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='rgba(0, 0, 0, 0.5)' d='M1,4.5l3,3l3-3H1z'/%3e%3cpath fill='rgba(0, 0, 0, 0.5)' d='M7,3.5l-3-3l-3,3H7z'/%3e%3c/svg%3e");
+
+// Color
+$color-base-major: #2cb2e8;
+$color-base-minor: #009688;
+$color-base-feature: #03a9f4;
+$color-base-success: #45ac49;
+$color-base-danger: #f44336;
+$color-base-warning: #ffc107;
+$color-base-default: #9e9e9e;
+$color-white: rgba(255,255,255,.87);
+$color-black: rgba(0,0,0,.54);
+$rules-min-contrast-ratio: 4.5;
+$color-roles: ("color": 40, "on-color": 100, "alt": 90, "on-alt": 10 );
+$color-roles-neutral: ("color": 99, "on-color": 10, "alt": 90, "on-alt": 30);
+$tone-light-color: 40;
+$tone-light-on-color: 100;
+$tone-light-alt: 90;
+$tone-light-on-alt: 10;
+$tone-light-neutral: 99;
+$tone-light-on-neutral: 10;
+$tone-light-neutral-alt: 90;
+$tone-light-on-neutral-alt: 30;
+
+// Tables
+$table-align: middle;
+

@@ -1,0 +1,101 @@
+
+@mixin emit() {
+  --line-height-input: #{$rules-input-line-height};
+  --font-size-input: #{$rules-input-font-size};
+}
+
+@mixin responsive-down($bp) {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-forms-responsive-down) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-forms-responsive-down;
+  }
+}
+
+@mixin responsive-up($bp) {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-forms-responsive-up) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-forms-responsive-up;
+  }
+}
+
+@mixin touch() {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-forms-touch) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-forms-touch;
+  }
+}
+
+@mixin dpi($dpi) {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-forms-dpi) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-forms-dpi($dpi);
+  }
+}
+
+@mixin edge-legacy() {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-forms-edge-legacy) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-forms-edge-legacy;
+  }
+}
+
+@mixin ie() {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-forms-ie) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-forms-ie;
+  }
+}
+
+@mixin firefox() {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-forms-firefox) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-forms-firefox;
+  }
+}
+
+@mixin safari() {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-forms-safari) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-forms-safari;
+  }
+}
+
+@mixin picker-common {
+  appearance: none;
+  background: var(--input-bg) $bg-image-select no-repeat right var(--input-padding-x) center;
+  &::-ms-expand {
+    opacity: 0; // Hides native caret in IE (Note: Pre IE10 will see NO arrow)
+  }
+  &:-moz-focusring {
+    color: transparent; // Kills odd artifacts around text in Firefox focus
+    text-shadow: 0 0 0 #000; // https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-focusring
+  }
+}
+
+@mixin label-float {
+  padding: 2px var(--input-padding-x);
+  opacity: 1;
+  height: auto;
+  transform: scale(.6) translateY(-1rem) translateX(.75rem);
+  background-color: var(--input-bg);
+}
+
+@mixin label-outline {
+  direction: ltr;
+  padding-top: calc(var(--input-padding-y) * 3);
+  padding-bottom: calc(var(--input-padding-y) - var(--input-border) - var(--input-border));
+  ~ label {
+    opacity: .65;
+    height: auto;
+    transform: scale(.80) translateY(-.5rem) translateX(.15rem);
+  }
+}
+

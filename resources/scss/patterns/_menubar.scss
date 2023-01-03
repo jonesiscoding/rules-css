@@ -1,0 +1,30 @@
+//
+// Rules CSS (Menubar)
+//
+// (c) 2022 - AMJones <am@jonesiscoding.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+
+/** Menubar **/
+
+nav ul[role="menubar"] {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+  column-gap: calc(var(--spacer) * 1.5);
+
+  li {
+    display: inline-block;
+  }
+
+  button, a {
+    &[role="menuitem"] {
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+}

@@ -1,0 +1,120 @@
+//
+// Rules CSS (Dropdown)
+//
+// (c) 2022 - AMJones <am@jonesiscoding.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+
+// Module Imports
+@use "../modules/theme/elevation";
+
+/** Dropdown **/
+
+%dropdown {
+  position: relative;
+}
+
+// Custom Variables for Dropdowns
+dialog[role="menu"] {
+  --color-bg: var(--theme-bg);
+  &:after {
+    --opacity-elevation: var(--opacity-elevation-2);
+    --color-tint-red: var(--theme-color-red);
+    --color-tint-blue: var(--theme-color-blue);
+    --color-tint-green: var(--theme-color-green);
+  }
+  --color-text: var(--theme-on);
+  --color-divider: var(--theme-divider);
+  > * {
+    --color-bg: transparent;
+    --color-icon: var(--theme-color);
+    --color-link: var(--theme-link);
+    --color-text: var(--theme-on);
+    --color-outline: var(--theme-outline);
+    &:after {
+      --color-tint-red: var(--theme-on-bg-red);
+      --color-tint-blue: var(--theme-on-bg-blue);
+      --color-tint-green: var(--theme-on-bg-green);
+    }
+  }
+}
+
+// CSS Rules for Dropdowns
+dialog[role="menu"] {
+  position: absolute !important;
+  z-index: 999;
+  top: calc(100% + var(--border-width));
+  right: unset;
+  bottom: unset;
+  left: 0;
+  display: grid;
+  overflow: hidden;
+  align-items: start;
+  justify-content: end;
+  min-width: max-content;
+  height: auto;
+  margin: 1px 0 0 0;
+  padding: 0;
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg);
+  grid-template-columns: auto;
+  backdrop-filter: none;
+  // Background Tint
+  @include elevation.tint-after {
+    background-color: rgba(var(--color-tint-red), var(--color-tint-green), var(--color-tint-blue), var(--opacity-elevation));
+  }
+
+  // Everything Inside
+  > * {
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-normal);
+    position: relative;
+    z-index: 123456;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: var(--padding-y) var(--padding-x);
+    text-align: left;
+    border-width: 0 var(--border-width);
+    border-radius: 0;
+    box-shadow: none;
+
+    &:first-child {
+      border-top-width: var(--border-width);
+      border-top-left-radius: var(--border-radius);
+      border-top-right-radius: var(--border-radius);
+    }
+
+    &:last-child {
+      border-bottom-width: var(--border-width);
+      border-bottom-right-radius: var(--border-radius);
+      border-bottom-left-radius: var(--border-radius);
+    }
+  }
+
+  > h3, > h4, > h5 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    color: var(--color-text);
+    border-style: solid;
+    border-color: var(--color-outline);
+    background-color: var(--color-bg);
+  }
+
+  > a[role="menuitem"], > button[role="menuitem"] {
+    display: grid;
+    align-items: center;
+    --icon-size: .9rem;
+    grid-template-rows: 1fr;
+    grid-template-columns: var(--icon-size) 1fr;
+    column-gap: var(--padding-x);
+  }
+}
+
+// Using a wrapping class here due to the lack of support for :has() in Firefox
+nav.dropdown {
+  @extend %dropdown;
+}

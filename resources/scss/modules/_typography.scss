@@ -1,0 +1,104 @@
+@use "sass:meta";
+//@use "../variables" as *;
+@use "../tokens/reference" as ref;
+
+// Fonts
+$font-normal: ref.$font-family-base !default;
+$font-monospace: ref.$font-family-monospace !default;
+$font-icon: null;
+// Font Sizes
+$size-root: ref.$font-size-root;
+$size-base: ref.$font-size-base;
+$size-lg:   $size-base * 1.25;
+$size-sm:   $size-base * .85;
+$size-input: $size-base;
+$size-label: $size-input;
+$size-icon: ref.$icon-size;
+// Calculated Line Height
+$height-base: ref.$line-height-base;
+$height-sm: $height-base * .85;
+$height-lg: $height-base * 1.25;
+$height-input: $height-base;
+// Calculated Font Weight
+$weight-light: ref.$font-weight-light !default;
+$weight-base: ref.$font-weight-base !default;
+$weight-medium: ref.$font-weight-medium !default;
+$weight-bold: ref.$font-weight-bold !default;
+// Decoration
+$decoration-link: ref.$decoration-link;
+$decoration-link-hover: ref.$decoration-link-hover;
+
+@mixin font-face() {
+  @if mixin-exists(custom-font-face) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-font-face;
+  }
+}
+
+@mixin responsive-down($bp) {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-typography-responsive-down) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-typography-responsive-down;
+  }
+}
+
+@mixin responsive-up($bp) {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-typography-responsive-up) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-typography-responsive-up;
+  }
+}
+
+@mixin touch() {
+
+  @if mixin-exists(custom-typography-touch) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-typography-touch;
+  }
+}
+
+@mixin dpi($dpi) {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-typography-dpi) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-typography-dpi($dpi);
+  }
+}
+
+@mixin edge-legacy() {
+  text-shadow: 0 0 1px rgba(0,0,0,0.2); // Faux Text Shadow for legibility. Overridden at HiDPI
+
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-typography-edge-legacy) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-typography-edge-legacy;
+  }
+}
+
+@mixin ie() {
+  text-shadow: 0 0 1px rgba(0,0,0,0.1); // Faux Text Shadow for legibility.  Overridden at HiDPI
+
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-typography-ie) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-typography-ie;
+  }
+}
+
+@mixin firefox() {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-typography-firefox) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-typography-firefox;
+  }
+}
+
+@mixin safari() {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-typography-safari) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-typography-safari;
+  }
+}

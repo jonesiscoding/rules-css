@@ -1,0 +1,172 @@
+@use "sass:map";
+@use "sass:color";
+@use "../tokens/system" as sys;
+@use "../modules/palette/palette";
+
+@function vars-filled($context: null) {
+  @return (
+      "default": (
+          "bg": sys.$theme-surface-alt,
+          "border": sys.$theme-on-surface-alt,
+          "outline": null,
+          "label": sys.$theme-on-surface-alt,
+          "input": sys.$theme-on-surface,
+          "text": sys.$theme-on-surface-alt,
+          "icon": sys.$theme-on-surface-alt,
+          "autofill": color.adjust(sys.$theme-surface-alt, $lightness: -3%),
+          "placeholder": color.adjust(sys.$theme-on-surface-alt, $alpha: -.10),
+      ),
+      "disabled": (
+          "bg": palette.disabled(sys.$theme-on-surface, .04),
+          "border": palette.disabled(sys.$theme-on-surface, .04),
+          "outline": palette.disabled(sys.$theme-on-surface, .12),
+          "label": palette.disabled(sys.$theme-on-surface, .38),
+          "input": palette.disabled(sys.$theme-on-surface, .38),
+          "text": palette.disabled(sys.$theme-on-surface, .38),
+          "icon": palette.disabled(sys.$theme-on-surface, .38),
+          "autofill": null,
+          "placeholder": palette.disabled(sys.$theme-on-surface, .38),
+      ),
+      "hover": (
+          "bg": palette.tint(sys.$theme-surface-alt, sys.$theme-on-surface, sys.$opacity-hover),
+          "border": sys.$theme-on-surface,
+          "outline": null,
+          "label": null,
+          "input": null,
+          "text": null,
+          "icon": null,
+          "autofill": sys.$theme-major,
+          "placeholder": null,
+      ),
+      "focus": (
+          "bg": null,
+          "border": sys.$theme-on-surface-alt,
+          "outline": sys.$theme-major,
+          "label": sys.$theme-major,
+          "input": null,
+          "icon": null,
+          "autofill": sys.$theme-major,
+          "placeholder": transparent,
+          "text": null,
+      ),
+      "invalid": (
+          "bg": null,
+          "border": sys.$theme-danger,
+          "outline": null,
+          "label": sys.$theme-danger,
+          "input": snull,
+          "icon": sys.$theme-danger,
+          "autofill": null,
+          "placeholder": null,
+          "text": sys.$theme-danger,
+      ),
+  );
+}
+
+@function vars-outline($context: null) {
+  @return (
+      "default": (
+          "bg": sys.$theme-surface-alt,
+          "border": sys.$theme-outline,
+          "outline": null,
+          "label": sys.$theme-on-surface-alt,
+          "input": sys.$theme-on-surface,
+          "text": sys.$theme-on-surface-alt,
+          "icon": sys.$theme-on-surface-alt,
+          "autofill": color.adjust(sys.$theme-surface-alt, $lightness: -3%),
+          "placeholder": color.adjust(sys.$theme-on-surface-alt, $alpha: -.10),
+      ),
+      "disabled": (
+          "bg": palette.disabled(sys.$theme-on-surface, .04),
+          "border": palette.disabled(sys.$theme-on-surface, .04),
+          "outline": palette.disabled(sys.$theme-on-surface, .12),
+          "label": palette.disabled(sys.$theme-on-surface, .38),
+          "input": palette.disabled(sys.$theme-on-surface, .38),
+          "text": palette.disabled(sys.$theme-on-surface, .38),
+          "icon": palette.disabled(sys.$theme-on-surface, .38),
+          "autofill": null,
+          "placeholder": palette.disabled(sys.$theme-on-surface, .38),
+      ),
+      "hover": (
+          "bg": palette.tint(sys.$theme-surface-alt, sys.$theme-on-surface, sys.$opacity-hover),
+          "border": sys.$theme-on-surface,
+          "outline": null,
+          "label": null,
+          "input": null,
+          "text": null,
+          "icon": null,
+          "autofill": sys.$theme-major,
+          "placeholder": null,
+      ),
+      "focus": (
+          "bg": null,
+          "border": sys.$theme-major,
+          "outline": sys.$theme-major,
+          "label": sys.$theme-major,
+          "input": null,
+          "icon": null,
+          "autofill": null,
+          "placeholder": transparent,
+          "text": null,
+      ),
+      "invalid": (
+          "bg": null,
+          "border": sys.$theme-danger,
+          "outline": null,
+          "label": sys.$theme-danger,
+          "input": snull,
+          "icon": sys.$theme-danger,
+          "autofill": null,
+          "placeholder": null,
+          "text": sys.$theme-danger,
+      ),
+  );
+}
+
+$outline: vars-outline();
+$filled: vars-filled();
+
+@mixin custom-properties($vars) {
+  --input-bg: #{map.get($vars,"default","bg")};
+  --input-bg-disabled: #{map.get($vars,"disabled","bg")};
+  --input-bg-hover: #{map.get($vars,"disabled","bg")};
+  --input-bg-focus: #{map.get($vars,"disabled","bg")};
+
+  --input-border: #{map.get($vars,"default","outline")};
+  --input-border-disabled: #{map.get($vars,"disabled","border")};
+  --input-border-hover: #{map.get($vars,"disabled","border")};
+  --input-border-focus: #{map.get($vars,"disabled","border")};
+
+  --input-outline: #{map.get($vars,"default","outline")};
+  --input-outline-disabled: #{map.get($vars,"disabled","outline")};
+  --input-outline-hover: #{map.get($vars,"disabled","outline")};
+  --input-outline-focus: #{map.get($vars,"disabled","outline")};
+
+  --input-label: #{map.get($vars,"default","label")};
+  --input-label-disabled: #{map.get($vars,"disabled","label")};
+  --input-label-hover: #{map.get($vars,"disabled","label")};
+  --input-label-focus: #{map.get($vars,"disabled","label")};
+
+  --input-value: #{map.get($vars,"default","value")};
+  --input-value-disabled: #{map.get($vars,"disabled","value")};
+  --input-value-hover: #{map.get($vars,"disabled","value")};
+  --input-value-focus: #{map.get($vars,"disabled","value")};
+
+  --input-icon: #{map.get($vars,"default","icon")};
+  --input-icon-disabled: #{map.get($vars,"disabled","icon")};
+  --input-icon-hover: #{map.get($vars,"disabled","icon")};
+  --input-icon-focus: #{map.get($vars,"disabled","icon")};
+
+  --input-text: #{map.get($vars,"default","text")};
+  --input-text-disabled: #{map.get($vars,"disabled","text")};
+  --input-text-hover: #{map.get($vars,"disabled","text")};
+  --input-text-focus: #{map.get($vars,"disabled","text")};
+}
+
+@mixin filled {
+  @include custom-properties($filled);
+}
+
+@mixin outline {
+  @include custom-properties($outline);
+}

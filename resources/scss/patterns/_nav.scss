@@ -1,0 +1,118 @@
+//
+// Rules CSS (Tabs)
+//
+// (c) 2022 - AMJones <am@jonesiscoding.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+
+// Token & Module Import
+@use "../tokens/system" as sys;
+@use "../modules/palette/palette";
+@use "../modules/theme/elevation";
+
+/** Tabs **/
+
+// CSS Custom Variables
+[role=tablist] {
+  --color-outline: var(--theme-outline);
+  --color-bg: transparent;
+}
+
+*[role="tab"], [role="tablist"] > *[role="button"] {
+  --color-bg: transparent;
+  --color-link: var(--theme-on-alt);
+  --color-icon: var(--theme-on-alt);
+  --color-outline: transparent;
+  --color-bg-active: transparent;
+  --color-shadow: transparent;
+  --tab-border-width: 0;
+  --tab-border-width-bottom: calc(var(--border-width) * 2);
+  &[aria-selected]:not([aria-selected="false"]) {
+    --color-bg: transparent;
+    --color-link: var(--theme-color);
+    --color-icon: var(--theme-color);
+    --color-outline: var(--theme-color);
+  }
+}
+
+.-pills *[role="tab"], .-pills [role="tablist"] > *[role="button"] {
+  --color-bg: var(--theme-alt);
+  --color-link: var(--theme-on-alt);
+  --color-icon: var(--theme-on-alt);
+  --color-outline: transparent;
+  --color-shadow: transparent;
+  --tab-border-width: var(--border-width);
+  --tab-border-width-bottom: var(--border-width);
+  &[aria-selected]:not([aria-selected="false"]) {
+    --color-bg: var(--theme-color);
+    --color-link: var(--theme-on-color);
+    --color-icon: var(--theme-on-color);
+    --color-outline: var(--theme-color);
+  }
+}
+
+// CSS Rules for Tabs
+nav a, a[role="menuitem"] {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+nav[role="tablist"] {
+  width: 100%;
+  padding: 0 var(--padding-x);
+  border-bottom: var(--border-width) solid var(--color-outline);
+
+  *[role="tab"] {
+    position: relative;
+    bottom: -1px;
+    text-transform: var(--ui-transform);
+    border-width: var(--tab-border-width);
+    border-bottom: var(--tab-border-width-bottom) solid var(--color-outline);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    outline: none;
+  }
+}
+
+nav[role="tablist"].-pills, .-pills nav[role="tablist"] {
+  padding: var(--padding-y) var(--padding-x);
+  border-bottom: none;
+
+  *[role="tab"] {
+    bottom: 0;
+    padding-top: calc(var(--padding-y) / 2);
+    padding-bottom: calc(var(--padding-y) / 2);
+    border: var(--tab-border-width) solid var(--color-outline);
+    border-radius: calc(var(--padding-x) + var(--padding-y));
+  }
+}
+
+nav[role="tablist"].-filled, .-filled nav[role="tablist"] {
+  *[role="tab"] {
+    border-width: 0 0 var(--tab-border-width) 0;
+  }
+}
+
+// CSS Rules for Tab Panels
+nav[role="tablist"] ~ *[role="tabpanel"] {
+  &[hidden] {
+    display: none;
+  }
+
+  & + *[role="tabpanel"] {
+    margin-top: 0;
+  }
+}
+
+article[role="tabpanel"] {
+  transition: var(--transition-fade);
+  border-top-width: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: none;
+}
+

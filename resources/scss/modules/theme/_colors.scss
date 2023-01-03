@@ -1,0 +1,60 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:color";
+@use '../../tokens/color' as base;
+@use "../palette/palette";
+@use "neutrals";
+
+$major: palette.generate(base.$major);
+$minor: palette.generate(base.$minor);
+$feature: palette.generate(base.$feature);
+$danger: palette.generate(base.$danger);
+$success: palette.generate(base.$success);
+$warning: palette.generate(base.$warning);
+$default: palette.generate(base.$default);
+
+@function major($tone) {
+  @return map.get($major, quote(#{$tone}));
+}
+
+@function minor($tone) {
+  @return map.get($minor, quote(#{$tone}));
+}
+
+@function feature($tone) {
+  @return map.get($feature, quote(#{$tone}));
+}
+
+@function danger($tone) {
+  @return map.get($danger, quote(#{$tone}));
+}
+
+@function danger($tone) {
+  @return map.get($danger, quote(#{$tone}));
+}
+
+@function warning($tone) {
+  @return map.get($warning, quote(#{$tone}));
+}
+
+@function success($tone) {
+  @return map.get($success, quote(#{$tone}));
+}
+
+@function default($tone) {
+  @return map.get($default, quote(#{$tone}));
+}
+
+@function neutral($tone) {
+  @return neutrals.major($tone);
+}
+
+@function neutral-alt($tone) {
+  @return neutrals.major-alt($tone);
+}
+
+@function tint($foreground, $percent-opacity) {
+  $tint-alpha: (1 - math.div($percent-opacity, 100%)) * -1;
+
+  @return color.adjust($foreground, $alpha: $tint-alpha);
+}

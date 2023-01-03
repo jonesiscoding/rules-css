@@ -1,0 +1,126 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:string";
+@use "sass:meta";
+@use "../palette/palette";
+
+// Variables
+$tints: ("1": 5%, "2": 8%, "3": 11%, "4": 12%, "5": 14%) !default;
+$shadow-key-umbra-opacity: 0.2 !default;
+$shadow-key-penumbra-opacity: 0.14 !default;
+$shadow-ambient-shadow-opacity: 0.12 !default;
+
+@function opacity($level: 0) {
+  @if $level > 0 {
+    $opacity: map.get($tints, quote(#{$level}));
+
+    @return math.div($opacity, 100%);
+  }
+
+  @return 0;
+}
+
+@mixin tint-after() {
+  position: relative;
+  &:after {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: ' ';
+    pointer-events: none;
+    @content
+  }
+}
+
+@mixin tint-after-hover() {
+  @include tint-after;
+  &:hover {
+    &:after {
+      @content
+    }
+  }
+}
+
+@mixin tint-after-focus-within() {
+  @include tint-after;
+  &:focus-within {
+    &:after {
+      @content
+    }
+  }
+}
+
+@function tint($foreground, $background, $level: 0) {
+  @if $level > 0 {
+    $key: quote(#{$level});
+    $opacity: map-get($tints, $key);
+
+    @return palette.tint($foreground, $background, $opacity);
+  }
+
+  @return $background;
+}
+
+@function shadow($level, $color: rgb(0,0,0)) {
+  $umbra: 0;
+  $penumbra: 0;
+  $ambient: 0;
+  @if $level > 0 {
+    @if $level == 1 {
+      $umbra:    0 2px 1px -1px;
+      $penumbra: 0 1px 1px 0;
+      $ambient:  0 1px 3px 0;
+    }
+    @else if $level == 2 {
+      $umbra:    0 3px 1px -2px;
+      $penumbra: 0 2px 2px 0;
+      $ambient:  0 1px 5px 0;
+    }
+    @else if $level == 3 {
+      $umbra:    0 3px 3px -2px;
+      $penumbra: 0 3px 4px 0;
+      $ambient:  0 1px 8px 0;
+    }
+    @else if $level == 4 {
+      $umbra:    0 2px 4px -1px;
+      $penumbra: 0 4px 5px 0;
+      $ambient:  0 1px 10px 0;
+    }
+    @else if $level == 6 {
+      $umbra:    0 3px 5px -1px;
+      $penumbra: 0 6px 10px 0;
+      $ambient:  0 1px 18px 0;
+    }
+    @else if $level == 8 {
+      $umbra:    0 5px 5px -3px;
+      $penumbra: 0 8px 10px 1px;
+      $ambient:  0 3px 14px 2px;
+    }
+    @else if $level == 16 {
+      $umbra:    0 8px 10px -5px;
+      $penumbra: 0 16px 24px 2px;
+      $ambient:  0 6px 30px 5px;
+    }
+    @else if $level == 24 {
+      $umbra: 0 24px 38px 3px;
+      $penumbra: 0 9px 46px 8px;
+      $ambient: 0 11px 15px -7px;
+    }
+    @else {
+      @error $level;
+    }
+
+    //@if meta.type-of(string.index($color, "var("))
+
+    $umbra-color: rgba(red($color),green($color),blue($color), $shadow-key-umbra-opacity);
+    $penumbra-color: rgba(red($color),green($color),blue($color), $shadow-key-penumbra-opacity);
+    $ambient-color: rgba(red($color),green($color),blue($color), $shadow-ambient-shadow-opacity);
+
+    @return $umbra $umbra-color, $penumbra $penumbra-color, $ambient $ambient-color;
+  } @else {
+    @return none;
+  }
+}

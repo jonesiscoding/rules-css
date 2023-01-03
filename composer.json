@@ -1,0 +1,18 @@
+{
+  "name": "deviscoding/rules",
+  "replace": {
+    "deviscoding/xq-select": "^4.0"
+  },
+  "homepage": "https://github.com/jonesiscoding/rules",
+  "version": "4.0",
+  "authors": [
+    {
+      "name": "AMJones",
+      "homepage": "https://www.deviscoding.com/"
+    }
+  ],
+  "license": "MIT",
+  "require": {
+    "deviscoding/palette": "^1.0"
+  }
+}

@@ -1,0 +1,21 @@
+
+form[aria-invalid="true"] > input,
+form[aria-invalid="true"] > select,
+form[aria-invalid="true"] > textarea,
+form[aria-invalid="true"] > .wrapper,
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  --border-color: red;
+  &:active, &:focus {
+    box-shadow: 0 0 0 var(--outline-width) var(--border-color);
+  }
+}
+
+.wrapper:has([aria-invalid="true"]) {
+  --border-color: red;
+  --outline-color: var(--border-color);
+  &:focus-within {
+    box-shadow: 0 0 0 var(--outline-width) var(--outline-color);
+  }
+}

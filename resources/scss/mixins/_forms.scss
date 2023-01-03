@@ -1,0 +1,38 @@
+
+@mixin picker-common {
+  appearance: none;
+  background: var(--input-bg) var(--input-symbol) no-repeat right var(--input-padding-x) center;
+  &::-ms-expand {
+    opacity: 0; // Hides native caret in IE (Note: Pre IE10 will see NO arrow)
+  }
+  &:-moz-focusring {
+    color: transparent; // Kills odd artifacts around text in Firefox focus
+    text-shadow: 0 0 0 #000; // https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-focusring
+  }
+}
+
+@mixin label-float {
+  padding: 2px var(--input-padding-x);
+  opacity: 1;
+  height: auto;
+  transform: scale(.6) translateY(-1rem) translateX(.75rem);
+  background-color: var(--input-bg);
+}
+
+@mixin label-outline {
+  direction: ltr;
+  padding-top: calc(var(--input-padding-y) * 3);
+  padding-bottom: calc(var(--input-padding-y) - var(--input-border) - var(--input-border));
+  ~ label {
+    opacity: .65;
+    height: auto;
+    transform: scale(.80) translateY(-.5rem) translateX(.15rem);
+  }
+}
+
+@mixin datetime-icon {
+  background-size: var(--icon-size);
+  &::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
+}

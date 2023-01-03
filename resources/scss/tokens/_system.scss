@@ -1,0 +1,440 @@
+// SASS Modules
+@use "sass:meta";
+@use "sass:color";
+@use "sass:math";
+@use "sass:map";
+// Reference Tokens
+@use "reference" as ref;
+// Token Calculators
+@use "../modules/typography" as type;
+@use "../modules/responsive";
+@use "../modules/layout";
+@use "../modules/theme/spacing";
+@use "../modules/theme/colors";
+@use "../modules/theme/neutrals";
+@use "../modules/theme/elevation";
+@use "../modules/palette/palette";
+// Color Tokens
+@use "colors/major";
+@use "colors/minor";
+@use "colors/feature";
+@use "colors/success";
+@use "colors/danger";
+@use "colors/warning";
+@use "colors/context";
+
+// region //////////////////////////////////////////////// Color & Theme
+
+// Theme Surface
+$app-bg: major.$bg !default;
+$theme-surface: major.$surface !default;
+$theme-on-surface: major.$on-surface !default;
+$theme-on-surface-link: major.$on-surface-link !default;
+$theme-surface-alt: major.$surface-alt !default;
+$theme-on-surface-alt: major.$on-surface-alt !default;
+$theme-on-surface-alt-link: major.$on-surface-alt-link !default;
+$theme-outline: major.$outline !default;
+$theme-divider: major.$divider !default;
+$theme-shadow: major.$shadow !default;
+$theme-inverse: major.$inverse !default;
+$theme-on-inverse: major.$on-inverse !default;
+$theme-on-inverse-link: major.$on-inverse-link !default;
+
+// Theme Accent #1
+$theme-a1: major.$color !default;
+$theme-on-a1: major.$on-color !default;
+$theme-on-a1-link: major.$on-color-link !default;
+$theme-c1: major.$alt !default;
+$theme-on-c1: major.$on-alt !default;
+$theme-on-c1-link: major.$on-alt-link !default;
+
+// Theme Accent #2
+$theme-a2: minor.$color !default;
+$theme-on-a2: minor.$on-color !default;
+$theme-on-a2-link: minor.$on-color-link !default;
+$theme-c2: minor.$alt !default;
+$theme-on-c2: minor.$on-alt !default;
+$theme-on-c2-link: minor.$on-alt-link !default;
+
+// Theme Accent #3
+$theme-a3: feature.$color !default;
+$theme-on-a3: feature.$on-color !default;
+$theme-on-a3-link: feature.$on-color-link !default;
+$theme-c3: feature.$alt !default;
+$theme-on-c3: feature.$on-alt !default;
+$theme-on-c3-link: feature.$on-alt-link !default;
+
+@mixin accents() {
+  --a1-0: #{major.$tone-0};
+  --a1-10: #{major.$tone-10};
+  --a1-20: #{major.$tone-20};
+  --a1-25: #{major.$tone-25};
+  --a1-30: #{major.$tone-30};
+  --a1-40: #{major.$tone-40};
+  --a1-50: #{major.$tone-50};
+  --a1-60: #{major.$tone-60};
+  --a1-70: #{major.$tone-70};
+  --a1-80: #{major.$tone-80};
+  --a1-90: #{major.$tone-90};
+  --a1-95: #{major.$tone-95};
+  --a1-98: #{major.$tone-98};
+  --a1-99: #{major.$tone-99};
+  --a1-100: #{major.$tone-100};
+  --a2-0: #{minor.$tone-0};
+  --a2-10: #{minor.$tone-10};
+  --a2-20: #{minor.$tone-20};
+  --a2-25: #{minor.$tone-25};
+  --a2-30: #{minor.$tone-30};
+  --a2-40: #{minor.$tone-40};
+  --a2-50: #{minor.$tone-50};
+  --a2-60: #{minor.$tone-60};
+  --a2-70: #{minor.$tone-70};
+  --a2-80: #{minor.$tone-80};
+  --a2-90: #{minor.$tone-90};
+  --a2-95: #{minor.$tone-95};
+  --a2-98: #{minor.$tone-98};
+  --a2-99: #{minor.$tone-99};
+  --a2-100: #{minor.$tone-100};
+  --a3-0: #{feature.$tone-0};
+  --a3-10: #{feature.$tone-10};
+  --a3-20: #{feature.$tone-20};
+  --a3-25: #{feature.$tone-25};
+  --a3-30: #{feature.$tone-30};
+  --a3-40: #{feature.$tone-40};
+  --a3-50: #{feature.$tone-50};
+  --a3-60: #{feature.$tone-60};
+  --a3-70: #{feature.$tone-70};
+  --a3-80: #{feature.$tone-80};
+  --a3-90: #{feature.$tone-90};
+  --a3-95: #{feature.$tone-95};
+  --a3-98: #{feature.$tone-98};
+  --a3-99: #{feature.$tone-99};
+  --a3-100: #{feature.$tone-100};
+}
+
+@mixin neutrals() {
+  --n1-0: #{major.$neutral-0};
+  --n1-10: #{major.$neutral-10};
+  --n1-20: #{major.$neutral-20};
+  --n1-25: #{major.$neutral-25};
+  --n1-30: #{major.$neutral-30};
+  --n1-40: #{major.$neutral-40};
+  --n1-50: #{major.$neutral-50};
+  --n1-60: #{major.$neutral-60};
+  --n1-70: #{major.$neutral-70};
+  --n1-80: #{major.$neutral-80};
+  --n1-90: #{major.$neutral-90};
+  --n1-95: #{major.$neutral-95};
+  --n1-98: #{major.$neutral-98};
+  --n1-99: #{major.$neutral-99};
+  --n1-100: #{major.$neutral-100};
+  --n2-0: #{major.$neutral-alt-0};
+  --n2-10: #{major.$neutral-alt-10};
+  --n2-20: #{major.$neutral-alt-20};
+  --n2-25: #{major.$neutral-alt-25};
+  --n2-30: #{major.$neutral-alt-30};
+  --n2-40: #{major.$neutral-alt-40};
+  --n2-50: #{major.$neutral-alt-50};
+  --n2-60: #{major.$neutral-alt-60};
+  --n2-70: #{major.$neutral-alt-70};
+  --n2-80: #{major.$neutral-alt-80};
+  --n2-90: #{major.$neutral-alt-90};
+  --n2-95: #{major.$neutral-alt-95};
+  --n2-98: #{major.$neutral-alt-98};
+  --n2-99: #{major.$neutral-alt-99};
+  --n2-100: #{major.$neutral-alt-100};
+}
+
+//noinspection DuplicatedCode
+@mixin theme() {
+  // These values stay constant
+  --body-bg: #{$app-bg};
+  --theme-a1: #{$theme-a1};
+  --theme-on-a1: #{$theme-on-a1};
+  --theme-link-on-a1: #{$theme-on-a1-link};
+  --theme-a2: #{$theme-a2};
+  --theme-on-a2: #{$theme-on-a2};
+  --theme-link-on-a2: #{$theme-on-a2-link};
+  --theme-a3: #{$theme-a3};
+  --theme-on-a3: #{$theme-on-a3};
+  --theme-link-on-a3: #{$theme-on-a3-link};
+  --theme-c1: #{$theme-c1};
+  --theme-on-c1: #{$theme-on-c1};
+  --theme-link-on-c1: #{$theme-on-c1-link};
+  --theme-c2: #{$theme-c2};
+  --theme-on-c2: #{$theme-on-c2};
+  --theme-link-on-c2: #{$theme-on-c2-link};
+  --theme-c3: #{$theme-c3};
+  --theme-on-c3: #{$theme-on-c3};
+  --theme-link-on-c3: #{$theme-on-c3-link};
+  // These values get reassigned in CSS whenever a themed class is used (see context)
+  --theme-bg: #{$theme-surface};
+  --theme-on-bg: #{$theme-on-surface};
+  --theme-link-on-bg: #{$theme-on-surface-link};
+  --theme-bg-alt: #{$theme-surface-alt};
+  --theme-on-bg-alt: #{$theme-on-surface-alt};
+  --theme-link-on-bg-alt: #{$theme-on-surface-alt-link};
+  --theme-outline: #{$theme-outline};
+  --theme-divider: #{$theme-divider};
+  --theme-shadow: #{$theme-shadow};
+  --theme-inverse: #{$theme-inverse};
+  --theme-on-inverse: #{$theme-on-inverse};
+  --theme-link-on-inverse: #{$theme-on-inverse-link};
+  --theme-color: var(--theme-a1);
+  --theme-on-color: var(--theme-on-a1);
+  --theme-link-on-color: var(--theme-link-on-a1);
+  --theme-alt: var(--theme-c1);
+  --theme-on-alt: var(--theme-on-c1);
+  --theme-link-on-alt: var(--theme-link-on-c1);
+    // These values stay constant
+    --theme-a1-red: #{color.red($theme-a1)};
+    --theme-a1-green: #{color.green($theme-a1)};
+    --theme-a1-blue: #{color.blue($theme-on-a1)};
+    --theme-on-a1-red: #{color.red($theme-on-a1)};
+    --theme-on-a1-green: #{color.green($theme-on-a1)};
+    --theme-on-a1-blue: #{color.blue($theme-on-a1)};
+    --theme-a2-red: #{color.red($theme-a2)};
+    --theme-a2-green: #{color.green($theme-a2)};
+    --theme-a2-blue: #{color.blue($theme-on-a2)};
+    --theme-on-c2-red: #{color.red($theme-on-c2)};
+    --theme-on-c2-green: #{color.green($theme-on-c2)};
+    --theme-on-c2-blue: #{color.blue($theme-on-c2)};
+    --theme-on-a2-red: #{color.red($theme-on-a2)};
+    --theme-on-a2-green: #{color.green($theme-on-a2)};
+    --theme-on-a2-blue: #{color.blue($theme-on-a2)};
+    --theme-a3-red: #{color.red($theme-a3)};
+    --theme-a3-green: #{color.green($theme-a3)};
+    --theme-a3-blue: #{color.blue($theme-on-a3)};
+    --theme-on-a3-red: #{color.red($theme-on-a3)};
+    --theme-on-a3-green: #{color.green($theme-on-a3)};
+    --theme-on-a3-blue: #{color.blue($theme-on-a3)};
+    // These values get reassigned in CSS whenever a themed class is used (see context)
+    --theme-color-red: var(--theme-a1-red);
+    --theme-color-green: var(--theme-a1-green);
+    --theme-color-blue: var(--theme-a1-blue);
+    --theme-bg-red: #{color.red($theme-surface)};
+    --theme-bg-green: #{color.green($theme-surface)};
+    --theme-bg-blue: #{color.blue($theme-surface)};
+    --theme-bg-alt-red: #{color.red($theme-surface-alt)};
+    --theme-bg-alt-green: #{color.green($theme-surface-alt)};
+    --theme-bg-alt-blue: #{color.blue($theme-surface-alt)};
+    --theme-on-bg-red: #{color.red($theme-on-surface)};
+    --theme-on-bg-green: #{color.green($theme-on-surface)};
+    --theme-on-bg-blue: #{color.blue($theme-on-surface)};
+    --theme-on-bg-alt-red: #{color.red($theme-on-surface-alt)};
+    --theme-on-bg-alt-green: #{color.green($theme-on-surface-alt)};
+    --theme-on-bg-alt-blue: #{color.blue($theme-on-surface-alt)};
+    --theme-outline-red: #{color.red($theme-outline)};
+    --theme-outline-green: #{color.green($theme-outline)};
+    --theme-outline-blue: #{color.blue($theme-outline)};
+}
+
+@mixin color() {
+  --color-bg: var(--theme-bg);
+  --color-text: var(--theme-on-bg);
+  --color-icon: var(--theme-on-bg);
+  --color-link: var(--theme-color);
+  --color-link-hover: var(--theme-on-bg-alt); // TODO: Fix Me
+  --color-link-focus: var(--theme-on-bg-alt); // TODO: Fix Me
+  --color-outline: var(--theme-outline);
+  --color-divider: var(--theme-divider);
+  --color-inverse-bg: var(--theme-inverse);
+  --color-inverse-text: var(--theme-on-inverse);
+  --color-inverse-link: var(--theme-link-inverse);
+  --color-inverse-link-focus: var(--theme-link-inverse-focus); // TODO: Fix Me
+  --color-inverse-link-hover: var(--theme-link-inverse-hover); // TODO: Fix Me
+}
+
+// endregion ///////////////////////////////////////////// End Color & Theme
+
+// region //////////////////////////////////////////////// Context
+
+@mixin success() {
+  @include context.success();
+}
+
+@mixin feature() {
+  @include context.feature();
+}
+
+@mixin danger() {
+  @include context.danger();
+}
+
+@mixin warning() {
+  @include context.warning();
+}
+
+// endregion ///////////////////////////////////////////// End Context
+
+// region //////////////////////////////////////////////// Typography
+
+// Typography
+$font-monospace: type.$font-monospace;
+$font-normal: type.$font-normal;
+$font-size: type.$size-base;
+$font-size-root: type.$size-root;
+$font-height: type.$height-base;
+$font-lg-size: type.$size-lg;
+$font-sm-size: type.$size-sm;
+$font-lg-height: type.$height-lg;
+$font-sm-height: type.$height-sm;
+$font-size-input: type.$size-input;
+$font-height-input: type.$height-input;
+$font-weight-light: type.$weight-light;
+$font-weight-medium: type.$weight-medium;
+$font-weight-normal: type.$weight-base;
+$font-weight-bold: type.$weight-bold;
+
+@mixin typography() {
+  --font-monospace: #{$font-monospace};
+  --font-normal: #{$font-normal};
+  --font-size-sm: #{$font-sm-size};
+  --font-size-root: #{$font-size-root};
+  --font-size: #{$font-size};
+  --font-size-lg: #{$font-lg-size};
+  --font-weight-normal: #{type.$weight-base};
+  --font-weight-bold: #{type.$weight-bold};
+  --font-weight-medium: #{type.$weight-medium};
+  --font-weight-light: #{type.$weight-light};
+  --line-height-normal: #{$font-height};
+  --input-line-height: #{$font-height-input};
+  --line-height-lg: #{$font-lg-height};
+  --input-font-size: #{$font-size-input};
+  --label-font-size: var(--input-font-size);
+  --icon-size: #{type.$size-icon};
+  --link-decoration: #{$decoration-link};
+  --link-hover-decoration: #{$decoration-link-hover};
+}
+
+// endregion ///////////////////////////////////////////// End Typography
+
+// region //////////////////////////////////////////////// Spacing
+
+// Spacing
+$spacer: spacing.$spacer;
+$spacer-half: spacing.$half-spacer;
+$padding-x: spacing.$padding-x;
+$padding-y: spacing.$padding-y;
+$padding-half-x: spacing.$half-padding-x;
+$padding-half-y: spacing.$half-padding-y;
+$padding-x-input: spacing.$padding-x-input;
+$padding-y-input: spacing.$padding-y-input;
+
+@mixin spacing() {
+  --spacer: #{$spacer};
+  --spacer-half: #{$spacer-half};
+  --padding-x: #{$padding-x};
+  --padding-y: calc(var(--padding-x) / 2);
+  --padding-half-x: calc(var(--padding-x) / 2);
+  --padding-half-y: calc(var(--padding-y) / 2);
+
+  // Input Spacing
+  --input-padding-x: #{$padding-x-input};
+  --input-padding-y: calc(var(--input-padding-x) * .75);
+  --input-height: calc(var(--input-font-size) + (var(--input-padding-y) * 2));
+  --label-height: calc((var(--label-font-size) * var(--input-line-height)) + var(--input-padding-y));
+  --label-width: 10%;
+
+  // Btn Spacing
+  --btn-padding-x: var(--input-padding-x);
+  --btn-padding-y: var(--input-padding-y);
+
+  // Decoration
+  --border-width: #{$border-width};
+  --outline-width: calc(var(--border-width) * 2);
+  --border-radius: #{$border-radius};
+}
+
+// endregion ///////////////////////////////////////////// End Spacing
+
+// region //////////////////////////////////////////////// Layout & Responsive
+
+// Responsive
+$rwd-width-min: responsive.$width-min;
+$rwd-bp-min: responsive.$bp-min;
+$rwd-bp-min-ie: responsive.$bp-min-ie;
+
+// Layout
+$layout-width-drawer: layout.$width-sidebar;
+$layout-height-header: layout.$height-header;
+$layout-height-footer: layout.$height-footer;
+$layout-display: layout.$display;
+
+@mixin layout() {
+  --width-sidebar: #{$layout-width-drawer};
+  --height-header: #{$layout-height-header};
+  --height-footer: #{$layout-height-footer};
+  --row-main: 1;
+  --row-header: 1;
+  --row-footer: 2;
+  --column-main: 1;
+  --column-sidebar: 1;
+  --layout-display: #{$layout-display};
+}
+
+// endregion ///////////////////////////////////////////// End Layout & Responsive
+
+// region //////////////////////////////////////////////// Other Decoration
+
+// Decoration
+$decoration-link: type.$decoration-link;
+$decoration-link-hover: type.$decoration-link-hover;
+$border-width: spacing.$width-border;
+$border-radius: spacing.$radius-border;
+$outline-width: spacing.$width-outline;
+
+// Transitions
+$transition-base: if(meta.global-variable-exists(app-transition-base), $app-transition-base, ref.$transition-base);
+$transition-fade: if(meta.global-variable-exists(app-transition-fade), $app-transition-fade, ref.$transition-fade);
+$transition-collapse: if(meta.global-variable-exists(app-transition-collapse), $app-transition-collapse, ref.$transition-collapse);
+$transition-button: if(meta.global-variable-exists(app-transition-btn), $app-transition-btn, ref.$transition-btn);
+$transition-button-flat: if(meta.global-variable-exists(app-transition-btn-flat), $app-transition-btn-flat, ref.$transition-btn-flat);
+
+// Input Symbols
+$cursor-strong: if(meta.global-variable-exists(app-cursor-strong), $app-cursor-strong, ref.$cursor-strong);
+$cursor-disabled: if(meta.global-variable-exists(app-cursor-disabled), $app-cursor-disabled, ref.$cursor-disabled);
+$bg-image-date: if(meta.global-variable-exists(app-bg-image-date), $app-bg-image-date, ref.$bg-image-date);
+$bg-image-time: if(meta.global-variable-exists(app-bg-image-time), $app-bg-image-time, ref.$bg-image-time);
+$bg-image-select: if(meta.global-variable-exists(app-bg-image-select), $app-bg-image-select, ref.$bg-image-select);
+$bg-image-number: if(meta.global-variable-exists(app-bg-image-number), $app-bg-image-number, ref.$bg-image-number);
+
+$opacity-bg-disabled: 12%;
+$opacity-text-disabled: 38%;
+$opacity-hover: 8%;
+$opacity-focus: 12%;
+$opacity-pressed: 12%;
+$opacity-busy: .5;
+
+@mixin decoration() {
+  --transition-fade: #{$transition-fade};
+  --link-decoration: #{$decoration-link};
+  --link-decoration-hover: #{$decoration-link-hover};
+  --border-width: #{ref.$width-border};
+  --outline-width: calc(var(--border-width) * 2);
+  --border-radius: #{ref.$radius-border};
+  --modal-filter: blur(0.25rem);
+  --modal-bg: rgba(255, 255, 255, 0.7);
+  --opacity-hover: #{if(math.is-unitless($opacity-hover), $opacity-hover, math.div($opacity-hover, 100%))};
+  --opacity-focus: #{if(math.is-unitless($opacity-focus), $opacity-focus, math.div($opacity-focus, 100%))};
+  --opacity-pressed: #{if(math.is-unitless($opacity-pressed), $opacity-pressed, math.div($opacity-pressed, 100%))};
+  --opacity-busy: #{$opacity-busy};
+  --opacity-disabled: #{if(math.is-unitless($opacity-text-disabled), $opacity-text-disabled, math.div($opacity-text-disabled, 100%))};
+  --opacity-disabled-bg: #{if(math.is-unitless($opacity-bg-disabled), $opacity-bg-disabled, math.div($opacity-bg-disabled, 100%))};
+  --opacity-elevation-1: #{elevation.opacity(1)};
+  --opacity-elevation-2: #{elevation.opacity(2)};
+  --opacity-elevation-3: #{elevation.opacity(3)};
+  --opacity-elevation-4: #{elevation.opacity(4)};
+  --opacity-elevation-5: #{elevation.opacity(5)};
+  --opacity-elevation: 0;
+}
+
+@mixin elevation() {
+  .-level-1 { --opacity-elevation: #{elevation.opacity(1)}; }
+  .-level-2 { --opacity-elevation: #{elevation.opacity(2)}; }
+  .-level-3 { --opacity-elevation: #{elevation.opacity(3)}; }
+  .-level-4 { --opacity-elevation: #{elevation.opacity(4)}; }
+  .-level-5 { --opacity-elevation: #{elevation.opacity(5)}; }
+}
+
+// endregion ///////////////////////////////////////////// End Other Decoration

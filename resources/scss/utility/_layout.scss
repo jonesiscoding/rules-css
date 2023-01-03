@@ -1,0 +1,90 @@
+@use "sass:math";
+@use "../modules/responsive";
+
+$rules-columns: 12 !default;
+
+section {
+  --section-padding: var(--padding-x);
+  --section-column-gap: var(--column-gap);
+  --section-row-gap: var(--row-gap);
+  margin-left:   auto;
+  margin-right:  auto;
+  padding-left:  var(--section-padding);
+  padding-right: var(--section-padding);
+  width: 100%;
+  max-width: var(--max-width);
+  min-width: 0;
+  column-gap: var(--section-column-gap);
+  row-gap: var(--section-row-gap);
+  &.-flush {
+    --section-padding: 0;
+  }
+  &.-flex {
+    > .row {
+      position: relative;
+      flex-direction: row;
+      flex: 0 1 auto;
+      flex-wrap: wrap;
+      > [class*="col-"] {
+        position: relative;
+        width: 100%;
+        flex: 1 0 var(--column-width);
+        max-width: var(--column-width);
+        min-height: 1px;
+        flex-direction: column;
+      }
+      @for $i from 1 through $rules-columns {
+        .col-#{$i} {
+          --column-width: math.div(100% / $rules-columns) * $i;
+        }
+      }
+    }
+  }
+  &.-grid {
+    --occupancy: 1;
+    grid-template-columns: repeat(#{$rules-columns}, 1fr);
+    grid-auto-flow: dense;
+    > [class*="col-"] {
+      width: 100%;
+      grid-column: span var(--occupancy);
+    }
+    @for $i from 1 through $rules-columns {
+      > .col-#{$i} {
+        --occupancy: #{$i};
+      }
+    }
+  }
+}
+
+@mixin responsive-layout-up($bp) {
+  :root {
+    --max-width: #{map-get(responsive.$breakpoints-up, $bp)};
+  }
+
+  $infix: "-#{$bp}";
+  @for $i from 1 through $rules-columns {
+    section > .row > .col-#{$infix}-#{$i} {
+      --column-width: math.div(100% / $rules-columns) * $i;
+    }
+    section > .col-#{$infix}-#{$i} {
+      --occupancy: #{$i};
+    }
+  }
+}
+
+@mixin responsive-layout-down($bp) {
+  :root {
+    --max-width: #{map-get(responsive.$breakpoints-down, $bp)};
+  }
+
+  $infix: "-#{$bp}";
+  @for $i from 1 through $rules-columns {
+    section > .row > .col-#{$infix}-#{$i} {
+      --column-width: math.div(100% / $rules-columns) * $i;
+    }
+    section > .col-#{$infix}-#{$i} {
+      --occupancy: #{$i};
+    }
+  }
+}
+

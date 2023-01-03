@@ -1,0 +1,55 @@
+
+[aria-busy="true"] {
+  cursor: progress;
+}
+
+// Allow Busy on Everything except form elements
+[aria-busy="true"]:not(input, select, textarea, .-spinnerless) {
+  // We use before so that we don't conflict with tint layers
+  &::before {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 0.1875em solid currentColor;
+    border-radius: 1em;
+    border-right-color: transparent;
+    content: "";
+    //noinspection CssOverwrittenProperties
+    vertical-align: text-bottom;
+    //noinspection CssOverwrittenProperties
+    vertical-align: -.125em; // Visual alignment
+    animation: spinner 0.75s linear infinite;
+    opacity: var(--opacity-busy);
+  }
+
+  &:not(:empty) {
+    &::before {
+      margin-right: calc(var(--spacer) * 0.5);
+      margin-left: 0;
+      margin-inline-start: 0;
+      margin-inline-end: calc(var(--spacer) * 0.5);
+    }
+  }
+
+  &:empty {
+    text-align: center;
+  }
+}
+
+// Stop accepting pointer events from busy items
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+a {
+  &[aria-busy="true"]:not(.-spinnerless) {
+    pointer-events: none;
+  }
+}
+
+// Animation: rotate
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}

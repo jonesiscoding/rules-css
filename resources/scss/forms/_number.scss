@@ -1,0 +1,17 @@
+@use "../tokens/system" as sys;
+
+input[type="number"] {
+  --input-symbol: #{sys.$bg-image-number};
+  @extend %picker;
+  background-position: calc(100% - 8px);
+  padding-right: calc(var(--padding-x) - 16px);
+  min-width: calc((var(--padding-x) / 2) + 2rem + 16px);
+  width: auto;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}

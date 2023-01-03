@@ -1,0 +1,119 @@
+@use "sass:color";
+@use "../../modules/theme/colors";
+@use "../../modules/theme/neutrals";
+@use "../reference" as ref;
+
+@function tone($tone) {
+  @return colors.feature($tone);
+}
+
+@function neutral($tone) {
+  @return neutrals.feature($tone);
+}
+
+@function neutral-alt($tone) {
+  @return neutrals.feature-alt($tone);
+}
+
+// Tones
+$tone-0: tone(0);
+$tone-10: tone(10);
+$tone-20: tone(20);
+$tone-25: tone(25);
+$tone-30: tone(30);
+$tone-40: tone(40);
+$tone-50: tone(50);
+$tone-60: tone(60);
+$tone-70: tone(70);
+$tone-80: tone(80);
+$tone-90: tone(90);
+$tone-95: tone(95);
+$tone-98: tone(98);
+$tone-99: tone(99);
+$tone-100: tone(100);
+
+// Neutrals
+$neutral-0: neutral(0);
+$neutral-10: neutral(10);
+$neutral-20: neutral(20);
+$neutral-25: neutral(25);
+$neutral-30: neutral(30);
+$neutral-40: neutral(40);
+$neutral-50: neutral(50);
+$neutral-60: neutral(60);
+$neutral-70: neutral(70);
+$neutral-80: neutral(80);
+$neutral-90: neutral(90);
+$neutral-95: neutral(95);
+$neutral-98: neutral(98);
+$neutral-99: neutral(99);
+$neutral-100: neutral(100);
+
+// Neutral Alternate
+$neutral-alt-0: neutral-alt(0);
+$neutral-alt-10: neutral-alt(10);
+$neutral-alt-20: neutral-alt(20);
+$neutral-alt-25: neutral-alt(25);
+$neutral-alt-30: neutral-alt(30);
+$neutral-alt-40: neutral-alt(40);
+$neutral-alt-50: neutral-alt(50);
+$neutral-alt-60: neutral-alt(60);
+$neutral-alt-70: neutral-alt(70);
+$neutral-alt-80: neutral-alt(80);
+$neutral-alt-90: neutral-alt(90);
+$neutral-alt-95: neutral-alt(95);
+$neutral-alt-98: neutral-alt(98);
+$neutral-alt-99: neutral-alt(99);
+$neutral-alt-100: neutral-alt(100);
+
+// Theme Colors
+$color: $tone-40;
+$on-color: $tone-100;
+$on-color-link: $tone-80;
+$alt: $tone-90;
+$on-alt: $tone-10;
+$on-alt-link: $tone-30;
+$surface: $neutral-99;
+$on-surface: $neutral-10;
+$on-surface-link: $color;
+$surface-alt: $neutral-alt-90;
+$on-surface-alt: $neutral-alt-30;
+$on-surface-alt-link: $color;
+$outline: $neutral-alt-50;
+$divider: $neutral-alt-80;
+$shadow: $neutral-0;
+$inverse: $neutral-20;
+$on-inverse: $neutral-95;
+$on-inverse-link: $neutral-80;
+
+// Maps of Colors
+@function theme() {
+  @return (
+      "color": $color,
+      "on-color": $on-color,
+      "link-on-color": $on-color-link,
+      "alt": $alt,
+      "on-alt": $on-alt,
+      "link-on-alt": $on-alt-link,
+      "surface": $surface,
+      "on-surface": $on-surface,
+      "link-on-surface": $on-surface-link,
+      "surface-alt": $surface-alt,
+      "on-surface-alt": $on-surface-alt,
+      "link-on-surface-alt": $on-surface-alt-link,
+      "outline": $outline,
+      "divider": $divider,
+      "shadow": $shadow,
+      "inverse": $inverse,
+      "on-inverse": $on-inverse,
+      "link-on-inverse": $on-inverse-link,
+  );
+}
+
+
+
+
+
+
+
+

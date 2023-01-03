@@ -1,0 +1,227 @@
+@use "../mixins/forms";
+
+:root {
+  --label-column: 1;
+  --label-row: 1;
+  --input-column: 1;
+  --input-row: 1;
+  --extra-row: auto;
+  --extra-column: 1;
+  --label-font-size: .7rem;
+}
+
+.-vertical, .-horizontal, .-float {
+  --label-font-size: var(--input-font-size);
+}
+
+.-horizontal {
+  --input-column: 2;
+  --input-row: auto;
+  --label-row: auto;
+  --extra-column: 2;
+}
+
+.-float {
+  --label-font-size: var(--input-font-size);
+}
+
+.-vertical {
+  --input-row: 2;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fill, minmax(var(--input-line-height),max-content));
+  row-gap: var(--padding-y);
+  column-gap: var(--padding-x);
+}
+
+form > section, form > fieldset {
+  border: var(--border-width) solid var(--color-outline);
+  border-radius: var(--border-radius);
+  background-color: rgba(0,0,0, .04);
+  padding: calc(var(--input-padding-y) * 2) var(--input-padding-x);
+  margin-bottom: var(--input-padding-y);
+}
+
+form .field {
+  > input, > select, > textarea, > .wrapper {
+    --color-value: var(--theme-on-bg);
+    --color-text: var(--theme-on-bg-alt);
+    --color-bg: var(--theme-bg-alt);
+    --color-text: var(--theme-on-alt);
+    --color-label: var(--theme-on-bg-alt);
+    --color-icon: var(--theme-on-bg-alt);
+  }
+  > input:focus, > select:focus, > textarea:focus, > .wrapper:focus-within {
+    --color-outline: var(--theme-color);
+    & ~ label {
+      --color-label: var(--theme-color);
+    }
+  }
+}
+
+form .field {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fit, minmax(1rem,auto));
+  column-gap: var(--padding-x);
+  row-gap: calc(var(--padding-y) / 4);
+  margin-bottom: 0;
+  border-radius: var(--border-radius);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  min-height: calc(var(--input-height) + var(--label-height));
+  > label, > legend {
+    grid-row: var(--label-row);
+    grid-column: var(--label-column);
+    color: var(--color-label);
+    align-self: start;
+  }
+  > input, > textarea, > select, > .wrapper {
+    height: calc(var(--input-height) + var(--label-height));
+    padding-top: var(--label-height);
+    background-color: var(--color-bg);
+    align-self: end;
+    //background-color: var(--color-bg);
+    border: var(--border-width) solid var(--color-outline);
+    border-width: 0 0 var(--border-width) 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    grid-row: var(--input-row);
+    grid-column: var(--input-column);
+    padding-bottom: calc(var(--input-padding-y) / 2);
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+    &:focus-visible {
+      outline-color: var(--color-outline);
+    }
+  }
+  > .error, > .help, > .text {
+    grid-row: var(--extra-row);
+    grid-column: var(--extra-column);
+    padding: 0 var(--input-padding-x);
+    font-size: var(--font-size-sm);
+  }
+  > .error {
+    color: var(--input-error);
+  }
+  > .help:not(a) {
+    color: var(--input-help);
+  }
+}
+
+form .field {
+  position: relative;
+  > label {
+    overflow: hidden;
+    text-align: start;
+    text-overflow: ellipsis;
+    font-size: var(--label-font-size);
+    white-space: nowrap;
+    transform-origin: 0 0;
+    transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+    padding: var(--input-padding-y) var(--input-padding-x) 0 var(--input-padding-x);
+    margin: var(--border-width);
+  }
+}
+
+form.-outline .field, .field.-outline,
+form.-vertical .field, .field.-vertical,
+form.-horizontal .field, .field.-horizontal, {
+  background-color: transparent;
+  > input, > textarea, > select, > .wrapper {
+    background-color: var(--color-bg);
+    border-width: var(--border-width);
+    border-radius: var(--border-radius);
+  }
+}
+
+form.-vertical .field, .field.-vertical,
+form.-horizontal .field, .field.-horizontal, {
+  height: auto;
+  > input, > textarea, > select, > .wrapper {
+    padding: var(--input-padding-y) var(--input-padding-x);
+    height: var(--input-height);
+  }
+}
+
+
+form.-float .field, form .field.-float {
+  height: auto;
+  > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 var(--input-padding-x);
+    height: 100%;
+    align-items: center;
+    display: inline-flex;
+  }
+  > input, > textarea, > select, > .wrapper {
+    height: var(--input-height);
+    padding: var(--input-padding-y) var(--input-padding-x);
+  }
+  > input, > textarea {
+    direction: rtl;
+    &:focus, &:not(:placeholder-shown) {
+      direction: ltr;
+    }
+  }
+}
+
+%form-float {
+  @include forms.label-float;
+}
+
+form.-float .field, form .field.-float {
+  > input:focus ~ label,
+  > textarea:focus ~ label,
+  > .wrapper:focus-within ~ label,
+  > input:not(:placeholder-shown) ~ label,
+  > textarea:not(:placeholder-shown) ~ label,
+  > select ~ label {
+    @extend %form-float;
+  }
+}
+
+form.-vertical {
+  > .field {
+    grid-template-columns: 1fr;
+    label {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+}
+
+form.-horizontal {
+  grid-template-columns: minmax(var(--label-width), min-content) 1fr;
+  grid-template-rows: repeat(auto-fill, minmax(1rem, min-content));
+  grid-auto-flow: dense;
+  > .field {
+    display: contents;
+    > label {
+      border: var(--input-border) solid transparent;
+      text-align: right;
+      padding: 0;
+      align-self: center;
+      font-size: var(--input-font-size);
+      white-space: nowrap;
+      order: -1;
+    }
+    > input, > textarea, > .wrapper, select {
+      order: 1;
+    }
+  }
+}
+
+
+
+
+
+
+

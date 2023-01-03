@@ -1,0 +1,35 @@
+
+form > fieldset.field:has(input[type="checkbox"]), form > fieldset.field:has(input[type="radio"]) {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  border-radius: inherit;
+  margin-bottom: 0;
+}
+
+form .field {
+  &:has(input[type=checkbox]), &:has(input[type=radio]) {
+    min-height: auto;
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: repeat(auto-fill, minmax(1.5rem, min-content));
+    column-gap: calc(var(--padding-x) / 2);
+    align-content: center;
+    align-items: center;
+  }
+  > input[type="checkbox"], > input[type="radio"] {
+    grid-column: 1;
+    grid-row: auto;
+    margin-left: var(--input-padding-x);
+    align-self: center;
+    height: auto;
+    & + label {
+      grid-column: 2;
+      grid-row: auto;
+      color: black; // TODO: fix me
+      font-size: var(--font-size);
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+}

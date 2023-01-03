@@ -1,0 +1,56 @@
+
+
+form.-split-2 {
+  --field-grid: 2;
+}
+
+form.-split-4 {
+  --field-grid: 4;
+}
+
+form.-split-6 {
+  --field-grid: 6;
+}
+
+form.-split-10 {
+  --field-grid: 10;
+}
+
+form.-implicit-10 {
+  --field-grid: 10;
+}
+
+.field {
+  --field-columns: 12;
+}
+
+.field.-col-2 {
+  --field-columns: 2;
+}
+
+.field.-col-4 {
+  --field-columns: 4;
+}
+
+form[class*="-split"] {
+  grid-template-columns: repeat(var(--field-grid), 1fr);
+}
+
+form[class*="-implicit"] {
+  display: flex;
+  flex-flow: row wrap;
+  > .field {
+    margin-top: 0 !important;
+    flex: 1 1 100%;
+    min-width: fit-content;
+    &.-col-6 {
+      --field-columns: 6;
+    }
+    &.-col-4 {
+      --field-columns: 4;
+    }
+    &[class*="-col"] {
+      flex: 1 0 calc((var(--field-columns) / var(--field-grid) * 100%) - (var(--padding-x) * (var(--field-grid) - 1)));
+    }
+  }
+}

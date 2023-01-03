@@ -1,0 +1,149 @@
+//
+// Rules CSS (Tables)
+//
+// (c) 2022 - AMJones <am@jonesiscoding.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+
+// Import Tokens & Modules
+@use "../tokens/system";
+@use "../modules/theme/elevation";
+
+// Table Specific Colors
+%table {
+  --color-emphasis: var(--theme-on-bg-alt);
+  &, &:after {
+    --color-tint-red: var(--theme-on-bg-red);
+    --color-tint-green: var(--theme-on-bg-green);
+    --color-tint-blue: var(--theme-on-bg-blue);
+  }
+  // Table Header Sorting
+  > thead > tr > *[aria-sort] {
+    --color-text: var(--theme-on-bg-alt);
+    &:before {
+      color: var(--theme-on-bg-alt);
+    }
+    > label {
+      --color-label: var(--theme-on-bg-alt);
+    }
+  }
+}
+
+// Table Specific Styles
+%table {
+  border: var(--border-width) solid var(--color-outline);
+  border-radius: var(--border-radius);
+  border-collapse: collapse;
+  color: black;
+  min-width: 100%;
+  table-layout: auto;
+  white-space: nowrap;
+
+  // Cells
+  &:not(caption) {
+    & > thead > tr > *, & > tbody > tr > *, & > tr > * {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      border-bottom: var(--border-width) solid var(--color-outline);
+      //height:              $rules-table-row-height;
+      padding: var(--padding-y) var(--padding-x);
+      vertical-align: middle;
+    }
+  }
+
+  // Fixed Table Layout
+  &.-fixed {
+    table-layout: fixed;
+  }
+
+  // Text Alignment
+  .-left { text-align: left; }
+  .-right, .-numeric { text-align: right; }
+  .-center { text-align: center; }
+
+  // Hover On Rows
+  &:not(.-hoverless) > tbody > tr:hover > td {
+    // We don't need to use an 'after' pseudo-elements here because the TD is inside a TR, which has a bg color.
+    background-color: rgba(var(--color-tint-red),var(--color-tint-green),var(--color-tint-blue), var(--opacity-hover));
+  }
+
+  // Table Header Formatting
+  > thead > tr > * {
+    border-bottom: calc(var(--border-width) * 2) solid var(--color-outline);
+    font-weight: var(--font-weight-medium);
+    text-align: left;
+    // Sort Header Formatting
+    &[aria-sort] {
+      &:hover {
+        cursor: system.$cursor-strong;
+      }
+      &:before {
+        color: var(--color-text);
+        content: "\2193";
+      }
+      &:not([aria-sort="none"]) {
+        font-weight: var(--font-weight-bold);
+      }
+      > label {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+table {
+  @extend %table;
+}
+
+// Alternating Color Rows (Using Tint Color)
+table[role="grid"] {
+  tbody tr:nth-child(odd) > * {
+    background-color: rgba(var(--color-tint-red),var(--color-tint-green),var(--color-tint-blue), calc(var(--opacity-hover) * 2));
+  }
+}
+
+// Tables Inside Cards
+article > table,
+details > table,
+article > section > table {
+  background-color: transparent;
+  margin-left: calc(var(--padding-x) * -1);
+  margin-right: calc(var(--padding-x) * -1);
+  border-width: 0;
+  width: calc(100% + (2 * var(--padding-x)));
+
+  &:first-child {
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    margin-top: calc(var(--padding-y) * -1);
+
+    & > *:first-child {
+      border-top-left-radius: var(--border-radius);
+      border-top-right-radius: var(--border-radius);
+    }
+  }
+
+  &:last-child {
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    margin-bottom: calc(var(--padding-y) * -1);
+
+    & > *:last-child {
+      border-bottom-left-radius: var(--border-radius);
+      border-bottom-right-radius: var(--border-radius);
+      border-bottom-width: 0;
+    }
+  }
+
+  &:not(caption) {
+    & > thead > tr > *, & > tbody > tr > *, & > tr > * {
+      background-color: transparent;
+    }
+
+    & > thead > tr:last-child, & > tbody > tr:last-child > *, & > tr:last-child > * {
+      border-bottom-width: 0;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@use "sass:math";
+@use "sass:meta";
+@use "../typography";
+@use "../../tokens/reference" as ref;
+
+$spacer:    if(meta.global-variable-exists(app-spacer), $app-spacer, ref.$spacer);
+$padding-x: $spacer;
+$padding-y: $spacer * .5;
+$half-spacer: math.div($spacer, 2);
+$half-padding-x: math.div($padding-x, 2);
+$half-padding-y: math.div($padding-y, 2);
+// Input
+$padding-x-input: $spacer * .75;
+$padding-y-input: $padding-x-input * .75;
+$height-input: typography.$size-input * typography.$height-input + ($padding-y-input * 2);
+$height-label: typography.$size-label * typography.$height-input + $padding-y-input;
+$width-label: if(meta.global-variable-exists(app-width-label), $app-width-label, 10%);
+// Decoration
+$radius-border: if(meta.global-variable-exists(app-radius-border), $app-radius-border, ref.$radius-border);
+$width-border: if(meta.global-variable-exists(app-width-border), $app-width-border, ref.$width-border);
+$width-outline: if(meta.global-variable-exists(app-width-outline), $app-width-outline, ref.$width-outline);

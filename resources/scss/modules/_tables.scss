@@ -1,0 +1,64 @@
+
+@mixin responsive-down($bp) {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-tables-responsive-down) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-tables-responsive-down;
+  }
+}
+
+@mixin responsive-up($bp) {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-tables-responsive-up) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-tables-responsive-up;
+  }
+}
+
+@mixin touch() {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-tables-touch) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-tables-touch;
+  }
+}
+
+@mixin dpi($dpi) {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-tables-dpi) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-tables-dpi($dpi);
+  }
+}
+
+@mixin edge-legacy() {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-tables-edge-legacy) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-tables-edge-legacy;
+  }
+}
+
+@mixin ie() {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-tables-ie) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-tables-ie;
+  }
+}
+
+@mixin firefox() {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-tables-firefox) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-tables-firefox;
+  }
+}
+
+@mixin safari() {
+  // Customize without repeating rules by creating this mixin
+  @if mixin-exists(custom-tables-safari) {
+    //noinspection SassScssUnresolvedMixin
+    @include custom-tables-safari;
+  }
+}

@@ -1,0 +1,79 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:color";
+@use '../../tokens/color' as base;
+@use "../palette/palette";
+@use "../palette/neutral";
+
+$major: palette.generate(neutral.generate-single(base.$major)) !default;
+$minor: palette.generate(neutral.generate-single(base.$minor)) !default;
+$feature: palette.generate(neutral.generate-single(base.$feature)) !default;
+$danger: palette.generate(neutral.generate-single(base.$danger)) !default;
+$success: palette.generate(neutral.generate-single(base.$success)) !default;
+$warning: palette.generate(neutral.generate-single(base.$warning)) !default;
+$default: palette.generate(neutral.generate-single(base.$default)) !default;
+$major-alt: palette.generate(neutral.generate-single(base.$major, 27%, .08)) !default;
+$minor-alt: palette.generate(neutral.generate-single(base.$minor, 10%, .08)) !default;
+$feature-alt: palette.generate(neutral.generate-single(base.$feature, 10%, .08)) !default;
+$danger-alt: palette.generate(neutral.generate-single(base.$danger, 10%, .08)) !default;
+$success-alt: palette.generate(neutral.generate-single(base.$success, 10%, .08)) !default;
+$warning-alt: palette.generate(neutral.generate-single(base.$warning, 10%, .08)) !default;
+$default-alt: palette.generate(neutral.generate-single(base.$default, 10%, .08)) !default;
+
+@debug $major-alt;
+
+@function major($tone) {
+  @return map.get($major, quote(#{$tone}));
+}
+
+@function major-alt($tone) {
+  @return map.get($major-alt, quote(#{$tone}));
+}
+
+@function minor($tone) {
+  @return map.get($minor, quote(#{$tone}));
+}
+
+@function minor-alt($tone) {
+  @return map.get($minor-alt, quote(#{$tone}));
+}
+
+@function feature($tone) {
+  @return map.get($feature, quote(#{$tone}));
+}
+
+@function feature-alt($tone) {
+  @return map.get($feature-alt, quote(#{$tone}));
+}
+
+@function danger($tone) {
+  @return map.get($danger, quote(#{$tone}));
+}
+
+@function danger-alt($tone) {
+  @return map.get($danger-alt, quote(#{$tone}));
+}
+
+@function warning($tone) {
+  @return map.get($warning, quote(#{$tone}));
+}
+
+@function warning-alt($tone) {
+  @return map.get($warning-alt, quote(#{$tone}));
+}
+
+@function success($tone) {
+  @return map.get($success, quote(#{$tone}));
+}
+
+@function success-alt($tone) {
+  @return map.get($success-alt, quote(#{$tone}));
+}
+
+@function default($tone) {
+  @return map.get($default, quote(#{$tone}));
+}
+
+@function default-alt($tone) {
+  @return map.get($default-alt, quote(#{$tone}));
+}

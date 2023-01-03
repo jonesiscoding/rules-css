@@ -1,0 +1,18 @@
+
+form .wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 0;
+  > input, > select, > textarea {
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    &:focus {
+      outline: none;
+    }
+  }
+  &:has(:focus) {
+    box-shadow: 0 0 0 var(--outline-width) var(--outline-color);
+  }
+}

@@ -1,0 +1,51 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "b44b4bf87c9d67b26881a3df9fbd509a",
+    "packages": [
+        {
+            "name": "deviscoding/palette",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/deviscoding/palette.git",
+                "reference": "9aee0025b8f3cd68f9bbc1977054da6440f08b9c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/deviscoding/palette/zipball/9aee0025b8f3cd68f9bbc1977054da6440f08b9c",
+                "reference": "9aee0025b8f3cd68f9bbc1977054da6440f08b9c",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AMJones",
+                    "email": "aaron@jonesiscoding.com"
+                }
+            ],
+            "description": "SASS and CSS utilities for the Material Design color palette.",
+            "support": {
+                "issues": "https://github.com/deviscoding/palette/issues",
+                "source": "https://github.com/deviscoding/palette/tree/v1.0.1"
+            },
+            "time": "2022-06-03T17:22:10+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}

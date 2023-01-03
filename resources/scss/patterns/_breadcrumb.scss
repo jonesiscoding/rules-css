@@ -1,0 +1,52 @@
+//
+// Rules CSS (Breadcrumbs)
+//
+// (c) 2022 - AMJones <am@jonesiscoding.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+
+/** Breadcrumbs **/
+
+nav[aria-label="breadcrumb"] {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: var(--ui-transform);
+
+  & ol {
+    margin: 0;
+    list-style: none;
+    display: grid;
+    align-items: center;
+    justify-content: start;
+    grid-template-columns: repeat(auto-fit, minmax(2rem, max-content));
+    grid-template-rows: 1fr;
+  }
+
+  & ol li {
+    &:not(:first-child) {
+      margin-inline-start: var(--padding-x);
+    }
+
+    &:not(:last-child) {
+      padding-right: 1rem;
+
+      &::after {
+        position: absolute;
+        width: 1rem;
+        margin-inline-start: calc(var(--padding-x) / 2);
+        content: "/";
+        color: var(--theme-on-bg-alt);
+        text-align: center;
+      }
+    }
+  }
+
+  & a[aria-current] {
+    background-color: transparent;
+    color: inherit;
+    text-decoration: none;
+    pointer-events: none;
+  }
+}

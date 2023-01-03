@@ -1,0 +1,8 @@
+
+input[list] {
+  @extend %picker;
+  &::-webkit-calendar-picker-indicator {
+    margin-right: calc(var(--input-padding-x) / 2 * -1);
+    opacity: 0;
+  }
+}

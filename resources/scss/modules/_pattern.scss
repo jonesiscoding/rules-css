@@ -1,0 +1,177 @@
+//@use "sass:map";
+//@use "../tokens/system" as sys;
+//@use "../modules/palette/palette";
+//@use "../modules/theme/elevation";
+//
+//@function vars-elevated($context: null) {
+//  @return (
+//      "default": (
+//          "bg": sys.$theme-surface,
+//          "shadow": none,
+//          "outline": sys.$theme-outline,
+//          "link": sys.$theme-major,
+//          "text": sys.$theme-on-surface,
+//          "icon": sys.$theme-on-surface,
+//      ),
+//      "disabled": (
+//          "bg": palette.disabled(sys.$theme-surface-alt, .38),
+//          "shadow": none,
+//          "outline": null,
+//          "link": sys.$theme-major,
+//          "text": palette.disabled(sys.$theme-on-surface-alt, .38),
+//          "icon": palette.disabled(sys.$theme-on-surface-alt, .38),
+//      ),
+//      "hover": (
+//          "bg": palette.tint(sys.$theme-on-surface, sys.$theme-surface, sys.$opacity-hover),
+//          "shadow": elevation.shadow(2, sys.$theme-shadow),
+//          "outline": null,
+//          "link": sys.$theme-major,
+//          "text": null,
+//          "icon": null,
+//      ),
+//      "focus": (
+//          "bg": palette.tint(sys.$theme-on-surface, sys.$theme-surface, sys.$opacity-focus),
+//          "shadow": elevation.shadow(1, sys.$theme-shadow),
+//          "outline": null,
+//          "link": sys.$theme-major,
+//          "text": null,
+//          "icon": null,
+//      ),
+//      "pressed": (
+//          "bg": palette.tint(sys.$theme-on-surface, sys.$theme-surface, sys.$opacity-pressed),
+//          "shadow": elevation.shadow(1, sys.$theme-shadow),
+//          "outline": null,
+//          "link": sys.$theme-major,
+//          "text": null,
+//          "icon": null,
+//      ),
+//  );
+//}
+//
+//@function vars-filled($context: null) {
+//  @return (
+//      "default": (
+//          "bg": sys.$theme-surface-alt,
+//          "shadow": none,
+//          "outline": none,
+//          "link": sys.$theme-major,
+//          "text": sys.$theme-on-surface-alt,
+//          "icon": sys.$theme-on-surface-alt,
+//      ),
+//      "disabled": (
+//          "bg": palette.disabled(sys.$theme-surface, .38),
+//          "shadow": none,
+//          "outline": null,
+//          "link": sys.$theme-major,
+//          "text": palette.disabled(sys.$theme-on-surface, .38),
+//          "icon": palette.disabled(sys.$theme-on-surface, .38),
+//      ),
+//      "hover": (
+//          "bg": palette.tint(sys.$theme-surface, sys.$theme-on-surface, sys.$opacity-hover),
+//          "shadow": elevation.shadow(1, sys.$theme-shadow),
+//          "outline": null,
+//          "link": sys.$theme-major,
+//          "text": null,
+//          "icon": null,
+//      ),
+//      "focus": (
+//          "bg": palette.tint(sys.$theme-surface, sys.$theme-on-surface, sys.$opacity-focus),
+//          "shadow": none,
+//          "link": sys.$theme-major,
+//          "outline": null,
+//          "text": null,
+//          "icon": null,
+//      ),
+//      "pressed": (
+//          "bg": palette.tint(sys.$theme-surface, sys.$theme-on-surface, sys.$opacity-pressed),
+//          "shadow": none,
+//          "link": sys.$theme-major,
+//          "outline": null,
+//          "text": null,
+//          "icon": null,
+//      ),
+//  );
+//}
+//
+//@function vars-outline($context: null) {
+//  @return (
+//      "default": (
+//          "bg": sys.$theme-surface,
+//          "shadow": none,
+//          "outline": sys.$theme-outline,
+//          "text": sys.$theme-on-surface,
+//          "icon": sys.$theme-on-surface,
+//      ),
+//      "disabled": (
+//          "bg": palette.disabled(sys.$theme-surface, .38),
+//          "shadow": none,
+//          "outline": null,
+//          "text": palette.disabled(sys.$theme-on-surface, .38),
+//          "icon": palette.disabled(sys.$theme-on-surface, .38),
+//      ),
+//      "hover": (
+//          "bg": palette.tint(sys.$theme-on-surface, sys.$theme-surface, sys.$opacity-hover),
+//          "shadow": none,
+//          "outline": sys.$theme-outline,
+//          "text": null,
+//          "icon": null,
+//      ),
+//      "focus": (
+//          "bg": palette.tint(sys.$theme-on-surface, sys.$theme-on-surface, sys.$opacity-focus),
+//          "shadow": none,
+//          "outline": null,
+//          "text": null,
+//          "icon": null,
+//      ),
+//      "pressed": (
+//          "bg": palette.tint(sys.$theme-surface, sys.$theme-on-surface, sys.$opacity-pressed),
+//          "shadow": none,
+//          "outline": palette.disabled(sys.$theme-outline, .12),
+//          "text": null,
+//          "icon": null,
+//      ),
+//  );
+//}
+//
+//$elevated: vars-elevated();
+//$filled: vars-filled();
+//$outline: vars-outline();
+//
+//@mixin custom-properties($vars) {
+//  --pattern-bg: #{map.get($vars, "default", "bg")};
+//  --pattern-bg-disabled: #{map.get($vars,"disabled","bg")};
+//  --pattern-bg-hover: #{map.get($vars,"hover","bg")};
+//  --pattern-bg-focus: #{map.get($vars,"focus","bg")};
+//  --pattern-bg-pressed: #{map.get($vars,"pressed","bg")};
+//  --pattern-outline: #{map.get($vars,"default","outline")};
+//  --pattern-outline-disabled: #{map.get($vars,"disabled","outline")};
+//  --pattern-outline-hover: #{map.get($vars,"hover","outline")};
+//  --pattern-outline-focus: #{map.get($vars,"focus","outline")};
+//  --pattern-outline-pressed: #{map.get($vars,"disabled","outline")};
+//  --pattern-text: #{map.get($vars,"default","text")};
+//  --pattern-text-disabled: #{map.get($vars,"disabled","text")};
+//  --pattern-text-hover: #{map.get($vars,"hover","text")};
+//  --pattern-text-focus: #{map.get($vars,"focus","text")};
+//  --pattern-text-pressed: #{map.get($vars,"disabled","text")};
+//  --pattern-icon: #{map.get($vars,"default","icon")};
+//  --pattern-icon-disabled: #{map.get($vars,"disabled","icon")};
+//  --pattern-icon-hover: #{map.get($vars,"hover","icon")};
+//  --pattern-icon-focus: #{map.get($vars,"focus","icon")};
+//  --pattern-icon-pressed: #{map.get($vars,"disabled","icon")};
+//}
+//
+//@mixin emit {
+//  @include custom-properties($elevated);
+//}
+//
+//@mixin elevated {
+//  @include custom-properties($elevated);
+//}
+//
+//@mixin filled {
+//  @include custom-properties($filled);
+//}
+//
+//@mixin outline {
+//  @include custom-properties($outline)
+//}

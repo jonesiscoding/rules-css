@@ -1,0 +1,172 @@
+//
+// Rules CSS (Cards)
+//
+// (c) 2022 - AMJones <am@jonesiscoding.com>
+//
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code.
+//
+
+// Token & Module Import
+@use "../modules/theme/elevation";
+
+/** Accordion **/
+
+details {
+  > summary + * {
+    margin-top: var(--padding-y);
+  }
+}
+
+// CSS Custom Variables
+%accordion {
+  --color-outline: transparent;
+
+  > details, > article {
+    --color-bg: var(--theme-bg);
+    --color-outline: transparent;
+
+    &:after {
+      --color-tint-red: var(--theme-color-red);
+      --color-tint-blue: var(--theme-color-blue);
+      --color-tint-green: var(--theme-color-green);
+      --opacity-elevation: var(--opacity-elevation-1);
+    }
+
+    &[open]:not([open="false"]) {
+      &:after {
+        --opacity-elevation: var(--opacity-elevation-2);
+      }
+    }
+
+    > summary {
+      &:after {
+        --color-tint-red: var(--theme-on-bg-red);
+        --color-tint-blue: var(--theme-on-bg-blue);
+        --color-tint-green: var(--theme-on-bg-green);
+      }
+    }
+  }
+
+  table {
+    --color-outline: var(--color-divider);
+    --color-bg: var(--theme-bg);
+
+    &:after {
+      --color-tint-red: var(--theme-color-red);
+      --color-tint-blue: var(--theme-color-blue);
+      --color-tint-green: var(--theme-color-green);
+    }
+  }
+}
+
+// CSS Rules
+%accordion {
+  > details, > article {
+    background-color: transparent;
+
+    table {
+      font-family: var(--font-monospace);
+      font-size: var(--font-size-sm);
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+      width: calc(100% + var(--padding-x));
+      margin-top: var(--padding-y);
+      margin-right: calc(var(--padding-x) * -.5);
+      margin-bottom: 0 !important;
+      margin-left: calc(var(--padding-x) * -.5);
+      border-radius: var(--border-radius);
+      background-color: rgba(var(--theme-bg-red), var(--theme-bg-green), var(--theme-bg-blue), .75);
+
+      &:not(caption) {
+        & > thead > tr > *, & > tbody > tr > *, & > tr > * {
+          // Basic Setup for Cells
+          //background-color: var(--theme-bg) !important;
+        }
+      }
+
+      > thead > tr > * {
+        font-size: var(--font-size-sm);
+        //font-weight: var(--font-weight-medium);
+        text-transform: var(--ui-transform);
+        //color: var(--color-emphasis)
+      }
+
+      &:not(.-hoverless) > tbody > tr:hover > td {
+        // We don't need to use an 'after' pseudo-element here because the TD is inside a TR, which has a bg color.
+        background-color: rgba(var(--theme-color-red), var(--theme-color-green), var(--theme-color-blue), calc(var(--opacity-hover) / 2)) !important;
+      }
+    }
+  }
+
+  > details > summary {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    margin: calc(var(--padding-y) * -.25) calc(var(--padding-x) * -.75);
+    padding: calc(var(--padding-y) / 4) calc(var(--padding-x));
+    @include elevation.tint-after {
+      border-radius: 1.25rem;
+    }
+
+    &:hover:after {
+      background-color: rgba(var(--color-tint-red), var(--color-tint-green), var(--color-tint-blue), var(--opacity-hover));
+    }
+
+    // Badges, Aligned to Right Side
+    > [role="status"] {
+      font-family: var(--font-monospace);
+      font-size: var(--font-size-sm);
+      line-height: 1;
+      position: absolute;
+      top: calc(50% - (1.25rem / 2));
+      right: var(--padding-x);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.25rem;
+      height: 1.25rem;
+      padding: 0 .3rem;
+      color: var(--theme-on-a3);
+      border-radius: calc(var(--border-radius) * 4);
+      background-color: var(--theme-a3);
+    }
+  }
+
+  > article {
+    padding-top: calc(var(--padding-y) / 2) !important;
+  }
+}
+
+%accordion > details, %accordion > article {
+  overflow: hidden;
+  margin-top: var(--padding-y);
+  margin-bottom: var(--padding-y);
+  padding: var(--padding-y) var(--padding-x);
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg);
+
+  // Background Tint
+  @include elevation.tint-after {
+    background-color: rgba(var(--color-tint-red), var(--color-tint-green), var(--color-tint-blue), var(--opacity-elevation));
+  }
+
+  // Rounded Corners on First & Last Child
+  &:first-child {
+    margin-top: 0;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+    border-bottom-width: 0;
+    border-bottom-right-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+  }
+}
+
+// Using a wrapping class here due to lack of :has() support in Firefox
+.accordion {
+  @extend %accordion;
+}

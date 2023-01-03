@@ -1,0 +1,25 @@
+@use "../mixins/forms";
+@use "../tokens/system" as sys;
+
+%picker {
+  @include forms.picker-common;
+}
+
+select {
+  --input-symbol: #{sys.$bg-image-select};
+  @extend %picker;
+  word-wrap: normal; // Fix Safari inheritance of word-wrap
+}
+
+// Edge/IE - Suppress focus highlight in Edge/IE
+select:focus::-ms-value {
+  color: var(--input-color);
+  background-color: var(--input-bg);
+}
+
+// OPERA - Pre-Blink nix the custom arrow, go with a native select button to keep it simple.
+// Targeted via this hack http://browserhacks.com/#hack-a3f166304aafed524566bc6814e1d5c7
+//noinspection CssInvalidHtmlTagReference
+x:-o-prefocus, select {
+  background-image: none;
+}
