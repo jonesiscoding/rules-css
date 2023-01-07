@@ -326,6 +326,8 @@ $padding-y-input: spacing.$padding-y-input;
   --spacer-half: #{$spacer-half};
   --padding-x: #{$padding-x};
   --padding-y: calc(var(--padding-x) / 2);
+  --offset-x: calc(var(--padding-x) * -1);
+  --offset-y: calc(var(--paddingy) * -1);
   --padding-half-x: calc(var(--padding-x) / 2);
   --padding-half-y: calc(var(--padding-y) / 2);
 
