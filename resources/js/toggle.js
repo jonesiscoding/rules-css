@@ -126,6 +126,7 @@
           event.preventDefault();
           event.stopPropagation();
           self.select( t.id );
+          t.dispatchEvent(new Event('shown.rules.tab', {}))
         } );
       } );
     }
@@ -273,6 +274,7 @@
   }
 
   let rules = {
+    tab: Tab,
     tabs: TabList,
     toggle: ToggleButton,
     dialog: DialogToggle,
