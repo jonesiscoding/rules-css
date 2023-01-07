@@ -225,18 +225,22 @@ button {
 }
 
 // Lots of things are buttons
-button, a[role="button"], input[type="button"], input[type="submit"], input[type="reset"], a[role="menuitem"], dialog[role="navigation"] a, a.btn {
-  @extend %button;
+button,
+input:is([type="button"],[type="submit"],[type="reset"]),
+a:is([role="button"],[role="menuitem"],[role="tab"],.btn),
+dialog[role="navigation"] a {
+  @extend %button
 }
 
 // Links that are buttons, but disabled need pointer events gone
-a[role="button"][disabled], a[role="button"].disabled,
-a.btn[disabled], a.btn.disabled,
-fieldset[disabled] a[role="button"], fieldset[disabled] a.btn {
+a:is([role="button"],[role="menuitem"],[role="tab"],.btn)[disabled]
+a:is([role="button"],[role="menuitem"],[role="tab"],.btn).disabled
+fieldset[disabled] a:is([role="button"],.btn),
+dialog[role="navigation"] a[disabled], dialog[role="navigation"] a.disabled {
   pointer-events: none;
 }
 
 // Do not underline links that
-a[role="button"], a[role="menuitem"], dialog[role="navigation"] a, a.btn {
+a:is([role="button"],[role="menuitem"],[role="tab"],.btn), dialog[role="navigation"] a {
   text-decoration: none;
 }
