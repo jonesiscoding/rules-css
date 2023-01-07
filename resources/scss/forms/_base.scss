@@ -16,17 +16,17 @@ button {
 }
 
 input, textarea, select {
-  --color-text: var(--theme-on-alt);
+  --color-text: var(--theme-on-bg-alt);
   --color-bg: var(--theme-bg-alt);
   --color-outline: var(--theme-outline);
-  --color-icon: var(--theme-on-alt);
-  --color-value: var(--theme-on);
-  --color-placeholder: var(--theme-on-alt);
+  --color-icon: var(--theme-on-bg-alt);
+  --color-value: var(--theme-on-bg);
+  --color-placeholder: var(--theme-on-bg-alt);
   --color-autofill: var(--theme-bg-alt);
   --color-bg-disabled: rgba(var(--theme-bg-alt-red), var(--theme-bg-alt-green), var(--theme-bg-alt-blue), var(--opacity-disabled-bg));
   --color-autofill-disabled: rgba(var(--theme-bg-alt-red), var(--theme-bg-alt-green), var(--theme-bg-alt-blue), var(--opacity-disabled-bg));
-  --color-text-disabled: rgba(var(--theme-on-alt-red), var(--theme-on-alt-green), var(--theme-on-alt-blue), var(--opacity-disabled));
-  --color-placeholder-disabled: rgba(var(--theme-on-alt-red), var(--theme-on-alt-green), var(--theme-on-alt-blue), var(--opacity-disabled));
+  --color-text-disabled: rgba(var(--theme-on-bg-alt-red), var(--theme-on-bg-alt-green), var(--theme-on-bg-alt-blue), var(--opacity-disabled));
+  --color-placeholder-disabled: rgba(var(--theme-on-bg-alt-red), var(--theme-on-bg-alt-green), var(--theme-on-bg-alt-blue), var(--opacity-disabled));
   --color-outline-disabled: rgba(var(--theme-outline-red), var(--theme-outline-green), var(--theme-outline-blue), var(--opacity-disabled-bg));
   &:focus {
     --color-outline: var(--theme-color);
@@ -34,8 +34,8 @@ input, textarea, select {
 }
 
 label {
-  --color-label: var(--theme-on-alt);
-  --color-label-disabled: rgba(var(--theme-on-alt-red), var(--theme-on-alt-green), var(--theme-on-alt-blue), var(--opacity-disabled));
+  --color-label: var(--theme-on-bg-alt);
+  --color-label-disabled: rgba(var(--theme-on-bg-alt-red), var(--theme-on-bg-alt-green), var(--theme-on-bg-alt-blue), var(--opacity-disabled));
 }
 
 input, textarea, button, select, optgroup {

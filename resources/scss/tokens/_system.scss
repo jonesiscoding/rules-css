@@ -189,7 +189,7 @@ $theme-on-c3-link: feature.$on-alt-link !default;
     // These values stay constant
     --theme-a1-red: #{color.red($theme-a1)};
     --theme-a1-green: #{color.green($theme-a1)};
-    --theme-a1-blue: #{color.blue($theme-on-a1)};
+    --theme-a1-blue: #{color.blue($theme-a1)};
     --theme-on-a1-red: #{color.red($theme-on-a1)};
     --theme-on-a1-green: #{color.green($theme-on-a1)};
     --theme-on-a1-blue: #{color.blue($theme-on-a1)};
