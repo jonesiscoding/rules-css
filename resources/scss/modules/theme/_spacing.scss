@@ -11,7 +11,7 @@ $half-padding-x: math.div($padding-x, 2);
 $half-padding-y: math.div($padding-y, 2);
 // Input
 $padding-x-input: $spacer * .75;
-$padding-y-input: $padding-x-input * .75;
+$padding-y-input: $spacer * .5;
 $height-input: typography.$size-input * typography.$height-input + ($padding-y-input * 2);
 $height-label: typography.$size-label * typography.$height-input + $padding-y-input;
 $width-label: if(meta.global-variable-exists(app-width-label), $app-width-label, 10%);

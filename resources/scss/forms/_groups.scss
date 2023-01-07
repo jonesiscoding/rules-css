@@ -39,10 +39,14 @@ form {
 
 form > section, form > fieldset {
   border: var(--border-width) solid var(--color-outline);
+  border-bottom-width: 0;
   border-radius: var(--border-radius);
   background-color: rgba(0,0,0, .04);
   padding: calc(var(--input-padding-y) * 2) var(--input-padding-x);
   margin-bottom: var(--input-padding-y);
+  &:last-of-type {
+    border-bottom-width: var(--border-width);
+  }
 }
 
 form .field {
@@ -83,7 +87,7 @@ form .field {
   > input, > textarea, > select, > .wrapper {
     height: calc(var(--input-height) + var(--label-height));
     padding-top: var(--label-height);
-    background-color: var(--color-bg);
+    //background-color: var(--color-bg);
     align-self: end;
     //background-color: var(--color-bg);
     border: var(--border-width) solid var(--color-outline);
@@ -92,7 +96,7 @@ form .field {
     border-bottom-right-radius: 0;
     grid-row: var(--input-row);
     grid-column: var(--input-column);
-    padding-bottom: calc(var(--input-padding-y) / 2);
+    padding-bottom: var(--input-padding-y);
     &:focus:not(:focus-visible) {
       outline: none;
     }
@@ -124,8 +128,8 @@ form .field {
     white-space: nowrap;
     transform-origin: 0 0;
     transition: opacity .1s ease-in-out, transform .1s ease-in-out;
-    padding: var(--input-padding-y) var(--input-padding-x) 0 var(--input-padding-x);
-    margin: var(--border-width);
+    padding: var(--input-padding-y) var(--input-padding-x);
+    margin: 0;
   }
 }
 
