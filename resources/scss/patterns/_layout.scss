@@ -12,10 +12,6 @@
 
 /** Display Utilities **/
 
-*[class^="layout-"] {
-  display: var(--layout-display);
-}
-
 [aria-hidden="true"], [hidden] {
   display: none !important;
 }

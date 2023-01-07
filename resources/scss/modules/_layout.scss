@@ -22,15 +22,6 @@ $width-sidebar: if(meta.global-variable-exists(app-width-sidebar), $app-width-si
   $height-footer: null;
 }
 
-@mixin display() {
-  $values: (none,flex,grid,block,inline,inline-flex,inline-grid,inline-block);
-  @each $value in $values {
-    .-#{$value} {
-      --layout-display: #{$value};
-    }
-  }
-}
-
 @mixin responsive-up($bp) {
   .-#{$bp}-hidden {
     --layout-display: hidden;
