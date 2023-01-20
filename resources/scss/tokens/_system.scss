@@ -7,13 +7,14 @@
 @use "reference" as ref;
 // Token Calculators
 @use "../modules/typography" as type;
-@use "../modules/responsive";
 @use "../modules/layout";
 @use "../modules/theme/spacing";
 @use "../modules/theme/colors";
 @use "../modules/theme/neutrals";
 @use "../modules/theme/elevation";
 @use "../modules/palette/palette";
+// Breakpoint Tokens
+@use "screen";
 // Color Tokens
 @use "colors/major";
 @use "colors/minor";
@@ -355,9 +356,27 @@ $padding-y-input: spacing.$padding-y-input;
 // region //////////////////////////////////////////////// Layout & Responsive
 
 // Responsive
-$rwd-width-min: responsive.$width-min;
-$rwd-bp-min: responsive.$bp-min;
-$rwd-bp-min-ie: responsive.$bp-min-ie;
+$screen-device-min: screen.$device-min;
+$screen-desktop-min: screen.$desktop-min;
+
+// Width Breakpoints
+$screen-xs-min: screen.$xs-min;
+$screen-sm-min: screen.$sm-min;
+$screen-md-min: screen.$md-min;
+$screen-lg-min: screen.$lg-min;
+$screen-xl-min: screen.$xl-min;
+$screen-xs-max: screen.$xs-max;
+$screen-sm-max: screen.$sm-max;
+$screen-md-max: screen.$sm-max;
+$screen-lg-max: screen.$lg-max;
+$screen-xl-max: screen.$xl-max;
+
+// DPI Breakpoints
+$screen-dpi-hi: screen.$dpi-hi;
+
+// Width Breakpoint Maps
+$screen-up: screen.$breakpoints-up;
+$screen-down: screen.$breakpoints-down;
 
 // Layout
 $layout-width-drawer: layout.$width-sidebar;

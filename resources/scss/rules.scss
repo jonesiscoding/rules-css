@@ -201,38 +201,26 @@ body > main {
 
 // region //////////////////////////////////////////////// Responsive Behaviors
 
-@if responsive.$direction == "up" {
-  // Responsive Mobile First
-  @each $bp in map-keys(responsive.$breakpoints-up) {
-    @include responsive.breakpoint-up($bp) {
-      @include layout.responsive-up($bp);
-      @include typography.responsive-up($bp);
-      @include buttons.responsive-up($bp);
-      @include forms.responsive-up($bp);
-      @include tables.responsive-up($bp);
-    }
-  }
-} @else if responsive.$direction == "down" {
-  // Responsive Desktop First
-  @each $bp in map-keys(responsive.$breakpoints-down) {
-    @if $bp == "xl" {
-      @include layout.responsive-down($bp);
-      @include typography.responsive-down($bp);
-      @include buttons.responsive-down($bp);
-      @include forms.responsive-down($bp);
-      @include tables.responsive-down($bp);
-    } @else {
-      @include responsive.breakpoint-down($bp) {
-        @include layout.responsive-down($bp);
-        @include typography.responsive-down($bp);
-        @include buttons.responsive-down($bp);
-        @include forms.responsive-down($bp);
-        @include tables.responsive-down($bp);
-      }
-    }
+// Minimum Width
+html, html > body {
+  min-width: system.$screen-device-min;
+}
+
+@include responsive.viewport-down(system.$screen-desktop-min) {
+  @-ms-viewport {
+    width: system.$screen-desktop-min;
   }
 }
 
+// DPI
+@include responsive.dpi-up(system.$screen-dpi-hi) {
+  @include typography.dpi(system.$screen-dpi-hi);
+  @include buttons.dpi(system.$screen-dpi-hi);
+  @include forms.dpi(system.$screen-dpi-hi);
+  @include tables.dpi(system.$screen-dpi-hi);
+}
+
+// Touch Only
 @include responsive.only-touch {
   @include typography.touch;
   @include buttons.touch;
@@ -240,15 +228,7 @@ body > main {
   @include tables.touch;
 }
 
-@each $dpi in responsive.$breakpoints-dpi {
-  @include responsive.only-hidpi($dpi) {
-    @include typography.dpi($dpi);
-    @include buttons.dpi($dpi);
-    @include forms.dpi($dpi);
-    @include tables.dpi($dpi);
-  }
-}
-
+// Firefox Only
 @include responsive.only-firefox {
   @include typography.firefox;
   @include buttons.firefox;
@@ -256,6 +236,7 @@ body > main {
   @include tables.firefox;
 }
 
+// Safari Only
 @include responsive.only-safari() {
   @include typography.firefox;
   @include buttons.safari;

@@ -24,6 +24,17 @@ $rules-footer: true;
 $rules-sidebar: true;
 $width-sidebar: 20rem;
 
+// Responsive
+$screen-max-diff: 0.02;
+$screen-sm-min: 576px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;
+$device-min: 320px;
+$desktop-min: $screen-md-min;
+$dpi-hi: 150 !default;
+$dpi-lo: 96 !default;
+
 // Decoration
 $width-border: 1px;
 $width-outline: 2px;

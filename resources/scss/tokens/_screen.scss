@@ -1,0 +1,29 @@
+// Responsive Design Tokens
+// This file should be used in the manner below, before importing or using 'rules.scss' in
+// order to set the base colors of your theme:
+//
+// @use "/path/to/screen" with ($sm-min: <px size>, $md-min: <px size>, etc);
+//
+
+@use "reference" as ref;
+
+// Variables that can be configured
+$xs-min: null;
+$sm-min: ref.$screen-sm-min !default;
+$md-min: ref.$screen-md-min !default;
+$lg-min: ref.$screen-lg-min !default;
+$xl-min: ref.$screen-xl-min !default;
+$device-min: ref.$device-min !default;
+$desktop-min: $md-min !default;
+$dpi-hi: ref.$dpi-hi !default;
+$dpi-lo: ref.$dpi-lo !default;
+
+// Variables set automatically from configured variables
+$xs-max: $sm-min - ref.$screen-max-diff;
+$sm-max: $md-min - ref.$screen-max-diff;
+$md-max: $lg-min - ref.$screen-max-diff;
+$lg-max: $xl-min - ref.$screen-max-diff;
+$xl-max: null;
+$breakpoints-up: (xs: 0, sm: $sm-min, md: $md-min, lg: $lg-min, xl: $xl-min);
+$breakpoints-down: (xl: 0, lg: $lg-max, md: $md-max, sm: $sm-max, xs: $xs-max);
+$breakpoints-dpi: (hi: $dpi-hi);

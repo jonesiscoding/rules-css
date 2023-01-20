@@ -1,24 +1,6 @@
 @use "sass:math";
-
-// region /////////////////////////////////////////////// Variables
-
-$direction: up;
-$width-min: 320px;
-$bp-min-ie: md;
-$bp-min: xs;
-$breakpoints-up: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px);
-
-$breakpoints-down: (xl: 1200px, lg: 992px, md: 768px, sm: 576px, xs: 0);
-$breakpoints-dpi: (150) !default;
-$user-agents: (
-    "ie": "Trident",
-    "edge": "Edge",
-    "safari": "Version",
-    "windows": "Windows NT",
-    "mac": "Macintosh; Intel Mac OS X"
-) !default;
-
-// endregion ///////////////////////////////////////////// End Variables
+@use "sass:map";
+@use "../tokens/system";
 
 // region //////////////////////////////////////////////// Functions
 
@@ -38,63 +20,35 @@ $user-agents: (
   @return $string;
 }
 
-// Returns selector for targeting a specific browser based on a user
-// agent placed in the HTML tag by deviscoding/device..  As user agents can easily
-// be spoofed, this should only be used for minimal 'hacks'.
-@function _ua-target($browser, $version: null, $negate: false) {
-  $sep: "";
-  @if map-has-key($user-agents,$browser) {
-    $ua:     unquote(map-get($user-agents, $browser));
-
-    @if $version {
-      @if $browser == "windows" {
-        $sep: unquote(" ");
-      } @else if $browser == "mac" {
-        $sep: unquote(" ");
-        $version: str-replace($version, ".", "_");
-      } @else {
-        $sep: unquote("/");
-      }
-    }
-
-    $ua-sel: unquote("[data-user-agent*=\"#{$ua}#{$sep}#{$version}\"]");
-
-    @return if($negate,unquote(":not(#{$ua-sel})"),$ua-sel);
-  }
-
-  @return null;
-}
-
 // region //////////////////////////////////////////////// Browser Targeting
 
-@mixin only-ua($ua) {
-  $target: _ua-target($ua);
-  html#{$target} {
-    @content;
-  }
-}
-
+// Targets the Non-Chromium version of Microsoft Edge
+// This mixin is unused within this framework, but is available if needed.
 @mixin only-edge-html() {
   @supports (-ms-ime-align:auto) {
     @content;
   }
 }
 
+// Targets Mozilla Firefox
 @mixin only-firefox() {
   @supports (-moz-appearance:meterbar) {
     @content
   }
 }
 
-@mixin only-ie() {
-  @include only-ua("ie") {
+// Targets Internet Explorer & major version, if given.
+// @param {String} $version - Major version to target
+@mixin only-ie($version: null) {
+  html[data-user-agent*="Trident/#{$version}"] {
     @content;
   }
 }
 
+// Targets Safari & major version, if given.
+// @param {String} $version - Major version to target
 @mixin only-safari($version: null) {
-  $target: _ua-target("safari", $version);
-  html#{$target} {
+  html[data-user-agent*="Version/#{$version}"] {
     @content;
   }
 }
@@ -112,39 +66,6 @@ $user-agents: (
   }
 }
 
-// Targets Only Devices with HiDPI / Retina screens
-@mixin only-hidpi($dpi) {
-  $ratio: math.div($dpi, 96);
-  @media
-    only screen and (-webkit-min-device-pixel-ratio: #{$ratio}),
-    only screen and (min-device-pixel-ratio: #{$ratio}),
-    only screen and (min-resolution: #{$dpi}dpi),
-    only screen and (min-resolution: #{$ratio}dppx) {
-      @content;
-    }
-}
-
-// Target Only Browsers Supporting display: flex (Requires device.js)
-//
-// We can't use @supports here because there are browsers that support flex but do not
-// support @supports.  Therefore, this mixin requires our device.js javscript helper.
-@mixin only-flex() {
-  html:not(.-baseline) {
-    @content;
-  }
-}
-
-// Target Only Browsers supporting display: grid
-//
-// Browsers that support the feature with prefixes are not targeted by this mixin. Due to the
-// non-standard implementation that those browsers use, it is often not ideal to target them with
-// the same set of CSS rules.
-@mixin only-grid() {
-  @supports(display:grid) {
-    @content;
-  }
-}
-
 // Target Only Devices with coarse pointers + Mozilla Firefox on Touch devices
 //
 // Works in browsers supporting pointer:coarse OR when using poly-pointer.js
@@ -154,35 +75,68 @@ $user-agents: (
   }
 }
 
+// Targets devices with a DPI larger than the given DPI
+// @param {Number} $dpi - Minimum DPI to target
+@mixin dpi-up($dpi) {
+  $ratio: math.div($dpi, 96);
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: #{$ratio}),
+  only screen and (min-device-pixel-ratio: #{$ratio}),
+  only screen and (min-resolution: #{$dpi}dpi),
+  only screen and (min-resolution: #{$ratio}dppx) {
+    @content;
+  }
+}
+
 // endregion ///////////////////////////////////////////// End Feature Targeting
 
 // region //////////////////////////////////////////////// OS Targeting
 
-// Note that all of these require the user agent added to the data-user-agent attribute of the HTML tag,
-// as is done by our device.js.
-//
-// As these mixins use a user agent, they should be used sparingly. Please target features if possible!
+// These mixins should be used sparingly. Please target features if possible!
 
+// Targets devices running Android
+// REQUIRES RESPONSIVE.JS
 @mixin only-android() {
-  @include only-ua("android") {
+  html[data-user-agent*="Android"] {
     @content;
   }
 }
 
+// Targets devices running iOS/iPadOS
 @mixin only-ios() {
-  @include only-ua("ios") {
-    @content;
+  @supports (-webkit-touch-callout: none) {
+    @content
   }
 }
 
+// Targets devices running MacOS
+// This attempts to differentiate between iPadOS and macOS using an additional @support rule.
+// REQUIRES RESPONSIVE.JS
+// @param {String} $version - Major version to target (only works through macOS 10.15)
 @mixin only-mac($version: null) {
-  @include only-ua("ios", $version) {
-    @content;
+  @if $version > 10.15 {
+    @error "It is not possible to target macOS 11 or greater."
+  }
+
+  // Make sure we don't get iPadOS 13+
+  @supports not (-webkit-touch-callout: none) {
+    // Target macOS
+    $version: str-replace($version, ".", "_");
+    html[data-user-agent*="Macintosh; Intel Mac OS X #{$version}"] {
+      @content;
+    }
   }
 }
 
+// Targets devices running Windows
+// REQUIRES RESPONSIVE.JS
+// @param {String} $version - Major version to target (Only works through Windows 10)
 @mixin only-windows($version: null) {
-  @include only-ua("ios", $version) {
+  @if $version >= 11 {
+    @error "It is not possible to target Windows 11 or greater."
+  }
+
+  html[data-user-agent*="Windows NT #{$version}"] {
     @content;
   }
 }
@@ -191,33 +145,11 @@ $user-agents: (
 
 // region //////////////////////////////////////////////// Viewport Targeting
 
-@function get-breakpoint-next($name, $breakpoints: $breakpoints-up) {
-  $bn: map-keys($breakpoints);
-  $ix: index($bn, $name);
-
-  @return if($ix < length($bn), nth($bn, $ix + 1), null);
-}
-
-@function get-breakpoint-min($name, $breakpoints: $breakpoints-up) {
-  @if map-has-key($breakpoints, $name) {
-    $m: map-get($breakpoints, $name);
-    @return if($m != 0, $m, null);
-  } @else {
-    @error "The provided breakpoints variable does not have a '#{$name}' key.";
-  }
-}
-
-@function get-breakpoint-max($name, $breakpoints: $breakpoints-up) {
-  @if map-has-key($breakpoints, $name) {
-    $nx: get-breakpoint-next($name, $breakpoints);
-    @return if($nx, map-get($breakpoints, $nx) - 0.02, null);
-  } @else {
-    @error "The provided breakpoints variable does not have a '#{$name}' key.";
-  }
-}
-
-
-@mixin viewport-between($min,$max, $adjust: true) {
+// Wraps the @content in a media query that targets screens between the given min and max width.
+// @param {Number} $min - Minimum Width
+// @param {Number} $max - Maximum Width
+// @param {Boolean} $adjust - Adjust maximum value to slightly less than given.
+@mixin viewport-between($min,$max, $adjust: false) {
   @if $max {
     $real-min: if($min, $min, 0);
     $real-max: if($adjust, $max - 0.02, $max);
@@ -229,6 +161,8 @@ $user-agents: (
   }
 }
 
+// Wraps the @content in a media query that targets screens above the given min width.
+// @param {Number} $min - Minimum Width
 @mixin viewport-up($min) {
   @if $min {
     @media screen and (min-width: #{$min}) {
@@ -239,7 +173,9 @@ $user-agents: (
   }
 }
 
-@mixin viewport-down($max, $adjust: true) {
+// Wraps the @content in a media query that targets screens below the given max width.
+// @param {Number} $max - Maximum Width
+@mixin viewport-down($max, $adjust: false) {
   @if $max {
     $real-max: if($adjust, $max - 0.02, $max);
     @media screen and (max-width: #{$max}) {
@@ -250,96 +186,104 @@ $user-agents: (
   }
 }
 
-@mixin only-breakpoint($bp, $rules-breakpoints: $breakpoints-up) {
-  $min: get-breakpoint-min(sm);
-  $max: get-breakpoint-max(sm);
-  @include viewport-between($min, $max, false) {
-    @content;
-  }
-}
-
-@mixin breakpoint-up($bp, $breakpoints: $breakpoints-up) {
-  $min: get-breakpoint-min($bp, $breakpoints);
-  @include viewport-up($min) {
-    @content;
-  }
-}
-
-@mixin breakpoint-down($bp, $breakpoints: $breakpoints-up) {
-  $max: get-breakpoint-max($bp, $breakpoints);
-  @include viewport-down($max, false) {
-    @content;
-  }
-}
-
-// Convenience Mixins
-
-@mixin only-xs() {
-  @include only-breakpoint(xs, $breakpoints-up) {
-    @content;
-  }
-}
-
-@mixin only-sm() {
-  @include only-breakpoint(sm, $breakpoints-up) {
-    @content;
-  }
-}
-
-@mixin only-md() {
-  @include only-breakpoint(md, $breakpoints-up) {
-    @content;
-  }
-}
-
-@mixin only-lg() {
-  @include only-breakpoint(lg, $breakpoints-up) {
-    @content;
-  }
-}
-
-@mixin only-xl() {
-  @include breakpoint-up(xl, $breakpoints-up) {
-    @content;
-  }
-}
-
-@mixin lg-down() {
-  @include breakpoint-down(md, $breakpoints-up) {
-    @content;
-  }
-}
-
-@mixin md-down() {
-  @include breakpoint-down(md, $breakpoints-up) {
-    @content;
-  }
-}
-
-@mixin sm-down() {
-  @include breakpoint-down(sm, $breakpoints-up) {
-    @content;
-  }
-}
-
+// Wraps the given @content in a media query that targets the 'sm' viewport size and above.
+// @see system.$screen-sm-min
 @mixin sm-up() {
-  @include breakpoint-up(sm, $breakpoints-up) {
+  @include viewport-up(system.$screen-sm-min) {
     @content;
   }
 }
 
+// Wraps the given @content in a media query that targets the 'md' viewport size and above.
+// @see system.$screen-md-min
 @mixin md-up() {
-  @include breakpoint-up(md, $breakpoints-up) {
+  @include viewport-up(system.$screen-md-min) {
     @content;
   }
 }
 
+// Wraps the given @content in a media query that targets the 'lg' viewport size and above.
+// @see system.$screen-lg-min
 @mixin lg-up() {
-  @include breakpoint-up(lg, $breakpoints-up) {
+  @include viewport-up(system.$screen-lg-min) {
     @content;
   }
 }
 
+// Wraps the given @content in a media query that targets the 'xl' viewport size and above.
+// @see system.$screen-xl-min
+@mixin xl-up() {
+  @include viewport-up(system.$screen-xl-min) {
+    @content;
+  }
+}
+
+// Wraps the given @content in a media query that targets the 'sm' viewport size and below.
+// @see system.$screen-sm-max
+@mixin sm-down() {
+  @include viewport-down(system.$screen-sm-max) {
+    @content;
+  }
+}
+
+// Wraps the given @content in a media query that targets the 'md' viewport size and below.
+// @see system.$screen-md-max
+@mixin md-down() {
+  @include viewport-down(system.$screen-md-max) {
+    @content;
+  }
+}
+
+// Wraps the given @content in a media query that targets the 'lg' viewport size and below.
+// @see system.$screen-lg-max
+@mixin lg-down() {
+  @include viewport-down(system.$screen-lg-max) {
+    @content;
+  }
+}
+
+// Wraps the given @content in a media query that targets only the 'xs' viewport.
+// @see system.$screen-xs-max
+@mixin xs-only() {
+  @include viewport-down(system.$screen-xs-max) {
+    @content;
+  }
+}
+
+// Wraps the given @content in a media query that targets only the 'sm' viewport.
+// @see system.$screen-sm-max
+@mixin sm-only() {
+  @include viewport-between(system.$screen-sm-min, system.$screen-sm-max) {
+    @content;
+  }
+}
+
+// Wraps the given @content in a media query that targets only the 'md' viewport.
+// @see system.$screen-md-max
+@mixin md-only() {
+  @include viewport-between(system.$screen-md-min, system.$screen-md-max) {
+    @content;
+  }
+}
+
+// Wraps the given @content in a media query that targets only the 'md' viewport.
+// @see system.$screen-md-max
+@mixin lg-only() {
+  @include viewport-between(system.$screen-lg-min, system.$screen-lg-max) {
+    @content;
+  }
+}
+
+// Wraps the given @content in a media query that targets only the 'xl' viewport.
+// @see system.$screen-xl-max
+@mixin xl-only() {
+  @include viewport-between(system.$screen-xl-min, system.$screen-xl-max) {
+    @content;
+  }
+}
+
+// Wraps the given @content in a media query that targets only the 'xs' viewport.
+// @see system.$screen-xs-max
 @mixin sm-down-coarse() {
   @include only-coarse {
     @include sm-down {
@@ -348,45 +292,25 @@ $user-agents: (
   }
 }
 
-@mixin only-xs-coarse() {
+// Wraps the given @content in a media query that targets only the 'xs' viewport size, and only
+// if the device provides (pointer:coarse), matching most modern touch-only devices.
+// @see system.$screen-lg-max
+@mixin xs-coarse-only() {
   @include only-coarse {
-    @include only-xs {
+    @include xs-only {
       @content;
     }
   }
 }
 
-@mixin only-sm-coarse() {
+// Wraps the given @content in a media query that targets only the 'sm' viewport size, and only
+// if the device provides (pointer:coarse), matching most modern touch-only devices.
+@mixin sm-coarse-only() {
   @include only-coarse {
-    @include only-sm {
+    @include sm-only {
       @content;
     }
   }
 }
 
 // endregion ///////////////////////////////////////////// End Viewport Targeting
-
-// region //////////////////////////////////////////////// Typography Responsive Mixins
-
-@mixin responsive-down-rwd($bp) {
-  @if $direction == "down" {
-    :root { --viewport: #{$bp}; }
-  }
-}
-
-@mixin responsive-up-rwd($bp) {
-  @if $direction == "up" {
-    :root { --viewport: #{$bp}; }
-  }
-}
-
-@mixin hacks-ie-minimum($ie-min-bp: $bp-min-ie) {
-  @if $ie-min-bp {
-    $width: get-breakpoint-max($ie-min-bp);
-    @include viewport-down($width, false) {
-      @-ms-viewport{ width: $width; }
-    }
-  }
-}
-
-// endregion ///////////////////////////////////////////// End Typography Responsive Mixins
