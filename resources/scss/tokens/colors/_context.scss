@@ -74,6 +74,9 @@
     --theme-color-red: #{color.red($color)};
     --theme-color-green: #{color.green($color)};
     --theme-color-blue: #{color.blue($color)};
+    --theme-on-color-red: #{color.red($on-color)};
+    --theme-on-color-green: #{color.green($on-color)};
+    --theme-on-color-blue: #{color.blue($on-color)};
     --theme-bg-red: #{color.red($surface)};
     --theme-bg-green: #{color.green($surface)};
     --theme-bg-blue: #{color.blue($surface)};
