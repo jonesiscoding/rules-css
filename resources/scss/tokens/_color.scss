@@ -1,3 +1,10 @@
+// Color Tokens
+// This file should be used in the manner below, before importing or using 'rules.scss' in
+// order to set the base colors of your theme:
+//
+// @use "/path/to/color" with ($major: <your color>, $minor: <your color>, etc);
+//
+
 @use "reference" as ref;
 
 $major: ref.$color-base-major !default;
