@@ -286,6 +286,14 @@
     }
   }
 
+  class TableRowClick extends Clone {
+    static selector = 'tr[data-click] td';
+
+    get target() {
+      return this.el.querySelector('td:first-child > a:first-child');
+    }
+  }
+
   class Tooltip extends Component {
     static selector = "[title]:not(.-tipless)";
 
@@ -318,6 +326,7 @@
     menu: MenuToggle,
     clone: Clone,
     steps: ProgressSteps,
+    trclick: TableRowClick
   };
 
   function initialize(key, selector = null) {
@@ -338,6 +347,7 @@
   initialize( 'menu' );
   initialize( 'clone' );
   initialize( 'steps' );
+  initialize( 'trclick' );
 
   w.rules = rules;
 }( window, document ) );

@@ -53,6 +53,12 @@ table {
     }
   }
 
+  &:not(caption) {
+    & > tbody > tr[data-click]:not([data-click="false"]):hover {
+      cursor: var(--cursor-strong);
+    }
+  }
+
   // Fixed Table Layout
   &.-fixed {
     table-layout: fixed;
