@@ -35,7 +35,7 @@ table {
 table {
   border: var(--border-width) solid var(--color-outline);
   border-radius: var(--border-radius);
-  border-collapse: collapse;
+  border-spacing: 0;
   color: black;
   min-width: 100%;
   table-layout: auto;
@@ -46,7 +46,7 @@ table {
     & > thead > tr > *, & > tbody > tr > *, & > tr > * {
       background-color: var(--color-bg);
       color: var(--color-text);
-      border-bottom: var(--border-width) solid var(--color-outline);
+      border-bottom: var(--border-width) solid var(--color-divider);
       //height:              $rules-table-row-height;
       padding: var(--padding-y) var(--padding-x);
       vertical-align: middle;
@@ -71,7 +71,7 @@ table {
 
   // Table Header Formatting
   > thead > tr > * {
-    border-bottom: calc(var(--border-width) * 2) solid var(--color-outline);
+    border-bottom: calc(var(--border-width) * 2) solid var(--color-divider);
     font-weight: var(--font-weight-medium);
     text-align: left;
     // Sort Header Formatting
@@ -91,10 +91,6 @@ table {
       }
     }
   }
-}
-
-table {
-  @extend %table;
 }
 
 // Alternating Color Rows (Using Tint Color)
