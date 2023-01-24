@@ -439,6 +439,8 @@ $opacity-pressed: 12%;
 $opacity-busy: .5;
 
 @mixin decoration() {
+  --cursor-strong: #{$cursor-strong};
+  --cursor-disabled: #{$cursor-disabled};
   --transition-fade: #{$transition-fade};
   --link-decoration: #{$decoration-link};
   --link-decoration-hover: #{$decoration-link-hover};
