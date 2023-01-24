@@ -12,6 +12,10 @@
 
 /** Display Utilities **/
 
+//*[class^="layout-"] {
+//  display: var(--layout-display);
+//}
+
 [aria-hidden="true"], [hidden] {
   display: none !important;
 }
@@ -19,13 +23,19 @@
 /** Body Layout **/
 
 // CSS Grid Variables for Body With Drawer (Second Selector needed due to lack of :has in Firefox)
-body:has(dialog[role="navigation"]),
-body.-drawer
-{
+// These have to be separated, because browsers drop the entire selector if a psuedo-selector doesn't match.
+@mixin body-columns() {
   --column-main: 2;
   --column-header: span 2;
   --column-footer: span 2;
 }
+body:has(dialog[role="navigation"]) {
+  @include body-columns;
+}
+body.-drawer {
+  @include body-columns;
+}
+
 
 // CSS Grid Variables for Body with Header and/or Footer
 body {
