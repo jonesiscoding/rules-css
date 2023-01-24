@@ -25,13 +25,13 @@ dialog[role="menu"] {
     --color-tint-blue: var(--theme-color-blue);
     --color-tint-green: var(--theme-color-green);
   }
-  --color-text: var(--theme-on);
+  --color-text: var(--theme-on-bg);
   --color-divider: var(--theme-divider);
   > * {
     --color-bg: transparent;
     --color-icon: var(--theme-color);
     --color-link: var(--theme-link);
-    --color-text: var(--theme-on);
+    --color-text: var(--theme-on-bg);
     --color-outline: var(--theme-outline);
     &:after {
       --color-tint-red: var(--theme-on-bg-red);
