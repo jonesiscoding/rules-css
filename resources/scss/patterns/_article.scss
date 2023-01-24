@@ -62,6 +62,11 @@ article, article > section, article > form > section {
       padding-bottom: var(--padding-x);
     }
   }
+  > header {
+    > h1, > h2, > h3, > h4, > h5, > h6 {
+      margin-bottom: 0;
+    }
+  }
   & + article {
     margin-top: var(--padding-y);
   }
