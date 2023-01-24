@@ -327,7 +327,8 @@
     menu: MenuToggle,
     clone: Clone,
     steps: ProgressSteps,
-    trclick: TableRowClick
+    trclick: TableRowClick,
+    tooltip: Tooltip
   };
 
   function initialize(key, selector = null) {
@@ -350,6 +351,7 @@
   initialize( 'steps' );
   initialize('confirm');
   initialize( 'trclick' );
+  initialize('tooltip');
 
   w.rules = rules;
 }( window, document ) );

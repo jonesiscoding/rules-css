@@ -19,7 +19,7 @@
     transform: translate(-50%, -.25rem);
     border-radius: var(--border-radius);
     background: var(--theme-inverse);
-    content: attr(title);
+    content: attr(data-title);
     color: var(--theme-on-inverse);
     font-style: normal;
     font-weight: var(--font-weight-normal);
