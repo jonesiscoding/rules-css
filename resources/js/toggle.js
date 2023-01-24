@@ -214,7 +214,7 @@
 
     get isOpen() {
       if(this.el.hasAttribute('open')) {
-        let openAttr = modal.getAttribute('open');
+        let openAttr = this.el.getAttribute('open');
         return ('false' !== openAttr && '0' !== openAttr);
       }
 
@@ -225,7 +225,7 @@
       return this.el.getAttribute( 'role' ) === 'menu';
     }
 
-    get coklntent() {
+    get content() {
       return this.el.querySelector('article');
     }
 
