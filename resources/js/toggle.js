@@ -242,10 +242,12 @@
       let self = this;
 
       this.el.addEventListener('click', function(event) {
-        let revent = new event.constructor(event.type, event)
+        if(event.target !== self.target && event.target.tagName !== "a" && event.target.tagName !== "button") {
+          let revent = new event.constructor(event.type, event);
         self.target.dispatchEvent(revent);
         event.stopPropagation();
-      })
+        }
+      });
     }
   }
 
