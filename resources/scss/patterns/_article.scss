@@ -40,7 +40,8 @@ article, article > section, article > form > section {
 
   @include elevation.tint-after {
     --opacity-elevation: #{elevation.opacity(1)};
-    background-color: var(--article-tint);
+    background-color: var(--color-tint);
+    border-radius: var(--border-radius);
   }
 
   > header, > footer, > div {
