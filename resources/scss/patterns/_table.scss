@@ -12,7 +12,7 @@
 @use "../modules/theme/elevation";
 
 // Table Specific Colors
-%table {
+table {
   --color-emphasis: var(--theme-on-bg-alt);
   &, &:after {
     --color-tint-red: var(--theme-on-bg-red);
@@ -32,7 +32,7 @@
 }
 
 // Table Specific Styles
-%table {
+table {
   border: var(--border-width) solid var(--color-outline);
   border-radius: var(--border-radius);
   border-collapse: collapse;
