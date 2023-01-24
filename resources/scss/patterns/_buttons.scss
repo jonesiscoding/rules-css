@@ -167,11 +167,22 @@ button {
     cursor: system.$cursor-disabled;
   }
 
-  // TODO: Figure out how to deal with this in firefox
-  &:has(> svg:first-child):not(.-icon) {
+  // TODO: When Firefox supports :has, this could be eliminated for the subesquent selector
+  &:not(.-icon) {
     display: inline-grid;
+    column-gap: var(--input-padding-x);
+    > *:only-child {
+      grid-column: span 2;
+    }
+    > svg:first-child {
+      grid-column: 1;
+      & + span {
+        grid-column: 2;
+      }
+    }
+  }
+  &:has(> svg:first-child):not(.-icon) {
     grid-template-columns: min-content 1fr;
-    grid-gap: var(--input-padding-x);
   }
 
   &.-icon, &.-fab {
