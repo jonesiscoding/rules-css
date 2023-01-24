@@ -170,6 +170,41 @@
     }
   }
 
+  class ConfirmToggle extends DialogToggle {
+    static selector = '[aria-haspopup="alertdialog"]';
+
+    constructor(el) {
+      super(el);
+
+      let self = this;
+
+      this.targets.forEach(function(target) {
+        let targetEl = target.el;
+        console.log(target);
+        let cancelButtons = targetEl.querySelectorAll( 'button[data-cancel]' );
+        cancelButtons.forEach(function(cb) {
+          cb.addEventListener('click', function(e) {
+            target.close();
+          });
+        });
+
+        let confirmButtons = targetEl.querySelectorAll( 'button[data-confirm]' );
+        confirmButtons.forEach(function(cb) {
+          cb.addEventListener('click', function(e) {
+            var href = self.el.getAttribute('href');
+            if(typeof href !== 'undefined') {
+              // Go to the link
+              window.location = href;
+            } else {
+              // Attempt to trigger the original action.
+              self.dispatchEvent('click');
+            }
+          });
+        });
+      });
+    }
+  }
+
   class MenuToggle extends DialogToggle {
     static selector = '[aria-haspopup="menu"]'
   }
