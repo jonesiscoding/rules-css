@@ -94,7 +94,7 @@
   }
 
   class Tab extends Toggle {
-    static selector = '[role="tab"]'
+    static selector = '[role="tab"]:not([href])'
 
     toggleable = TabPanel;
 
