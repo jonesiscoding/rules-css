@@ -323,6 +323,7 @@
     tabs: TabList,
     toggle: ToggleButton,
     dialog: DialogToggle,
+    confirm: ConfirmToggle,
     menu: MenuToggle,
     clone: Clone,
     steps: ProgressSteps,
@@ -347,6 +348,7 @@
   initialize( 'menu' );
   initialize( 'clone' );
   initialize( 'steps' );
+  initialize('confirm');
   initialize( 'trclick' );
 
   w.rules = rules;
