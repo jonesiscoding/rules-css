@@ -172,6 +172,16 @@ body > main {
 
 // region //////////////////////////////////////////////// Components
 
+@import "forms/base";
+@import "forms/groups";
+@import "forms/split";
+@import "forms/checkbox";
+@import "forms/select";
+@import "forms/number";
+@import "forms/datetime";
+@import "forms/file";
+@import "forms/list";
+@import "forms/validation";
 @import "patterns/buttons";
 @import "patterns/layout";
 @import "patterns/article";
@@ -184,18 +194,9 @@ body > main {
 @import "patterns/breadcrumb";
 @import "patterns/details";
 @import "patterns/progress";
-@import "forms/base";
-@import "forms/groups";
-@import "forms/split";
-@import "forms/checkbox";
-@import "forms/select";
-@import "forms/number";
-@import "forms/datetime";
-@import "forms/file";
-@import "forms/list";
-@import "forms/validation";
 @import "utility/busy";
 @import "utility/tooltip";
+@import "utility/size";
 
 // endregion ///////////////////////////////////////////// End Components
 
