@@ -147,7 +147,7 @@
   }
 
   class DialogToggle extends Toggle {
-    static selector = '[aria-haspopup="dialog"]'
+    static selector = '[aria-haspopup="dialog"]';
 
     toggleable = Dialog
 
@@ -157,7 +157,7 @@
       let self = this;
 
       this.el.addEventListener('click', function(event) {
-        console.log( 'yep' );
+        event.preventDefault();
         event.stopPropagation();
         self.toggle(true).targets.forEach(function(target) {
           target.show();
