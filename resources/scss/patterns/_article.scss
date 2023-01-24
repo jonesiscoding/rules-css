@@ -14,14 +14,14 @@
 /** Card Pattern **/
 
 // Custom Variables
-%article {
+article, article > section, article > form > section {
   &:after {
     --color-tint: rgba(var(--theme-color-red),var(--theme-color-green),var(--theme-color-blue), var(--opacity-elevation));
   }
 }
 
 // Rule
-%article {
+article, article > section, article > form > section {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -64,8 +64,4 @@
   & + article {
     margin-top: var(--padding-y);
   }
-}
-
-article, article > section {
- @extend %article;
 }
