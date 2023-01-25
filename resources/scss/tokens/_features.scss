@@ -1,0 +1,10 @@
+// Feature Tokens
+// This file should be used in the manner below, before importing or using 'rules.scss' in
+// order to set the base colors of your theme:
+//
+// @use "/path/to/feature" with ($htc: <bool>, etc);
+//
+
+@use "reference" as ref;
+
+$hct: ref.$feature-hct;

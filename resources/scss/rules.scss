@@ -1,15 +1,3 @@
-/*!
- * rules.dev (https://github.com/jonesiscoding/rules)
- * (c) 2022 - AMJones <am@jonesiscoding.com>
- *
- * Noted Portions: normalize.css | MIT License | https://github.com/necolas/normalize.css
- * Noted Portions: pico.css | MIT License | Copyright 2019-2022 | https://github.com/picocss/pico
- * Color Strategies: Material Design | Apache License 2.0 | Copyright 2021 Google LLC | https://github.com/material-components/material-web
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 // Sass Modules
 @use "sass:color";
 @use "sass:math";
@@ -23,6 +11,18 @@
 @use "modules/buttons";
 @use "modules/responsive";
 @use "modules/theme/spacing";
+
+/*!
+ * rules.dev (https://github.com/jonesiscoding/rules)
+ * (c) 2022 - AMJones <am@jonesiscoding.com>
+ *
+ * Noted Portions: normalize.css | MIT License | https://github.com/necolas/normalize.css
+ * Noted Portions: pico.css | MIT License | Copyright 2019-2022 | https://github.com/picocss/pico
+ * Color Generation: libmonet.scss | Apache License 2.0 | Copyright 2021 Google LLC | https://gist.github.com/jpohhhh/6ade636f207bf97742d101650798a088
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 /** Font Face **/
 @include typography.font-face;

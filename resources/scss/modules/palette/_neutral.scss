@@ -2,8 +2,9 @@
 @use "sass:color";
 @use "sass:map";
 @use "sass:list";
-@use "../../tokens/reference";
 @use "palette";
+@use "material-foundation/libmonet/libmonet.scss" as hct;
+@use "../../tokens/features";
 
 @function -get-saturation-val($recommended: 8%, $min: .04) {
   //$calc: percentage(1 - math.div(1,$parts));
@@ -13,26 +14,30 @@
   @return $calc * -1;
 }
 
-@function generate-single($from-color, $recommended: 8%, $min: .04) {
-  //$from: hct.hct_from_color($from-color);
-  //$h: list.nth($from,1);
-  //$c: list.nth($from,2);
-  //$t: list.nth($from,3);
-  //
-  //@return hct.hct($h, math.min(math.div($c,$parts), $min * 100), $t);
+@function generate-single($from-color, $parts: 12, $min: 4) {
+  $color: $from-color;
+  @if features.$hct {
+    $from: hct.hct_from_color($from-color);
+    $h: list.nth($from,1);
+    $c: list.nth($from,2);
+    $t: list.nth($from,3);
+    $color: hct.hct($h, math.max(math.div($c,$parts),$min), 40);
+  } @else {
+    $h: color.hue($from-color);
+    $s: color.saturation($from-color);
+    $l: color.saturation($from-color);
 
-  //$saturation-val: -get-saturation-val($parts, $min);
-  $saturation-val: -get-saturation-val($recommended, $min);
-  @debug $saturation-val;
+    $new-saturation: math.div($s,$parts);
+    $min-saturation: math.percentage(math.div($min, 100));
+    $color: hsl($h, math.max($new-saturation, $min-saturation), $l);
+  }
 
-  @return color.adjust($from-color, $saturation: $saturation-val);
-}
-
-@function weight($role) {
-  @return map-get($color-roles-neutral, quote($role));
+  @return $color;
 }
 
 @function generate($from-color, $parts: 12, $min: .04) {
-  @debug $from-color generate-single($from-color, $parts, $min);
   @return palette.generate(generate-single($from-color, $parts, $min));
 }
+
+$stuff: #2cb2e8;
+$things: hsl(197.2340425532, 6.6951566952%, 80.3418803419%);

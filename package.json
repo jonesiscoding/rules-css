@@ -1,0 +1,31 @@
+{
+  "name": "@jonesiscoding/rules-css",
+  "version": "4.0.0",
+  "description": "SCSS library implementing a CSS framework intended for semantic HTML with Material Design theme elements.",
+  "main": "dist/rules.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "https://github.com/jonesiscoding/rules-css.git",
+  "keywords": [
+    "semantic",
+    "html",
+    "css",
+    "sass",
+    "scss",
+    "framework"
+  ],
+  "author": "AMJones <am@jonesiscoding.com",
+  "license": "LGPL-2.1",
+  "bugs": {
+    "url": "https://github.com/jonesiscoding/rules-css/issues"
+  },
+  "homepage": "https://github.com/jonesiscoding/rules-css#readme",
+  "private": false,
+  "dependencies": {
+    "libmonet": "gist:6980238288011ab88fa2d11717a26210"
+  },
+  "scripts":  {
+    "postinstall": "mkdir -p node_modules/material-foundation/libmonet; [ -f \"node_modules/material-foundation/libmonet/libmonet.scss\" ] && rm \"node_modules/material-foundation/libmonet/libmonet.scss\"; ln -s \"$(pwd)/node_modules/libmonet/libmonet.scss\" \"$(pwd)/node_modules/material-foundation/libmonet/libmonet.scss\""
+  }
+}

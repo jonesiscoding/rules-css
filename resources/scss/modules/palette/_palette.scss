@@ -2,30 +2,46 @@
 @use "sass:math";
 @use "sass:map";
 @use "sass:list";
-@use "../../tokens/reference" as ref;
+@use "material-foundation/libmonet/libmonet.scss" as hct;
+@use "../../tokens/features";
 
 $palettes: () !default;
 
 @function generate($base) {
   $output: ();
-  $base-10: color.scale($color: $base, $lightness: -20%);
-  $base-10: color.adjust($base-10, $saturation: -15%);
-  $output: ("0": black, "10": $base-10);
+  $steps: (10,20,25,30,40,50,60,70,80,90,95,98,99);
+  @if features.$hct {
+    // Generate Colors based on HCT
+    $base: color.adjust($base, $saturation: 5%);
+    $base-hct: hct.hct_from_color($base);
+    $h: list.nth($base-hct, 1);
+    $c: list.nth($base-hct, 2);
+    $base-10: hct.hct($h, $c, 10);
+    $output: ("0": hct.hct($h, $c, 0), "10": $base-10);
 
-  @each $key in (10,20,25,30,40,50,60,70,80,90,95,98,99) {
-    $scale: math.percentage(math.div($key, 100));
-    @if $key < 80 {
-      $scale: math.percentage(math.div($key * .9, 100));
+    @each $key in $steps {
+      $shade: hct.hct($h, $c, $key);
+      $output: map.set($output, quote(#{$key}), $shade);
     }
-    @if $key < 20 {
-      $scale: math.percentage(math.div($key * 1.2, 100));
+
+    $output: map.set($output, "100", hct.hct($h, $c, 100));
+  } @else {
+    // Generate Colors based on HSL
+    $base: color.adjust($base, $lightness: -5%); // Just a little darker
+    $h: math.round(color.hue($base));
+    $s: math.round(color.saturation($base) * 1.05); // Increase saturation a little
+    $l: color.lightness($base);
+    $base-10: hsl($h, $s, 10%);
+    $output: ("0": #000, "10": $base-10);
+
+    @each $key in $steps {
+      $scale: math.percentage(math.div($key, 100));
+      $shade: hsl($h, $s, $scale);
+      $output: map.set($output, quote(#{$key}), $shade);
     }
-    //$shade: color.scale($color: $base-10, $lightness: $scale);
-    $shade: color.change($color: $base-10, $lightness: $scale);
-    $output: map.set($output, quote(#{$key}), $shade);
+
+    $output: map.set($output, "100", #fff);
   }
-
-  $output: map.set($output, "100", white);
 
   @return $output;
 }

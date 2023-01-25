@@ -1,9 +1,9 @@
 {
-  "name": "deviscoding/rules",
+  "name": "deviscoding/rules-css",
   "replace": {
     "deviscoding/xq-select": "^4.0"
   },
-  "homepage": "https://github.com/jonesiscoding/rules",
+  "homepage": "https://github.com/jonesiscoding/rules-css",
   "version": "4.0",
   "authors": [
     {
@@ -11,8 +11,24 @@
       "homepage": "https://www.deviscoding.com/"
     }
   ],
-  "license": "MIT",
+  "license": "LGPL",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "repositories": [
+    {
+      "type":"package",
+      "package": {
+        "name": "material-foundation/libmonet",
+        "version": "master",
+        "source": {
+          "url": "https://gist.github.com/6ade636f207bf97742d101650798a088.git",
+          "type": "git",
+          "reference":"master"
+        }
+      }
+    }
+  ],
   "require": {
-    "deviscoding/palette": "^1.0"
+    "material-foundation/libmonet": "master"
   }
 }
