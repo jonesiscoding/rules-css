@@ -405,6 +405,18 @@ $layout-display: layout.$display;
   --layout-display: #{$layout-display};
 }
 
+// Stacking
+$zindex-dropdown: ref.$zindex-dropdown !default;
+$zindex-header: ref.$zindex-header !default;
+$zindex-drawer-backdrop: ref.$zindex-drawer-backdrop !default;
+$zindex-drawer: ref.$zindex-drawer !default;
+$zindex-menu-backdrop: ref.$zindex-menu-backdrop !default;
+$zindex-menu: ref.$zindex-menu !default;
+$zindex-dialog-backdrop: ref.$zindex-dialog-backdrop !default;
+$zindex-dialog: ref.$zindex-dialog !default;
+$zindex-tooltip: ref.$zindex-tooltip !default;
+$zindex-toast: ref.$zindex-toast !default;
+
 // endregion ///////////////////////////////////////////// End Layout & Responsive
 
 // region //////////////////////////////////////////////// Other Decoration

@@ -35,6 +35,18 @@ $desktop-min: $screen-md-min;
 $dpi-hi: 150 !default;
 $dpi-lo: 96 !default;
 
+// Stacking
+$zindex-dropdown: 1000;
+$zindex-header: 1020;
+$zindex-drawer-backdrop: 1040;
+$zindex-drawer: 1045;
+$zindex-menu-backdrop: 1050;
+$zindex-menu: 1055;
+$zindex-dialog-backdrop: 1065;
+$zindex-dialog: 1070;
+$zindex-tooltip: 1080;
+$zindex-toast: 1090;
+
 // Decoration
 $width-border: 1px;
 $width-outline: 2px;

@@ -1,3 +1,5 @@
+@use "../tokens/system";
+
 [data-title]:not(.-tipless) {
   position: relative;
 
@@ -10,7 +12,7 @@
   &::before,
   &::after {
     display: block;
-    z-index: 99;
+    z-index: system.$zindex-tooltip;
     position: absolute;
     bottom: 100%;
     left: 50%;

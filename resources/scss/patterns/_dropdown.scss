@@ -9,6 +9,7 @@
 
 // Module Imports
 @use "../modules/theme/elevation";
+@use "../tokens/system";
 
 /** Dropdown **/
 
@@ -44,7 +45,7 @@ dialog[role="menu"] {
 // CSS Rules for Dropdowns
 dialog[role="menu"] {
   position: absolute !important;
-  z-index: 999;
+  z-index: system.$zindex-menu-backdrop;
   top: calc(100% + var(--border-width));
   right: unset;
   bottom: unset;
@@ -71,7 +72,7 @@ dialog[role="menu"] {
     font-size: var(--font-size);
     font-weight: var(--font-weight-normal);
     position: relative;
-    z-index: 123456;
+    z-index: system.$zindex-menu;
     width: 100%;
     min-width: 0;
     margin: 0;

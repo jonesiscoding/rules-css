@@ -7,11 +7,13 @@
 // file that was distributed with this source code.
 //
 
+@use "../tokens/system";
+
 /** Modal Dialog **/
 
 dialog {
   position: fixed;
-  z-index: 999;
+  z-index: system.$zindex-dialog-backdrop;
   top: 0;
   right: 0;
   bottom: 0;
@@ -36,6 +38,7 @@ dialog:not([open]), dialog[open="false"] {
 
 // An Article Element MUST be used inside the dialog element
 dialog > article {
+  z-index: system.$zindex-dialog;
   min-width: 200px;
   display: flex;
   flex-direction: column;
