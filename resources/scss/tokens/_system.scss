@@ -445,12 +445,13 @@ $bg-image-time: icons.$bg-image-time;
 $bg-image-select: icons.$bg-image-select;
 $bg-image-number: icons.$bg-image-number;
 
-$opacity-bg-disabled: 12%;
-$opacity-text-disabled: 38%;
-$opacity-hover: 8%;
-$opacity-focus: 12%;
-$opacity-pressed: 12%;
-$opacity-busy: .5;
+// Opacity
+$opacity-bg-disabled: ref.$opacity-bg-disabled !default;
+$opacity-text-disabled: ref.$opacity-text-disabled !default;
+$opacity-hover: ref.$opacity-hover !default;
+$opacity-focus: ref.$opacity-focus !default;
+$opacity-pressed: ref.$opacity-pressed !default;
+$opacity-busy: ref.$opacity-busy !default;
 
 @mixin decoration() {
   --cursor-strong: #{$cursor-strong};
