@@ -17,6 +17,7 @@
 @use "config/screen";
 @use "config/features";
 @use "config/icons";
+@use "config/decoration" as decor;
 // Color Tokens
 @use "colors/major";
 @use "colors/minor";
@@ -431,27 +432,27 @@ $border-radius: spacing.$radius-border;
 $outline-width: spacing.$width-outline;
 
 // Transitions
-$transition-base: if(meta.global-variable-exists(app-transition-base), $app-transition-base, ref.$transition-base);
-$transition-fade: if(meta.global-variable-exists(app-transition-fade), $app-transition-fade, ref.$transition-fade);
-$transition-collapse: if(meta.global-variable-exists(app-transition-collapse), $app-transition-collapse, ref.$transition-collapse);
-$transition-button: if(meta.global-variable-exists(app-transition-btn), $app-transition-btn, ref.$transition-btn);
-$transition-button-flat: if(meta.global-variable-exists(app-transition-btn-flat), $app-transition-btn-flat, ref.$transition-btn-flat);
+$transition-base: decor.$transition-base;
+$transition-fade: decor.$transition-fade;
+$transition-collapse: decor.$transition-collapse;
+$transition-button: decor.$transition-button;
+$transition-button-flat: decor.$transition-button-flat;
 
 // Input Symbols
-$cursor-strong: ref.$cursor-strong;
-$cursor-disabled: ref.$cursor-disabled;
+$cursor-strong: decor.$cursor-strong;
+$cursor-disabled: decor.$cursor-disabled;
 $bg-image-date: icons.$bg-image-date;
 $bg-image-time: icons.$bg-image-time;
 $bg-image-select: icons.$bg-image-select;
 $bg-image-number: icons.$bg-image-number;
 
 // Opacity
-$opacity-bg-disabled: ref.$opacity-bg-disabled !default;
-$opacity-text-disabled: ref.$opacity-text-disabled !default;
-$opacity-hover: ref.$opacity-hover !default;
-$opacity-focus: ref.$opacity-focus !default;
-$opacity-pressed: ref.$opacity-pressed !default;
-$opacity-busy: ref.$opacity-busy !default;
+$opacity-bg-disabled: decor.$opacity-bg-disabled !default;
+$opacity-text-disabled: decor.$opacity-text-disabled !default;
+$opacity-hover: decor.$opacity-hover !default;
+$opacity-focus: decor.$opacity-focus !default;
+$opacity-pressed: decor.$opacity-pressed !default;
+$opacity-busy: decor.$opacity-busy !default;
 
 @mixin decoration() {
   --cursor-strong: #{$cursor-strong};

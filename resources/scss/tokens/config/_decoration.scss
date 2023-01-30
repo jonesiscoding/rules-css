@@ -1,0 +1,27 @@
+// Decoration Tokens
+// This file should be used in the manner below, before importing or using 'rules.scss' in
+// order to set the base colors of your theme:
+//
+// @use "/path/to/screen" with ($sm-min: <px size>, $md-min: <px size>, etc);
+//
+
+@use "resources/scss/tokens/reference" as ref;
+
+// Transitions
+$transition-base: ref.$transition-base !default;
+$transition-fade: ref.$transition-fade !default;
+$transition-collapse: ref.$transition-collapse !default;
+$transition-button: ref.$transition-btn !default;
+$transition-button-flat: ref.$transition-btn-flat !default;
+
+// Cursors
+$cursor-strong: ref.$cursor-strong !default;
+$cursor-disabled: ref.$cursor-disabled !default;
+
+// Opacity
+$opacity-bg-disabled: ref.$opacity-bg-disabled !default;
+$opacity-text-disabled: ref.$opacity-text-disabled !default;
+$opacity-hover: ref.$opacity-hover !default;
+$opacity-focus: ref.$opacity-focus !default;
+$opacity-pressed: ref.$opacity-pressed !default;
+$opacity-busy: ref.$opacity-busy !default;
