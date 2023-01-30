@@ -3,7 +3,7 @@
 @use "sass:map";
 @use "sass:list";
 @use "material-foundation/libmonet/libmonet.scss" as hct;
-@use "../../tokens/features";
+@use "../../tokens/config/features";
 
 $palettes: () !default;
 

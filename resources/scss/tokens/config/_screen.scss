@@ -5,7 +5,7 @@
 // @use "/path/to/screen" with ($sm-min: <px size>, $md-min: <px size>, etc);
 //
 
-@use "reference" as ref;
+@use "resources/scss/tokens/reference" as ref;
 
 // Variables that can be configured
 $xs-min: null;

@@ -4,7 +4,7 @@
 @use "sass:list";
 @use "palette";
 @use "material-foundation/libmonet/libmonet.scss" as hct;
-@use "../../tokens/features";
+@use "../../tokens/config/features";
 
 @function -get-saturation-val($recommended: 8%, $min: .04) {
   //$calc: percentage(1 - math.div(1,$parts));

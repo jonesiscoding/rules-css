@@ -5,7 +5,7 @@
 // @use "/path/to/color" with ($major: <your color>, $minor: <your color>, etc);
 //
 
-@use "reference" as ref;
+@use "resources/scss/tokens/reference" as ref;
 
 $major: ref.$color-base-major !default;
 $minor: ref.$color-base-minor !default;

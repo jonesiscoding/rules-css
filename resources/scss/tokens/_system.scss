@@ -14,7 +14,7 @@
 @use "../modules/theme/elevation";
 @use "../modules/palette/palette";
 // Breakpoint Tokens
-@use "screen";
+@use "config/screen";
 // Color Tokens
 @use "colors/major";
 @use "colors/minor";

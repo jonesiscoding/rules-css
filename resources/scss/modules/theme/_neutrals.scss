@@ -1,7 +1,7 @@
 @use "sass:map";
 @use "sass:math";
 @use "sass:color";
-@use '../../tokens/color' as base;
+@use "../../tokens/config/color" as base;
 @use "../palette/palette";
 @use "../palette/neutral";
 
