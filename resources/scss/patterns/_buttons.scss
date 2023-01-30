@@ -167,7 +167,7 @@ button {
     cursor: system.$cursor-disabled;
   }
 
-  // TODO: When Firefox supports :has, this could be eliminated for the subesquent selector
+  // TODO: When Firefox supports :has, this could be eliminated for the subsequent selector
   &:not(.-icon) {
     display: inline-grid;
     column-gap: var(--input-padding-x);
@@ -244,8 +244,8 @@ dialog[role="navigation"] a {
 }
 
 // Links that are buttons, but disabled need pointer events gone
-a:is([role="button"],[role="menuitem"],[role="tab"],.btn)[disabled]
-a:is([role="button"],[role="menuitem"],[role="tab"],.btn).disabled
+a:is([role="button"],[role="menuitem"][disabled],[ role="tab"],.btn)[disabled],
+a:is([role="button"],[role="menuitem"],[role="tab"],.btn).disabled,
 fieldset[disabled] a:is([role="button"],.btn),
 dialog[role="navigation"] a[disabled], dialog[role="navigation"] a.disabled {
   pointer-events: none;

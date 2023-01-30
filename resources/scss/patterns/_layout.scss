@@ -23,7 +23,7 @@
 /** Body Layout **/
 
 // CSS Grid Variables for Body With Drawer (Second Selector needed due to lack of :has in Firefox)
-// These have to be separated, because browsers drop the entire selector if a psuedo-selector doesn't match.
+// These have to be separated, because browsers drop the entire selector if a pseudo-selector doesn't match.
 @mixin body-columns() {
   --column-main: 2;
   --column-header: span 2;

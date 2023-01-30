@@ -191,7 +191,7 @@
         let confirmButtons = targetEl.querySelectorAll( 'button[data-confirm]' );
         confirmButtons.forEach(function(cb) {
           cb.addEventListener('click', function(e) {
-            var href = self.el.getAttribute('href');
+            let href = self.el.getAttribute('href');
             if(typeof href !== 'undefined') {
               // Go to the link
               window.location = href;

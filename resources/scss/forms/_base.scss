@@ -9,6 +9,7 @@ label {
 
 button {
   border-radius: 0; // Remove default for MacOS Chrome
+  //noinspection ALL
   &:focus {
     outline: 1px dotted; // IE Transparent Button Focus Bug
     outline: 5px auto -webkit-focus-ring-color; // Firefox Transparent Button Focus Bug
@@ -125,5 +126,6 @@ input[type="checkbox"] + label, input[type="radio"] + label {
 }
 
 input:-webkit-autofill {
+  //noinspection CssRedundantUnit
   -webkit-box-shadow: 0 0 0px 1000px var(--color-bg-autofill) inset;
 }

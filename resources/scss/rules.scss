@@ -24,9 +24,6 @@
  * file that was distributed with this source code.
  */
 
-/** Font Face **/
-@include typography.font-face;
-
 /** CSS Custom Variables **/
 :root, :after {
   @include system.accents;
@@ -194,7 +191,6 @@ body > main {
 @import "patterns/progress";
 @import "utility/busy";
 @import "utility/tooltip";
-@import "utility/size";
 
 // endregion ///////////////////////////////////////////// End Components
 
@@ -213,7 +209,6 @@ html, html > body {
 
 // DPI
 @include responsive.dpi-up(system.$screen-dpi-hi) {
-  @include typography.dpi(system.$screen-dpi-hi);
   @include buttons.dpi(system.$screen-dpi-hi);
   @include forms.dpi(system.$screen-dpi-hi);
   @include tables.dpi(system.$screen-dpi-hi);
@@ -221,7 +216,6 @@ html, html > body {
 
 // Touch Only
 @include responsive.only-touch {
-  @include typography.touch;
   @include buttons.touch;
   @include forms.touch;
   @include tables.touch;
@@ -229,7 +223,6 @@ html, html > body {
 
 // Firefox Only
 @include responsive.only-firefox {
-  @include typography.firefox;
   @include buttons.firefox;
   @include forms.firefox;
   @include tables.firefox;
@@ -237,7 +230,6 @@ html, html > body {
 
 // Safari Only
 @include responsive.only-safari() {
-  @include typography.firefox;
   @include buttons.safari;
   @include forms.safari;
   @include tables.safari;
