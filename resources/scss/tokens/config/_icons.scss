@@ -1,0 +1,13 @@
+// Icon Tokens
+// This file should be used in the manner below, before importing or using 'rules.scss' in
+// order to set the base colors of your theme:
+//
+// @use "/path/to/config/icons" with ($bg-image-date: <your svg>, etc);
+//
+
+@use "../reference" as ref;
+
+$bg-image-date: ref.$bg-image-date !default;
+$bg-image-time: ref.$bg-image-time !default;
+$bg-image-select: ref.$bg-image-select) !default;
+$bg-image-number: ref.$bg-image-number !default;

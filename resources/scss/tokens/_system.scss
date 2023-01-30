@@ -5,7 +5,7 @@
 @use "sass:map";
 // Reference Tokens
 @use "reference" as ref;
-// Token Calculators
+// Calculated Tokens
 @use "../modules/typography" as type;
 @use "../modules/layout";
 @use "../modules/theme/spacing";
@@ -13,8 +13,10 @@
 @use "../modules/theme/neutrals";
 @use "../modules/theme/elevation";
 @use "../modules/palette/palette";
-// Breakpoint Tokens
+// Configured Tokens
 @use "config/screen";
+@use "config/features";
+@use "config/icons";
 // Color Tokens
 @use "colors/major";
 @use "colors/minor";
@@ -436,12 +438,12 @@ $transition-button: if(meta.global-variable-exists(app-transition-btn), $app-tra
 $transition-button-flat: if(meta.global-variable-exists(app-transition-btn-flat), $app-transition-btn-flat, ref.$transition-btn-flat);
 
 // Input Symbols
-$cursor-strong: if(meta.global-variable-exists(app-cursor-strong), $app-cursor-strong, ref.$cursor-strong);
-$cursor-disabled: if(meta.global-variable-exists(app-cursor-disabled), $app-cursor-disabled, ref.$cursor-disabled);
-$bg-image-date: if(meta.global-variable-exists(app-bg-image-date), $app-bg-image-date, ref.$bg-image-date);
-$bg-image-time: if(meta.global-variable-exists(app-bg-image-time), $app-bg-image-time, ref.$bg-image-time);
-$bg-image-select: if(meta.global-variable-exists(app-bg-image-select), $app-bg-image-select, ref.$bg-image-select);
-$bg-image-number: if(meta.global-variable-exists(app-bg-image-number), $app-bg-image-number, ref.$bg-image-number);
+$cursor-strong: ref.$cursor-strong;
+$cursor-disabled: ref.$cursor-disabled;
+$bg-image-date: icons.$bg-image-date;
+$bg-image-time: icons.$bg-image-time;
+$bg-image-select: icons.$bg-image-select;
+$bg-image-number: icons.$bg-image-number;
 
 $opacity-bg-disabled: 12%;
 $opacity-text-disabled: 38%;
