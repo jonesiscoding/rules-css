@@ -1,4 +1,5 @@
 
+
 @mixin emit() {
   --line-height-input: #{$rules-input-line-height};
   --font-size-input: #{$rules-input-font-size};
@@ -70,7 +71,7 @@
 
 @mixin picker-common {
   appearance: none;
-  background: var(--input-bg) $bg-image-select no-repeat right var(--input-padding-x) center;
+  background: var(--input-bg) var(--input-symbol) no-repeat right var(--input-padding-x) center;
   &::-ms-expand {
     opacity: 0; // Hides native caret in IE (Note: Pre IE10 will see NO arrow)
   }
