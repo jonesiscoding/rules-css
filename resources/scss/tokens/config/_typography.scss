@@ -1,0 +1,27 @@
+// Typography Tokens
+// This file should be used in the manner below, before importing or using 'rules.scss' in
+// order to set the base colors of your theme:
+//
+// @use "/path/to/config/typography" with ($font-normal: <your font>, $font-monospace: <your font>, etc);
+//
+
+@use "../reference" as ref;
+
+// Fonts
+$font-normal: ref.$font-family-base !default;
+$font-monospace: ref.$font-family-monospace !default;
+
+// Font Sizes
+$size-root: ref.$font-size-root !default;
+$height-base: ref.$line-height-base !default;
+$size-icon: ref.$icon-size !default;
+
+// Font Weight
+$weight-light: ref.$font-weight-light !default;
+$weight-base: ref.$font-weight-base !default;
+$weight-medium: ref.$font-weight-medium !default;
+$weight-bold: ref.$font-weight-bold !default;
+
+// Decoration
+$decoration-link: ref.$decoration-link !default;
+$decoration-link-hover: ref.$decoration-link-hover !default;

@@ -280,21 +280,21 @@ $theme-on-c3-link: feature.$on-alt-link !default;
 // region //////////////////////////////////////////////// Typography
 
 // Typography
-$font-monospace: type.$font-monospace;
-$font-normal: type.$font-normal;
-$font-size: type.$size-base;
-$font-size-root: type.$size-root;
-$font-height: type.$height-base;
-$font-lg-size: type.$size-lg;
-$font-sm-size: type.$size-sm;
-$font-lg-height: type.$height-lg;
-$font-sm-height: type.$height-sm;
-$font-size-input: type.$size-input;
-$font-height-input: type.$height-input;
-$font-weight-light: type.$weight-light;
-$font-weight-medium: type.$weight-medium;
-$font-weight-normal: type.$weight-base;
-$font-weight-bold: type.$weight-bold;
+$font-monospace: type.$font-monospace !default;
+$font-normal: type.$font-normal !default;
+$font-size: type.$size-base !default;
+$font-size-root: type.$size-root !default;
+$font-height: type.$height-base !default;
+$font-lg-size: type.$size-lg !default;
+$font-sm-size: type.$size-sm !default;
+$font-lg-height: type.$height-lg !default;
+$font-sm-height: type.$height-sm !default;
+$font-size-input: type.$size-input !default;
+$font-height-input: type.$height-input !default;
+$font-weight-light: type.$weight-light !default;
+$font-weight-medium: type.$weight-medium !default;
+$font-weight-normal: type.$weight-base !default;
+$font-weight-bold: type.$weight-bold !default;
 
 @mixin typography() {
   --font-monospace: #{$font-monospace};
