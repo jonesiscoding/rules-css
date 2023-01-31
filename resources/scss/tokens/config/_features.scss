@@ -5,6 +5,9 @@
 // @use "/path/to/feature" with ($htc: <bool>, etc);
 //
 
-@use "resources/scss/tokens/reference" as ref;
+@use "../reference" as ref;
 
-$hct: ref.$feature-hct;
+$hct: ref.$feature-hct !default;
+$header: ref.$rules-header !default;
+$footer: ref.$rules-footer !default;
+$drawer: ref.$rules-sidebar !default;

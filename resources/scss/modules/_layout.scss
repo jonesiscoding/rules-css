@@ -1,14 +1,13 @@
 @use "sass:meta";
 @use "../tokens/reference" as ref;
+@use "../tokens/config/features";
 
-$display: block;
-$sidebar: true;
-$header: if(meta.global-variable-exists(app-header), $app-header, ref.$rules-header);
-$footer: if(meta.global-variable-exists(app-footer), $app-footer, ref.$rules-footer);
-$sidebar: if(meta.global-variable-exists(app-sidebar), $app-sidebar, ref.$rules-sidebar);
-$height-header: if(meta.global-variable-exists(app-height-header), $app-height-header, ref.$height-header);
-$height-footer: if(meta.global-variable-exists(app-height-footer), $app-height-footer, ref.$height-footer);
-$width-sidebar: if(meta.global-variable-exists(app-width-sidebar), $app-width-sidebar, ref.$width-sidebar);
+$header: features.$header;
+$footer: features.$footer;
+$sidebar: features.$drawer;
+$height-header: ref.$height-header;
+$height-footer: ref.$height-footer;
+$width-sidebar: ref.$width-sidebar;
 
 @if $sidebar == false {
   $width-sidebar: null;
