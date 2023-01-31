@@ -6,7 +6,6 @@
 // Modules
 @use "modules/layout";
 @use "modules/forms";
-@use "modules/tables";
 @use "modules/typography";
 @use "modules/buttons";
 @use "modules/responsive";
@@ -199,34 +198,6 @@ html, html > body {
   @-ms-viewport {
     width: system.$screen-desktop-min;
   }
-}
-
-// DPI
-@include responsive.dpi-up(system.$screen-dpi-hi) {
-  @include buttons.dpi(system.$screen-dpi-hi);
-  @include forms.dpi(system.$screen-dpi-hi);
-  @include tables.dpi(system.$screen-dpi-hi);
-}
-
-// Touch Only
-@include responsive.only-touch {
-  @include buttons.touch;
-  @include forms.touch;
-  @include tables.touch;
-}
-
-// Firefox Only
-@include responsive.only-firefox {
-  @include buttons.firefox;
-  @include forms.firefox;
-  @include tables.firefox;
-}
-
-// Safari Only
-@include responsive.only-safari() {
-  @include buttons.safari;
-  @include forms.safari;
-  @include tables.safari;
 }
 
 // endregion ///////////////////////////////////////////// End Responsive Behaviors
