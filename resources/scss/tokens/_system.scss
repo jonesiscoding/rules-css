@@ -394,7 +394,6 @@ $screen-down: screen.$breakpoints-down;
 $layout-width-drawer: layout.$width-sidebar;
 $layout-height-header: layout.$height-header;
 $layout-height-footer: layout.$height-footer;
-$layout-display: layout.$display;
 
 @mixin layout() {
   --width-sidebar: #{$layout-width-drawer};
@@ -405,7 +404,6 @@ $layout-display: layout.$display;
   --row-footer: 2;
   --column-main: 1;
   --column-sidebar: 1;
-  --layout-display: #{$layout-display};
 }
 
 // Stacking
@@ -463,8 +461,8 @@ $opacity-busy: decor.$opacity-busy !default;
   --border-width: #{ref.$width-border};
   --outline-width: calc(var(--border-width) * 2);
   --border-radius: #{ref.$radius-border};
-  --modal-filter: blur(0.25rem);
-  --modal-bg: rgba(255, 255, 255, 0.7);
+  --modal-filter: decor.$filter-dialog;
+  --modal-bg: decor.$color-bg-dialog;
   --opacity-hover: #{if(math.is-unitless($opacity-hover), $opacity-hover, math.div($opacity-hover, 100%))};
   --opacity-focus: #{if(math.is-unitless($opacity-focus), $opacity-focus, math.div($opacity-focus, 100%))};
   --opacity-pressed: #{if(math.is-unitless($opacity-pressed), $opacity-pressed, math.div($opacity-pressed, 100%))};

@@ -34,10 +34,6 @@
   @include system.spacing;
   @include system.layout;
   @include system.decoration;
-
-  // Decoration
-  --modal-filter: blur(0.25rem);
-  --modal-bg: rgba(255, 255, 255, 0.7);
 }
 
 *, *::before, *::after {
@@ -65,8 +61,6 @@
 .-warning, .-danger, .-success, .-feature {
   @include system.color;
 }
-
-//@include layout.display;/**/
 
 // endregion ///////////////////////////////////////////// End Modification Classes
 
