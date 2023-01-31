@@ -25,3 +25,13 @@ $opacity-hover: ref.$opacity-hover !default;
 $opacity-focus: ref.$opacity-focus !default;
 $opacity-pressed: ref.$opacity-pressed !default;
 $opacity-busy: ref.$opacity-busy !default;
+
+// Elevation
+$elevation-tints: ("1": 5%, "2": 8%, "3": 11%, "4": 12%, "5": 14%) !default;
+$shadow-key-umbra-opacity: 0.2 !default;
+$shadow-key-penumbra-opacity: 0.14 !default;
+$shadow-ambient-shadow-opacity: 0.12 !default;
+
+// Dialogs
+$filter-dialog: blur(0.25rem);
+$color-bg-dialog: rgba(255, 255, 255, 0.7);

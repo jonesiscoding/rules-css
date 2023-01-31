@@ -3,16 +3,11 @@
 @use "sass:string";
 @use "sass:meta";
 @use "../palette/palette";
-
-// Variables
-$tints: ("1": 5%, "2": 8%, "3": 11%, "4": 12%, "5": 14%) !default;
-$shadow-key-umbra-opacity: 0.2 !default;
-$shadow-key-penumbra-opacity: 0.14 !default;
-$shadow-ambient-shadow-opacity: 0.12 !default;
+@use "../../tokens/config/decoration";
 
 @function opacity($level: 0) {
   @if $level > 0 {
-    $opacity: map.get($tints, quote(#{$level}));
+    $opacity: map.get(decoration.$elevation-tints, quote(#{$level}));
 
     @return math.div($opacity, 100%);
   }
@@ -56,7 +51,7 @@ $shadow-ambient-shadow-opacity: 0.12 !default;
 @function tint($foreground, $background, $level: 0) {
   @if $level > 0 {
     $key: quote(#{$level});
-    $opacity: map-get($tints, $key);
+    $opacity: map-get(decoration.$elevation-tints, $key);
 
     @return palette.tint($foreground, $background, $opacity);
   }
@@ -113,11 +108,9 @@ $shadow-ambient-shadow-opacity: 0.12 !default;
       @error $level;
     }
 
-    //@if meta.type-of(string.index($color, "var("))
-
-    $umbra-color: rgba(red($color),green($color),blue($color), $shadow-key-umbra-opacity);
-    $penumbra-color: rgba(red($color),green($color),blue($color), $shadow-key-penumbra-opacity);
-    $ambient-color: rgba(red($color),green($color),blue($color), $shadow-ambient-shadow-opacity);
+    $umbra-color: rgba(red($color),green($color),blue($color), decoration.$shadow-key-umbra-opacity);
+    $penumbra-color: rgba(red($color),green($color),blue($color), decoration.$shadow-key-penumbra-opacity);
+    $ambient-color: rgba(red($color),green($color),blue($color), decoration.$shadow-ambient-shadow-opacity);
 
     @return $umbra $umbra-color, $penumbra $penumbra-color, $ambient $ambient-color;
   } @else {
