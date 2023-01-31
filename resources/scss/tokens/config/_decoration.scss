@@ -5,7 +5,7 @@
 // @use "/path/to/screen" with ($sm-min: <px size>, $md-min: <px size>, etc);
 //
 
-@use "resources/scss/tokens/reference" as ref;
+@use "../reference" as ref;
 
 // Transitions
 $transition-base: ref.$transition-base !default;
