@@ -82,6 +82,7 @@ form .field {
     grid-column: var(--label-column);
     color: var(--color-label);
     align-self: start;
+    z-index: 1;
   }
   > input, > textarea, > select, > .wrapper {
     height: calc(var(--input-height) + var(--label-height));
