@@ -7,6 +7,15 @@
 
 @use "../reference" as ref;
 
+// Borders
+$radius-border: ref.$radius-border !default;
+$width-border: ref.$width-border !default;
+$width-outline: ref.$width-outline !default;
+
+// Spacing
+$spacer: ref.$spacer !default;
+$width-label: ref.$width-label !default;
+
 // Transitions
 $transition-base: ref.$transition-base !default;
 $transition-fade: ref.$transition-fade !default;
@@ -35,3 +44,5 @@ $shadow-ambient-shadow-opacity: 0.12 !default;
 // Dialogs
 $filter-dialog: blur(0.25rem);
 $color-bg-dialog: rgba(255, 255, 255, 0.7);
+
+
