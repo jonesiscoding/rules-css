@@ -1,0 +1,105 @@
+@use "../tokens/system";
+@use "../modules/theme/elevation";
+@use "../tokens/config/features";
+
+@if(features.$drawer) {
+  /** Drawer */
+
+  dialog[role="navigation"] {
+    --color-bg: var(--theme-bg);
+    --color-text: var(--theme-on-bg-alt);
+    --color-outline: transparent;
+    --drawer-font-size: .875rem;
+    nav:after {
+      --color-tint-red: var(--theme-color-red);
+      --color-tint-green: var(--theme-color-green);
+      --color-tint-blue: var(--theme-color-blue);
+    }
+    a {
+      --color-bg: transparent;
+      --color-link: var(--theme-on-bg-alt);
+      --color-icon: var(--theme-on-bg-alt);
+      --color-shadow: transparent;
+      --color-outline: transparent;
+      &:hover, &:focus {
+        --color-link: var(--theme-on-bg);
+        --color-icon: var(--theme-on-bg);
+        &:after {
+          --color-tint-red: var(--theme-on-bg-red);
+          --color-tint-green: var(--theme-on-bg-green);
+          --color-tint-blue: var(--theme-on-bg-blue);
+        }
+      }
+      &[aria-current]:not([aria-current=false]) {
+        --color-bg: var(--theme-c2);
+        --color-link: var(--theme-on-c2);
+        --color-icon: var(--theme-on-c2);
+        &:hover, &:focus {
+          --color-link: var(--theme-on-c2);
+          --color-icon: var(--theme-on-c2);
+          &:after {
+            --color-tint-red: var(--theme-on-c2-red);
+            --color-tint-green: var(--theme-on-c2-green);
+            --color-tint-blue: var(--theme-on-c2-blue);
+          }
+        }
+      }
+    }
+  }
+
+  dialog[role="navigation"] {
+    padding: 0;
+    align-items: start;
+    justify-content: start;
+    overflow-x: scroll;
+    nav {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--color-bg);
+      padding: 1rem 1rem;
+      color: var(--color-text);
+      font-size: var(--drawer-font-size);
+      font-weight: var(--font-weight-medium);
+      width: auto;
+      @include elevation.tint-after {
+        background-color: rgba(var(--color-tint-red), var(--color-tint-green), var(--color-tint-blue), var(--opacity-elevation-1))
+      }
+      header, footer, .ml-auto {
+        display: none;
+      }
+    }
+
+    a {
+      padding: var(--padding-y) calc(var(--padding-x) * .75);
+      display: grid;
+      column-gap: var(--padding-x);
+      grid-template-columns: var(--icon-size) 1fr;
+      grid-template-rows: 1fr;
+      border-radius: 1.25rem;
+      width: 100%;
+      &:after {
+        border-radius: calc(var(--radius-border) * 2);
+      }
+      @include elevation.tint-after-hover {
+        background-color: rgba(var(--color-tint-red), var(--color-tint-green), var(--color-tint-blue), var(--opacity-hover));
+      }
+      span {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    h3, h4 {
+      font-weight: var(--font-weight-light);
+      text-transform: uppercase;
+      padding-left: .7rem;
+      padding-right: .7rem;
+    }
+
+    h4 {
+      font-size: var(--font-size-sm);
+      margin-bottom: 0;
+    }
+  }
+}
