@@ -12,13 +12,13 @@ $danger: palette.generate(neutral.generate-single(base.$danger)) !default;
 $success: palette.generate(neutral.generate-single(base.$success)) !default;
 $warning: palette.generate(neutral.generate-single(base.$warning)) !default;
 $default: palette.generate(neutral.generate-single(base.$default)) !default;
-$major-alt: palette.generate(neutral.generate-single(base.$major, 27%, .08)) !default;
-$minor-alt: palette.generate(neutral.generate-single(base.$minor, 10%, .08)) !default;
-$feature-alt: palette.generate(neutral.generate-single(base.$feature, 10%, .08)) !default;
-$danger-alt: palette.generate(neutral.generate-single(base.$danger, 10%, .08)) !default;
-$success-alt: palette.generate(neutral.generate-single(base.$success, 10%, .08)) !default;
-$warning-alt: palette.generate(neutral.generate-single(base.$warning, 10%, .08)) !default;
-$default-alt: palette.generate(neutral.generate-single(base.$default, 10%, .08)) !default;
+$major-alt: palette.generate(neutral.generate-single(base.$major, 6, 8)) !default;
+$minor-alt: palette.generate(neutral.generate-single(base.$minor, 6, 8)) !default;
+$feature-alt: palette.generate(neutral.generate-single(base.$feature, 6, 8)) !default;
+$danger-alt: palette.generate(neutral.generate-single(base.$danger, 6, 8)) !default;
+$success-alt: palette.generate(neutral.generate-single(base.$success, 6, 8)) !default;
+$warning-alt: palette.generate(neutral.generate-single(base.$warning, 6, 8)) !default;
+$default-alt: palette.generate(neutral.generate-single(base.$default, 6, 8)) !default;
 
 @debug $major-alt;
 
