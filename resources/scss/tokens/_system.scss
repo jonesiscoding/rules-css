@@ -26,6 +26,15 @@
 @use "colors/warning";
 @use "colors/context";
 
+// region //////////////////////////////////////////////// Features
+
+$feature-hct: features.$hct;
+$feature-drawer: features.$drawer;
+$feature-header: features.$hct;
+$feature-footer: features.$footer;
+
+// endregion ///////////////////////////////////////////// End Features
+
 // region //////////////////////////////////////////////// Color & Theme
 
 // Theme Surface
