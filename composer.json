@@ -1,16 +1,6 @@
 {
-  "name": "deviscoding/rules-css",
-  "replace": {
-    "deviscoding/xq-select": "^4.0"
-  },
-  "homepage": "https://github.com/jonesiscoding/rules-css",
+  "name": "econoprint/rules-css",
   "version": "4.0",
-  "authors": [
-    {
-      "name": "AMJones",
-      "homepage": "https://www.deviscoding.com/"
-    }
-  ],
   "license": "LGPL",
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -29,6 +19,7 @@
     }
   ],
   "require": {
-    "material-foundation/libmonet": "master"
+    "material-foundation/libmonet": "master",
+    "deviscoding/searchable": "3.0"
   }
 }
