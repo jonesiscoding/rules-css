@@ -1,6 +1,6 @@
 {
   "name": "econoprint/rules-css",
-  "version": "4.0",
+  "version": "4.0+ep",
   "license": "LGPL",
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -9,7 +9,7 @@
       "type":"package",
       "package": {
         "name": "material-foundation/libmonet",
-        "version": "master",
+        "version": "1.0",
         "source": {
           "url": "https://gist.github.com/6ade636f207bf97742d101650798a088.git",
           "type": "git",
@@ -20,6 +20,6 @@
   ],
   "require": {
     "material-foundation/libmonet": "master",
-    "deviscoding/searchable": "3.0"
+    "deviscoding/searchable": "^3.0"
   }
 }
