@@ -96,26 +96,8 @@ $color-generation: null;
 @import "patterns/progress";
 @import "utility/busy";
 @import "utility/tooltip";
+@import "utility/responsive";
 
 // endregion ///////////////////////////////////////////// End Components
-
-// region //////////////////////////////////////////////// Responsive Behaviors
-
-// Minimum Width
-html, html > body {
-  min-width: system.$screen-device-min;
-}
-
-html.-desktop, html.-desktop > body {
-  min-width: system.$screen-desktop-min;
-}
-
-@include responsive.viewport-down(system.$screen-desktop-min) {
-  @-ms-viewport {
-    width: system.$screen-desktop-min;
-  }
-}
-
-// endregion ///////////////////////////////////////////// End Responsive Behaviors
 
 
