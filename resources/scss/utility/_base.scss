@@ -1,0 +1,38 @@
+// Tokens
+@use "../tokens/system";
+
+/** CSS Custom Variables **/
+:root, :after {
+  @include system.accents;
+  @include system.neutrals;
+  @include system.theme;
+  @include system.color;
+  @include system.typography;
+  @include system.spacing;
+  @include system.layout;
+  @include system.decoration;
+}
+
+// region //////////////////////////////////////////////// Modification Classes
+
+/** Simple Modification Classes **/
+
+// Context Colors
+.-warning {
+  @include system.warning();
+}
+.-danger {
+  @include system.danger();
+}
+.-success {
+  @include system.success();
+}
+.-feature {
+  @include system.feature();
+}
+
+.-warning, .-danger, .-success, .-feature {
+  @include system.color;
+}
+
+// endregion ///////////////////////////////////////////// End Modification Classes
