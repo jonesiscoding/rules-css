@@ -2,6 +2,11 @@
 // region //////////////////////////////////////////////// Typography & Spacing
 
 /** Reset Styles (Portions from Normalize.css) **/
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html {
   //noinspection ALL
   font-size: var(--font-size-root);

@@ -26,10 +26,6 @@
   @include system.decoration;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
 // region //////////////////////////////////////////////// Modification Classes
 
 /** Simple Modification Classes **/
