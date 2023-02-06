@@ -12,10 +12,6 @@
 
 /** Display Utilities **/
 
-//*[class^="layout-"] {
-//  display: var(--layout-display);
-//}
-
 [aria-hidden="true"], [hidden] {
   display: none !important;
 }
@@ -54,6 +50,13 @@ body {
   > header + dialog[role="navigation"] {
     --row-sidebar: 2;
   }
+}
+
+// Body Layout
+body > main {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Body Layout w/ Header/Footer using CSS Grid
