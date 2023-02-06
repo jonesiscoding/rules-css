@@ -11,22 +11,8 @@
 @use "modules/responsive";
 @use "modules/theme/spacing";
 
-$color-generation: null;
-@if system.$feature-hct {
-  $color-generation: "Color Generation: libmonet.scss | Apache License 2.0 | Copyright 2021 Google LLC | https://gist.github.com/jpohhhh/6ade636f207bf97742d101650798a088"
-}
-
-/*!
- * rules.dev (https://github.com/jonesiscoding/rules)
- * (c) 2022 - AMJones <am@jonesiscoding.com>
- *
- * Noted Portions: normalize.css | MIT License | https://github.com/necolas/normalize.css
- * Noted Portions: pico.css | MIT License | Copyright 2019-2022 | https://github.com/picocss/pico
- * #{$color-generation}
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+// Show License
+@import "utility/license";
 
 /** CSS Custom Variables **/
 :root, :after {
