@@ -14,12 +14,12 @@
 // Show License
 @import "utility/license";
 
-// Emit CSS Variables & Modification Classes
+// Emit CSS Variables, Modification Classes, Reset
 @import "utility/base";
-
-// region //////////////////////////////////////////////// Components
-
 @import "utility/reset";
+
+// region //////////////////////////////////////////////// Forms
+
 @import "forms/base";
 @import "forms/groups";
 @import "forms/split";
@@ -31,6 +31,11 @@
 @import "forms/list";
 @import "forms/validation";
 @import "patterns/buttons";
+
+// endregion ///////////////////////////////////////////// End Forms
+
+// region //////////////////////////////////////////////// Components
+
 @import "patterns/layout";
 @import "patterns/article";
 @import "patterns/table";
