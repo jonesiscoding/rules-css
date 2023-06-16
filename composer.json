@@ -19,7 +19,7 @@
       "type":"package",
       "package": {
         "name": "material-foundation/libmonet",
-        "version": "master",
+        "version": "1.0",
         "source": {
           "url": "https://gist.github.com/6ade636f207bf97742d101650798a088.git",
           "type": "git",
