@@ -11,7 +11,7 @@
       "homepage": "https://www.deviscoding.com/"
     }
   ],
-  "license": "LGPL",
+  "license": "LGPL-2.1-only",
   "minimum-stability": "dev",
   "prefer-stable": true,
   "repositories": [
