@@ -19,7 +19,6 @@
     }
   ],
   "require": {
-    "material-foundation/libmonet": "1.0",
-    "deviscoding/searchable": "^3.0"
+    "material-foundation/libmonet": "1.0"
   }
 }

@@ -1,0 +1,89 @@
+
+// region //////////////////////////////////////////////// Typography & Spacing
+
+/** Reset Styles (Portions from Normalize.css) **/
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  //noinspection ALL
+  font-size: var(--font-size-root);
+  text-rendering: optimizeLegibility;
+  -webkit-text-stroke-width: 0.20px;
+}
+
+body {
+  background-color: var(--body-bg);
+  color: var(--color-text);
+  font-family: var(--font-normal);
+  font-size: 1rem;
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  margin: 0;
+  -webkit-tap-highlight-color: rgba(#000, 0);
+  -webkit-text-size-adjust: 100%;
+}
+
+b, strong {
+  font-weight: var(--font-weight-bold);
+}
+
+h1, h2, h3, h4, h5, h6, p, ol, ul, dl, pre {
+  margin-top: 0;
+}
+
+pre, code, kbd, samp {
+  font-family: var(--font-monospace);
+  font-size: 1rem;
+}
+
+small {
+  font-size: var(--font-size-sm);
+}
+
+// endregion ///////////////////////////////////////////// End Typography & Spacing
+
+// region //////////////////////////////////////////////// Elements
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
+
+output {
+  display: inline-block;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+img, svg {
+  vertical-align: middle;
+}
+
+svg {
+  overflow: hidden;
+}
+
+summary {
+  display: list-item; // 1
+  cursor: pointer;
+}
+
+template {
+  display: none;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: var(--link-decoration);
+
+  &:hover {
+    color: var(--color-link-hover);
+    text-decoration: var(--link-hover-decoration);
+  }
+}
+
+// endregion ///////////////////////////////////////////// End Elements

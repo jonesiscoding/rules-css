@@ -1,3 +1,9 @@
+
+// rules.dev (https://github.com/jonesiscoding/rules)
+// (c) 2022-2023 - AMJones <am@jonesiscoding.com>
+//
+// For the full copyright and license information, please view the LICENSE
+
 // Sass Modules
 @use "sass:color";
 @use "sass:math";
@@ -11,159 +17,14 @@
 @use "modules/responsive";
 @use "modules/theme/spacing";
 
-$color-generation: null;
-@if system.$feature-hct {
-  $color-generation: "Color Generation: libmonet.scss | Apache License 2.0 | Copyright 2021 Google LLC | https://gist.github.com/jpohhhh/6ade636f207bf97742d101650798a088"
-}
+// Show License
+@import "utility/license";
 
-/*!
- * rules.dev (https://github.com/jonesiscoding/rules)
- * (c) 2022 - AMJones <am@jonesiscoding.com>
- *
- * Noted Portions: normalize.css | MIT License | https://github.com/necolas/normalize.css
- * Noted Portions: pico.css | MIT License | Copyright 2019-2022 | https://github.com/picocss/pico
- * #{$color-generation}
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+// Emit CSS Variables, Modification Classes, Reset
+@import "utility/base";
+@import "utility/reset";
 
-/** CSS Custom Variables **/
-:root, :after {
-  @include system.accents;
-  @include system.neutrals;
-  @include system.theme;
-  @include system.color;
-  @include system.typography;
-  @include system.spacing;
-  @include system.layout;
-  @include system.decoration;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-// region //////////////////////////////////////////////// Modification Classes
-
-/** Simple Modification Classes **/
-
-// Context Colors
-.-warning {
-  @include system.warning();
-}
-.-danger {
-  @include system.danger();
-}
-.-success {
-  @include system.success();
-}
-.-feature {
-  @include system.feature();
-}
-
-.-warning, .-danger, .-success, .-feature {
-  @include system.color;
-}
-
-// endregion ///////////////////////////////////////////// End Modification Classes
-
-// region //////////////////////////////////////////////// Typography & Spacing
-
-/** Reset Styles (Portions from Normalize.css) **/
-html {
-  //noinspection ALL
-  font-size: var(--font-size-root);
-  text-rendering: optimizeLegibility;
-  -webkit-text-stroke-width: 0.20px;
-}
-
-body {
-  background-color: var(--body-bg);
-  color: var(--color-text);
-  font-family: var(--font-normal);
-  font-size: 1rem;
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-normal);
-  margin: 0;
-  -webkit-tap-highlight-color: rgba(#000, 0);
-  -webkit-text-size-adjust: 100%;
-}
-
-b, strong {
-  font-weight: var(--font-weight-bold);
-}
-
-h1, h2, h3, h4, h5, h6, p, ol, ul, dl, pre {
-  margin-top: 0;
-}
-
-pre, code, kbd, samp {
-  font-family: var(--font-monospace);
-  font-size: 1rem;
-}
-
-small {
-  font-size: var(--font-size-sm);
-}
-
-// endregion ///////////////////////////////////////////// End Typography & Spacing
-
-// region //////////////////////////////////////////////// Elements
-
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
-  display: block;
-}
-
-output {
-  display: inline-block;
-}
-
-progress {
-  vertical-align: baseline;
-}
-
-img, svg {
-  vertical-align: middle;
-}
-
-svg {
-  overflow: hidden;
-}
-
-summary {
-  display: list-item; // 1
-  cursor: pointer;
-}
-
-template {
-  display: none;
-}
-
-a {
-  color: var(--color-link);
-  text-decoration: var(--link-decoration);
-
-  &:hover {
-    color: var(--color-link-hover);
-    text-decoration: var(--link-hover-decoration);
-  }
-}
-
-// endregion ///////////////////////////////////////////// End Elements
-
-// region //////////////////////////////////////////////// Layout
-
-body > main {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: var(--padding-x);
-}
-
-// endregion ///////////////////////////////////////////// End Layout
-
-// region //////////////////////////////////////////////// Components
+// region //////////////////////////////////////////////// Forms
 
 @import "forms/base";
 @import "forms/groups";
@@ -176,6 +37,11 @@ body > main {
 @import "forms/list";
 @import "forms/validation";
 @import "patterns/buttons";
+
+// endregion ///////////////////////////////////////////// End Forms
+
+// region //////////////////////////////////////////////// Components
+
 @import "patterns/layout";
 @import "patterns/article";
 @import "patterns/table";
@@ -190,26 +56,8 @@ body > main {
 @import "patterns/progress";
 @import "utility/busy";
 @import "utility/tooltip";
+@import "utility/responsive";
 
 // endregion ///////////////////////////////////////////// End Components
-
-// region //////////////////////////////////////////////// Responsive Behaviors
-
-// Minimum Width
-html, html > body {
-  min-width: system.$screen-device-min;
-}
-
-html.-desktop, html.-desktop > body {
-  min-width: system.$screen-desktop-min;
-}
-
-@include responsive.viewport-down(system.$screen-desktop-min) {
-  @-ms-viewport {
-    width: system.$screen-desktop-min;
-  }
-}
-
-// endregion ///////////////////////////////////////////// End Responsive Behaviors
 
 
