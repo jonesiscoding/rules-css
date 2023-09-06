@@ -26,11 +26,11 @@ class Td extends TableElement {
   get data() {
     let data = {};
     let ds = ( typeof this.el.dataset === 'object' ) ? this.el.dataset : {};
-    Object.keys(ds).forEach(function(trait) {
+    Object.keys(ds).forEach( trait => {
       if ( ds[ trait ] ) {
         data[trait] = ds[trait];
       }
-    });
+    } );
 
     if(!data.hasOwnProperty('text')) {
       data['text'] = this.text;
@@ -57,11 +57,11 @@ class Tr extends TableElement {
   get data() {
     let data = {}
     let ds = ( typeof this.el.dataset === 'object' ) ? this.el.dataset : {};
-    Object.keys(ds).forEach(function(trait) {
+    Object.keys(ds).forEach( trait => {
       if ( ds[ trait ] ) {
         data[trait] = ds[trait];
       }
-    });
+    } );
 
     this.cells.forEach(cell => {
       let key = cell.header
@@ -77,12 +77,12 @@ class Tr extends TableElement {
     let has  = false;
     let data = this.data
     let qq = q.toLowerCase();
-    Object.keys(data).forEach(function(trait) {
+    Object.keys(data).forEach( trait => {
       if(data[trait] && data[trait].toLowerCase().indexOf(qq) >= 0) {
         has = true;
         return null;
       }
-    });
+    } );
 
     return has;
   }
@@ -145,7 +145,7 @@ class Table extends Component {
     let sorters = table.el.querySelectorAll("[aria-sort]")
     sorters.forEach(cell => {
       let key = cell.text || 'col' + cell.index;
-      cell.addEventListener('click', event => {
+      cell.addEventListener('click', _ => {
         sorters.forEach(sib => {
           sib.setAttribute("aria-sort", "none");
         });
@@ -194,7 +194,7 @@ class Table extends Component {
     let table = this;
     if ( table.sortKey !== sortKey ) {
       table.el.classList.add('fade');
-      setTimeout( function () {
+      setTimeout( () => {
         if ( !sortKey ) {
           table.body.rows.forEach(row => {
             // remove CSS order
@@ -207,14 +207,14 @@ class Table extends Component {
           table.sortKey = sortKey;
           // Need to trigger event
           let sorted = table.body.rows
-          sorted.sort(function(a,b) {
+          sorted.sort( ( a, b ) => {
             let aCrit = a.get(sortKey) || "";
             let bCrit = b.get(sortKey) || "";
 
             // If the same, fall back to first column with data
             if ( aCrit === bCrit ) {
               for(let x = 0; x < a.cells.length; x++) {
-                var tCrit = a.cells[x] || "";
+                let tCrit = a.cells[ x ] || "";
                 if ( tCrit !== "" ) {
                   aCrit = tCrit;
                   bCrit = b.cells[x] || "";
@@ -233,7 +233,7 @@ class Table extends Component {
             bCrit = ( isNaN( bNum ) ) ? bCrit.toLowerCase() : bNum;
 
             return (aCrit > bCrit) ? 1 : -1;
-          });
+          } );
 
           for(let sx=0; sx < sorted.length; sx++ ) {
             let order = sx - sorted.length - 100;
@@ -241,9 +241,7 @@ class Table extends Component {
           }
         }
 
-        setTimeout( function () {
-          table.el.classList.add('in');
-        }, table.options.animateFor );
+        setTimeout( () => { table.el.classList.add('in'); }, table.options.animateFor );
       }, table.options.animateFor );
     }
   }
