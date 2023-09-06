@@ -2,7 +2,7 @@
 @use "../modules/theme/elevation";
 @use "../tokens/config/features";
 
-@if(features.$drawer) {
+@if features.$drawer {
   /** Drawer */
 
   dialog[role="navigation"] {
