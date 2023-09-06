@@ -10,7 +10,8 @@
     clone: Clone,
     steps: ProgressSteps,
     trclick: TableRowClick,
-    tooltip: Tooltip
+    tooltip: Tooltip,
+    table: Table
   };
 
   function initialize(key, selector = null) {
@@ -34,6 +35,7 @@
   initialize('confirm');
   initialize( 'trclick' );
   initialize('tooltip');
+  initialize('table')
 
   w.rules = rules;
 }( window, document ) );

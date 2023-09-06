@@ -1,7 +1,17 @@
 {
-  "name": "econoprint/rules-css",
-  "version": "4.0+ep",
-  "license": "LGPL",
+  "name": "deviscoding/rules-css",
+  "replace": {
+    "deviscoding/xq-select": "^4.0"
+  },
+  "homepage": "https://github.com/jonesiscoding/rules-css",
+  "version": "4.0",
+  "authors": [
+    {
+      "name": "AMJones",
+      "homepage": "https://www.deviscoding.com/"
+    }
+  ],
+  "license": "LGPL-2.1-only",
   "minimum-stability": "dev",
   "prefer-stable": true,
   "repositories": [

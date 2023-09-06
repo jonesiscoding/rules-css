@@ -88,6 +88,7 @@ table {
       &:before {
         color: var(--color-text);
         content: "\2193";
+        padding-right: .25rem;
       }
       &:not([aria-sort="none"]) {
         font-weight: var(--font-weight-bold);
@@ -106,10 +107,52 @@ table[role="grid"] {
   }
 }
 
+// Sorted Tables
+table.-sorted {
+  display: block;
+  tbody, thead {
+    display: grid;
+    tr {
+      display: grid;
+      grid-auto-flow: column;
+    }
+  }
+
+}
+
+// Tables With Custom Headers
+figure:has(table), figure.-table {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: min-content 1fr;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  grid-row-gap: var(--padding-y);
+  grid-column-gap: var(--padding-x);
+  > figcaption {
+    grid-row: 1;
+    grid-column: 1;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    align-self: center;
+    padding-left: var(--padding-x);
+    padding-right: var(--padding-x);
+  }
+  > nav, > menu {
+    grid-row: 1;
+    grid-column: 2;
+  }
+  > table {
+    grid-row: 2;
+    grid-column: span 2;
+  }
+}
+
 // Tables Inside Cards
 article > table,
 details > table,
-article > section > table {
+article > section > table,
+article > form > section > table {
   background-color: transparent;
   margin-left: calc(var(--padding-x) * -1);
   margin-right: calc(var(--padding-x) * -1);

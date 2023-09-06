@@ -70,27 +70,25 @@
   --theme-link-on-inverse: #{$link-on-inverse};
   --theme-link-on-inverse-hover: #{$link-on-inverse};
   --theme-link-on-inverse-focus: #{$link-on-inverse};
-  &, &:after {
-    --theme-color-red: #{color.red($color)};
-    --theme-color-green: #{color.green($color)};
-    --theme-color-blue: #{color.blue($color)};
-    --theme-on-color-red: #{color.red($on-color)};
-    --theme-on-color-green: #{color.green($on-color)};
-    --theme-on-color-blue: #{color.blue($on-color)};
-    --theme-bg-red: #{color.red($surface)};
-    --theme-bg-green: #{color.green($surface)};
-    --theme-bg-blue: #{color.blue($surface)};
-    --theme-bg-alt-red: #{color.red($surface-alt)};
-    --theme-bg-alt-green: #{color.green($surface-alt)};
-    --theme-bg-alt-blue: #{color.blue($surface-alt)};
-    --theme-on-bg-red: #{color.red($on-surface)};
-    --theme-on-bg-green: #{color.green($on-surface)};
-    --theme-on-bg-blue: #{color.blue($on-surface)};
-    --theme-on-bg-alt-red: #{color.red($on-surface-alt)};
-    --theme-on-bg-alt-green: #{color.green($on-surface-alt)};
-    --theme-on-bg-alt-blue: #{color.blue($on-surface-alt)};
-    --theme-outline-red: #{color.red($outline)};
-    --theme-outline-green: #{color.green($outline)};
-    --theme-outline-blue: #{color.blue($outline)};
-  }
+  --theme-color-red: #{color.red($color)};
+  --theme-color-green: #{color.green($color)};
+  --theme-color-blue: #{color.blue($color)};
+  --theme-on-color-red: #{color.red($on-color)};
+  --theme-on-color-green: #{color.green($on-color)};
+  --theme-on-color-blue: #{color.blue($on-color)};
+  --theme-bg-red: #{color.red($surface)};
+  --theme-bg-green: #{color.green($surface)};
+  --theme-bg-blue: #{color.blue($surface)};
+  --theme-bg-alt-red: #{color.red($surface-alt)};
+  --theme-bg-alt-green: #{color.green($surface-alt)};
+  --theme-bg-alt-blue: #{color.blue($surface-alt)};
+  --theme-on-bg-red: #{color.red($on-surface)};
+  --theme-on-bg-green: #{color.green($on-surface)};
+  --theme-on-bg-blue: #{color.blue($on-surface)};
+  --theme-on-bg-alt-red: #{color.red($on-surface-alt)};
+  --theme-on-bg-alt-green: #{color.green($on-surface-alt)};
+  --theme-on-bg-alt-blue: #{color.blue($on-surface-alt)};
+  --theme-outline-red: #{color.red($outline)};
+  --theme-outline-green: #{color.green($outline)};
+  --theme-outline-blue: #{color.blue($outline)};
 }
