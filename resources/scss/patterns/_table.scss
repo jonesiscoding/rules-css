@@ -88,6 +88,7 @@ table {
       &:before {
         color: var(--color-text);
         content: "\2193";
+        padding-right: .25rem;
       }
       &:not([aria-sort="none"]) {
         font-weight: var(--font-weight-bold);
@@ -104,6 +105,19 @@ table[role="grid"] {
   tbody tr:nth-child(odd) > * {
     background-color: rgba(var(--color-tint-red),var(--color-tint-green),var(--color-tint-blue), calc(var(--opacity-hover) * 2));
   }
+}
+
+// Sorted Tables
+table.-sorted {
+  display: block;
+  tbody, thead {
+    display: grid;
+    tr {
+      display: grid;
+      grid-auto-flow: column;
+    }
+  }
+
 }
 
 // Tables Inside Cards
