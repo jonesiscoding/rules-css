@@ -37,21 +37,30 @@ dialog:not([open]), dialog[open="false"] {
 }
 
 // An Article Element MUST be used inside the dialog element
-dialog > article {
+dialog, dialog > form {
+  > article {
   z-index: system.$zindex-dialog;
   min-width: 200px;
   display: flex;
   flex-direction: column;
+    position: relative;
+    border-radius: var(--padding-x);
+  }
+  > article, > article:after {
+    border-radius: var(--padding-x);
+    overflow: hidden;
+  }
 }
 
-dialog > article > header {
-  margin: calc(var(--padding-y) * -1) calc(var(--padding-y) * -1) 0 calc(var(--padding-y) * -1);
-  padding: var(--padding-y) calc(var(--padding-x) / 4);
-  text-align: center;
-}
-
-dialog > article > footer {
-  margin: 0 calc(var(--padding-y) * -1) calc(var(--padding-y) * -1) calc(var(--padding-y) * -1);
-  padding: var(--padding-y) calc(var(--padding-x) / 4);
-  text-align: right;
+dialog, dialog > form {
+  > article > header, > article > footer {
+    margin:  calc(var(--padding-y) * -1) calc(var(--padding-y) * -1) 0 calc(var(--padding-y) * -1);
+    padding: var(--padding-y) calc(var(--padding-x) / 4);
+  }
+  > article > header {
+    text-align: center;
+  }
+  > article > footer {
+    text-align: right;
+  }
 }
