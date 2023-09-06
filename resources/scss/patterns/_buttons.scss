@@ -239,6 +239,7 @@ button {
 button,
 input:is([type="button"],[type="submit"],[type="reset"]),
 a:is([role="button"],[role="menuitem"],[role="tab"],.btn),
+label:is([role="button"]),
 dialog[role="navigation"] a {
   @extend %button
 }
