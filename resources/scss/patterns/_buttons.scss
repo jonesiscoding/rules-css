@@ -36,9 +36,9 @@ button, *[role="button"], .btn {
     --color-tint-blue: var(--theme-color-blue);
   }
   @include buttons.disabled {
-    --color-bg: rgba(var(--theme-on-red), var(--theme-on-green), var(--theme-on-blue), var(--opacity-disabled-bg));
-    --color-link: rgba(var(--theme-on-red), var(--theme-on-green), var(--theme-on-blue), var(--opacity-disabled));
-    --color-icon: rgba(var(--theme-on-red), var(--theme-on-green), var(--theme-on-blue), var(--opacity-disabled));
+    --color-bg: rgba(var(--theme-on-color-red), var(--theme-on-color-green), var(--theme-on-color-blue), var(--opacity-disabled-bg));
+    --color-link: rgba(var(--theme-color-red), var(--theme-color-green), var(--theme-color-blue), var(--opacity-disabled));
+    --color-icon: rgba(var(--theme-color-red), var(--theme-color-green), var(--theme-color-blue), var(--opacity-disabled));
   }
   // TODO: Pressed Shadow
   @include buttons.pressed-after {
@@ -137,7 +137,7 @@ button {
   align-items: center;
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-input);
-  line-height: var(--line-height-input);
+  line-height: var(--input-line-height);
   white-space: nowrap;
   align-content: center;
   user-select: none;
