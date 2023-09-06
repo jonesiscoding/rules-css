@@ -306,6 +306,7 @@ $font-weight-light: type.$weight-light !default;
 $font-weight-medium: type.$weight-medium !default;
 $font-weight-normal: type.$weight-base !default;
 $font-weight-bold: type.$weight-bold !default;
+$font-url: type.$font-url !default;
 
 @mixin typography() {
   --font-monospace: #{$font-monospace};
@@ -469,8 +470,8 @@ $opacity-busy: decor.$opacity-busy !default;
   --border-width: #{ref.$width-border};
   --outline-width: calc(var(--border-width) * 2);
   --border-radius: #{ref.$radius-border};
-  --modal-filter: decor.$filter-dialog;
-  --modal-bg: decor.$color-bg-dialog;
+  --modal-filter: #{decor.$filter-dialog};
+  --modal-bg: #{decor.$color-bg-dialog};
   --opacity-hover: #{if(math.is-unitless($opacity-hover), $opacity-hover, math.div($opacity-hover, 100%))};
   --opacity-focus: #{if(math.is-unitless($opacity-focus), $opacity-focus, math.div($opacity-focus, 100%))};
   --opacity-pressed: #{if(math.is-unitless($opacity-pressed), $opacity-pressed, math.div($opacity-pressed, 100%))};
