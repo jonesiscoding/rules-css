@@ -151,7 +151,8 @@ figure:has(table), figure.-table {
 // Tables Inside Cards
 article > table,
 details > table,
-article > section > table {
+article > section > table,
+article > form > section > table {
   background-color: transparent;
   margin-left: calc(var(--padding-x) * -1);
   margin-right: calc(var(--padding-x) * -1);
