@@ -43,6 +43,7 @@ class Dialog extends Component {
         event.stopPropagation();
       }
     });
+    self.el.dispatchEvent(new CustomEvent('rules.dialog.show'))
     self.el.show();
   }
 
