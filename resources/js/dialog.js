@@ -30,7 +30,8 @@ class Dialog extends Component {
 
   show() {
     let self = this;
-    self.el.show();
+    let clb = self.el.querySelectorAll('button[aria-label="close" i]');
+    clb.forEach(cb => { cb.addEventListener('click', _ => { self.close(); }); });
     document.addEventListener('click', function(event) {
       const content = self.content;
       const isInside = content && content.contains(event.target);
@@ -42,6 +43,7 @@ class Dialog extends Component {
         event.stopPropagation();
       }
     });
+    self.el.show();
   }
 
   close() {

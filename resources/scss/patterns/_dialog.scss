@@ -53,12 +53,29 @@ dialog, dialog > form {
 }
 
 dialog, dialog > form {
+  > article, > article > header {
+    > button[aria-label="close" i] {
+      padding: var(--padding-half-x);
+      border-radius: 50%;
+      width: calc(var(--icon-size) + (var(--padding-half-x) * 2));
+      height: calc(var(--icon-size) + (var(--padding-half-x) * 2));
+      display: flex;
+    }
+  }
+  > article > button[aria-label="close" i] {
+    position: absolute;
+    right: var(--padding-x);
+    top: var(--padding-x);
+  }
   > article > header, > article > footer {
     margin:  calc(var(--padding-y) * -1) calc(var(--padding-y) * -1) 0 calc(var(--padding-y) * -1);
     padding: var(--padding-y) calc(var(--padding-x) / 4);
   }
   > article > header {
     text-align: center;
+    > button[aria-label="close" i] {
+      justify-self: end;
+    }
   }
   > article > footer {
     text-align: right;
