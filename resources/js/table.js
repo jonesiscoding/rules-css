@@ -125,6 +125,7 @@ class Table extends Component {
 
   options = { animateFor: 600, filtered: '-filtered', sorted: '-sorted', matched: '-match' }
   sortKey = "none";
+  sortOrder = "none";
 
   constructor( el ) {
     super( el );
@@ -142,17 +143,42 @@ class Table extends Component {
     allHeaders.forEach(header => { header.setAttribute("role", "columnheader" )});
 
     // Add EventListener for Sorting
-    let sorters = table.el.querySelectorAll("[aria-sort]")
-    sorters.forEach(cell => {
-      let key = cell.text || 'col' + cell.index;
-      cell.addEventListener('click', _ => {
-        sorters.forEach(sib => {
-          sib.setAttribute("aria-sort", "none");
-        });
-        cell.setAttribute('aria-sort', 'ascending');
-        table.sort(key);
+    let sorters = [];
+    if(table.head !== null) {
+      table.head.rows.forEach(row => {
+        row.cells.forEach(cell => {
+          if ( cell.el.hasAttribute( "aria-sort" ) ) {
+            sorters.push(cell);
+          }
+        })
       });
-    });
+      sorters.forEach(cell => {
+        let key = cell.text || 'col' + cell.index;
+          cell.el.addEventListener('click', _ => {
+            let order;
+            switch(cell.el.getAttribute("aria-sort")) {
+              case "none":
+                order = "ascending";
+                break;
+              case "ascending":
+                order = "descending";
+                break;
+              default:
+                order = "none";
+            }
+          sorters.forEach(sib => {
+              sib.el.setAttribute("aria-sort", "none");
+          });
+
+          if(order !== "none") {
+            cell.el.setAttribute('aria-sort', order );
+            table.sort(key, order);
+          } else {
+            table.el.classList.remove(table.options.sorted);
+          }
+        });
+      });
+    }
   }
 
   /**
@@ -190,9 +216,10 @@ class Table extends Component {
     }
   }
 
-  sort(sortKey) {
+  sort(sortKey, order) {
+    let sortOrder = order || "ascending"
     let table = this;
-    if ( table.sortKey !== sortKey ) {
+    if ( table.sortKey !== sortKey || sortOrder !== table.sortOrder ) {
       table.el.classList.add('fade');
       setTimeout( () => {
         if ( !sortKey ) {
@@ -202,9 +229,11 @@ class Table extends Component {
           });
           table.el.classList.remove(table.options.sorted);
           table.sortKey = null;
+          table.sortOrder = null;
         } else {
           table.el.classList.add(table.options.sorted);
           table.sortKey = sortKey;
+          table.sortOrder = sortOrder;
           // Need to trigger event
           let sorted = table.body.rows
           sorted.sort( ( a, b ) => {
@@ -214,10 +243,10 @@ class Table extends Component {
             // If the same, fall back to first column with data
             if ( aCrit === bCrit ) {
               for(let x = 0; x < a.cells.length; x++) {
-                let tCrit = a.cells[ x ] || "";
+                let tCrit = a.cells[ x ].text || "";
                 if ( tCrit !== "" ) {
                   aCrit = tCrit;
-                  bCrit = b.cells[x] || "";
+                  bCrit = b.cells[x].text || "";
                 }
               }
             }
@@ -235,9 +264,13 @@ class Table extends Component {
             return (aCrit > bCrit) ? 1 : -1;
           } );
 
+          if(sortOrder !== "ascending") {
+            sorted = sorted.reverse();
+          }
+
           for(let sx=0; sx < sorted.length; sx++ ) {
             let order = sx - sorted.length - 100;
-            sorted[sx].style.order = String(order);
+            sorted[sx].el.style.order = String(order);
           }
         }
 
