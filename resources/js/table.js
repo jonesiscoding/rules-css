@@ -10,9 +10,10 @@ class Td extends TableElement {
   get header() {
     let table = this.el.closest("table");
     let thead = table.querySelector("thead");
-    let th = thead.children.item(this.index)
+    let tr = thead.querySelector("tr");
+    let th = tr.children.item( this.index );
     if(th !== null) {
-      return th.textContent || th.innerText;
+      return th.textContent || th.innerText || "col" + this.index;
     } else {
       return 'col' + this.index;
     }
@@ -41,7 +42,7 @@ class Tr extends TableElement {
   static selector = "tr";
 
   get cells() {
-    let cellElements = this.el.querySelectorAll("td");
+    let cellElements = this.el.querySelectorAll("td, th");
     let cells = [];
     cellElements.forEach(cell => {
       cells.push(new Td(cell));
@@ -166,9 +167,8 @@ class Table extends Component {
 
   get head() {
     let t = this.el.querySelector("thead");
-    if(t !== null) {
-      return new THead(t);
-    }
+
+    return t !== null ? new THead(t) : null;
   }
 
   get foot() {
