@@ -2,7 +2,7 @@
 @use "../tokens/system";
 
 /** CSS Custom Variables **/
-:root, :after {
+:root {
   @include system.accents;
   @include system.neutrals;
   @include system.theme;
