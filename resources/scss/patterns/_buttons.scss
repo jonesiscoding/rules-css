@@ -23,6 +23,7 @@ button, *[role="button"], .btn {
   --color-outline: transparent;
   --color-link: var(--theme-color);
   --color-icon: var(--theme-color);
+  --border-radius: calc(var(--font-size) + var(--input-padding-x));
   // TODO: Shadow
   // TODO: Hover Shadow
   @include buttons.hover-after {
