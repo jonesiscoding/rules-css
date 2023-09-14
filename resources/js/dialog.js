@@ -49,6 +49,7 @@ class Dialog extends Component {
 
   close() {
     this.el.close();
+    this.el.dispatchEvent(new CustomEvent('rules.dialog.close'))
   }
 }
 
