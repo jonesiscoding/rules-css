@@ -2,6 +2,7 @@
 $feature-hct: false;
 $feature-badge: true;
 $feature-drawer: true;
+$feature-grid: true;
 
 // Typography
 $font-url: null;
@@ -24,6 +25,7 @@ $spacer:                1rem;
 $height-header:         4rem;
 $height-footer:         4rem;
 $width-min:             320px;
+$columns:               12;
 $rules-header: true;
 $rules-footer: true;
 $width-sidebar: 20rem;

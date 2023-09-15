@@ -1,0 +1,30 @@
+@use "../tokens/system";
+
+@if system.$feature-grid {
+  .grid {
+    display: grid;
+    column-gap: var(--gap-column);
+    row-gap: var(--gap-row);
+    margin: 0;
+    grid-template-columns: 1fr;
+    & > * {
+      min-width: 0;
+    }
+  }
+
+  @for $i from 1 through system.$columns {
+    .col-#{$i} {
+      grid-column: span #{$i};
+    }
+  }
+
+  table .col-0 {
+    min-width: min-content;
+  }
+
+  @for $i from 1 through system.$columns {
+    table .col-#{$i} {
+      width: calc(1 * 100% / var(--table-columns));
+    }
+  }
+}

@@ -9,13 +9,20 @@ $padding-y: $spacer * .5;
 $half-spacer: math.div($spacer, 2);
 $half-padding-x: math.div($padding-x, 2);
 $half-padding-y: math.div($padding-y, 2);
+
 // Input
 $padding-x-input: $spacer * .75;
 $padding-y-input: $spacer * .5;
 $height-input: typography.$size-input * typography.$height-input + ($padding-y-input * 2);
 $height-label: typography.$size-label * typography.$height-input + $padding-y-input;
 $width-label: decor.$width-label;
+
 // Decoration
 $radius-border: decor.$radius-border;
 $width-border: decor.$width-border;
 $width-outline: decor.$width-outline;
+
+// Grid
+$gap-column: $padding-x;
+$gap-row: $padding-y;
+$columns: ref.$columns;

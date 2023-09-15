@@ -33,6 +33,7 @@ $feature-badge: features.$badge;
 $feature-drawer: features.$drawer;
 $feature-header: features.$hct;
 $feature-footer: features.$footer;
+$feature-grid: features.$grid;
 
 // endregion ///////////////////////////////////////////// End Features
 
@@ -343,6 +344,9 @@ $padding-half-x: spacing.$half-padding-x;
 $padding-half-y: spacing.$half-padding-y;
 $padding-x-input: spacing.$padding-x-input;
 $padding-y-input: spacing.$padding-y-input;
+$gap-column: spacing.$gap-column;
+$gap-row: spacing.$gap-row;
+$columns: spacing.$columns;
 
 @mixin spacing() {
   --spacer: #{$spacer};
@@ -371,6 +375,12 @@ $padding-y-input: spacing.$padding-y-input;
   --border-width: #{$border-width};
   --outline-width: calc(var(--border-width) * 2);
   --border-radius: #{$border-radius};
+
+  // Grid
+  --grid-columns: #{$columns};
+  --table-columns: #{$columns};
+  --gap-column: #{$gap-column};
+  --gap-row: #{$gap-row};
 }
 
 // endregion ///////////////////////////////////////////// End Spacing
