@@ -198,7 +198,9 @@ article > form > section > table {
       background-color: transparent;
     }
 
-    & > thead > tr:last-child, & > tbody > tr:last-child > *, & > tr:last-child > * {
+    & > thead:last-child > tr:last-child,
+    & > tbody:last-child > tr:last-child > *,
+    & > tr:last-child > * {
       border-bottom-width: 0;
     }
   }
