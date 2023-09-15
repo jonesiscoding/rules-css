@@ -220,7 +220,7 @@ class Table extends Component {
     let sortOrder = order || "ascending"
     let table = this;
     if ( table.sortKey !== sortKey || sortOrder !== table.sortOrder ) {
-      table.el.classList.add('fade');
+      table.body.el.setAttribute('aria-busy', "true");
       setTimeout( () => {
         if ( !sortKey ) {
           table.body.rows.forEach(row => {
@@ -274,7 +274,7 @@ class Table extends Component {
           }
         }
 
-        setTimeout( () => { table.el.classList.add('in'); }, table.options.animateFor );
+        setTimeout( () => { table.body.el.removeAttribute('aria-busy'); }, table.options.animateFor );
       }, table.options.animateFor );
     }
   }
