@@ -1,5 +1,7 @@
 // Features
 $feature-hct: false;
+$feature-badge: true;
+$feature-drawer: true;
 
 // Typography
 $font-url: null;
@@ -24,7 +26,6 @@ $height-footer:         4rem;
 $width-min:             320px;
 $rules-header: true;
 $rules-footer: true;
-$feature-drawer: true;
 $width-sidebar: 20rem;
 $width-label: 10%;
 

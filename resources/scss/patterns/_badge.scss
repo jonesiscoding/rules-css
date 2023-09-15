@@ -1,0 +1,25 @@
+@use "../tokens/system";
+
+@if system.$feature-badge {
+  [data-badge] {
+    position: relative;
+    &:before {
+      align-items: center;
+      aspect-ratio: 1/1;
+      background-color: var(--theme-a2);
+      border: 3px solid var(--theme-bg);
+      border-radius: 10rem;
+      color: var(--theme-on-a2);
+      content: attr(data-badge);
+      display: inline-flex;
+      font-size: calc(var(--font-size-sm) * .75);
+      justify-content: center;
+      min-height: 1rem;
+      min-width: 1rem;
+      padding: 3px;
+      position: absolute;
+      right: 20%;
+      top: 20%;
+    }
+  }
+}
