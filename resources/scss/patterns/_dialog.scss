@@ -55,6 +55,7 @@ dialog, dialog > form {
 dialog, dialog > form {
   > article, > article > header {
     > button[aria-label="close" i] {
+      --color-bg: transparent;
       padding: var(--padding-half-x);
       border-radius: 50%;
       width: calc(var(--icon-size) + (var(--padding-half-x) * 2));
@@ -63,6 +64,7 @@ dialog, dialog > form {
     }
   }
   > article > button[aria-label="close" i] {
+    --color-bg: transparent;
     position: absolute;
     right: var(--padding-x);
     top: var(--padding-x);
