@@ -239,6 +239,7 @@ button {
 button,
 input:is([type="button"],[type="submit"],[type="reset"]),
 a:is([role="button"],[role="menuitem"],[role="tab"],.btn),
+label:is([role="button"]),
 dialog[role="navigation"] a {
   @extend %button
 }
@@ -254,4 +255,9 @@ dialog[role="navigation"] a[disabled], dialog[role="navigation"] a.disabled {
 // Do not underline links that
 a:is([role="button"],[role="menuitem"],[role="tab"],.btn), dialog[role="navigation"] a {
   text-decoration: none;
+}
+
+// Rounded corners, unless menuitem, tab, drawer
+button:not([role="menuitem"]):not([role="tab"]), a:is([role="button"]), label:is([role="button"]) {
+  --border-radius: calc(var(--font-size) + var(--input-padding-x));
 }
