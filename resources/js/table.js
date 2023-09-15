@@ -268,9 +268,9 @@ class Table extends Component {
             sorted = sorted.reverse();
           }
 
+          table.body.el.innerHTML = '';
           for(let sx=0; sx < sorted.length; sx++ ) {
-            let order = sx - sorted.length - 100;
-            sorted[sx].el.style.order = String(order);
+            table.body.el.appendChild(sorted[sx].el);
           }
         }
 

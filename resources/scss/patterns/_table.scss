@@ -117,17 +117,6 @@ table[role="grid"] {
 }
 
 // Sorted Tables
-table.-sorted {
-  display: block;
-  tbody, thead {
-    display: grid;
-    tr {
-      display: grid;
-      grid-auto-flow: column;
-    }
-  }
-
-}
 table > tbody[aria-busy=true] {
   > tr {
     transition: var(--transition-fade);
