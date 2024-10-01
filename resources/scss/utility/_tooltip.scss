@@ -1,6 +1,6 @@
 @use "../tokens/system";
 
-[data-title]:not(.-tipless) {
+[data-tooltip]:not(.-tipless) {
   position: relative;
 
   &:not(a, button, input, textarea, select) {
@@ -21,7 +21,7 @@
     transform: translate(-50%, -.25rem);
     border-radius: var(--border-radius);
     background: var(--theme-inverse);
-    content: attr(data-title);
+    content: attr(data-tooltip);
     color: var(--theme-on-inverse);
     font-style: normal;
     font-weight: var(--font-weight-normal);
