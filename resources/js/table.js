@@ -197,7 +197,7 @@ class Table extends Component {
             cell.el.setAttribute('aria-sort', order );
             table.sort(key, order);
           } else {
-            table.el.classList.remove(table.options.sorted);
+            table.sort(null, order);
           }
         });
       });
