@@ -41,6 +41,29 @@ class Td extends TableElement {
 class Tr extends TableElement {
   static selector = "tr";
 
+  /**
+   * Stores the original row index in the data-order attribute for later reference as nodes are re-ordered on sort.
+   *
+   * @param {HTMLElement} el
+   */
+  constructor(el) {
+    super(el);
+
+    // Store the original sort order in the attributes for later reference, as the object is destroyed on sort
+    if(!this.el.hasAttribute('data-index')) {
+      this.el.setAttribute('data-index', Array.from(this.el.parentNode.children).indexOf(this.el));
+    }
+  }
+
+  /**
+   * Returns the original order of this row within the tbody.
+   *
+   * @returns {number}
+   */
+  get order() {
+    return parseFloat( this.el.getAttribute( 'data-index' ) );
+  }
+
   get cells() {
     let cellElements = this.el.querySelectorAll("td, th");
     let cells = [];
