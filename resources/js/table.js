@@ -244,26 +244,21 @@ class Table extends Component {
     let table = this;
     if ( table.sortKey !== sortKey || sortOrder !== table.sortOrder ) {
       table.body.el.setAttribute('aria-busy', "true");
+      let sorted = table.body.rows;
       setTimeout( () => {
         if ( !sortKey ) {
           table.el.classList.remove(table.options.sorted);
           table.sortKey = null;
           table.sortOrder = null;
-          let sorted = table.body.rows;
           sorted.sort( ( a, b ) => {
             if ( a.order === b.order ) { return 0; }
             return (a.order > b.order) ? 1 : -1;
           } );
-          table.body.el.innerHTML = '';
-          for(let sx=0; sx < sorted.length; sx++ ) {
-            table.body.el.appendChild(sorted[sx].el);
-          }
         } else {
           table.el.classList.add(table.options.sorted);
           table.sortKey = sortKey;
           table.sortOrder = sortOrder;
           // Need to trigger event
-          let sorted = table.body.rows
           sorted.sort( ( a, b ) => {
             let aCrit = a.get(sortKey) || "";
             let bCrit = b.get(sortKey) || "";
@@ -295,11 +290,11 @@ class Table extends Component {
           if(sortOrder !== "ascending") {
             sorted = sorted.reverse();
           }
+        }
 
-          table.body.el.innerHTML = '';
-          for(let sx=0; sx < sorted.length; sx++ ) {
-            table.body.el.appendChild(sorted[sx].el);
-          }
+        table.body.el.innerHTML = '';
+        for(let sx=0; sx < sorted.length; sx++ ) {
+          table.body.el.appendChild(sorted[sx].el);
         }
 
         setTimeout( () => { table.body.el.removeAttribute('aria-busy'); }, table.options.animateFor );
