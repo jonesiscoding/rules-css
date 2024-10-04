@@ -246,13 +246,18 @@ class Table extends Component {
       table.body.el.setAttribute('aria-busy', "true");
       setTimeout( () => {
         if ( !sortKey ) {
-          table.body.rows.forEach(row => {
-            // remove CSS order
-            row.style.order = null;
-          });
           table.el.classList.remove(table.options.sorted);
           table.sortKey = null;
           table.sortOrder = null;
+          let sorted = table.body.rows;
+          sorted.sort( ( a, b ) => {
+            if ( a.order === b.order ) { return 0; }
+            return (a.order > b.order) ? 1 : -1;
+          } );
+          table.body.el.innerHTML = '';
+          for(let sx=0; sx < sorted.length; sx++ ) {
+            table.body.el.appendChild(sorted[sx].el);
+          }
         } else {
           table.el.classList.add(table.options.sorted);
           table.sortKey = sortKey;
