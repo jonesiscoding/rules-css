@@ -61,7 +61,7 @@ table {
   }
 
   // Fixed Table Layout
-  &.-fixed {
+  &.-fixed, &[width] {
     table-layout: fixed;
   }
 
