@@ -89,7 +89,7 @@ table {
         color: var(--color-text);
         content: "\2193";
         padding-right: .25rem;
-        opacity: .7;
+        opacity: var(--opacity-control);
       }
       &:not([aria-sort="none"]) {
         font-weight: var(--font-weight-bold);
