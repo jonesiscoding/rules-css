@@ -295,6 +295,7 @@ $theme-on-c3-link: feature.$on-alt-link !default;
 // Typography
 $font-monospace: type.$font-monospace !default;
 $font-normal: type.$font-normal !default;
+$font-table: type.$font-table !default;
 $font-size: type.$size-base !default;
 $font-size-root: type.$size-root !default;
 $font-height: type.$height-base !default;
@@ -312,6 +313,7 @@ $font-url: type.$font-url !default;
 
 @mixin typography() {
   --font-monospace: #{$font-monospace};
+  --font-table: #{$font-table};
   --font-normal: #{$font-normal};
   --font-size-sm: #{$font-sm-size};
   --font-size-root: #{$font-size-root};
