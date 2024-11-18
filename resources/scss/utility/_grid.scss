@@ -24,7 +24,7 @@
 
   @for $i from 1 through system.$columns {
     table .col-#{$i} {
-      width: calc(1 * 100% / var(--table-columns));
+      width: calc(#{$i} * 100% / var(--table-columns));
     }
   }
 }
