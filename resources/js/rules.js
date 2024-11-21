@@ -11,7 +11,8 @@
     steps: ProgressSteps,
     trclick: TableRowClick,
     tooltip: Tooltip,
-    table: Table
+    table: Table,
+    time: TimeInput
   };
 
   function initialize(key, selector = null) {
@@ -20,7 +21,7 @@
       let sel = selector || func.selector;
       if(sel) {
         d.querySelectorAll(sel).forEach(function(el) {
-          Object.defineProperty(el, 'fn', { value: new func(el) });
+          func.with(el)
         });
       }
     }

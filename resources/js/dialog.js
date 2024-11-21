@@ -63,13 +63,15 @@ class DialogToggle extends Toggle {
 
     let self = this;
 
-    this.el.addEventListener('click', function(event) {
+    self.clickEvent = function(event) {
       event.preventDefault();
       event.stopPropagation();
       self.toggle(true).targets.forEach(function(target) {
         target.show();
       });
-    });
+    }
+
+    this.el.addEventListener('click', self.clickEvent);
   }
 
   toggle( state ) {
@@ -102,12 +104,13 @@ class ConfirmToggle extends DialogToggle {
       confirmButtons.forEach(function(cb) {
         cb.addEventListener('click', function(e) {
           let href = self.el.getAttribute('href');
-          if(typeof href !== 'undefined') {
+          if(typeof href !== 'undefined' && href !== null) {
             // Go to the link
             window.location = href;
           } else {
             // Attempt to trigger the original action.
-            self.dispatchEvent('click');
+            self.el.removeEventListener('click', self.clickEvent);
+            self.el.click();
           }
         });
       });
