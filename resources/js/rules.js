@@ -11,7 +11,8 @@
     steps: ProgressSteps,
     trclick: TableRowClick,
     tooltip: Tooltip,
-    table: Table
+    table: Table,
+    time: TimeInput
   };
 
   function initialize(key, selector = null) {
