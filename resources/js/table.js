@@ -302,3 +302,35 @@ class Table extends Component {
     }
   }
 }
+
+/**
+ * @property input {SearchInput}
+ */
+class TableFilter extends Component {
+  static selector = "input[type=search][aria-controls=table*]";
+
+  input;
+  target;
+
+  get _controls() {
+    return this.el.getAttribute('aria-controls');
+  }
+
+  get target() {
+    return this.el.parent().querySelector(this.controls)
+  }
+
+  constructor(el) {
+    super(el);
+    let self = this;
+    self.input  = new SearchInput(el, { search: q => { self.filter(q); }, clear: _ => { self.clear(); } });
+  }
+
+  filter(q) {
+    this.target.fn['Table'].filter(q);
+  }
+
+  clear() {
+    this.target.fn['Table'].filter();
+  }
+}
