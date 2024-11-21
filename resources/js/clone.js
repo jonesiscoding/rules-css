@@ -30,6 +30,6 @@ class TableRowClick extends Clone {
   static selector = 'tr[data-click] td';
 
   get target() {
-    return this.el.querySelector('td:first-child > a:first-child');
+    return this.el.closest("tr[data-click]").querySelector('td > a:first-child');
   }
 }

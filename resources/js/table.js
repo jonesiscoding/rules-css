@@ -41,6 +41,29 @@ class Td extends TableElement {
 class Tr extends TableElement {
   static selector = "tr";
 
+  /**
+   * Stores the original row index in the data-order attribute for later reference as nodes are re-ordered on sort.
+   *
+   * @param {HTMLElement} el
+   */
+  constructor(el) {
+    super(el);
+
+    // Store the original sort order in the attributes for later reference, as the object is destroyed on sort
+    if(!this.el.hasAttribute('data-index')) {
+      this.el.setAttribute('data-index', Array.from(this.el.parentNode.children).indexOf(this.el));
+    }
+  }
+
+  /**
+   * Returns the original order of this row within the tbody.
+   *
+   * @returns {number}
+   */
+  get order() {
+    return parseFloat( this.el.getAttribute( 'data-index' ) );
+  }
+
   get cells() {
     let cellElements = this.el.querySelectorAll("td, th");
     let cells = [];
@@ -174,7 +197,7 @@ class Table extends Component {
             cell.el.setAttribute('aria-sort', order );
             table.sort(key, order);
           } else {
-            table.el.classList.remove(table.options.sorted);
+            table.sort(null, order);
           }
         });
       });
@@ -221,21 +244,21 @@ class Table extends Component {
     let table = this;
     if ( table.sortKey !== sortKey || sortOrder !== table.sortOrder ) {
       table.body.el.setAttribute('aria-busy', "true");
+      let sorted = table.body.rows;
       setTimeout( () => {
         if ( !sortKey ) {
-          table.body.rows.forEach(row => {
-            // remove CSS order
-            row.style.order = null;
-          });
           table.el.classList.remove(table.options.sorted);
           table.sortKey = null;
           table.sortOrder = null;
+          sorted.sort( ( a, b ) => {
+            if ( a.order === b.order ) { return 0; }
+            return (a.order > b.order) ? 1 : -1;
+          } );
         } else {
           table.el.classList.add(table.options.sorted);
           table.sortKey = sortKey;
           table.sortOrder = sortOrder;
           // Need to trigger event
-          let sorted = table.body.rows
           sorted.sort( ( a, b ) => {
             let aCrit = a.get(sortKey) || "";
             let bCrit = b.get(sortKey) || "";
@@ -267,11 +290,11 @@ class Table extends Component {
           if(sortOrder !== "ascending") {
             sorted = sorted.reverse();
           }
+        }
 
-          table.body.el.innerHTML = '';
-          for(let sx=0; sx < sorted.length; sx++ ) {
-            table.body.el.appendChild(sorted[sx].el);
-          }
+        table.body.el.innerHTML = '';
+        for(let sx=0; sx < sorted.length; sx++ ) {
+          table.body.el.appendChild(sorted[sx].el);
         }
 
         setTimeout( () => { table.body.el.removeAttribute('aria-busy'); }, table.options.animateFor );

@@ -295,6 +295,7 @@ $theme-on-c3-link: feature.$on-alt-link !default;
 // Typography
 $font-monospace: type.$font-monospace !default;
 $font-normal: type.$font-normal !default;
+$font-table: type.$font-table !default;
 $font-size: type.$size-base !default;
 $font-size-root: type.$size-root !default;
 $font-height: type.$height-base !default;
@@ -312,6 +313,7 @@ $font-url: type.$font-url !default;
 
 @mixin typography() {
   --font-monospace: #{$font-monospace};
+  --font-table: #{$font-table};
   --font-normal: #{$font-normal};
   --font-size-sm: #{$font-sm-size};
   --font-size-root: #{$font-size-root};
@@ -470,6 +472,7 @@ $opacity-text-disabled: decor.$opacity-text-disabled !default;
 $opacity-hover: decor.$opacity-hover !default;
 $opacity-focus: decor.$opacity-focus !default;
 $opacity-pressed: decor.$opacity-pressed !default;
+$opacity-control: decor.$opacity-control !default;
 $opacity-busy: decor.$opacity-busy !default;
 
 @mixin decoration() {
@@ -486,6 +489,7 @@ $opacity-busy: decor.$opacity-busy !default;
   --opacity-hover: #{if(math.is-unitless($opacity-hover), $opacity-hover, math.div($opacity-hover, 100%))};
   --opacity-focus: #{if(math.is-unitless($opacity-focus), $opacity-focus, math.div($opacity-focus, 100%))};
   --opacity-pressed: #{if(math.is-unitless($opacity-pressed), $opacity-pressed, math.div($opacity-pressed, 100%))};
+  --opacity-control: #{if(math.is-unitless($opacity-control), $opacity-control, math.div($opacity-control, 100%))};
   --opacity-busy: #{$opacity-busy};
   --opacity-disabled: #{if(math.is-unitless($opacity-text-disabled), $opacity-text-disabled, math.div($opacity-text-disabled, 100%))};
   --opacity-disabled-bg: #{if(math.is-unitless($opacity-bg-disabled), $opacity-bg-disabled, math.div($opacity-bg-disabled, 100%))};

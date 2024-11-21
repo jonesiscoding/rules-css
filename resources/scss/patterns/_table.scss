@@ -35,6 +35,7 @@ table {
 table {
   border: var(--border-width) solid var(--color-outline);
   border-radius: var(--border-radius);
+  font-family: var(--font-table);
   border-spacing: 0;
   color: black;
   min-width: 100%;
@@ -89,7 +90,7 @@ table {
         color: var(--color-text);
         content: "\2193";
         padding-right: .25rem;
-        opacity: .7;
+        opacity: var(--opacity-control);
       }
       &:not([aria-sort="none"]) {
         font-weight: var(--font-weight-bold);
