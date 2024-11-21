@@ -1,0 +1,33 @@
+
+@mixin xs-down() {
+  time[datetime][data-xs] {
+    visibility: collapse;
+    &:before {
+      display: block;
+      content: attr(data-xs);
+      visibility: visible;
+    }
+  }
+}
+
+@mixin sm-down() {
+  time[datetime][data-sm] {
+    visibility: collapse;
+    &:before {
+      display: block;
+      content: attr(data-sm);
+      visibility: visible;
+    }
+  }
+}
+
+@mixin md-down() {
+  time[datetime][data-md] {
+    visibility: collapse;
+    &:before {
+      display: block;
+      content: attr(data-md);
+      visibility: visible;
+    }
+  }
+}

@@ -25,4 +25,16 @@ html.-desktop, html.-desktop > body {
   }
 }
 
+@include responsive.md-down() {
+  time.md-down;
+}
+
+@include responsive.sm-down() {
+  time.sm-down;
+}
+
+@include responsive.sm-down() {
+  time.xs-down;
+}
+
 // endregion ///////////////////////////////////////////// End Responsive Behaviors
