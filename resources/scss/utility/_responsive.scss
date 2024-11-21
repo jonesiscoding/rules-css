@@ -1,5 +1,6 @@
 @use "../tokens/system";
 @use "../modules/responsive";
+@use "../modules/drawer";
 
 // region //////////////////////////////////////////////// Responsive Behaviors
 
@@ -15,6 +16,12 @@ html.-desktop, html.-desktop > body {
 @include responsive.viewport-down(system.$screen-desktop-min) {
   @-ms-viewport {
     width: system.$screen-desktop-min;
+  }
+}
+
+@if(system.$feature-drawer) {
+  @include responsive.lg-up {
+    @include drawer.lg-up;
   }
 }
 
