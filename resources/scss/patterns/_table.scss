@@ -61,7 +61,7 @@ table {
   }
 
   // Fixed Table Layout
-  &.-fixed {
+  &.-fixed, &[width] {
     table-layout: fixed;
   }
 
@@ -113,7 +113,8 @@ table {
 // Alternating Color Rows (Using Tint Color)
 table[role="grid"] {
   tbody tr:nth-child(odd) > * {
-    background-color: rgba(var(--color-tint-red),var(--color-tint-green),var(--color-tint-blue), calc(var(--opacity-hover) * 2));
+    --opacity-elevation: #{elevation.opacity(1)};
+    background-color: rgba(var(--color-tint-red),var(--color-tint-green),var(--color-tint-blue), calc(var(--opacity-elevation) * 2));
   }
 }
 
