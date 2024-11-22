@@ -33,7 +33,7 @@ html.-desktop, html.-desktop > body {
   time.sm-down;
 }
 
-@include responsive.sm-down() {
+@include responsive.xs-only() {
   time.xs-down;
 }
 
