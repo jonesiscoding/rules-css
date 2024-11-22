@@ -1,6 +1,7 @@
 @use "../tokens/system";
 @use "../modules/responsive";
 @use "../modules/drawer";
+@use "../modules/time";
 
 // region //////////////////////////////////////////////// Responsive Behaviors
 
@@ -26,15 +27,15 @@ html.-desktop, html.-desktop > body {
 }
 
 @include responsive.md-down() {
-  time.md-down;
+  @include time.md-down;
 }
 
 @include responsive.sm-down() {
-  time.sm-down;
+  @include time.sm-down;
 }
 
 @include responsive.xs-only() {
-  time.xs-down;
+  @include time.xs-down;
 }
 
 // endregion ///////////////////////////////////////////// End Responsive Behaviors
