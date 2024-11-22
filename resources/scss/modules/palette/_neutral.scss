@@ -36,7 +36,7 @@
 }
 
 @function generate($from-color, $parts: 12, $min: .04) {
-  @return palette.generate(generate-single($from-color, $parts, $min));
+  @return palette.generate(generate-single($from-color, $parts, $min), 0);
 }
 
 $stuff: #2cb2e8;
