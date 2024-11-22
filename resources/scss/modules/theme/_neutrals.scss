@@ -20,8 +20,6 @@ $success-alt: palette.generate(neutral.generate-single(base.$success, 6, 8)) !de
 $warning-alt: palette.generate(neutral.generate-single(base.$warning, 6, 8)) !default;
 $default-alt: palette.generate(neutral.generate-single(base.$default, 6, 8)) !default;
 
-@debug $major-alt;
-
 @function major($tone) {
   @return map.get($major, quote(#{$tone}));
 }
