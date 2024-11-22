@@ -12,6 +12,8 @@ $danger: palette.generate(base.$danger);
 $success: palette.generate(base.$success);
 $warning: palette.generate(base.$warning);
 $default: palette.generate(base.$default);
+$surface: palette.generate(base.$surface);
+$neutral: palette.generate(base.$neutral);
 
 @function major($tone) {
   @return map.get($major, quote(#{$tone}));
