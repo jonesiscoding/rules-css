@@ -1,33 +1,39 @@
 
 @mixin xs-down() {
   time[datetime][data-xs] {
-    visibility: collapse;
+    --font-size-time: var(--font-size);
+    font-size: 0;
     &:before {
-      display: block;
+      display: inline-block;
       content: attr(data-xs);
-      visibility: visible;
+      position: relative;
+      font-size: var(--font-size-time);
     }
   }
 }
 
 @mixin sm-down() {
   time[datetime][data-sm] {
-    visibility: collapse;
+    --font-size-time: var(--font-size);
+    font-size: 0;
     &:before {
-      display: block;
+      display: inline-block;
       content: attr(data-sm);
-      visibility: visible;
+      position: relative;
+      font-size: var(--font-size-time);
     }
   }
 }
 
 @mixin md-down() {
   time[datetime][data-md] {
-    visibility: collapse;
+    --font-size-time: var(--font-size);
+    font-size: 0;
     &:before {
-      display: block;
+      display: inline-block;
       content: attr(data-md);
-      visibility: visible;
+      position: relative;
+      font-size: var(--font-size-time);
     }
   }
 }
