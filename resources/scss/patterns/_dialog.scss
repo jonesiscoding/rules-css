@@ -80,6 +80,9 @@ dialog, dialog > form {
     }
   }
   > article > footer {
+    display: flex;
+    justify-content: end;
     text-align: right;
+    column-gap: var(--padding-half-x);
   }
 }
