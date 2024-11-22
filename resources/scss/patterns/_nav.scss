@@ -29,11 +29,19 @@
   --color-shadow: transparent;
   --tab-border-width: 0;
   --tab-border-width-bottom: calc(var(--border-width) * 2);
+  // bottom border when selected
   &[aria-selected]:not([aria-selected="false"]) {
     --color-bg: transparent;
     --color-link: var(--theme-color);
     --color-icon: var(--theme-color);
     --color-outline: var(--theme-color);
+  }
+  // bottom border & tint on hover
+  &:hover {
+    --color-outline: var(--theme-color);
+  }
+  @include elevation.tint-after-hover {
+    background-color: rgba(var(--theme-color-red), var(--theme-color-green), var(--theme-color-blue), var(--opacity-elevation-2)) !important;
   }
 }
 
