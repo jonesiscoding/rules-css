@@ -19,10 +19,10 @@
 
 // CSS Custom Variables
 button, *[role="button"], .btn {
-  --color-bg: var(--theme-bg);
+  --color-bg: var(--theme-alt);
   --color-outline: transparent;
-  --color-link: var(--theme-color);
-  --color-icon: var(--theme-color);
+  --color-link: var(--theme-on-alt);
+  --color-icon: var(--theme-on-alt);
   // TODO: Shadow
   // TODO: Hover Shadow
   @include buttons.hover-after {

@@ -116,3 +116,9 @@ article[role="tabpanel"] {
   box-shadow: none;
 }
 
+// Make header navbar buttons transparent
+header > nav button {
+  --color-bg: transparent;
+}
+
+
