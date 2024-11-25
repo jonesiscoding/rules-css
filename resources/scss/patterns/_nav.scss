@@ -124,9 +124,10 @@ article[role="tabpanel"] {
   box-shadow: none;
 }
 
-// Make header navbar buttons transparent
-header > nav button {
-  --color-bg: transparent;
+//// Make header navbar buttons transparent
+header > nav, header > nav >  .dropdown  {
+  & > [role="menuitem"] {
+    --color-bg: transparent;
+  }
 }
-
 

@@ -102,4 +102,8 @@
       margin-bottom: 0;
     }
   }
+  header > button[aria-label="menu"]:not([role=menuitem]):not([role=tab]) {
+    --color-bg: transparent;
+    --border-radius: 0;
+  }
 }
