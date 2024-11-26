@@ -8,21 +8,21 @@
 $surface-base: if(base.$surface, base.$surface, neutral.generate-single(base.$major));
 $neutral-base: if(base.$neutral, base.$neutral, neutral.generate-single(base.$major, 6, 8));
 
-$major: palette.generate($surface-base) !default;
-$major-alt: palette.generate($neutral-base) !default;
+$major: palette.generate($surface-base, 0) !default;
+$major-alt: palette.generate($neutral-base, 0) !default;
 
-$minor: palette.generate(neutral.generate-single(base.$minor)) !default;
-$feature: palette.generate(neutral.generate-single(base.$feature)) !default;
-$danger: palette.generate(neutral.generate-single(base.$danger)) !default;
-$success: palette.generate(neutral.generate-single(base.$success)) !default;
-$warning: palette.generate(neutral.generate-single(base.$warning)) !default;
-$default: palette.generate(neutral.generate-single(base.$default)) !default;
-$minor-alt: palette.generate(neutral.generate-single(base.$minor, 6, 8)) !default;
-$feature-alt: palette.generate(neutral.generate-single(base.$feature, 6, 8)) !default;
-$danger-alt: palette.generate(neutral.generate-single(base.$danger, 6, 8)) !default;
-$success-alt: palette.generate(neutral.generate-single(base.$success, 6, 8)) !default;
-$warning-alt: palette.generate(neutral.generate-single(base.$warning, 6, 8)) !default;
-$default-alt: palette.generate(neutral.generate-single(base.$default, 6, 8)) !default;
+$minor: palette.generate(neutral.generate-single(base.$minor), 0) !default;
+$feature: palette.generate(neutral.generate-single(base.$feature), 0) !default;
+$danger: palette.generate(neutral.generate-single(base.$danger), 0) !default;
+$success: palette.generate(neutral.generate-single(base.$success), 0) !default;
+$warning: palette.generate(neutral.generate-single(base.$warning), 0) !default;
+$default: palette.generate(neutral.generate-single(base.$default), 0) !default;
+$minor-alt: palette.generate(neutral.generate-single(base.$minor, 6, 8), 0) !default;
+$feature-alt: palette.generate(neutral.generate-single(base.$feature, 6, 8), 0) !default;
+$danger-alt: palette.generate(neutral.generate-single(base.$danger, 6, 8), 0) !default;
+$success-alt: palette.generate(neutral.generate-single(base.$success, 6, 8), 0) !default;
+$warning-alt: palette.generate(neutral.generate-single(base.$warning, 6, 8), 0) !default;
+$default-alt: palette.generate(neutral.generate-single(base.$default, 6, 8), 0) !default;
 
 @function major($tone) {
   @return map.get($major, quote(#{$tone}));

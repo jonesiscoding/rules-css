@@ -7,7 +7,7 @@
 
 $palettes: () !default;
 
-@function generate($base) {
+@function generate($base, $adjust: -1) {
   $output: ();
   $steps: (10,20,25,30,40,50,60,70,80,90,95,98,99);
   @if features.$hct {
@@ -19,7 +19,7 @@ $palettes: () !default;
     $output: ("0": hct.hct($h, $c, 0), "10": $base-10);
 
     @each $key in $steps {
-      $shade: hct.hct($h, $c, $key);
+      $shade: hct.hct($h, $c, $key + $adjust);
       $output: map.set($output, quote(#{$key}), $shade);
     }
 
