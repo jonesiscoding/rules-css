@@ -83,13 +83,23 @@ table {
     text-align: left;
     // Sort Header Formatting
     &[aria-sort] {
+      @if(system.$table-sort-position == after) {
+        direction: rtl;
+      }
       &:hover {
         cursor: system.$cursor-strong;
       }
       &:before {
         color: var(--color-text);
+        font-family: var(--font-monospace);
         content: "\2193";
-        padding-right: .25rem;
+        position: relative;
+        top: -1px;
+        @if (system.$table-sort-position == after) {
+          padding-left: 0.25rem;
+        } @else {
+          padding-right: 0.25rem;
+        }
         opacity: var(--opacity-control);
       }
       &:not([aria-sort="none"]) {
