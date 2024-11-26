@@ -16,6 +16,7 @@
 @use "config/screen";
 @use "config/features";
 @use "config/icons";
+@use "config/table";
 @use "config/decoration" as decor;
 // Color Tokens
 @use "colors/major";
@@ -465,6 +466,9 @@ $bg-image-date: icons.$bg-image-date;
 $bg-image-time: icons.$bg-image-time;
 $bg-image-select: icons.$bg-image-select;
 $bg-image-number: icons.$bg-image-number;
+
+// Table
+$table-sort-position: table.$sort-position !default;
 
 // Opacity
 $opacity-bg-disabled: decor.$opacity-bg-disabled !default;

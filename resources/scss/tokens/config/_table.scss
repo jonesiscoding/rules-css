@@ -1,0 +1,10 @@
+// Table Config Tokens
+// This file should be used in the manner below, before importing or using 'rules.scss' in
+// order to set the base colors of your theme:
+//
+// @use "/path/to/table" with ($sm-min: <px size>, $md-min: <px size>, etc);
+//
+
+@use "../reference" as ref;
+
+$sort-position: ref.$table-sort-position !default;
