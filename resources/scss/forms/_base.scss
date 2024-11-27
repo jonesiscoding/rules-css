@@ -27,6 +27,7 @@ input, textarea, select {
   --color-bg-disabled: rgba(var(--theme-bg-alt-red), var(--theme-bg-alt-green), var(--theme-bg-alt-blue), var(--opacity-disabled-bg));
   --color-autofill-disabled: rgba(var(--theme-bg-alt-red), var(--theme-bg-alt-green), var(--theme-bg-alt-blue), var(--opacity-disabled-bg));
   --color-text-disabled: rgba(var(--theme-on-bg-alt-red), var(--theme-on-bg-alt-green), var(--theme-on-bg-alt-blue), var(--opacity-disabled));
+  --color-value-disabled: rgba(var(--theme-on-bg-alt-red), var(--theme-on-bg-alt-green), var(--theme-on-bg-alt-blue), var(--opacity-disabled));
   --color-placeholder-disabled: rgba(var(--theme-on-bg-alt-red), var(--theme-on-bg-alt-green), var(--theme-on-bg-alt-blue), var(--opacity-disabled));
   --color-outline-disabled: rgba(var(--theme-outline-red), var(--theme-outline-green), var(--theme-outline-blue), var(--opacity-disabled-bg));
   &:focus {
