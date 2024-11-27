@@ -35,7 +35,6 @@ $feature-drawer: features.$drawer;
 $feature-header: features.$hct;
 $feature-footer: features.$footer;
 $feature-grid: features.$grid;
-$feature-table-responsive: features.$table-responsive;
 
 // endregion ///////////////////////////////////////////// End Features
 
@@ -470,6 +469,7 @@ $bg-image-number: icons.$bg-image-number;
 
 // Table
 $table-sort-position: table.$sort-position !default;
+$table-responsive: table.$responsive !default;
 
 // Opacity
 $opacity-bg-disabled: decor.$opacity-bg-disabled !default;

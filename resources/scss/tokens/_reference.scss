@@ -3,8 +3,6 @@ $feature-hct: false;
 $feature-badge: true;
 $feature-drawer: true;
 $feature-grid: true;
-$feature-table-responsive: true;
-$feature-sort-after: false;
 
 // Typography
 $font-url: null;
@@ -96,6 +94,7 @@ $bg-image-number:       url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http
 
 // Tables
 $table-sort-position: before;
+$table-responsive: sm;
 
 // Color
 $color-base-major: #2cb2e8;

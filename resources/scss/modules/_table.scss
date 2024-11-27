@@ -1,5 +1,5 @@
 
-@mixin sm-down() {
+@mixin responsive() {
   table.-responsive, table.-responsive > tbody {
     display: grid;
     grid-template-columns: 1fr;
