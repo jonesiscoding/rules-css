@@ -1,0 +1,50 @@
+
+@mixin sm-down() {
+  table.-responsive, table.-responsive > tbody {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    border-width: 0;
+  }
+  table.-responsive > thead {
+    display: none;
+  }
+  table.-responsive > tbody > tr {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    &:not(:last-child) {
+      border-bottom: var(--border-width) solid var(--color-divider);
+    }
+  }
+  table.-responsive > tbody > tr > td {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: span 2 !important;
+    width: 100% !important;
+    &:not(:last-child) {
+      border-bottom: var(--border-width) dashed var(--color-divider) !important;
+    }
+    > * {
+      grid-column: 2;
+    }
+    a:only-child {
+      height: auto;
+      margin: 0;
+      padding: 0;
+    }
+    &:before {
+      display: inline-block;
+      content: attr(data-label);
+      font-weight: var(--font-weight-medium);
+      margin-right: var(--padding-x);
+      text-align: left;
+      grid-column: 1;
+      text-transform: uppercase;
+      font-family: var(--font-monospace);
+    }
+  }
+  .accordion > details table.-responsive, .accordion > article table.-responsive {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

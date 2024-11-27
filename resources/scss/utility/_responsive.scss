@@ -2,6 +2,7 @@
 @use "../modules/responsive";
 @use "../modules/drawer";
 @use "../modules/time";
+@use "../modules/table";
 
 // region //////////////////////////////////////////////// Responsive Behaviors
 
@@ -32,6 +33,9 @@ html.-desktop, html.-desktop > body {
 
 @include responsive.sm-down() {
   @include time.sm-down;
+  @if system.$feature-table-responsive {
+    @include table.sm-down;
+  }
 }
 
 @include responsive.xs-only() {
