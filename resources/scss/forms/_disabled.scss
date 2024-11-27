@@ -1,0 +1,38 @@
+@use "../tokens/system" as sys;
+
+input, textarea  {
+  &:disabled, fieldset[disabled] & {
+    color: var(--color-value-disabled);
+    background-color: var(--color-bg-disabled);
+    border-color: var(--color-outline-disabled);
+    opacity: 1; // iOS fix for unreadable disabled content; see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#Browser_compatibility
+  }
+  &:disabled, fieldset[disabled] {
+    cursor: sys.$cursor-disabled;
+  }
+  &:disabled + label, fieldset[disabled] & + label {
+    color: var(--color-label-disabled);
+  }
+  &:focus {
+    outline-color: var(--color-outline) !important;
+  }
+}
+
+%picker {
+  &:disabled, fieldset[disabled] & {
+    color: var(--color-value-disabled);
+    background-color: var(--color-bg-disabled);
+    border-color: var(--color-outline-disabled);
+    opacity: 1; // iOS fix for unreadable disabled content; see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#Browser_compatibility
+  }
+}
+
+form .field {
+  & > input, > textarea, > select, > .wrapper {
+    &:disabled, fieldset[disabled] & {
+      color: var(--color-value-disabled);
+      background-color: var(--color-bg-disabled);
+      border-color: var(--color-outline-disabled);
+    }
+  }
+}
