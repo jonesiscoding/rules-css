@@ -310,14 +310,13 @@ class TableFilter extends Component {
   static selector = "input[type=search][aria-controls=table*]";
 
   input;
-  target;
 
   get _controls() {
     return this.el.getAttribute('aria-controls');
   }
 
   get target() {
-    return this.el.parent().querySelector(this.controls)
+    return this.el.closest('form').querySelector(this._controls);
   }
 
   constructor(el) {
