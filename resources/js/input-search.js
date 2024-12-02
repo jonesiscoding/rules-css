@@ -47,6 +47,7 @@ class SearchInput extends Component {
     // React to Input on the Input
     el.addEventListener('keyup', e => si.onKeyUp(e));
     el.addEventListener('keydown', e => si.onKeyDown(e));
+    el.addEventListener('search', e => { if(si.currentValue !== el.value) { si.doCallback(); }});
     el.addEventListener('blur', e => { if(si.currentValue !== el.value) { si.doCallback(); }});
   };
 
