@@ -228,11 +228,9 @@ class Table extends Component {
   }
 
   filter(q) {
-    if(q) {
-      this.body.rows.forEach(row => {
-        row.el.toggleAttribute('hidden', !row.search(q));
-      });
-    }
+    this.body.rows.forEach(row => {
+      row.el.toggleAttribute('hidden', q ? !row.search(q) : false);
+    });
   }
 
   sort(sortKey, order) {
