@@ -24,6 +24,29 @@ input, textarea, select {
   --color-value: var(--theme-on-bg);
   --color-placeholder: var(--theme-on-bg-alt);
   --color-autofill: var(--theme-bg-alt);
+  // RGB
+  --color-text-red: var(--theme-bg-alt-red);
+  --color-text-green: var(--theme-bg-alt-green);
+  --color-text-blue: var(--theme-bg-alt-blue);
+  --color-bg-red: var(--theme-bg-alt-red);
+  --color-bg-green: var(--theme-bg-alt-green);
+  --color-bg-blue: var(--theme-bg-alt-blue);
+  --color-outline-red: var(--theme-outline-red);
+  --color-outline-green: var(--theme-outline-green);
+  --color-outline-blue: var(--theme-outline-blue);
+  --color-icon-red: var(--theme-on-bg-alt-red);
+  --color-icon-green: var(--theme-on-bg-alt-green);
+  --color-icon-blue: var(--theme-on-bg-alt-blue);
+  --color-value-red: var(--theme-on-bg-red);
+  --color-value-green: var(--theme-on-bg-green);
+  --color-value-blue: var(--theme-on-bg-blue);
+  --color-placeholder-red: var(--theme-on-bg-alt-red);
+  --color-placeholder-green: var(--theme-on-bg-alt-green);
+  --color-placeholder-blue: var(--theme-on-bg-alt-blue);
+  --color-autofill-red: var(--theme-bg-alt-red);
+  --color-autofill-green: var(--theme-bg-alt-green);
+  --color-autofill-blue: var(--theme-bg-alt-blue);
+  // Disabled
   --color-bg-disabled: rgba(var(--theme-bg-alt-red), var(--theme-bg-alt-green), var(--theme-bg-alt-blue), var(--opacity-disabled-bg));
   --color-autofill-disabled: rgba(var(--theme-bg-alt-red), var(--theme-bg-alt-green), var(--theme-bg-alt-blue), var(--opacity-disabled-bg));
   --color-text-disabled: rgba(var(--theme-on-bg-alt-red), var(--theme-on-bg-alt-green), var(--theme-on-bg-alt-blue), var(--opacity-disabled));
@@ -37,6 +60,11 @@ input, textarea, select {
 
 label {
   --color-label: var(--theme-on-bg-alt);
+  // RGB
+  --color-label-red: var(--theme-on-bg-alt-red);
+  --color-label-green: var(--theme-on-bg-alt-green);
+  --color-label-blue: var(--theme-on-bg-alt-blue);
+  // Disabled
   --color-label-disabled: rgba(var(--theme-on-bg-alt-red), var(--theme-on-bg-alt-green), var(--theme-on-bg-alt-blue), var(--opacity-disabled));
 }
 

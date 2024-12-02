@@ -498,6 +498,8 @@ $opacity-busy: decor.$opacity-busy !default;
   --opacity-busy: #{$opacity-busy};
   --opacity-disabled: #{if(math.is-unitless($opacity-text-disabled), $opacity-text-disabled, math.div($opacity-text-disabled, 100%))};
   --opacity-disabled-bg: #{if(math.is-unitless($opacity-bg-disabled), $opacity-bg-disabled, math.div($opacity-bg-disabled, 100%))};
+  --opacity-readonly: #{if(math.is-unitless($opacity-text-disabled), $opacity-text-disabled * 2, math.div($opacity-text-disabled, 100%) * 2)};
+  --opacity-readonly-bg: #{if(math.is-unitless($opacity-bg-disabled), $opacity-bg-disabled * 2, math.div($opacity-bg-disabled, 100%) * 2)};
   --opacity-elevation-1: #{elevation.opacity(1)};
   --opacity-elevation-2: #{elevation.opacity(2)};
   --opacity-elevation-3: #{elevation.opacity(3)};
