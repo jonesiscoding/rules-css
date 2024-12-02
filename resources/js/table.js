@@ -318,7 +318,7 @@ class TableFilter extends Component {
   constructor(el) {
     super(el);
     let self = this;
-    self.input  = new SearchInput(el, { search: q => { self.filter(q); }, clear: _ => { self.clear(); } });
+    self.input  = new SearchInput(el, { search: q => { self.filter(q); }, clear: () => { self.clear(); } });
   }
 
   filter(q) {
