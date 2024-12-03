@@ -1,38 +1,29 @@
 @use "../tokens/system" as sys;
 
-input, textarea  {
+input:disabled, textarea:disabled, %picker:disabled,
+fieldset[disabled] input, fieldset[disabled] textarea, fieldset[disabled] %picker,
+form .wrapper[aria-disabled]
+{
+  --color-bg: rgba(var(--color-bg-red), var(--color-bg-green), var(--color-bg-blue), var(--opacity-disabled-bg));
+  --color-autofill: rgba(var(--color-autofill-red), var(--color-autofill-green), var(--color-autofill-blue), var(--opacity-disabled-bg));
+  --color-text: rgba(var(--color-text-red), var(--color-text-green), var(--color-text-blue), var(--opacity-disabled));
+  --color-value: rgba(var(--color-value-red), var(--color-value-green), var(--color-value-blue), var(--opacity-disabled));
+  --color-placeholder: rgba(var(--color-placholder-red), var(--color-placeholder-green), var(--color-placeholder-blue), var(--opacity-disabled));
+  --color-outline: rgba(var(--color-outline-red), var(--color-outline-green), var(--color-outline-blue), var(--opacity-disabled-bg));
+}
+
+input:disabled + label, textarea:disabled + label, %picker:disabled + label,
+fieldset[disabled] + label, fieldset[disabled] textarea + label, fieldset[disabled] %picker + label,
+form .wrapper[aria-disabled] > label
+{
+  --color-label: rgba(var(--color-label-red), var(--color-label-green), var(--color-label-blue), var(--opacity-disabled));
+}
+
+input, textarea, %picker {
   &:disabled, fieldset[disabled] & {
-    color: var(--color-value-disabled);
-    background-color: var(--color-bg-disabled);
-    border-color: var(--color-outline-disabled);
     opacity: 1; // iOS fix for unreadable disabled content; see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#Browser_compatibility
   }
-  &:disabled, fieldset[disabled] {
+  &:disabled, fieldset[disabled], form .wrapper[aria-disabled] {
     cursor: sys.$cursor-disabled;
-  }
-  &:disabled + label, fieldset[disabled] & + label {
-    color: var(--color-label-disabled);
-  }
-  &:focus {
-    outline-color: var(--color-outline) !important;
-  }
-}
-
-%picker {
-  &:disabled, fieldset[disabled] & {
-    color: var(--color-value-disabled);
-    background-color: var(--color-bg-disabled);
-    border-color: var(--color-outline-disabled);
-    opacity: 1; // iOS fix for unreadable disabled content; see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#Browser_compatibility
-  }
-}
-
-form .field {
-  & > input, > textarea, > select, > .wrapper {
-    &:disabled, fieldset[disabled] & {
-      color: var(--color-value-disabled);
-      background-color: var(--color-bg-disabled);
-      border-color: var(--color-outline-disabled);
-    }
   }
 }
