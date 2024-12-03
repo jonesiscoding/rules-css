@@ -1,7 +1,128 @@
 @use "../tokens/system";
 
+%tip-base {
+  &::after {
+    --tip-caret-off: .3rem solid transparent;
+    --tip-caret-on: .3rem solid;
+  }
+}
+
+%tip {
+  @extend %tip-base;
+  &::before, &::after {
+    --tip-left: 50%;
+    --tip-bottom: 100%;
+    --tip-top: auto;
+    --tip-right: auto;
+    --tip-transform-before: translate(-50%, -.25rem);
+    --tip-transform-after: translate(-50%, 0rem);
+    --tip-margin: 0 0 0 0;
+  }
+  &::after {
+    --tip-caret-top: var(--tip-caret-on);
+    --tip-caret-right: var(--tip-caret-off);
+    --tip-caret-bottom: var(--tip-caret-off);
+    --tip-caret-left: var(--tip-caret-off);
+  }
+}
+%tip-right {
+  &::before, &::after {
+    --tip-left: 100%;
+    --tip-bottom: 50%;
+    --tip-top: 50%;
+    --tip-right: auto;
+    --tip-transform-before: translate(0.25rem, -50%);
+    --tip-transform-after: translate(-0.3rem, -50%);
+  }
+  &::after {
+    --tip-caret-top:  var(--tip-caret-off);
+    --tip-caret-right: var(--tip-caret-on);
+    --tip-caret-bottom:  var(--tip-caret-off);
+    --tip-caret-left:   var(--tip-caret-off);
+  }
+}
+%tip-left {
+  &::before, &::after {
+    --tip-left: auto;
+    --tip-bottom: 50%;
+    --tip-top: 50%;
+    --tip-right: 100%;
+    --tip-transform-before: translate(-0.25rem, -50%);
+    --tip-transform-after: translate(0.3rem, -50%);
+  }
+  &::after {
+    --tip-caret-top:  var(--tip-caret-off);
+    --tip-caret-right: var(--tip-caret-off);
+    --tip-caret-bottom: var(--tip-caret-off);
+    --tip-caret-left:   var(--tip-caret-on);
+  }
+}
+%tip-bottom {
+  &::before, &::after {
+    --tip-left: auto;
+    --tip-bottom: auto;
+    --tip-top: 100%;
+    --tip-right: auto;
+    --tip-transform-before: translate(-50%, 0.25rem);
+    --tip-transform-after: translate(-50%, -0.3rem);
+  }
+  &::after {
+    --tip-caret-top: .3rem solid;;
+    --tip-caret-right: .3rem solid transparent;
+    --tip-caret-bottom: none;
+    --tip-caret-left: .3rem solid transparent;
+    border: 0.3rem solid transparent;
+    border-bottom: 0.3rem solid;
+  }
+}
+
+[data-tooltip] {
+  @extend %tip;
+  &[data-position="right"],
+  table tr th &,
+  table tr td & {
+    @extend %tip-right;
+  }
+  &[data-position="left"],
+  table tr td:last-child &,
+  table tr td:nth-last-child(2) &,
+  table tr th:last-child &,
+  table tr th:nth-last-child(2) & {
+    @extend %tip-left;
+  }
+  &[data-position="bottom"] {
+    @extend %tip-bottom;
+  }
+
+  table tr td &,
+  table tr th & {
+    &::before, &::after {
+      --tip-margin: 0 0 0 var(--padding-half-x);
+    }
+    &:is(a:only-child) {
+      &::before, &::after {
+        --tip-margin: 0 0 0 calc(var(--padding-half-x) * -1);
+      }
+    }
+  }
+  table tr td:last-child &,
+  table tr td:nth-last-child(2) &,
+  table tr th:last-child &,
+  table tr th:nth-last-child(2) & {
+    &::before, &::after {
+      --tip-margin: 0 var(--padding-half-x) 0 0;
+    }
+    &:is(a:only-child) {
+      &::before, &::after {
+        --tip-margin: 0 calc(var(--padding-half-x) * -1) 0 0;
+      }
+    }
+  }
+}
+
 [data-tooltip]:not(.-tipless) {
   position: relative;
+  font-family: var(--font-normal);
 
   &:not(a, button, input, textarea, select) {
     border-bottom: 1px dotted;
@@ -12,10 +133,14 @@
   &::before,
   &::after {
     display: block;
+    min-height: fit-content;
     z-index: system.$zindex-tooltip;
     position: absolute;
-    bottom: 100%;
-    left: 50%;
+    top: var(--tip-top);
+    right: var(--tip-right);
+    bottom: var(--tip-bottom);
+    left: var(--tip-left);
+    margin: var(--tip-margin);
     padding: .25rem .5rem;
     overflow: hidden;
     transform: translate(-50%, -.25rem);
@@ -36,10 +161,11 @@
   // Caret
   &::after {
     padding: 0;
-    transform: translate(-50%, 0rem);
-    border-top: .3rem solid;
-    border-right: .3rem solid transparent;
-    border-left: .3rem solid transparent;
+    transform: var(--tip-transform-after);
+    border-top: var(--tip-caret-top);
+    border-right: var(--tip-caret-right);
+    border-left: var(--tip-caret-left);
+    border-bottom: var(--tip-caret-bottom);
     border-radius: 0;
     background-color: transparent;
     content: "";
