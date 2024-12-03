@@ -53,9 +53,10 @@ input, textarea, select, form .wrapper {
   --color-value-disabled: rgba(var(--theme-on-bg-alt-red), var(--theme-on-bg-alt-green), var(--theme-on-bg-alt-blue), var(--opacity-disabled));
   --color-placeholder-disabled: rgba(var(--theme-on-bg-alt-red), var(--theme-on-bg-alt-green), var(--theme-on-bg-alt-blue), var(--opacity-disabled));
   --color-outline-disabled: rgba(var(--theme-outline-red), var(--theme-outline-green), var(--theme-outline-blue), var(--opacity-disabled-bg));
-  &:focus {
-    --color-outline: var(--theme-color);
-  }
+}
+
+input:focus, textarea:focus, select:focus, form .wrapper:focus-within {
+  --color-outline: var(--theme-color);
 }
 
 label {
