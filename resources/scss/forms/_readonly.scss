@@ -4,7 +4,7 @@ input[readonly], textarea[readonly], %picker[readonly],
 fieldset[readonly] input, fieldset[readonly] textarea, fieldset[readonly] %picker,
 form .wrapper[aria-readonly]
 {
-  --color-bg: rgba(var(color-bg-red), var(--color-bg-green), var(--color-bg-blue), var(--opacity-readonly-bg));
+  --color-bg: rgba(var(--color-bg-red), var(--color-bg-green), var(--color-bg-blue), var(--opacity-readonly-bg));
   --color-autofill: rgba(var(--color-autofill-red), var(--color-autofill-green), var(--color-autofill-blue), var(--opacity-readonly-bg));
   --color-text: rgba(var(--color-text-red), var(--color-text-green), var(--color-text-blue), var(--opacity-readonly));
   --color-value: rgba(var(--color-value-red), var(--color-value-green), var(--color-value-blue), var(--opacity-readonly));
