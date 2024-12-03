@@ -228,11 +228,9 @@ class Table extends Component {
   }
 
   filter(q) {
-    if(q) {
-      this.body.rows.forEach(row => {
-        row.el.toggleAttribute('hidden', !row.search(q));
-      });
-    }
+    this.body.rows.forEach(row => {
+      row.el.toggleAttribute('hidden', q ? !row.search(q) : false);
+    });
   }
 
   sort(sortKey, order) {
@@ -318,7 +316,7 @@ class TableFilter extends Component {
   constructor(el) {
     super(el);
     let self = this;
-    self.input  = new SearchInput(el, { search: q => { self.filter(q); }, clear: _ => { self.clear(); } });
+    self.input  = new SearchInput(el, { search: q => { self.filter(q); }, clear: () => { self.clear(); } });
   }
 
   filter(q) {
