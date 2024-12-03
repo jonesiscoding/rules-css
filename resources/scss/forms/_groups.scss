@@ -50,16 +50,7 @@ form > section, form > fieldset {
 }
 
 form .field {
-  > input, > select, > textarea, > .wrapper {
-    --color-value: var(--theme-on-bg);
-    --color-bg: var(--theme-bg-alt);
-    --color-text: var(--theme-on-alt);
-    --color-label: var(--theme-on-bg-alt);
-    --color-icon: var(--theme-on-bg-alt);
-    --color-outline: var(--theme-outline);
-  }
   > input:focus, > select:focus, > textarea:focus, > .wrapper:focus-within {
-    --color-outline: var(--theme-color);
     & ~ label {
       --color-label: var(--theme-color);
     }
