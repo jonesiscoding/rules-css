@@ -18,3 +18,9 @@ form .wrapper[aria-readonly] > label
 {
   --color-label: rgba(var(--color-label-red), var(--color-label-green), var(--color-label-blue), var(--opacity-readonly));
 }
+
+input, textarea, %picker {
+  &[readonly], fieldset[readonly], form .wrapper[aria-readonly] {
+    cursor: sys.$cursor-disabled;
+  }
+}
