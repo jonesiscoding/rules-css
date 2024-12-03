@@ -16,7 +16,7 @@ button {
   }
 }
 
-input, textarea, select {
+input, textarea, select, form .wrapper {
   --color-text: var(--theme-on-bg-alt);
   --color-bg: var(--theme-bg-alt);
   --color-outline: var(--theme-outline);
