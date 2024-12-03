@@ -105,6 +105,9 @@ form .field {
       outline-color: var(--color-outline);
     }
   }
+  > textarea {
+    height: auto;
+  }
   > .error, > .help, > .text {
     grid-row: var(--extra-row);
     grid-column: var(--extra-column);
