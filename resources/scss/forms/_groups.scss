@@ -56,6 +56,7 @@ form .field {
     --color-text: var(--theme-on-alt);
     --color-label: var(--theme-on-bg-alt);
     --color-icon: var(--theme-on-bg-alt);
+    --color-outline: var(--theme-outline);
   }
   > input:focus, > select:focus, > textarea:focus, > .wrapper:focus-within {
     --color-outline: var(--theme-color);
