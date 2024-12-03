@@ -1,5 +1,6 @@
 @use "../tokens/system" as sys;
 
+// Note that [readonly] is being used here instead of :read-only due to input[type=file]
 input[readonly], textarea[readonly], %picker[readonly],
 fieldset[readonly] input, fieldset[readonly] textarea, fieldset[readonly] %picker,
 form .wrapper[aria-readonly]
