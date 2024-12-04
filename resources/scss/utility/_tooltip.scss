@@ -14,11 +14,11 @@
     --tip-bottom: 100%;
     --tip-top: auto;
     --tip-right: auto;
-    --tip-transform-before: translate(-50%, -.25rem);
-    --tip-transform-after: translate(-50%, 0rem);
+    --tip-transform: translate(-50%, -.25rem);
     --tip-margin: 0 0 0 0;
   }
   &::after {
+    --tip-transform: translate(-50%, 0rem);
     --tip-caret-top: var(--tip-caret-on);
     --tip-caret-right: var(--tip-caret-off);
     --tip-caret-bottom: var(--tip-caret-off);
@@ -31,10 +31,10 @@
     --tip-bottom: 50%;
     --tip-top: 50%;
     --tip-right: auto;
-    --tip-transform-before: translate(0.25rem, -50%);
-    --tip-transform-after: translate(-0.3rem, -50%);
+    --tip-transform: translate(0.25rem, -50%);
   }
   &::after {
+    --tip-transform: translate(-0.3rem, -50%);
     --tip-caret-top:  var(--tip-caret-off);
     --tip-caret-right: var(--tip-caret-on);
     --tip-caret-bottom:  var(--tip-caret-off);
@@ -47,10 +47,10 @@
     --tip-bottom: 50%;
     --tip-top: 50%;
     --tip-right: 100%;
-    --tip-transform-before: translate(-0.25rem, -50%);
-    --tip-transform-after: translate(0.3rem, -50%);
+    --tip-transform: translate(-0.25rem, -50%);
   }
   &::after {
+    --tip-transform: translate(0.3rem, -50%);
     --tip-caret-top:  var(--tip-caret-off);
     --tip-caret-right: var(--tip-caret-off);
     --tip-caret-bottom: var(--tip-caret-off);
@@ -63,16 +63,14 @@
     --tip-bottom: auto;
     --tip-top: 100%;
     --tip-right: auto;
-    --tip-transform-before: translate(-50%, 0.25rem);
-    --tip-transform-after: translate(-50%, -0.3rem);
+    --tip-transform: translate(-50%, 0.25rem);
   }
   &::after {
+    --tip-transform: translate(-50%, -0.3rem);
     --tip-caret-top: .3rem solid;;
     --tip-caret-right: .3rem solid transparent;
     --tip-caret-bottom: none;
     --tip-caret-left: .3rem solid transparent;
-    border: 0.3rem solid transparent;
-    border-bottom: 0.3rem solid;
   }
 }
 
@@ -143,7 +141,7 @@
     margin: var(--tip-margin);
     padding: .25rem .5rem;
     overflow: hidden;
-    transform: translate(-50%, -.25rem);
+    transform: var(--tip-transform);
     border-radius: var(--border-radius);
     background: var(--theme-inverse);
     content: attr(data-tooltip);
@@ -161,7 +159,7 @@
   // Caret
   &::after {
     padding: 0;
-    transform: var(--tip-transform-after);
+    transform: var(--tip-transform);
     border-top: var(--tip-caret-top);
     border-right: var(--tip-caret-right);
     border-left: var(--tip-caret-left);
