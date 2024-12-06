@@ -1,0 +1,19 @@
+
+/// Customize inline scrollbar appearance
+@mixin scrollbar-inline($color: var(--scrollbar-inline-color), $thumb: var(--scrollbar-inline-thumb), $width: var(--scrollbar-inline-width)) {
+  @supports (not selector(::-webkit-scrollbar)) and (scrollbar-color: auto) {
+    scrollbar-width: calc(#{$width} /  2);
+    scrollbar-color: #{$thumb} #{$color};
+  }
+
+  @supports selector(::-webkit-scrollbar) {
+    &::-webkit-scrollbar {
+      height: #{$width};
+      width: #{$width};
+      background: #{$color};
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #{$thumb};
+    }
+  }
+}

@@ -23,6 +23,11 @@ $transition-collapse: ref.$transition-collapse !default;
 $transition-button: ref.$transition-btn !default;
 $transition-button-flat: ref.$transition-btn-flat !default;
 
+// Inline Scrollbar
+$scrollbar-inline-width: ref.$scrollbar-inline-color !default;
+$scrollbar-inline-color: ref.$scrollbar-inline-color !default;
+$scrollbar-inline-thumb: ref.$scrollbar-inline-thumb !default;
+
 // Cursors
 $cursor-strong: ref.$cursor-strong !default;
 $cursor-disabled: ref.$cursor-disabled !default;
