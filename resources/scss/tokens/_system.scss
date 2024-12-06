@@ -393,6 +393,7 @@ $columns: spacing.$columns;
 // Responsive
 $screen-device-min: screen.$device-min;
 $screen-desktop-min: screen.$desktop-min;
+$screen-overflow: screen.$overflow;
 
 // Width Breakpoints
 $screen-xs-min: screen.$xs-min;
@@ -427,6 +428,12 @@ $layout-height-footer: layout.$height-footer;
   --row-footer: 2;
   --column-main: 1;
   --column-sidebar: 1;
+}
+
+@mixin responsive() {
+  --width-device:  #{$screen-device-min};
+  --width-desktop: #{$screen-desktop-min};
+  --overflow: #{$screen-overflow};
 }
 
 // Stacking

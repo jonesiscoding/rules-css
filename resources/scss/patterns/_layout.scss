@@ -62,7 +62,7 @@ body > main {
 // Body Layout w/ Header/Footer using CSS Grid
 body {
   grid-template-rows: var(--height-header) 1fr var(--height-footer);
-  grid-template-columns: min-content 1fr;
+  grid-template-columns: min-content minmax(0, 1fr);
   transition: #{system.$transition-base};
   min-height: 100vh;
   display: grid;

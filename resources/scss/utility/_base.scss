@@ -10,6 +10,7 @@
   @include system.typography;
   @include system.spacing;
   @include system.layout;
+  @include system.responsive();
   @include system.decoration;
 }
 

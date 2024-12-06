@@ -17,6 +17,7 @@ $device-min: ref.$device-min !default;
 $desktop-min: $md-min !default;
 $dpi-hi: ref.$dpi-hi !default;
 $dpi-lo: ref.$dpi-lo !default;
+$overflow: ref.$screen-overflow !default;
 
 // Variables set automatically from configured variables
 $xs-max: $sm-min - ref.$screen-max-diff;
