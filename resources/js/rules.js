@@ -12,7 +12,8 @@
     trclick: TableRowClick,
     tooltip: Tooltip,
     table: Table,
-    time: TimeInput
+    timeInput: TimeInput,
+    time: Time
   };
 
   function initialize(key, selector = null) {
@@ -27,16 +28,7 @@
     }
   }
 
-  initialize( 'tabs' );
-  initialize( 'toggle' );
-  initialize( 'dialog' );
-  initialize( 'menu' );
-  initialize( 'clone' );
-  initialize( 'steps' );
-  initialize('confirm');
-  initialize( 'trclick' );
-  initialize('tooltip');
-  initialize('table')
+  Object.keys(rules).forEach(k => { initialize(k); });
 
   w.rules = rules;
 }( window, document ) );
