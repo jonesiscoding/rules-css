@@ -433,7 +433,7 @@ $layout-height-footer: layout.$height-footer;
 @mixin responsive() {
   --width-device:  #{$screen-device-min};
   --width-desktop: #{$screen-desktop-min};
-  --overflow: #{$screen-overflow};
+  --overflow-body: #{$screen-overflow};
 }
 
 // Stacking
