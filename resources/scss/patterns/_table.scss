@@ -10,6 +10,7 @@
 // Import Tokens & Modules
 @use "../tokens/system";
 @use "../modules/theme/elevation";
+@use "../modules/scrollbar";
 
 // Table Specific Colors
 table {
@@ -173,13 +174,26 @@ figure:has(table), figure.-table {
 article > table,
 details > table,
 article > section > table,
-article > form > section > table {
+article > form > section > table,
+article > figure > table {
   background-color: transparent;
   margin-left: calc(var(--padding-x) * -1);
   margin-right: calc(var(--padding-x) * -1);
   border-width: 0;
   width: calc(100% + (2 * var(--padding-x)));
 
+  &:not(caption) {
+    & > thead > tr > *, & > tbody > tr > *, & > tr > * {
+      background-color: transparent;
+    }
+  }
+}
+
+article > table,
+details > table,
+article > section > table,
+article > form > section > table,
+article > figure:first-child > table {
   &:first-child {
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
@@ -190,7 +204,13 @@ article > form > section > table {
       border-top-right-radius: var(--border-radius);
     }
   }
+}
 
+article > table,
+details > table,
+article > section > table,
+article > form > section > table,
+article > figure:last-child > table {
   &:last-child {
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
@@ -204,14 +224,26 @@ article > form > section > table {
   }
 
   &:not(caption) {
-    & > thead > tr > *, & > tbody > tr > *, & > tr > * {
-      background-color: transparent;
-    }
-
     & > thead:last-child > tr:last-child,
     & > tbody:last-child > tr:last-child > *,
     & > tr:last-child > * {
       border-bottom-width: 0;
     }
   }
+}
+
+article > figure:has(table) {
+  max-width: calc(100% + (var(--padding-x) * 2));
+  margin-block-start: var(--offset-y);
+  margin-block-end: var(--padding-y);
+  margin-inline-start: var(--offset-x);
+  margin-inline-end: var(--offset-x);
+  overflow: hidden;
+  overflow-x: auto;
+  border: none;
+  > table {
+    margin: 0;
+    width: 100%;
+  }
+  @include scrollbar.inline;
 }

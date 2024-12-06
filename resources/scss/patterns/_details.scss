@@ -9,6 +9,7 @@
 
 // Token & Module Import
 @use "../modules/theme/elevation";
+@use "../modules/scrollbar";
 
 /** Accordion **/
 
@@ -98,6 +99,22 @@ details {
         background-color: rgba(var(--theme-color-red), var(--theme-color-green), var(--theme-color-blue), calc(var(--opacity-hover) / 2)) !important;
       }
     }
+  }
+
+  figure:has(table) {
+    max-width: calc(100% + var(--padding-x));
+    margin-block-start: var(--padding-y);
+    margin-block-end: 0;
+    margin-inline-start: calc(var(--padding-x) * -.5);
+    margin-inline-end: calc(var(--padding-x) * -.5);
+    overflow: hidden;
+    overflow-x: auto;
+    border: none;
+    > table {
+      margin: 0;
+      width: 100%;
+    }
+    @include scrollbar.inline;
   }
 
   > details > summary {
