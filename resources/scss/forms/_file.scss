@@ -27,9 +27,9 @@ input[type="file"]::file-selector-button, input[type="file"]::-webkit-file-uploa
   cursor: pointer; // In Safari, this doesn't inherit
   color: var(--context-color);
   border: none;
-  border-inline-end: var(--border-width) solid var(--input-border);
+  border-inline-end: var(--border-width) solid var(--color-outline);
   border-radius: 0;
-  background-color: var(--input-bg);
+  background-color: var(--color-bg);
 }
 
 .wrapper:has(input[type="file"]), .wrapper.custom-file-upload {
@@ -71,9 +71,9 @@ input[type="file"]::file-selector-button, input[type="file"]::-webkit-file-uploa
     width: calc(100% - 11rem); // Don't overflow the visible space
     padding-right: 3rem;
     //max-height: $input-height-inner;
-    color: var(--input-color) !important;
+    color: var(--color-value) !important;
     border: none;
-    background-color: var(--input-bg) !important;
+    background-color: var(--color-bg) !important;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

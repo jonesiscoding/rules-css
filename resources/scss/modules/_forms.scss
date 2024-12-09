@@ -1,6 +1,6 @@
 @mixin picker-common {
   appearance: none;
-  background: var(--input-bg) var(--input-symbol) no-repeat right var(--input-padding-x) center;
+  background: var(--color-bg) var(--input-symbol) no-repeat right var(--input-padding-x) center;
   &::-ms-expand {
     opacity: 0; // Hides native caret in IE (Note: Pre IE10 will see NO arrow)
   }
@@ -15,7 +15,7 @@
   opacity: 1;
   height: auto;
   transform: scale(.6) translateY(-1rem) translateX(.75rem);
-  background-color: var(--input-bg);
+  background-color: var(--color-bg);
 }
 
 @mixin label-outline {

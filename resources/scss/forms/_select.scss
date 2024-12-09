@@ -9,8 +9,8 @@ select {
 
 // Edge/IE - Suppress focus highlight in Edge/IE
 select:focus::-ms-value {
-  color: var(--input-color);
-  background-color: var(--input-bg);
+  color: var(--color-icon);
+  background-color: var(--color-bg);
 }
 
 // OPERA - Pre-Blink nix the custom arrow, go with a native select button to keep it simple.

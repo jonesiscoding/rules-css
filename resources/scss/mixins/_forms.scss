@@ -4,7 +4,7 @@
   opacity: 1;
   height: auto;
   transform: scale(.6) translateY(-1rem) translateX(.75rem);
-  background-color: var(--input-bg);
+  background-color: var(--color-bg);
 }
 
 @mixin label-outline {
