@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "sass:math";
 @use "sass:color";
+@use "sass:string";
 @use "../../tokens/config/color" as base;
 @use "../palette/palette";
 @use "neutrals";
@@ -16,35 +17,35 @@ $surface: palette.generate(base.$surface);
 $neutral: palette.generate(base.$neutral);
 
 @function major($tone) {
-  @return map.get($major, quote(#{$tone}));
+  @return map.get($major, string.quote(#{$tone}));
 }
 
 @function minor($tone) {
-  @return map.get($minor, quote(#{$tone}));
+  @return map.get($minor, string.quote(#{$tone}));
 }
 
 @function feature($tone) {
-  @return map.get($feature, quote(#{$tone}));
+  @return map.get($feature, string.quote(#{$tone}));
 }
 
 @function danger($tone) {
-  @return map.get($danger, quote(#{$tone}));
+  @return map.get($danger, string.quote(#{$tone}));
 }
 
 @function danger($tone) {
-  @return map.get($danger, quote(#{$tone}));
+  @return map.get($danger, string.quote(#{$tone}));
 }
 
 @function warning($tone) {
-  @return map.get($warning, quote(#{$tone}));
+  @return map.get($warning, string.quote(#{$tone}));
 }
 
 @function success($tone) {
-  @return map.get($success, quote(#{$tone}));
+  @return map.get($success, string.quote(#{$tone}));
 }
 
 @function default($tone) {
-  @return map.get($default, quote(#{$tone}));
+  @return map.get($default, string.quote(#{$tone}));
 }
 
 @function neutral($tone) {

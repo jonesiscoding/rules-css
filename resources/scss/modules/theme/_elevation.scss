@@ -6,7 +6,7 @@
 
 @function opacity($level: 0) {
   @if $level > 0 {
-    $opacity: map.get(decoration.$elevation-tints, quote(#{$level}));
+    $opacity: map.get(decoration.$elevation-tints, string.quote(#{$level}));
 
     @return math.div($opacity, 100%);
   }
@@ -49,7 +49,7 @@
 
 @function tint($foreground, $background, $level: 0) {
   @if $level > 0 {
-    $key: quote(#{$level});
+    $key: string.quote(#{$level});
     $opacity: map-get(decoration.$elevation-tints, $key);
 
     @return palette.tint($foreground, $background, $opacity);

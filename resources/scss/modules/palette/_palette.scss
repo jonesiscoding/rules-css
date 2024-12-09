@@ -2,6 +2,7 @@
 @use "sass:math";
 @use "sass:map";
 @use "sass:list";
+@use "sass:string";
 @use "material-foundation/libmonet/libmonet.scss" as hct;
 @use "../../tokens/config/features";
 
@@ -20,7 +21,7 @@ $palettes: () !default;
 
     @each $key in $steps {
       $shade: hct.hct($h, $c, $key + $adjust);
-      $output: map.set($output, quote(#{$key}), $shade);
+      $output: map.set($output, string.quote(#{$key}), $shade);
     }
 
     $output: map.set($output, "100", hct.hct($h, $c, 100));
@@ -36,7 +37,7 @@ $palettes: () !default;
     @each $key in $steps {
       $scale: math.percentage(math.div($key, 100));
       $shade: hsl($h, $s, $scale);
-      $output: map.set($output, quote(#{$key}), $shade);
+      $output: map.set($output, string.quote(#{$key}), $shade);
     }
 
     $output: map.set($output, "100", #fff);
@@ -46,8 +47,8 @@ $palettes: () !default;
 }
 
 @function tone($name, $tone) {
-  $shade-name: quote($name);
-  $shade-tone: quote(#{$tone});
+  $shade-name: string.quote($name);
+  $shade-tone: string.quote(#{$tone});
 
   @return map.get($palettes,$shade-name,$shade-tone);
 }
