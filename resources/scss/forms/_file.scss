@@ -25,7 +25,7 @@ input[type="file"]::file-selector-button, input[type="file"]::-webkit-file-uploa
   line-height: var(--line-height-input);
   text-transform: uppercase;
   cursor: pointer; // In Safari, this doesn't inherit
-  color: var(--context-color);
+  color: var(--theme-color);
   border: none;
   border-inline-end: var(--border-width) solid var(--color-outline);
   border-radius: 0;
