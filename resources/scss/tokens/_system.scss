@@ -264,9 +264,9 @@ $theme-on-c3-link: feature.$on-alt-link !default;
   --color-divider: var(--theme-divider);
   --color-inverse-bg: var(--theme-inverse);
   --color-inverse-text: var(--theme-on-inverse);
-  --color-inverse-link: var(--theme-link-inverse);
-  --color-inverse-link-focus: var(--theme-link-inverse-focus); // TODO: Fix Me
-  --color-inverse-link-hover: var(--theme-link-inverse-hover); // TODO: Fix Me
+  --color-inverse-link: var(--theme-link-on-inverse);
+  --color-inverse-link-focus: var(--theme-link-on-inverse-focus); // TODO: Fix Me
+  --color-inverse-link-hover: var(--theme-link-on-inverse-hover); // TODO: Fix Me
 }
 
 // endregion ///////////////////////////////////////////// End Color & Theme
