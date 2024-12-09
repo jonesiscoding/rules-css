@@ -1,0 +1,54 @@
+@use "sass:color";
+@use "sass:meta";
+
+@function red($color) {
+  @if meta.function-exists("channel", "color") {
+    @return color.channel($color, "red", $space: rgb);
+  } @else {
+    @return color.red($color);
+  }
+}
+
+@function green($color) {
+  @if meta.function-exists("channel", "color") {
+    @return color.channel($color, "green", $space: rgb);
+  } @else {
+    @return color.green($color);
+  }
+}
+
+@function blue($color) {
+  @if meta.function-exists("channel", "color") {
+    @return color.channel($color, "blue", $space: rgb);
+  } @else {
+    @return color.blue($color);
+  }
+}
+
+@function hue($color) {
+  @if meta.function-exists('channel', color) {
+    @return color.channel($color, "hue", $space: hsl);
+  } @else {
+    @return color.hue($color);
+  }
+}
+
+@function saturation($color) {
+  @if meta.function-exists("channel", "color") {
+    @return color.channel($color, "saturation", $space: hsl);
+  } @else {
+    @return color.saturation($color);
+  }
+}
+
+@function lightness($color) {
+  @if meta.function-exists("channel", "color") {
+    @return color.channel($color, "lightness", $space: hsl);
+  } @else {
+    @return color.lightness($color);
+  }
+}
+
+
+
+

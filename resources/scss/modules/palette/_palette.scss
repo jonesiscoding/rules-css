@@ -1,8 +1,9 @@
-@use "sass:color";
+@use "sass:color" as color-native;
 @use "sass:math";
 @use "sass:map";
 @use "sass:list";
 @use "sass:string";
+@use "../color/sass.color" as color;
 @use "material-foundation/libmonet/libmonet.scss" as hct;
 @use "../../tokens/config/features";
 
@@ -27,7 +28,7 @@ $palettes: () !default;
     $output: map.set($output, "100", hct.hct($h, $c, 100));
   } @else {
     // Generate Colors based on HSL
-    $base: color.adjust($base, $lightness: -5%); // Just a little darker
+    $base: color-native.adjust($base, $lightness: -5%); // Just a little darker
     $h: math.round(color.hue($base));
     $s: math.round(color.saturation($base) * 1.05); // Increase saturation a little
     $l: color.lightness($base);
@@ -55,20 +56,20 @@ $palettes: () !default;
 
 @function tint($foreground, $background, $percent-opacity) {
   $tint-alpha: (1 - math.div($percent-opacity, 100%)) * -1;
-  $tint: color.adjust($foreground, $alpha: $tint-alpha);
+  $tint: color-native.adjust($foreground, $alpha: $tint-alpha);
   $alpha: 1 - math.div($percent-opacity, 100%);
 
   @if ($background == transparent) {
-    @return rgba($tint, color.opacity($tint) * $alpha);
+    @return rgba($tint, color-native.opacity($tint) * $alpha);
   } @else {
-    @return color.mix(rgba($tint, 1), rgba($background, 1), 100 * color.opacity($tint) * $alpha);
+    @return color-native.mix(rgba($tint, 1), rgba($background, 1), 100 * color-native.opacity($tint) * $alpha);
   }
 }
 
 @function disabled($color, $opacity) {
-  $r: red($color);
-  $g: green($color);
-  $b: blue($color);
+  $r: color.red($color);
+  $g: color.green($color);
+  $b: color.blue($color);
 
   @return rgba($r,$g,$b,$opacity);
 }

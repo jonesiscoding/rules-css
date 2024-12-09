@@ -1,5 +1,5 @@
 @use "sass:math";
-@use "sass:color";
+@use "../../modules/color/sass.color" as color;
 @use "sass:map";
 @use "sass:list";
 @use "palette";
@@ -25,7 +25,7 @@
   } @else {
     $h: color.hue($from-color);
     $s: color.saturation($from-color);
-    $l: color.saturation($from-color);
+    $l: color.lightness($from-color);
 
     $new-saturation: math.div($s,$parts);
     $min-saturation: math.percentage(math.div($min, 100));
@@ -38,6 +38,3 @@
 @function generate($from-color, $parts: 12, $min: .04) {
   @return palette.generate(generate-single($from-color, $parts, $min), 0);
 }
-
-$stuff: #2cb2e8;
-$things: hsl(197.2340425532, 6.6951566952%, 80.3418803419%);

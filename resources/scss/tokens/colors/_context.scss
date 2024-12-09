@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "sass:color";
+@use "../../modules/color/sass.color" as color;
 @use "major";
 @use "minor";
 @use "feature";
