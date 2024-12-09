@@ -1,4 +1,5 @@
 @use "../tokens/system" as sys;
+@forward "picker";
 
 input[type="number"] {
   --input-symbol: #{sys.$bg-image-number};

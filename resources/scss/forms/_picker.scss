@@ -1,0 +1,11 @@
+%picker {
+  appearance: none;
+  background: var(--color-bg) var(--input-symbol) no-repeat right var(--input-padding-x) center;
+  &::-ms-expand {
+    opacity: 0; // Hides native caret in IE (Note: Pre IE10 will see NO arrow)
+  }
+  &:-moz-focusring {
+    color: transparent; // Kills odd artifacts around text in Firefox focus
+    text-shadow: 0 0 0 #000; // https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-focusring
+  }
+}

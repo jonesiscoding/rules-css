@@ -1,9 +1,5 @@
-@use "../mixins/forms";
 @use "../tokens/system" as sys;
-
-%picker {
-  @include forms.picker-common;
-}
+@forward "picker";
 
 select {
   --input-symbol: #{sys.$bg-image-select};
