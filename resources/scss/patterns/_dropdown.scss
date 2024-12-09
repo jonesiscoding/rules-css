@@ -31,7 +31,7 @@ dialog[role="menu"] {
   > * {
     --color-bg: transparent;
     --color-icon: var(--theme-color);
-    --color-link: var(--theme-link);
+    --color-link: var(--theme-link-on-bg);
     --color-text: var(--theme-on-bg);
     --color-outline: var(--theme-outline);
     &:after {
