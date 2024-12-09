@@ -78,7 +78,7 @@
       border-radius: 1.25rem;
       width: 100%;
       &:after {
-        border-radius: calc(var(--radius-border) * 2);
+        border-radius: calc(var(--border-radius) * 2);
       }
       @include elevation.tint-after-hover {
         background-color: rgba(var(--color-tint-red), var(--color-tint-green), var(--color-tint-blue), var(--opacity-hover));
