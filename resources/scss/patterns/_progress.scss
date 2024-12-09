@@ -28,7 +28,7 @@ progress {
 progress {
   width: 100%;
   height: 0.5rem;
-  margin-bottom: calc(var(--spacing) * 0.5);
+  margin-bottom: calc(var(--spacer) * 0.5);
   color: var(--color-active); // IE10
   border: 0; // Firefox & Opera
   border-radius: var(--border-radius);
