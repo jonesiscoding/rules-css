@@ -138,5 +138,5 @@ input[type="checkbox"] + label, input[type="radio"] + label {
 
 input:-webkit-autofill {
   //noinspection CssRedundantUnit
-  -webkit-box-shadow: 0 0 0px 1000px var(--color-bg-autofill) inset;
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-autofill) inset;
 }
