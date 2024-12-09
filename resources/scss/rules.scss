@@ -1,6 +1,6 @@
 
 // rules.dev (https://github.com/jonesiscoding/rules)
-// (c) 2022-2023 - AMJones <am@jonesiscoding.com>
+// (c) 2022-2024 - AMJones <am@jonesiscoding.com>
 //
 // For the full copyright and license information, please view the LICENSE
 
@@ -18,47 +18,47 @@
 @use "modules/theme/spacing";
 
 // Show License
-@import "utility/license";
+@forward "utility/license";
 
 // Emit CSS Variables, Modification Classes, Reset
-@import "utility/base";
-@import "utility/reset";
+@forward "utility/base";
+@forward "utility/reset";
 
 // region //////////////////////////////////////////////// Forms
 
-@import "forms/base";
-@import "forms/groups";
-@import "forms/split";
-@import "forms/checkbox";
-@import "forms/select";
-@import "forms/number";
-@import "forms/datetime";
-@import "forms/file";
-@import "forms/list";
-@import "forms/readonly";
-@import "forms/validation";
-@import "forms/disabled";
-@import "patterns/buttons";
+@forward "forms/base";
+@forward "forms/groups";
+@forward "forms/split";
+@forward "forms/checkbox";
+@forward "forms/select";
+@forward "forms/number";
+@forward "forms/datetime";
+@forward "forms/file";
+@forward "forms/list";
+@forward "forms/readonly";
+@forward "forms/validation";
+@forward "forms/disabled";
+@forward "patterns/buttons";
 
 // endregion ///////////////////////////////////////////// End Forms
 
 // region //////////////////////////////////////////////// Components
 
-@import "patterns/layout";
-@import "patterns/article";
-@import "patterns/table";
-@import "patterns/icons";
-@import "patterns/dialog";
-@import "patterns/nav";
-@import "patterns/menubar";
-@import "patterns/dropdown";
-@import "patterns/drawer";
-@import "patterns/breadcrumb";
-@import "patterns/details";
-@import "patterns/progress";
-@import "utility/busy";
-@import "utility/tooltip";
-@import "utility/responsive";
+@forward "patterns/layout";
+@forward "patterns/article";
+@forward "patterns/table";
+@forward "patterns/icons";
+@forward "patterns/dialog";
+@forward "patterns/nav";
+@forward "patterns/menubar";
+@forward "patterns/dropdown";
+@forward "patterns/drawer";
+@forward "patterns/breadcrumb";
+@forward "patterns/details";
+@forward "patterns/progress";
+@forward "utility/busy";
+@forward "utility/tooltip";
+@forward "utility/responsive";
 
 // endregion ///////////////////////////////////////////// End Components
 
