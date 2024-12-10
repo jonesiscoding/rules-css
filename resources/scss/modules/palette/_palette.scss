@@ -3,7 +3,7 @@
 @use "sass:map";
 @use "sass:list";
 @use "sass:string";
-@use "../color/sass.color" as color;
+@use "../color/sass-color" as color;
 @use "material-foundation/libmonet/libmonet.scss" as hct;
 @use "../../tokens/config/features";
 
