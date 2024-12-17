@@ -301,7 +301,7 @@ class Table extends Component {
  * @property input {SearchInput}
  */
 class TableFilter extends Component {
-  static selector = "input[type=search][aria-controls=table*]";
+  static selector = "input[type=search][aria-controls^=table]";
 
   input;
 
