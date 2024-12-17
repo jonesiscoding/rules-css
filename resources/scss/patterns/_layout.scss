@@ -63,7 +63,7 @@ body > main {
 body {
   grid-template-rows: var(--height-header) 1fr var(--height-footer);
   grid-template-columns: min-content minmax(0, 1fr);
-  overflow: var(--overflow-body);
+  overflow-x: var(--overflow-body);
   transition: #{system.$transition-base};
   min-height: 100vh;
   display: grid;
