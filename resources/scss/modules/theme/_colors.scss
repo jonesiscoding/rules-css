@@ -13,8 +13,8 @@ $danger: palette.generate(base.$danger);
 $success: palette.generate(base.$success);
 $warning: palette.generate(base.$warning);
 $default: palette.generate(base.$default);
-$surface: palette.generate(base.$surface);
-$neutral: palette.generate(base.$neutral);
+$surface: if(base.$surface, palette.generate(base.$surface), null);
+$neutral: if(base.$neutral, palette.generate(base.$neutral), null);
 
 @function major($tone) {
   @return map.get($major, string.quote(#{$tone}));
