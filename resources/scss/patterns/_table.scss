@@ -14,20 +14,19 @@
 
 // Table Specific Colors
 table {
-  --color-emphasis: var(--theme-on-bg-alt);
+  --color-emphasis: var(--theme-on-n2);
   &, &:after {
-    --color-tint-red: var(--theme-on-bg-red);
-    --color-tint-green: var(--theme-on-bg-green);
-    --color-tint-blue: var(--theme-on-bg-blue);
+    --color-tint-rgb: var(--theme-on-bg-rgb);
+    --color-tint: rgb(var(--theme-on-bg-rgb) / var(--opacity-elevation));
   }
   // Table Header Sorting
   > thead > tr > *[aria-sort] {
-    --color-text: var(--theme-on-bg-alt);
+    --color-text: var(--theme-on-n2);
     &:before {
-      color: var(--theme-on-bg-alt);
+      color: var(--theme-on-n2);
     }
     > label {
-      --color-label: var(--theme-on-bg-alt);
+      --color-label: var(--theme-on-n2);
     }
   }
 }
@@ -74,7 +73,7 @@ table {
   // Hover On Rows
   &:not(.-hoverless) > tbody > tr:hover > td {
     // We don't need to use an 'after' pseudo-elements here because the TD is inside a TR, which has a bg color.
-    background-color: rgba(var(--color-tint-red),var(--color-tint-green),var(--color-tint-blue), var(--opacity-hover));
+    background-color: rgb(var(--color-tint-rgb) / var(--opacity-hover));
   }
 
   // Table Header Formatting
@@ -125,7 +124,7 @@ table {
 table[role="grid"] {
   tbody tr:nth-child(odd) > * {
     --opacity-elevation: #{elevation.opacity(1)};
-    background-color: rgba(var(--color-tint-red),var(--color-tint-green),var(--color-tint-blue), calc(var(--opacity-elevation) * 2));
+    background-color: rgb(var(--color-tint-rgb) / calc(var(--opacity-elevation) * 2));
   }
 }
 

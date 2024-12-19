@@ -28,9 +28,7 @@ details {
     --color-outline: transparent;
 
     &:after {
-      --color-tint-red: var(--theme-color-red);
-      --color-tint-blue: var(--theme-color-blue);
-      --color-tint-green: var(--theme-color-green);
+      --color-tint-rgb: var(--theme-color-rgb);
       --opacity-elevation: var(--opacity-elevation-1);
     }
 
@@ -42,9 +40,7 @@ details {
 
     > summary {
       &:after {
-        --color-tint-red: var(--theme-on-bg-red);
-        --color-tint-blue: var(--theme-on-bg-blue);
-        --color-tint-green: var(--theme-on-bg-green);
+        --color-tint-rgb: var(--theme-on-bg-rgb);
       }
     }
   }
@@ -54,9 +50,7 @@ details {
     --color-bg: var(--theme-bg);
 
     &:after {
-      --color-tint-red: var(--theme-color-red);
-      --color-tint-blue: var(--theme-color-blue);
-      --color-tint-green: var(--theme-color-green);
+      --color-tint-rgb: var(--theme-color-rgb);
     }
   }
 }
@@ -78,7 +72,7 @@ details {
       margin-bottom: 0 !important;
       margin-left: calc(var(--padding-x) * -.5);
       border-radius: var(--border-radius);
-      background-color: rgba(var(--theme-bg-red), var(--theme-bg-green), var(--theme-bg-blue), .75);
+      background-color: rgb(var(--theme-bg-rgb) / .75);
 
       &:not(caption) {
         & > thead > tr > *, & > tbody > tr > *, & > tr > * {
@@ -96,7 +90,7 @@ details {
 
       &:not(.-hoverless) > tbody > tr:hover > td {
         // We don't need to use an 'after' pseudo-element here because the TD is inside a TR, which has a bg color.
-        background-color: rgba(var(--theme-color-red), var(--theme-color-green), var(--theme-color-blue), calc(var(--opacity-hover) / 2)) !important;
+        background-color: rgb(var(--theme-color-rgb) / calc(var(--opacity-hover) / 2)) !important;
       }
     }
   }
@@ -127,7 +121,7 @@ details {
     }
 
     &:hover:after {
-      background-color: rgba(var(--color-tint-red), var(--color-tint-green), var(--color-tint-blue), var(--opacity-hover));
+      background-color: rgb(var(--color-tint-rgb) / var(--opacity-hover));
     }
 
     // Badges, Aligned to Right Side
@@ -144,9 +138,9 @@ details {
       min-width: 1.25rem;
       height: 1.25rem;
       padding: 0 .3rem;
-      color: var(--theme-on-a3);
+      color: var(--app-on-a3);
       border-radius: calc(var(--border-radius) * 4);
-      background-color: var(--theme-a3);
+      background-color: var(--app-a3);
     }
   }
 
@@ -165,7 +159,7 @@ details {
 
   // Background Tint
   @include elevation.tint-after {
-    background-color: rgba(var(--color-tint-red), var(--color-tint-green), var(--color-tint-blue), var(--opacity-elevation));
+    background-color: rgb(var(--color-tint-rgb) / var(--opacity-elevation));
   }
 
   // Rounded Corners on First & Last Child

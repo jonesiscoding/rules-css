@@ -7,40 +7,37 @@
 
   dialog[role="navigation"] {
     --color-bg: var(--theme-bg);
-    --color-text: var(--theme-on-bg-alt);
+    --color-text: var(--theme-on-n2);
     --color-outline: transparent;
     --drawer-font-size: .875rem;
     nav:after {
-      --color-tint-red: var(--theme-color-red);
-      --color-tint-green: var(--theme-color-green);
-      --color-tint-blue: var(--theme-color-blue);
+      --color-tint-rgb: var(--theme-color-rgb);
+      --color-tint: rgb(var(--theme-color-rgb) / var(--opacity-elevation));
     }
     a {
       --color-bg: transparent;
-      --color-link: var(--theme-on-bg-alt);
-      --color-icon: var(--theme-on-bg-alt);
+      --color-link: var(--theme-on-n2);
+      --color-icon: var(--theme-on-n2);
       --color-shadow: transparent;
       --color-outline: transparent;
       &:hover, &:focus {
         --color-link: var(--theme-on-bg);
         --color-icon: var(--theme-on-bg);
         &:after {
-          --color-tint-red: var(--theme-on-bg-red);
-          --color-tint-green: var(--theme-on-bg-green);
-          --color-tint-blue: var(--theme-on-bg-blue);
+          --color-tint-rgb: var(--theme-on-bg-rgb);
+          --color-tint: rgb(var(--color-tint-rgb) / var(--opacity-hover));
         }
       }
       &[aria-current]:not([aria-current=false]) {
-        --color-bg: var(--theme-c2);
-        --color-link: var(--theme-on-c2);
-        --color-icon: var(--theme-on-c2);
+        --color-bg: var(--app-c2);
+        --color-link: var(--app-on-c2);
+        --color-icon: var(--app-on-c2);
         &:hover, &:focus {
-          --color-link: var(--theme-on-c2);
-          --color-icon: var(--theme-on-c2);
+          --color-link: var(--app-on-c2);
+          --color-icon: var(--app-on-c2);
           &:after {
-            --color-tint-red: var(--theme-on-c2-red);
-            --color-tint-green: var(--theme-on-c2-green);
-            --color-tint-blue: var(--theme-on-c2-blue);
+            --color-tint-rgb: var(--app-on-c2-rgb);
+            --color-tint: rgb(var(--color-tint-rgb) / var(--opacity-hover));
           }
         }
       }
@@ -62,7 +59,7 @@
       font-weight: var(--font-weight-medium);
       width: auto;
       @include elevation.tint-after {
-        background-color: rgba(var(--color-tint-red), var(--color-tint-green), var(--color-tint-blue), var(--opacity-elevation-1))
+        background-color: rgb(var(--color-tint-rgb) / var(--opacity-elevation-1));
       }
       header, footer, .ml-auto {
         display: none;
@@ -81,7 +78,7 @@
         border-radius: calc(var(--border-radius) * 2);
       }
       @include elevation.tint-after-hover {
-        background-color: rgba(var(--color-tint-red), var(--color-tint-green), var(--color-tint-blue), var(--opacity-hover));
+        background-color: rgb(var(--color-tint-rgb) / var(--opacity-hover));
       }
       span {
         max-width: 100%;

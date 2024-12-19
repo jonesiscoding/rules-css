@@ -49,6 +49,10 @@
   }
 }
 
+@function rgb($color) {
+  @return red($color) green($color) blue($color);
+}
+
 
 
 

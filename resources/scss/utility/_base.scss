@@ -5,6 +5,7 @@
 :root {
   @include system.accents;
   @include system.neutrals;
+  @include system.app;
   @include system.theme;
   @include system.color;
   @include system.typography;

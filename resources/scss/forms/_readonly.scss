@@ -5,23 +5,23 @@ input[readonly], textarea[readonly], %picker[readonly],
 fieldset[readonly] input, fieldset[readonly] textarea, fieldset[readonly] %picker,
 form .wrapper[aria-readonly]
 {
-  --color-bg: rgba(var(--color-bg-red), var(--color-bg-green), var(--color-bg-blue), var(--opacity-readonly-bg));
-  --color-autofill: rgba(var(--color-autofill-red), var(--color-autofill-green), var(--color-autofill-blue), var(--opacity-readonly-bg));
-  --color-text: rgba(var(--color-text-red), var(--color-text-green), var(--color-text-blue), var(--opacity-readonly));
-  --color-value: rgba(var(--color-value-red), var(--color-value-green), var(--color-value-blue), var(--opacity-readonly));
-  --color-placeholder: rgba(var(--color-placeholder-red), var(--color-placeholder-green), var(--color-placeholder-blue), var(--opacity-readonly));
-  --color-outline: rgba(var(--color-outline-red), var(--color-outline-green), var(--color-outline-blue), var(--opacity-readonly-bg));
+  --color-bg: rgb(var(--theme-bg-rgb) / var(--opacity-readonly-bg));
+  --color-autofill: rgb(var(--theme-bg-rgb) / var(--opacity-readonly-bg));
+  --color-text: rgb(var(--theme-on-n2-rgb) / var(--opacity-readonly));
+  --color-value: rgb(var(--theme-on-bg-rgb) / var(--opacity-readonly));
+  --color-placeholder: rgb(var(--theme-on-n2-rgb) / var(--opacity-readonly));
+  --color-outline: rgb(var(--theme-outline-rgb) / var(--opacity-readonly-bg));
 }
 
 input[readonly] + label, textarea[readonly] + label, %picker[readonly] + label,
 fieldset[readonly] + label, fieldset[readonly] textarea + label, fieldset[readonly] %picker + label,
 form .wrapper[aria-readonly] > label
 {
-  --color-label: rgba(var(--color-label-red), var(--color-label-green), var(--color-label-blue), var(--opacity-readonly));
+  --color-label: rgb(var(--theme-on-n2-rgb) / var(--opacity-readonly));
 }
 
 input, textarea, %picker {
   &[readonly], fieldset[readonly], form .wrapper[aria-readonly] {
-    cursor: sys.$cursor-disabled;
+    cursor: #{sys.$cursor-disabled};
   }
 }

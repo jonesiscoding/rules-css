@@ -22,8 +22,8 @@
 
 *[role="tab"], [role="tablist"] > *[role="button"] {
   --color-bg: transparent;
-  --color-link: var(--theme-on-alt);
-  --color-icon: var(--theme-on-alt);
+  --color-link: var(--theme-on-c1);
+  --color-icon: var(--theme-on-c1);
   --color-outline: transparent;
   --color-bg-active: transparent;
   --color-shadow: transparent;
@@ -46,9 +46,9 @@
 }
 
 .-pills *[role="tab"], .-pills [role="tablist"] > *[role="button"] {
-  --color-bg: var(--theme-alt);
-  --color-link: var(--theme-on-alt);
-  --color-icon: var(--theme-on-alt);
+  --color-bg: var(--theme-c1);
+  --color-link: var(--theme-on-c1);
+  --color-icon: var(--theme-on-c1);
   --color-outline: transparent;
   --color-shadow: transparent;
   --tab-border-width: var(--border-width);

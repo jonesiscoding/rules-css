@@ -1,0 +1,46 @@
+pleasing:
+  filters:
+    prefix:
+      use_preconfigured: false
+      class: 'XQ\Pleasing\Filter\PleasingPrefixFilter'
+      apply_to: '\.scss$'
+      prefix_properties:
+        'align-content': [ 'align-content' ]
+        'align-items': [ 'align-items' ]
+        'align-self': [ 'align-self' ]
+        'justify-content': [ 'justify-content' ]
+        'flex': [ 'flex' ]
+        'line-clamp': [ '-webkit*', 'line-clamp' ]
+        'user-select': [ '-webkit*','-moz*', 'user-select' ]
+        'text-stroke': [ '-webkit*', 'text-stroke' ]
+        'hyphens': [ '-webkit*','hyphens' ]
+      prefix_values:
+        display:
+          box: [ '-webkit*', 'box' ]
+  assets:
+    rules_css:
+      inputs:
+        - "resources/scss/rules.scss"
+      output: "dist/css/rules.css"
+    palette_css_min:
+      filters: ['minify']
+      inputs:
+        - "resources/scss/rules.scss"
+      output: "dist/css/rules.min.css"
+    rules_js:
+      inputs:
+        - "resources/js/component.js"
+        - "resources/js/clone.js"
+        - "resources/js/toggle.js"
+        - "resources/js/toggle-button.js"
+        - "resources/js/responsive.js"
+        - "resources/js/dialog.js"
+        - "resources/js/progress-steps.js"
+        - "resources/js/table.js"
+        - "resources/js/tabs.js"
+        - "resources/js/time.js"
+        - "resources/js/tooltip.js"
+        - "resources/js/input-time.js"
+        - "resources/js/input-search.js"
+        - "resources/js/rules.js"
+      output: "dist/js/rules.js"

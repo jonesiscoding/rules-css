@@ -4,21 +4,20 @@
 @use "sass:string";
 @use "../../tokens/config/color" as base;
 @use "../palette/palette";
-@use "neutrals";
+@use "../palette/neutral";
 
-$major: palette.generate(base.$major);
-$minor: palette.generate(base.$minor);
-$feature: palette.generate(base.$feature);
-$danger: palette.generate(base.$danger);
-$success: palette.generate(base.$success);
-$warning: palette.generate(base.$warning);
-$default: palette.generate(base.$default);
-$surface: if(base.$surface, palette.generate(base.$surface), null);
-$neutral: if(base.$neutral, palette.generate(base.$neutral), null);
+$base-bg: if(base.$surface, base.$surface, neutral.generate-single(base.$major));
+
+$major: palette.generate($base-bg, 0) !default;
+$minor: palette.generate(neutral.generate-single(base.$minor), 0) !default;
+$feature: palette.generate(neutral.generate-single(base.$feature), 0) !default;
+$danger: palette.generate(neutral.generate-single(base.$danger), 0) !default;
+$success: palette.generate(neutral.generate-single(base.$success), 0) !default;
+$warning: palette.generate(neutral.generate-single(base.$warning), 0) !default;
+$default: palette.generate(neutral.generate-single(base.$default), 0) !default;
 
 @function tone($name, $tone) {
   $quoted: string.quote($name);
-  @debug $quoted;
   @if $quoted == "major" {
     @return major($tone);
   } @else if $quoted == "minor" {
@@ -33,10 +32,6 @@ $neutral: if(base.$neutral, palette.generate(base.$neutral), null);
     @return success($tone)
   } @else if $quoted == "default" {
     @return default($tone);
-  } @else if $quoted == "bg" {
-    @return bg($tone)
-  } @else if $quoted == "neutral" {
-    @return neutral($tone);
   }
 }
 
@@ -70,18 +65,4 @@ $neutral: if(base.$neutral, palette.generate(base.$neutral), null);
 
 @function default($tone) {
   @return map.get($default, string.quote(#{$tone}));
-}
-
-@function bg($tone) {
-  @return neutrals.major($tone);
-}
-
-@function neutral($tone) {
-  @return neutrals.major-alt($tone);
-}
-
-@function tint($foreground, $percent-opacity) {
-  $tint-alpha: (1 - math.div($percent-opacity, 100%)) * -1;
-
-  @return color.adjust($foreground, $alpha: $tint-alpha);
 }

@@ -22,9 +22,7 @@ dialog[role="menu"] {
   --color-bg: var(--theme-bg);
   &:after {
     --opacity-elevation: var(--opacity-elevation-2);
-    --color-tint-red: var(--theme-color-red);
-    --color-tint-blue: var(--theme-color-blue);
-    --color-tint-green: var(--theme-color-green);
+    --color-tint-rgb: var(--theme-color-rgb);
   }
   --color-text: var(--theme-on-bg);
   --color-divider: var(--theme-divider);
@@ -35,9 +33,7 @@ dialog[role="menu"] {
     --color-text: var(--theme-on-bg);
     --color-outline: var(--theme-outline);
     &:after {
-      --color-tint-red: var(--theme-on-bg-red);
-      --color-tint-blue: var(--theme-on-bg-blue);
-      --color-tint-green: var(--theme-on-bg-green);
+      --color-tint-rgb: var(--theme-on-bg-rgb);
     }
   }
 }
@@ -64,7 +60,7 @@ dialog[role="menu"] {
   backdrop-filter: none;
   // Background Tint
   @include elevation.tint-after {
-    background-color: rgba(var(--color-tint-red), var(--color-tint-green), var(--color-tint-blue), var(--opacity-elevation));
+    background-color: rgb(var(--color-tint-rgb) / var(--opacity-elevation));
   }
 
   // Everything Inside

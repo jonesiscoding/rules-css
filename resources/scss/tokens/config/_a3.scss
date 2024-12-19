@@ -1,0 +1,22 @@
+
+@use "../../modules/theme/colors";
+@use "../../modules/theme/neutrals";
+
+// Tones
+$tone-0: colors.tone("feature", 0) !default;
+$tone-5: colors.tone("feature", 5) !default;
+$tone-10: colors.tone("feature", 10) !default;
+$tone-15: colors.tone("feature", 15) !default;
+$tone-20: colors.tone("feature", 20) !default;
+$tone-25: colors.tone("feature", 25) !default;
+$tone-30: colors.tone("feature", 30) !default;
+$tone-40: colors.tone("feature", 40) !default;
+$tone-50: colors.tone("feature", 50) !default;
+$tone-60: colors.tone("feature", 60) !default;
+$tone-70: colors.tone("feature", 70) !default;
+$tone-80: colors.tone("feature", 80) !default;
+$tone-90: colors.tone("feature", 90) !default;
+$tone-95: colors.tone("feature", 95) !default;
+$tone-98: colors.tone("feature", 98) !default;
+$tone-99: colors.tone("feature", 99) !default;
+$tone-100: colors.tone("feature", 100) !default;

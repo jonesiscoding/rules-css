@@ -1,94 +1,37 @@
-@use "sass:map";
 @use "../../modules/color/sass-color" as color;
-@use "major";
-@use "minor";
-@use "feature";
-@use "success";
-@use "warning";
-@use "danger";
 
-@mixin major() {
-  @include custom-properties(major.theme());
-}
-
-@mixin minor() {
-  @include custom-properties(minor.theme())
-}
-
-@mixin feature() {
-  @include custom-properties(feature.theme())
-}
-
-@mixin danger() {
-  @include custom-properties(danger.theme());
-}
-
-@mixin success() {
-  @include custom-properties(success.theme());
-}
-
-@mixin warning() {
-  @include custom-properties(warning.theme());
-}
-
-@mixin custom-properties($theme-map) {
-  $color: map.get($theme-map, "color");
-  $on-color: map.get($theme-map, "on-color");
-  $link-on-color: map.get($theme-map, "link-on-color");
-  $alt: map.get($theme-map, "alt");
-  $on-alt: map.get($theme-map, "on-alt");
-  $link-on-alt: map.get($theme-map, "link-on-alt");
-  $surface: map.get($theme-map, "surface");
-  $on-surface: map.get($theme-map, "on-surface");
-  $link-on-surface: map.get($theme-map, "link-on-surface");
-  $surface-alt: map.get($theme-map, "surface-alt");
-  $on-surface-alt: map.get($theme-map, "on-surface-alt");
-  $link-on-surface-alt: map.get($theme-map, "link-on-surface-alt");
-  $outline: map.get($theme-map, "outline");
-  $divider: map.get($theme-map, "divider");
-  $shadow: map.get($theme-map, "shadow");
-  $inverse: map.get($theme-map, "inverse");
-  $on-inverse: map.get($theme-map, "on-inverse");
-  $link-on-inverse: map.get($theme-map, "link-on-inverse");
-  --theme-color: #{$color};
-  --theme-on-color: #{$on-color};
-  --theme-link-on-color: #{$link-on-color};
-  --theme-alt: #{$alt};
-  --theme-on-alt: #{$on-alt};
-  --theme-link-on-alt: #{$link-on-alt};
-  --theme-bg: #{$surface};
-  --theme-on-bg: #{$on-surface};
-  --theme-link-on-bg: #{$link-on-surface};
-  --theme-bg-alt: #{$surface-alt};
-  --theme-on-bg-alt: #{$on-surface-alt};
-  --theme-link-on-bg-alt: #{$link-on-surface-alt};
-  --theme-outline: #{$outline};
+@mixin custom-properties($bg, $on-bg, $on-bg-link, $neutral, $on-neutral, $on-neutral-link, $inverse, $on-inverse, $on-inverse-link, $color, $on-color, $on-color-link, $alt, $on-alt, $on-alt-link, $outline, $divider, $shadow) {
+  // RGB Values, to be removed when relative color is a thing
+  --theme-bg-rgb: #{color.rgb($bg)};
+  --theme-on-bg-rgb: #{color.rgb($on-bg)};
+  --theme-link-on-bg-rgb: #{color.rgb($on-bg-link)};
+  --theme-n2-rgb: #{color.rgb($neutral)};
+  --theme-link-on-n2-rgb: #{color.rgb($on-neutral-link)};
+  --theme-inverse-rgb: #{color.rgb($inverse)};
+  --theme-link-on-inverse-rgb: #{color.rgb($on-inverse-link)};
+  --theme-color-rgb: #{color.rgb($color)};
+  --theme-on-color-rgb: #{color.rgb($on-color)};
+  --theme-link-on-color-rgb: #{color.rgb($on-color-link)};
+  --theme-c1-rgb: #{color.rgb($alt)};
+  --theme-link-on-c1-rgb: #{color.rgb($on-alt-link)};
+  --theme-outline-rgb: #{color.rgb($outline)};
+  // Actual Values
+  --theme-bg: rgb(var(--theme-bg-rgb) / 1);
+  --theme-on-bg: rgb(var(--theme-on-bg-rgb) / 1);
+  --theme-link-on-bg: rgb(var(--theme-link-on-bg) / 1);
+  --theme-n2: rgb(var(--theme-n2-rgb) / 1);
+  --theme-on-n2: #{$on-neutral};
+  --theme-link-on-n2: rgb(var(--theme-link-on-n2-rgb) / 1);
+  --theme-outline: rgb(var(--theme-outline-rgb) /1);
   --theme-divider: #{$divider};
   --theme-shadow: #{$shadow};
-  --theme-inverse: #{$inverse};
+  --theme-inverse: rgb(var(--theme-inverse-rgb) / 1);
   --theme-on-inverse: #{$on-inverse};
-  --theme-link-on-inverse: #{$link-on-inverse};
-  --theme-link-on-inverse-hover: #{$link-on-inverse};
-  --theme-link-on-inverse-focus: #{$link-on-inverse};
-  --theme-color-red: #{color.red($color)};
-  --theme-color-green: #{color.green($color)};
-  --theme-color-blue: #{color.blue($color)};
-  --theme-on-color-red: #{color.red($on-color)};
-  --theme-on-color-green: #{color.green($on-color)};
-  --theme-on-color-blue: #{color.blue($on-color)};
-  --theme-bg-red: #{color.red($surface)};
-  --theme-bg-green: #{color.green($surface)};
-  --theme-bg-blue: #{color.blue($surface)};
-  --theme-bg-alt-red: #{color.red($surface-alt)};
-  --theme-bg-alt-green: #{color.green($surface-alt)};
-  --theme-bg-alt-blue: #{color.blue($surface-alt)};
-  --theme-on-bg-red: #{color.red($on-surface)};
-  --theme-on-bg-green: #{color.green($on-surface)};
-  --theme-on-bg-blue: #{color.blue($on-surface)};
-  --theme-on-bg-alt-red: #{color.red($on-surface-alt)};
-  --theme-on-bg-alt-green: #{color.green($on-surface-alt)};
-  --theme-on-bg-alt-blue: #{color.blue($on-surface-alt)};
-  --theme-outline-red: #{color.red($outline)};
-  --theme-outline-green: #{color.green($outline)};
-  --theme-outline-blue: #{color.blue($outline)};
+  --theme-link-on-inverse: rgb(var(--theme-link-on-inverse-rgb) / 1);
+  --theme-color: rgb(var(--theme-color-rgb) / 1);
+  --theme-on-color: rgb(var(--theme-on-color-rgb) / 1);
+  --theme-link-on-color: rgb(var(--theme-link-on-color-rgb) / 1);
+  --theme-c1: rgb(var(--theme-c1-rgb) / 1);
+  --theme-on-c1: #{$on-alt};
+  --theme-link-on-c1: rgb(var(--theme-link-on-c1-rgb) / 1);
 }

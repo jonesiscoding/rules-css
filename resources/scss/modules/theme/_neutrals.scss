@@ -6,77 +6,59 @@
 @use "../palette/palette";
 @use "../palette/neutral";
 
-$surface-base: if(base.$surface, base.$surface, neutral.generate-single(base.$major));
 $neutral-base: if(base.$neutral, base.$neutral, neutral.generate-single(base.$major, 6, 8));
 
-$major: palette.generate($surface-base, 0) !default;
-$major-alt: palette.generate($neutral-base, 0) !default;
+$major: palette.generate($neutral-base, 0) !default;
+$minor: palette.generate(neutral.generate-single(base.$minor, 6, 8), 0) !default;
+$feature: palette.generate(neutral.generate-single(base.$feature, 6, 8), 0) !default;
+$danger: palette.generate(neutral.generate-single(base.$danger, 6, 8), 0) !default;
+$success: palette.generate(neutral.generate-single(base.$success, 6, 8), 0) !default;
+$warning: palette.generate(neutral.generate-single(base.$warning, 6, 8), 0) !default;
+$default: palette.generate(neutral.generate-single(base.$default, 6, 8), 0) !default;
 
-$minor: palette.generate(neutral.generate-single(base.$minor), 0) !default;
-$feature: palette.generate(neutral.generate-single(base.$feature), 0) !default;
-$danger: palette.generate(neutral.generate-single(base.$danger), 0) !default;
-$success: palette.generate(neutral.generate-single(base.$success), 0) !default;
-$warning: palette.generate(neutral.generate-single(base.$warning), 0) !default;
-$default: palette.generate(neutral.generate-single(base.$default), 0) !default;
-$minor-alt: palette.generate(neutral.generate-single(base.$minor, 6, 8), 0) !default;
-$feature-alt: palette.generate(neutral.generate-single(base.$feature, 6, 8), 0) !default;
-$danger-alt: palette.generate(neutral.generate-single(base.$danger, 6, 8), 0) !default;
-$success-alt: palette.generate(neutral.generate-single(base.$success, 6, 8), 0) !default;
-$warning-alt: palette.generate(neutral.generate-single(base.$warning, 6, 8), 0) !default;
-$default-alt: palette.generate(neutral.generate-single(base.$default, 6, 8), 0) !default;
+@function tone($name, $tone) {
+  $quoted: string.quote($name);
+  @if $quoted == "major" {
+    @return major($tone);
+  } @else if $quoted == "minor" {
+    @return minor($tone);
+  } @else if $quoted == "feature" {
+    @return feature($tone);
+  } @else if $quoted == "danger" {
+    @return danger($tone);
+  } @else if $quoted == "warning" {
+    @return warning($tone);
+  } @else if $quoted == "success" {
+    @return success($tone)
+  } @else if $quoted == "default" {
+    @return default($tone);
+  }
+}
 
 @function major($tone) {
   @return map.get($major, string.quote(#{$tone}));
-}
-
-@function major-alt($tone) {
-  @return map.get($major-alt, string.quote(#{$tone}));
 }
 
 @function minor($tone) {
   @return map.get($minor, string.quote(#{$tone}));
 }
 
-@function minor-alt($tone) {
-  @return map.get($minor-alt, string.quote(#{$tone}));
-}
-
 @function feature($tone) {
   @return map.get($feature, string.quote(#{$tone}));
-}
-
-@function feature-alt($tone) {
-  @return map.get($feature-alt, string.quote(#{$tone}));
 }
 
 @function danger($tone) {
   @return map.get($danger, string.quote(#{$tone}));
 }
 
-@function danger-alt($tone) {
-  @return map.get($danger-alt, string.quote(#{$tone}));
-}
-
 @function warning($tone) {
   @return map.get($warning, string.quote(#{$tone}));
-}
-
-@function warning-alt($tone) {
-  @return map.get($warning-alt, string.quote(#{$tone}));
 }
 
 @function success($tone) {
   @return map.get($success, string.quote(#{$tone}));
 }
 
-@function success-alt($tone) {
-  @return map.get($success-alt, string.quote(#{$tone}));
-}
-
 @function default($tone) {
   @return map.get($default, string.quote(#{$tone}));
-}
-
-@function default-alt($tone) {
-  @return map.get($default-alt, string.quote(#{$tone}));
 }

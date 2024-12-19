@@ -4,19 +4,20 @@ input:disabled, textarea:disabled, %picker:disabled,
 fieldset[disabled] input, fieldset[disabled] textarea, fieldset[disabled] %picker,
 form .wrapper[aria-disabled]
 {
-  --color-bg: rgba(var(--color-bg-red), var(--color-bg-green), var(--color-bg-blue), var(--opacity-disabled-bg));
-  --color-autofill: rgba(var(--color-autofill-red), var(--color-autofill-green), var(--color-autofill-blue), var(--opacity-disabled-bg));
-  --color-text: rgba(var(--color-text-red), var(--color-text-green), var(--color-text-blue), var(--opacity-disabled));
-  --color-value: rgba(var(--color-value-red), var(--color-value-green), var(--color-value-blue), var(--opacity-disabled));
-  --color-placeholder: rgba(var(--color-placeholder-red), var(--color-placeholder-green), var(--color-placeholder-blue), var(--opacity-disabled));
-  --color-outline: rgba(var(--color-outline-red), var(--color-outline-green), var(--color-outline-blue), var(--opacity-disabled-bg));
+  // Disabled
+  --color-bg: rgb(var(--theme-bg-rgb) / var(--opacity-disabled-bg));
+  --color-autofill: rgb(var(--theme-bg-rgb) / var(--opacity-disabled-bg));
+  --color-text: rgb(var(--theme-on-n2-rgb) / var(--opacity-disabled));
+  --color-value: rgb(var(--theme-on-bg-rgb) / var(--opacity-disabled));
+  --color-placeholder: rgb(var(--theme-on-n2-rgb) / var(--opacity-disabled));
+  --color-outline: rgb(var(--theme-outline-rgb) / var(--opacity-disabled-bg));
 }
 
 input:disabled + label, textarea:disabled + label, %picker:disabled + label,
 fieldset[disabled] + label, fieldset[disabled] textarea + label, fieldset[disabled] %picker + label,
 form .wrapper[aria-disabled] > label
 {
-  --color-label: rgba(var(--color-label-red), var(--color-label-green), var(--color-label-blue), var(--opacity-disabled));
+  --color-label: rgb(var(--theme-on-n2-rgb) / var(--opacity-disabled));
 }
 
 input, textarea, %picker {
@@ -24,6 +25,6 @@ input, textarea, %picker {
     opacity: 1; // iOS fix for unreadable disabled content; see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#Browser_compatibility
   }
   &:disabled, fieldset[disabled], form .wrapper[aria-disabled] {
-    cursor: sys.$cursor-disabled;
+    cursor: #{sys.$cursor-disabled};
   }
 }

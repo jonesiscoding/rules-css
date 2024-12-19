@@ -1,0 +1,22 @@
+
+@use "../../modules/theme/colors";
+@use "../../modules/theme/neutrals";
+
+// Tones
+$tone-0:  colors.tone("major", 0) !default;
+$tone-5: colors.tone("major", 5) !default;
+$tone-10: colors.tone("major", 10) !default;
+$tone-15: colors.tone("major", 15) !default;
+$tone-20: colors.tone("major", 20) !default;
+$tone-25: colors.tone("major", 25) !default;
+$tone-30: colors.tone("major", 30) !default;
+$tone-40: colors.tone("major", 40) !default;
+$tone-50: colors.tone("major", 50) !default;
+$tone-60: colors.tone("major", 60) !default;
+$tone-70: colors.tone("major", 70) !default;
+$tone-80: colors.tone("major", 80) !default;
+$tone-90: colors.tone("major", 90) !default;
+$tone-95: colors.tone("major", 95) !default;
+$tone-98: colors.tone("major", 98) !default;
+$tone-99: colors.tone("major", 99) !default;
+$tone-100: colors.tone("major", 100) !default;

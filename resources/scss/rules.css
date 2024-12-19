@@ -84,15 +84,15 @@
   --color-inverse-link-hover: #cce7f2;
   --color-inverse-link-disabled: #cce7f2;
   --theme-bg: #fbfbfb;
-  --theme-bg-alt: #eeeeee;
+  --theme-n2: #eeeeee;
   --theme-on: #6e6e6e;
   --theme-tint-red: 110;
   --theme-tint-green: 110;
   --theme-tint-blue: 110;
-  --theme-on-alt: #979797;
+  --theme-on-c1: #979797;
   --theme-color: #6fbcdb;
   --theme-on-color: white;
-  --theme-alt: #e3f2f8;
+  --theme-c1: #e3f2f8;
   --theme-divider: #dfdfdf;
   --theme-outline: #b4b4b4;
   --theme-inverse: #888888;
@@ -117,15 +117,15 @@
   --border-radius: 4px;
   --modal-filter: blur(0.25rem);
   --modal-bg: rgba(255, 255, 255, 0.7);
-  --input-bg: var(--theme-bg-alt);
-  --input-label: var(--theme-on-alt);
-  --input-icon: var(--theme-on-alt);
+  --input-bg: var(--theme-n2);
+  --input-label: var(--theme-on-c1);
+  --input-icon: var(--theme-on-c1);
   --input-border: transparent;
-  --input-active: var(--theme-on-alt);
+  --input-active: var(--theme-on-c1);
   --input-value: var(--theme-on);
-  --input-text: var(--theme-on-alt);
-  --input-placeholder: calc(var(--theme-on-alt), .80);
-  --input-autofill: var(--theme-bg-alt);
+  --input-text: var(--theme-on-c1);
+  --input-placeholder: calc(var(--theme-on-c1), .80);
+  --input-autofill: var(--theme-n2);
   --modal-filter: blur(0.25rem);
   --modal-bg: rgba(255, 255, 255, 0.7);
   --busy-opacity: .5;
@@ -174,15 +174,15 @@
 
 .-warning {
   --theme-bg: #fafafa;
-  --theme-bg-alt: #ededed;
+  --theme-n2: #ededed;
   --theme-on: dimgray;
   --theme-tint-red: 105;
   --theme-tint-green: 105;
   --theme-tint-blue: 105;
-  --theme-on-alt: #939393;
+  --theme-on-c1: #939393;
   --theme-color: #ecc757;
   --theme-on-color: white;
-  --theme-alt: #fbf4df;
+  --theme-c1: #fbf4df;
   --theme-divider: #dedede;
   --theme-outline: #b1b1b1;
   --theme-inverse: #848484;
@@ -194,15 +194,15 @@
 
 .-danger {
   --theme-bg: #fbfbfb;
-  --theme-bg-alt: #efefef;
+  --theme-n2: #efefef;
   --theme-on: #777777;
   --theme-tint-red: 119;
   --theme-tint-green: 119;
   --theme-tint-blue: 119;
-  --theme-on-alt: #9d9d9d;
+  --theme-on-c1: #9d9d9d;
   --theme-color: #e57870;
   --theme-on-color: white;
-  --theme-alt: #fae5e3;
+  --theme-c1: #fae5e3;
   --theme-divider: #e1e1e1;
   --theme-outline: #b8b8b8;
   --theme-inverse: #909090;
@@ -214,15 +214,15 @@
 
 .-success {
   --theme-bg: #fafafa;
-  --theme-bg-alt: #ececec;
+  --theme-n2: #ececec;
   --theme-on: #606060;
   --theme-tint-red: 96;
   --theme-tint-green: 96;
   --theme-tint-blue: 96;
-  --theme-on-alt: #8d8d8d;
+  --theme-on-c1: #8d8d8d;
   --theme-color: #86b388;
   --theme-on-color: white;
-  --theme-alt: #e8f0e8;
+  --theme-c1: #e8f0e8;
   --theme-divider: gainsboro;
   --theme-outline: #adadad;
   --theme-inverse: #7d7d7d;
@@ -234,12 +234,12 @@
 
 .-minor {
   --theme-bg: #f9f9f9;
-  --theme-bg-alt: #e8e8e8;
+  --theme-n2: #e8e8e8;
   --theme-on: #3c3c3c;
-  --theme-on-alt: #737373;
+  --theme-on-c1: #737373;
   --theme-color: #25e7d5;
   --theme-on-color: white;
-  --theme-alt: #d5faf7;
+  --theme-c1: #d5faf7;
   --theme-divider: #d4d4d4;
   --theme-outline: #9a9a9a;
   --theme-inverse: #5f5f5f;
@@ -263,12 +263,12 @@
 
 .-feature {
   --theme-bg: #fafafa;
-  --theme-bg-alt: #ececec;
+  --theme-n2: #ececec;
   --theme-on: #636363;
-  --theme-on-alt: #8f8f8f;
+  --theme-on-c1: #8f8f8f;
   --theme-color: #53bbe9;
   --theme-on-color: white;
-  --theme-alt: #def2fb;
+  --theme-c1: #def2fb;
   --theme-divider: #dddddd;
   --theme-outline: #aeaeae;
   --theme-inverse: #7f7f7f;
@@ -285,15 +285,15 @@
 
 .-default {
   --theme-bg: #fbfbfb;
-  --theme-bg-alt: #f0f0f0;
+  --theme-n2: #f0f0f0;
   --theme-on: #7e7e7e;
   --theme-tint-red: 126;
   --theme-tint-green: 126;
   --theme-tint-blue: 126;
-  --theme-on-alt: #a2a2a2;
+  --theme-on-c1: #a2a2a2;
   --theme-color: #afafaf;
   --theme-on-color: white;
-  --theme-alt: #f0f0f0;
+  --theme-c1: #f0f0f0;
   --theme-divider: #e3e3e3;
   --theme-outline: #bcbcbc;
   --theme-inverse: #969696;
@@ -307,8 +307,8 @@
   --color-bg: var(--theme-bg);
   --color-text: var(--theme-on);
   --color-link: var(--theme-color);
-  --color-link-hover: var(--theme-on-alt);
-  --color-link-focus: var(--theme-on-alt);
+  --color-link-hover: var(--theme-on-c1);
+  --color-link-focus: var(--theme-on-c1);
   --color-link-disabled: rgba(var(--color-link), var(--opacity-disabled));
   --color-outline: var(--theme-outline);
   --color-divider: var(--theme-divider);
@@ -775,7 +775,7 @@ table {
   --color-text: var(--theme-on);
   --color-icon: var(--theme-on);
   --color-outline: var(--theme-outline);
-  --color-emphasis: var(--theme-on-alt);
+  --color-emphasis: var(--theme-on-c1);
   border: var(--border-width) solid var(--color-outline);
   border-radius: var(--border-radius);
   border-collapse: collapse;
@@ -931,8 +931,8 @@ dialog > article > footer {
 
 *[role=tab], [role=tablist] > *[role=button] {
   --color-bg: transparent;
-  --color-link: var(--theme-on-alt);
-  --color-icon: var(--theme-on-alt);
+  --color-link: var(--theme-on-c1);
+  --color-icon: var(--theme-on-c1);
   --color-outline: transparent;
   --color-bg-active: transparent;
   --color-shadow: transparent;
@@ -947,9 +947,9 @@ dialog > article > footer {
 }
 
 .-pills *[role=tab], .-pills [role=tablist] > *[role=button] {
-  --color-bg: var(--theme-alt);
-  --color-link: var(--theme-on-alt);
-  --color-icon: var(--theme-on-alt);
+  --color-bg: var(--theme-c1);
+  --color-link: var(--theme-on-c1);
+  --color-icon: var(--theme-on-c1);
   --color-outline: transparent;
   --color-shadow: transparent;
   --tab-border-width: var(--border-width);
@@ -1201,13 +1201,13 @@ button:focus {
 }
 
 input, textarea, select {
-  --color-text: var(--theme-on-alt);
-  --color-bg: var(--theme-bg-alt);
+  --color-text: var(--theme-on-c1);
+  --color-bg: var(--theme-n2);
   --color-outline: var(--theme-outline);
-  --color-icon: var(--theme-on-alt);
+  --color-icon: var(--theme-on-c1);
   --color-value: var(--theme-on);
-  --color-placeholder: var(--theme-on-alt);
-  --color-autofill: var(--theme-bg-alt);
+  --color-placeholder: var(--theme-on-c1);
+  --color-autofill: var(--theme-n2);
   --color-bg-disabled: rgba(var(--theme-bg-alt-red), var(--theme-bg-alt-green), var(--theme-bg-alt-blue), var(--opacity-disabled-bg));
   --color-autofill-disabled: rgba(var(--theme-bg-alt-red), var(--theme-bg-alt-green), var(--theme-bg-alt-blue), var(--opacity-disabled-bg));
   --color-text-disabled: rgba(var(--theme-on-alt-red), var(--theme-on-alt-green), var(--theme-on-alt-blue), var(--opacity-disabled));
@@ -1219,7 +1219,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 label {
-  --color-label: var(--theme-on-alt);
+  --color-label: var(--theme-on-c1);
   --color-label-disabled: rgba(var(--theme-on-alt-red), var(--theme-on-alt-green), var(--theme-on-alt-blue), var(--opacity-disabled));
 }
 
@@ -1349,11 +1349,11 @@ form > section, form > fieldset {
 
 form .field > input, form .field > select, form .field > textarea, form .field > .wrapper {
   --color-value: var(--theme-on);
-  --color-text: var(--theme-on-alt);
-  --color-bg: var(--theme-bg-alt);
-  --color-text: var(--theme-on-alt);
-  --color-label: var(--theme-on-alt);
-  --color-icon: var(--theme-on-alt);
+  --color-text: var(--theme-on-c1);
+  --color-bg: var(--theme-n2);
+  --color-text: var(--theme-on-c1);
+  --color-label: var(--theme-on-c1);
+  --color-icon: var(--theme-on-c1);
 }
 form .field > input:focus, form .field > select:focus, form .field > textarea:focus, form .field > .wrapper:focus-within {
   --color-outline: var(--theme-color);

@@ -20,8 +20,9 @@ progress {
 
 // CSS Custom Variables
 progress {
+  --progress-max: 100; // Overridden by JS
   --color-active: var(--theme-color);
-  --color-bg: var(--theme-bg-alt);
+  --color-bg: var(--theme-n2);
 }
 
 // CSS Rules for Progress Bar
@@ -94,7 +95,7 @@ div.steps, div:has(progress:first-child) {
 
     &.active {
       font-weight: var(--font-weight-bold);
-      color: var(--theme-a2);
+      color: var(--app-a2);
     }
   }
 
