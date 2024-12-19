@@ -31,7 +31,8 @@ input[type=time]::-webkit-inner-spin-button {
   margin-right: calc(var(--input-padding-x) / 2 * -1);
 }
 
-// noinspection CssInvalidPseudoSelector */
+/* noinspection CssInvalidPseudoSelector */
+// noinspection CssInvalidPseudoSelector
 input::-webkit-datetime-edit {
   // Fixes height issues
   overflow: visible;
