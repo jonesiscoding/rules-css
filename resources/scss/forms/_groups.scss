@@ -106,10 +106,10 @@ form .field {
     font-size: var(--font-size-sm);
   }
   > .error {
-    color: var(--input-error);
+    color: var(--color-error);
   }
   > .help:not(a) {
-    color: var(--input-help);
+    color: var(--color-help);
   }
 }
 
