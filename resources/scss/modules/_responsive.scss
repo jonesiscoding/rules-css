@@ -153,6 +153,7 @@
   @if $max {
     $real-min: if($min, $min, 0);
     $real-max: if($adjust, $max - 0.02, $max);
+    /* noinspection CssNonIntegerLengthInPixels */
     @media screen and (min-width: #{$real-min}) and (max-width: #{$real-max}) {
       @content;
     }
@@ -178,6 +179,7 @@
 @mixin viewport-down($max, $adjust: false) {
   @if $max {
     $real-max: if($adjust, $max - 0.02, $max);
+    /* noinspection CssNonIntegerLengthInPixels */
     @media screen and (max-width: #{$max}) {
       @content;
     }

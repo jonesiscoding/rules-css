@@ -117,8 +117,10 @@ button, *[role="button"], .btn {
 button {
   border-radius: 0; // Remove default for MacOS Chrome
   &:focus {
+    /* noinspection CssOverwrittenProperties */
     // noinspection CssOverwrittenProperties
     outline: 1px dotted; // IE Transparent Button Focus Bug
+    /* noinspection CssOverwrittenProperties */
     //noinspection CssOverwrittenProperties
     outline: 5px auto -webkit-focus-ring-color; // Firefox Transparent Button Focus Bug
   }

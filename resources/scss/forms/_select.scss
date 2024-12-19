@@ -15,6 +15,7 @@ select:focus::-ms-value {
 
 // OPERA - Pre-Blink nix the custom arrow, go with a native select button to keep it simple.
 // Targeted via this hack http://browserhacks.com/#hack-a3f166304aafed524566bc6814e1d5c7
+/* noinspection CssInvalidHtmlTagReference */
 //noinspection CssInvalidHtmlTagReference
 x:-o-prefocus, select {
   background-image: none;

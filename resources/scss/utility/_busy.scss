@@ -14,8 +14,10 @@
     border-radius: 1em;
     border-right-color: transparent;
     content: "";
+    /* noinspection CssOverwrittenProperties */
     //noinspection CssOverwrittenProperties
     vertical-align: text-bottom;
+    /* noinspection CssOverwrittenProperties */
     //noinspection CssOverwrittenProperties
     vertical-align: -.125em; // Visual alignment
     animation: spinner 0.75s linear infinite;
