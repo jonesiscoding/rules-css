@@ -22,7 +22,7 @@ input[type="file"]::file-selector-button, input[type="file"]::-webkit-file-uploa
   padding: var(--input-padding-y) var(--input-padding-x);
   font-size: 1em;
   font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-input);
+  line-height: var(--input-line-height);
   text-transform: uppercase;
   cursor: pointer; // In Safari, this doesn't inherit
   color: var(--theme-color);
