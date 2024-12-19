@@ -351,6 +351,7 @@ $gap-column: spacing.$gap-column;
 $gap-row: spacing.$gap-row;
 $columns: spacing.$columns;
 
+
 @mixin spacing() {
   --spacer: #{$spacer};
   --spacer-half: #{$spacer-half};
@@ -373,11 +374,6 @@ $columns: spacing.$columns;
   // Btn Spacing
   --btn-padding-x: var(--input-padding-x);
   --btn-padding-y: var(--input-padding-y);
-
-  // Decoration
-  --border-width: #{$border-width};
-  --outline-width: calc(var(--border-width) * 2);
-  --border-radius: #{$border-radius};
 
   // Grid
   --grid-columns: #{$columns};
@@ -498,9 +494,9 @@ $opacity-busy: decor.$opacity-busy !default;
   --transition-fade: #{$transition-fade};
   --link-decoration: #{$decoration-link};
   --link-decoration-hover: #{$decoration-link-hover};
-  --border-width: #{ref.$width-border};
+  --border-width: #{$border-width};
   --outline-width: calc(var(--border-width) * 2);
-  --border-radius: #{ref.$radius-border};
+  --border-radius: #{$border-radius};
   --modal-filter: #{decor.$filter-dialog};
   --modal-bg: #{decor.$color-bg-dialog};
   --scrollbar-inline-width: #{$scrollbar-inline-width};
