@@ -521,6 +521,7 @@ $opacity-busy: decor.$opacity-busy !default;
   --opacity-elevation-4: #{elevation.opacity(4)};
   --opacity-elevation-5: #{elevation.opacity(5)};
   --opacity-elevation: 0;
+  --ui-transform: #{decor.$ui-transform};
 }
 
 @mixin elevation() {
