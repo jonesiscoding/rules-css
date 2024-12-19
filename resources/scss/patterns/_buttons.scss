@@ -115,7 +115,6 @@ button, *[role="button"], .btn {
 
 // Button Reset
 button {
-  position: relative;
   border-radius: 0; // Remove default for MacOS Chrome
   &:focus {
     // noinspection CssOverwrittenProperties
