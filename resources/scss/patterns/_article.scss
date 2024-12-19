@@ -13,13 +13,6 @@
 
 /** Card Pattern **/
 
-// Custom Variables
-article, article > section, article > form > section {
-  &:after {
-    --color-tint: rgba(var(--theme-color-red),var(--theme-color-green),var(--theme-color-blue), var(--opacity-elevation));
-  }
-}
-
 // Rule
 article, article > section, article > form > section {
   display: flex;
@@ -35,12 +28,6 @@ article, article > section, article > form > section {
 
   &.-action {
     cursor: system.$cursor-strong;
-  }
-
-  @include elevation.tint-after {
-    --opacity-elevation: #{elevation.opacity(1)};
-    background-color: var(--color-tint);
-    border-radius: var(--border-radius);
   }
 
   > header, > footer, > div {

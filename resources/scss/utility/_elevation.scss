@@ -1,0 +1,36 @@
+article, section {
+  & article, & section {
+    // LEVEL 2
+    --color-bg: var(--color-e2);
+    & > table, & > figure > table {
+      --color-bg: var(--color-e2);
+    }
+    & article, & section {
+      // LEVEL 3
+      --color-bg: var(--color-e3);
+      & > table, & > figure > table {
+        --color-bg: var(--color-e3);
+      }
+      & article, & section {
+        // LEVEL 4
+        --color-bg: var(--color-e4);
+        & > table, & > figure > table {
+          --color-bg: var(--color-e4);
+        }
+        & article, & section {
+          // LEVEL 5
+          --color-bg: var(--color-e5);
+          & > table, & > figure > table {
+            --color-bg: var(--color-e5);
+          }
+        }
+      }
+    }
+  }
+}
+
+article, section, table, details {
+  & {
+    background-color: var(--color-bg);
+  }
+}

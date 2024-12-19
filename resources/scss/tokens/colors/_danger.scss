@@ -1,3 +1,4 @@
+@use "sass:color" as color-native;
 @use "../../modules/color/sass-color" as color;
 @use "../../modules/theme/colors";
 @use "../../modules/theme/bg";
@@ -14,6 +15,10 @@ $on-alt: colors.tone("danger", roles.$on-container);
 $on-alt-link: colors.tone("danger", roles.$link-on-container);
 $body: bg.tone("danger", roles.$body);
 $bg: bg.tone("danger", roles.$bg);
+$e2: color-native.mix($color, $bg, roles.$elevation-2);
+$e3: color-native.mix($color, $bg, roles.$elevation-3);
+$e4: color-native.mix($color, $bg, roles.$elevation-4);
+$e5: color-native.mix($color, $bg, roles.$elevation-5);
 $on-bg: bg.tone("danger", roles.$on-bg);
 $on-bg-link: colors.tone("danger", roles.$on-bg-link);
 $neutral: neutrals.tone("danger", roles.$neutral);
@@ -27,5 +32,5 @@ $on-inverse: bg.tone("danger", roles.$on-inverse);
 $on-inverse-link: bg.tone("danger", roles.$on-inverse-link);
 
 @mixin custom-properties() {
-  @include context.custom-properties($bg, $on-bg, $on-bg-link, $neutral, $on-neutral, $on-neutral-link, $inverse, $on-inverse, $on-inverse-link, $color, $on-color, $on-color-link, $alt, $on-alt, $on-alt-link, $outline, $divider, $shadow);
+  @include context.custom-properties($bg, $e2, $e3, $e4, $e5, $on-bg, $on-bg-link, $neutral, $on-neutral, $on-neutral-link, $inverse, $on-inverse, $on-inverse-link, $color, $on-color, $on-color-link, $alt, $on-alt, $on-alt-link, $outline, $divider, $shadow);
 }

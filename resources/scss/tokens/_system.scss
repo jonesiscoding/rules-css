@@ -46,8 +46,13 @@ $feature-grid: features.$grid;
 // region //////////////////////////////////////////////// Color & Theme
 
 // App Background & Neutrals
-$app-bg: major.$body;
+$app-body: major.$body;
+$app-bg: major.$bg;
 $app-n1: major.$bg;
+$app-e2: major.$e2;
+$app-e3: major.$e3;
+$app-e4: major.$e4;
+$app-e5: major.$e5;
 $app-on-n1: major.$on-bg;
 $app-on-n1-link: major.$on-bg-link;
 $app-n2: major.$neutral !default;
@@ -223,6 +228,10 @@ $app-on-c3-link: feature.$on-alt-link !default;
 
   // App Neutral #1
   --app-n1-rgb: #{color.red($app-n1)} #{color.green($app-n1)} #{color.blue($app-n1)};
+  --app-e2-rgb: #{color.rgb($app-e2)};
+  --app-e3-rgb: #{color.rgb($app-e3)};
+  --app-e4-rgb: #{color.rgb($app-e4)};
+  --app-e5-rgb: #{color.rgb($app-e5)};
   --app-on-n1-rgb: #{color.red($app-on-n1)} #{color.green($app-on-n1)} #{color.blue($app-on-n1)};
   --app-link-on-n1-rgb: #{color.red($app-on-n1-link)} #{color.green($app-on-n1-link)} #{color.blue($app-on-n1-link)};
   --app-n1: rgb(var(--app-n1-rgb) / 1);
@@ -252,7 +261,7 @@ $app-on-c3-link: feature.$on-alt-link !default;
   --app-link-on-inverse: rgb(var(--app-link-on-inverse-rgb) / 1);
 
   // App Context Colors
-  --body-bg: #{$app-bg};
+  --body-bg: #{$app-body};
   --app-bg:#{$app-bg};
   --app-success: #{success.$color};
   --app-on-success: #{success.$on-color};
@@ -266,6 +275,10 @@ $app-on-c3-link: feature.$on-alt-link !default;
 @mixin theme() {
   // RGB
   --theme-bg-rgb: var(--app-n1-rgb);
+  --theme-e2-rgb: var(--app-e2-rgb);
+  --theme-e3-rgb: var(--app-e3-rgb);
+  --theme-e4-rgb: var(--app-e4-rgb);
+  --theme-e5-rgb: var(--app-e5-rgb);
   --theme-on-bg-rgb: var(--app-on-n1-rgb);
   --theme-link-on-bg-rgb: var(--app-link-on-n1-rgb);
   --theme-n2-rgb: var(--app-n2-rgb);
@@ -308,6 +321,10 @@ $app-on-c3-link: feature.$on-alt-link !default;
 @mixin color() {
   // RGB
   --color-bg-rgb: var(--theme-bg-rgb);
+  --color-e2-rgb: var(--theme-e2-rgb);
+  --color-e3-rgb: var(--theme-e3-rgb);
+  --color-e4-rgb: var(--theme-e4-rgb);
+  --color-e5-rgb: var(--theme-e5-rgb);
   --color-link-on-bg-rgb: var(--theme-link-on-bg-rgb);
   --color-n2-rgb: var(--theme-n2-rgb);
   --color-link-on-n2-rgb: var(--theme-link-on-n2-rgb);
@@ -319,6 +336,10 @@ $app-on-c3-link: feature.$on-alt-link !default;
   --color-link-on-c1-rgb: var(--theme-link-on-c1-rgb);
   // Actual Colors
   --color-bg: rgb(var(--color-bg-rgb) / 1);
+  --color-e2: rgb(var(--color-e2-rgb) / 1);
+  --color-e3: rgb(var(--color-e3-rgb) / 1);
+  --color-e4: rgb(var(--color-e4-rgb) / 1);
+  --color-e5: rgb(var(--color-e5-rgb) / 1);
   --color-text: var(--theme-on-bg);
   --color-icon: var(--theme-on-bg);
   --color-link: rgb(var(--color-link-on-bg-rgb) / 1);

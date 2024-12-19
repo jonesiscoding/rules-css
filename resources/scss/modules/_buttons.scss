@@ -41,6 +41,20 @@
   }
 }
 
+@mixin hover-focus() {
+  &:hover, &:focus {
+    @content
+  }
+}
+
+@mixin hover-focus-after {
+  @include hover-focus {
+    &:after {
+      @content;
+    }
+  }
+}
+
 @mixin hover-after {
   @include hover {
     &:after {
