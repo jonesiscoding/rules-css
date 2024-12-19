@@ -18,6 +18,7 @@ html {
 only screen and (max-device-pixel-ratio: 1) ,
 only screen and (max-resolution: 1dppx) {
   html {
+    /* noinspection CssNonIntegerLengthInPixels */
     -webkit-text-stroke-width: 0.20px;
   }
 }
