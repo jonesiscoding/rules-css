@@ -6,13 +6,12 @@
   /** Drawer */
 
   dialog[role="navigation"] {
-    --color-bg: var(--theme-bg);
+    --color-bg: transparent;
     --color-text: var(--theme-on-n2);
     --color-outline: transparent;
     --drawer-font-size: .875rem;
-    nav:after {
-      --color-tint-rgb: var(--theme-color-rgb);
-      --color-tint: rgb(var(--theme-color-rgb) / var(--opacity-elevation));
+    > nav {
+      --color-bg: var(--theme-bg);
     }
     a {
       --color-bg: transparent;
@@ -58,9 +57,6 @@
       font-size: var(--drawer-font-size);
       font-weight: var(--font-weight-medium);
       width: auto;
-      @include elevation.tint-after {
-        background-color: rgb(var(--color-tint-rgb) / var(--opacity-elevation-1));
-      }
       header, footer, .ml-auto {
         display: none;
       }

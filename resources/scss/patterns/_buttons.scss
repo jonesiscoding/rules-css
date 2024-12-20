@@ -19,29 +19,27 @@
 
 // CSS Custom Variables
 button, *[role="button"], .btn {
-  --color-bg: var(--theme-c1);
+  --color-bg: var(--theme-c2);
   --color-outline: transparent;
-  --color-link: var(--theme-on-c1);
-  --color-icon: var(--theme-on-c1);
-  // TODO: Shadow
-  // TODO: Hover Shadow
+  --color-link: var(--theme-link-on-c2);
+  --color-icon: var(--theme-link-on-c2);
   @include buttons.hover-after {
-    --color-tint-rgb: var(--theme-color-rgb);
-    --color-tint: rgb(var(--theme-color-rgb) / var(--opacity-hover));
+    // TODO: Elevation
+    --color-tint-rgb: var(--theme-link-on-c2-rgb);
+    --color-tint: rgb(var(--color-tint-rgb) / var(--opacity-hover));
   }
   @include buttons.focus-after {
-    --color-tint-rgb: var(--theme-color-rgb);
-    --color-tint: rgb(var(--theme-color-rgb) / var(--opacity-focus));
+    --color-tint-rgb: var(--theme-link-on-c2-rgb);
+    --color-tint: rgb(var(--color-tint-rgb) / var(--opacity-focus));
   }
   @include buttons.disabled {
     --color-bg: rgba(var(--theme-on-color-rgb) / var(--opacity-disabled-bg));
     --color-link: rgba(var(--theme-color-rgb) / var(--opacity-disabled));
     --color-icon: rgba(var(--theme-color-rgb) / var(--opacity-disabled));
   }
-  // TODO: Pressed Shadow
   @include buttons.pressed-after {
-    --color-tint-rgb: var(--theme-color-rgb);
-    --color-tint: rgb(var(--theme-color-rgb) / var(--opacity-pressed));
+    --color-tint-rgb: var(--theme-link-on-c2-rgb);
+    --color-tint: rgb(var(--color-tint-rgb) / var(--opacity-pressed));
   }
 
   &.-filled, &.-fab {
@@ -51,6 +49,9 @@ button, *[role="button"], .btn {
     --color-text: var(--theme-on-color);
     --color-link: var(--theme-on-color);
     --color-icon: var(--theme-on-color);
+    &:focus {
+      --color-outline: var(--theme-outline);
+    }
     @include buttons.hover-after {
       --color-tint-rgb: var(--theme-on-color-rgb);
       --color-tint: rgb(var(--color-tint-rgb) / var(--opacity-hover));
@@ -69,7 +70,7 @@ button, *[role="button"], .btn {
   }
 
   &.-outline {
-    --color-bg: var(--theme-bg);
+    --color-bg: transparent;
     --color-shadow: transparent;
     --color-outline: var(--theme-outline);
     --color-text: var(--theme-color);
@@ -80,28 +81,37 @@ button, *[role="button"], .btn {
     }
     @include buttons.hover {
       --color-shadow: transparent;
+      --color-tint-rgb: var(--theme-color-rgb);
+      --color-tint: rgb(var(--theme-color) / var(--opacity-hover));
       --color-outline: var(--theme-color);
     }
     @include buttons.focus {
+      --color-shadow: transparent;
       --color-outline: var(--theme-color);
+      --color-tint-rgb: var(--theme-color-rgb);
+      --color-tint: rgb(var(--theme-color) / var(--opacity-focus));
     }
     @include buttons.pressed {
       --color-shadow: transparent;
+      --color-tint-rgb: var(--theme-color-rgb);
+      --color-tint: rgb(var(--theme-color) / var(--opacity-pressed));
     }
   }
 
   &.-flat {
-    --color-shadow: none;
-    --color-outline: none;
+    --color-shadow: transparent;
+    --color-outline: transparent;
+    --color-link: var(--theme-color);
+    --color-text: var(--theme-color);
+    --color-icon: var(--theme-color);
     --color-bg: transparent;
-    @include buttons.hover {
-      --color-shadow: transparent;
-    }
-    @include buttons.focus {
-      --color-shadow: transparent;
+    @include buttons.hover-focus {
+      --color-tint-rgb: var(--theme-color-rgb);
+      --color-tint: rgb(var(--theme-color) / var(--opacity-hover));
     }
     @include buttons.pressed {
-      --color-shadow: transparent;
+      --color-tint-rgb: var(--theme-color-rgb);
+      --color-tint: rgb(var(--theme-color) / var(--opacity-hover));
     }
   }
 

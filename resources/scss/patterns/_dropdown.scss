@@ -19,11 +19,7 @@
 
 // Custom Variables for Dropdowns
 dialog[role="menu"] {
-  --color-bg: var(--theme-bg);
-  &:after {
-    --opacity-elevation: var(--opacity-elevation-2);
-    --color-tint-rgb: var(--theme-color-rgb);
-  }
+  --color-bg: rgb(var(--theme-e2-rgb) / 1);
   --color-text: var(--theme-on-bg);
   --color-divider: var(--theme-divider);
   > * {
@@ -58,10 +54,6 @@ dialog[role="menu"] {
   background-color: var(--color-bg);
   grid-template-columns: auto;
   backdrop-filter: none;
-  // Background Tint
-  @include elevation.tint-after {
-    background-color: rgb(var(--color-tint-rgb) / var(--opacity-elevation));
-  }
 
   // Everything Inside
   > * {

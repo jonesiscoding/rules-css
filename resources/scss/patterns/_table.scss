@@ -15,10 +15,7 @@
 // Table Specific Colors
 table {
   --color-emphasis: var(--theme-on-n2);
-  &, &:after {
-    --color-tint-rgb: var(--theme-on-bg-rgb);
-    --color-tint: rgb(var(--theme-on-bg-rgb) / var(--opacity-elevation));
-  }
+  --color-tint-grid: rgb(var(--color-bg-rgb) / var(--opacity-grid));
   // Table Header Sorting
   > thead > tr > *[aria-sort] {
     --color-text: var(--theme-on-n2);
@@ -29,6 +26,10 @@ table {
       --color-label: var(--theme-on-n2);
     }
   }
+}
+
+table[role=grid] > tbody tr:nth-child(odd) > * {
+  --color-tint-grid: rgb(var(--color-bg-rgb) / var(--opacity-grid));
 }
 
 // Table Specific Styles
@@ -45,12 +46,13 @@ table {
   // Cells
   &:not(caption) {
     & > thead > tr > *, & > tbody > tr > *, & > tr > * {
-      background-color: var(--color-bg);
       color: var(--color-text);
       border-bottom: var(--border-width) solid var(--color-divider);
-      //height:              $rules-table-row-height;
       padding: var(--padding-y) var(--padding-x);
       vertical-align: middle;
+    }
+    & > tbody:last-child > tr:last-child > * {
+      border-bottom-width: 0;
     }
   }
 
@@ -87,7 +89,7 @@ table {
         direction: rtl;
       }
       &:hover {
-        cursor: system.$cursor-strong;
+        cursor: var(--cursor-strong);
       }
       &:before {
         color: var(--color-text);
@@ -123,8 +125,7 @@ table {
 // Alternating Color Rows (Using Tint Color)
 table[role="grid"] {
   tbody tr:nth-child(odd) > * {
-    --opacity-elevation: #{elevation.opacity(1)};
-    background-color: rgb(var(--color-tint-rgb) / calc(var(--opacity-elevation) * 2));
+    background-color: var(--color-tint-grid);
   }
 }
 
@@ -175,17 +176,10 @@ details > table,
 article > section > table,
 article > form > section > table,
 article > figure > table {
-  background-color: transparent;
   margin-left: calc(var(--padding-x) * -1);
   margin-right: calc(var(--padding-x) * -1);
   border-width: 0;
   width: calc(100% + (2 * var(--padding-x)));
-
-  &:not(caption) {
-    & > thead > tr > *, & > tbody > tr > *, & > tr > * {
-      background-color: transparent;
-    }
-  }
 }
 
 article > table,

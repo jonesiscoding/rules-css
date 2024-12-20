@@ -1,10 +1,9 @@
 
 @mixin lg-up() {
   dialog[role="navigation"] {
-    --color-bg: transparent;
     display: contents !important;
-    nav:after {
-      background-color: transparent !important;
+    nav {
+      --color-bg: transparent;
     }
   }
 }

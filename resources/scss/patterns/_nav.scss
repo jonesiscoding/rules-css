@@ -41,7 +41,7 @@
     --color-outline: var(--theme-color);
   }
   @include elevation.tint-after-hover {
-    background-color: rgba(var(--theme-color-red), var(--theme-color-green), var(--theme-color-blue), var(--opacity-elevation-2)) !important;
+    background-color: rgba(var(--theme-color-rgb) / var(--opacity-elevation-2)) !important;
   }
 }
 

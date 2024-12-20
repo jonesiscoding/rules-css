@@ -25,44 +25,39 @@ details {
 
   > details, > article {
     --color-bg: var(--theme-bg);
-    --color-outline: transparent;
-
-    &:after {
-      --color-tint-rgb: var(--theme-color-rgb);
-      --opacity-elevation: var(--opacity-elevation-1);
-    }
+    --color-outline: var(--color-divider);
 
     &[open]:not([open="false"]) {
-      &:after {
-        --opacity-elevation: var(--opacity-elevation-2);
+      & > table, & > figure > table, & > article, & > section {
+        --color-bg: var(--color-e2);
+        & > article, & > section {
+          --color-bg: var(--color-e3);
+          & > article, & > section {
+            --color-bg: var(--color-e4);
+          }
+        }
       }
     }
 
-    > summary {
-      &:after {
-        --color-tint-rgb: var(--theme-on-bg-rgb);
-      }
+    table {
+      --color-outline: var(--color-divider);
     }
   }
 
   table {
     --color-outline: var(--color-divider);
-    --color-bg: var(--theme-bg);
-
-    &:after {
-      --color-tint-rgb: var(--theme-color-rgb);
-    }
   }
 }
 
 // CSS Rules
 %accordion {
+  background-color: var(--color-bg);
   > details, > article {
     background-color: transparent;
+    border: var(--border-width) solid var(--color-outline);
 
     table {
       font-family: var(--font-table);
-      font-size: var(--font-size-sm);
       position: relative;
       z-index: 2;
       overflow: hidden;
@@ -72,25 +67,17 @@ details {
       margin-bottom: 0 !important;
       margin-left: calc(var(--padding-x) * -.5);
       border-radius: var(--border-radius);
-      background-color: rgb(var(--theme-bg-rgb) / .75);
-
-      &:not(caption) {
-        & > thead > tr > *, & > tbody > tr > *, & > tr > * {
-          // Basic Setup for Cells
-          //background-color: var(--theme-bg) !important;
-        }
-      }
+      border-width: 0;
 
       > thead > tr > * {
         font-size: var(--font-size-sm);
-        //font-weight: var(--font-weight-medium);
         text-transform: var(--ui-transform);
-        //color: var(--color-emphasis)
+        color: var(--color-emphasis)
       }
 
       &:not(.-hoverless) > tbody > tr:hover > td {
         // We don't need to use an 'after' pseudo-element here because the TD is inside a TR, which has a bg color.
-        background-color: rgb(var(--theme-color-rgb) / calc(var(--opacity-hover) / 2)) !important;
+        background-color: rgb(var(--theme-color-rgb) / var(--opacity-hover));
       }
     }
   }
@@ -149,18 +136,12 @@ details {
   }
 }
 
-%accordion > details, %accordion > article {
+%accordion > details {
   overflow: hidden;
   margin-top: var(--padding-y);
   margin-bottom: var(--padding-y);
   padding: var(--padding-y) var(--padding-x);
   border-radius: var(--border-radius);
-  background-color: var(--color-bg);
-
-  // Background Tint
-  @include elevation.tint-after {
-    background-color: rgb(var(--color-tint-rgb) / var(--opacity-elevation));
-  }
 
   // Rounded Corners on First & Last Child
   &:first-child {
@@ -171,7 +152,6 @@ details {
 
   &:last-child {
     margin-bottom: 0;
-    border-bottom-width: 0;
     border-bottom-right-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
   }
