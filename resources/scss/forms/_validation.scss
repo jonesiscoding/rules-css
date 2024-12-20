@@ -6,15 +6,17 @@ form[aria-invalid="true"] > .wrapper,
 input[aria-invalid="true"],
 select[aria-invalid="true"],
 textarea[aria-invalid="true"] {
-  --border-color: red;
+  --border-color: var(--app-danger);
+  --color-caret: var(--app-danger);
+  --color-icon: var(--app-danger);
   &:active, &:focus {
-    box-shadow: 0 0 0 var(--outline-width) var(--border-color);
+    box-shadow: 0 0 0 var(--outline-width) var(--app-danger);
   }
 }
 
 .wrapper:has([aria-invalid="true"]) {
-  --border-color: red;
-  --outline-color: var(--border-color);
+  --color-outline: var(--app-danger);
+  --outline-color: var(--app-danger);
   &:focus-within {
     box-shadow: 0 0 0 var(--outline-width) var(--outline-color);
   }

@@ -9,15 +9,16 @@ label {
 
 input, textarea, select, form .wrapper {
   --input-width: auto;
-  --color-text: var(--theme-on-bg-alt);
-  --color-bg: var(--theme-bg-alt);
+  --color-text: var(--theme-on-c1);
+  --color-bg: var(--color-e4);
   --color-outline: var(--theme-outline);
   --color-icon: var(--theme-on-n2);
   --color-value: var(--theme-on-bg);
   --color-placeholder: var(--theme-on-n2);
   --color-autofill: var(--theme-n2);
   --color-error: var(--app-danger);
-  --color-help: var(--app-c1);
+  --color-help: var(--theme-on-n2);
+  --color-caret: var(--theme-color);
   // Disabled
   --color-bg-disabled: rgb(var(--theme-bg-rgb) / var(--opacity-disabled-bg));
   --color-autofill-disabled: rgb(var(--theme-bg-rgb) / var(--opacity-disabled-bg));
@@ -58,6 +59,7 @@ input, textarea, select, form .wrapper {
 }
 
 input, textarea {
+  caret-color: var(--color-caret);
   // Chrome/Edge
   &::-webkit-input-placeholder {
     color: var(--color-placeholder);
