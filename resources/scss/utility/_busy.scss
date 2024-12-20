@@ -33,7 +33,7 @@
     }
   }
 
-  &:empty {
+  &:empty, &:has(> [hidden]:only-child) {
     text-align: center;
   }
 }
