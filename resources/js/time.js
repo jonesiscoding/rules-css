@@ -5,7 +5,8 @@ class Time extends Component {
   constructor( el ) {
     super( el );
 
-    let font =  window.getComputedStyle(el, null).getPropertyValue('font-size');
+    let font =  window.getComputedStyle(el, null).fontSize;
+    font = font === "0px" ? window.getComputedStyle(el.parentElement, null).fontSize : font;
     el.style.setProperty('--font-size-time', font);
     let date = Date.parse(el.getAttribute('datetime'));
     let sizes = ['xs','sm','md'];
