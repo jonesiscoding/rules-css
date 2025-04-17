@@ -1,94 +1,159 @@
 
-function TimeInput(el) {
-  let input = this;
-  let dialogEl = el.parentNode.querySelectorAll('dialog')[0];
-  let dialog = new TimeDialog(dialogEl);
+class TimeInput extends Component {
+  static selector = 'input[type="time"]';
 
-  dialog.el.addEventListener('shown', onOpen);
-  dialog.el.addEventListener('closed', onClose);
+  val;
+  step;
+  timeout;
+  dialog;
+  select = { h: null, i: null, a: null };
 
-  function onOpen(event) {
-    let time = _parseTime(input.el.value);
-    dialog.h.value = time.h;
-    dialog.i.value = _padTime(time.i);
-    if(time.a === 'pm') {
-      dialog.am.setAttribute('aria-pressed', "false");
-      dialog.pm.setAttribute('aria-pressed', "true");
-    } else {
-      dialog.am.setAttribute('aria-pressed', "true");
-      dialog.pm.setAttribute('aria-pressed', "false");
+  constructor(el) {
+    super(el);
+
+    let self = this;
+    let isNative = self.el.getAttribute('data-native') === "true" || false;
+    self.val = self.el.value;
+    self.step = self.el.getAttribute( 'step' ) || 60;
+
+    if(isNative) {
+      el.addEventListener('keyup', e => { self.onKeyup(e); } );
+      el.addEventListener('change', e => { self.onChange(e); } );
+      el.addEventListener('click', e => { self.onClick(e); });
     }
+
+    self.dialog = self.el.closest('div').querySelector('dialog');
+    self.select.h = self.makeSelect({ min: 1, max: 12, step: 1});
+    self.select.i = self.makeSelect({ min: 0, max: 59, step: this.step / 60 });
+    self.select.a = self.makeSelect({ options: { 'am': 'am', 'pm': 'pm' }});
+    self.dialog.append( self.select.h );
+    self.dialog.append(self.select.i);
+    self.dialog.append(self.select.a);
+    self.el.addEventListener('click', e => {
+      self.onClick(e);
+    });
+  };
+
+  isPm() {
+    return this.parse24Hr(this.el.value).h >= 12;
   }
 
-  function onClose(event) {
-    let h = dialog.h.value;
-    let i = dialog.i.value;
-    // noinspection EqualityComparisonWithCoercionJS
-    if(12 == h) { h = "0"; }
-    // noinspection EqualityComparisonWithCoercionJS
-    if(dialog.pm.getAttribute('aria-pressed') == "true") {
-      let hh = 12 + parseInt(h,10);
-      h = (hh === 24 && hh > 0) ? "0" : hh.toString();
-    }
-    input.el.value = [_padTime(h),_padTime(i)].join(':');
+  onClick(e) {
+    this.dialog.setAttribute('open', 'open');
+  };
+
+  /**
+   * @param {string} text
+   * @param {string} value
+   * @returns {HTMLOptionElement}
+   */
+  createOption(text, value) {
+    let opt = document.createElement( 'option' );
+
+    opt.text = text;
+    opt.value = value;
+
+    return opt;
   }
 
   /**
-   * @param {string|int|null} val
-   * @returns {string}
+   * @param {object} options
+   * @returns {HTMLSelectElement}
    */
-  function _padTime(val) {
-    if(val === 0 || val === null) {
-      return "00";
+  makeSelect(options) {
+    let self = this;
+    let sel = document.createElement("select");
+    sel.add(this.createOption('--','--'));
+    if(options.options) {
+      Object.keys(options.options).forEach(function(key) {
+        sel.add(self.createOption(options.options[key], key));
+      });
     } else {
-      let str = val.toString();
+      for(let x = options.min || 0; x <= options.max; x = x + options.step) {
+        let val = (x < 10) ? '0' + x : x;
+        sel.add(this.createOption(val,val));
+      }
+    }
 
-      return (str.length < 2) ? "0" + str.toString() : str;
+    sel.addEventListener('change', e => {
+      self.onSelect(e);
+    });
+
+    return sel;
+  };
+
+  onKeyup(e) {
+    let key = parseFloat(e.key);
+    let self = this;
+    if(e.key !== 'ArrowUp' && e.key !== 'ArrowDown' && isNaN(key)) {
+      self.onChange( e );
+    } else {
+      self.timeout = setTimeout(function() {
+        self.onChange(e);
+      }, 1800);
     }
   }
 
-  function _parseTime(val) {
-    let s = val.split(':');
-    let h = parseInt(s[0]) || 0;
-    let a = 'am';
+  onSelect(e) {
+    let a = ( this.select.a.value !== '--' && this.select.a.value.length ) ? this.select.a.value : null;
+    let h = ( this.select.h.value !== '--' && this.select.h.value.length ) ? this.select.h.value : null;
+    let i = ( this.select.i.value !== '--' && this.select.i.value.length ) ? this.select.i.value : null;
+    let s = ( this.select.s && this.select.s.value !== '--' && this.select.s.value.length ) ? this.select.s.value : '00';
 
-    if(h >= 12) {
-      h = (h === 12) ? 12 : h - 12;
-      a = 'pm';
-    } else if(0 === h) {
-      h = 12;
+    if ( a.length && i.length && (h && h.length) ) {
+      if('12' === h) { h = "00"; }
+      if ( 'am' !== a.toLowerCase() ) {
+        let hh = 12 + parseInt(h,10);
+        h = (hh === 24 && hh > 0) ? "0" : hh.toString();
+      }
+
+      this.val = this.el.value = [this.pad(h),this.pad(i), this.pad(s)].join(":");
+      this.dialog.removeAttribute('open');
+    } else if(!a && !h && !i) {
+      this.val = this.el.value = '';
+      this.dialog.removeAttribute('open');
     }
+  }
 
+  onChange(e) {
+    if(!this.val || this.val !== this.el.value) {
+      clearTimeout(this.timeout);
+      this.val = this.el.value;
+      let step = this.el.getAttribute( 'step' );
+      let t = this.parse24Hr( this.el.value );
+      if ( step && step > 60 && step < 3600 ) {
+        let minStep = Math.floor( step / 60 );
+        let corrected = Math.round(t.i / minStep) * minStep;
+        if(corrected !== t.i) {
+          this.el.value = [
+            t.h.toString().padStart( 2, '0' ),
+            corrected.toString().padStart( 2, '0' ),
+            t.s.toString().padStart( 2, '0' )
+          ].join(':');
+        }
+      }
+
+      this.select.i.value = this.pad(t.i);
+      if ( this.isPm() ) {
+        this.select.h.value = t.h !== 12 ? this.pad((t.h - 12)) : '12';
+        this.select.a.value = 'pm';
+      } else {
+        this.select.a.value = 'am';
+        this.select.h.value = this.pad(t.h);
+      }
+    }
+  }
+
+  pad(val) {
+    return typeof val === "string" ? val.padStart(2, '0') : val.toString().padStart(2, '0');
+  }
+
+  parse24Hr(val) {
+    let s = val.split(':');
     return {
-      h: h,
+      h: parseInt( s[0] ),
       i: parseInt((s.length > 1) ? s[1] : 0),
       s: parseInt((s.length > 2) ? s[2] : 0),
-      a: a
     };
   }
-
-  this.el = el;
-}
-
-function TimeDialog(el) {
-  function _onMeridiem(event) {
-    let target = event.target;
-    let parent = target.parentElement;
-    let siblings = parent.querySelectorAll("[aria-pressed]");
-    siblings.forEach(function(sibling) {
-      if ( sibling !== target ) {
-        sibling.setAttribute('aria-pressed', "false");
-      } else {
-        sibling.setAttribute('aria-pressed', "true");
-      }
-    });
-  }
-
-  this.el = el;
-  this.h = el.querySelectorAll('input[type="number"][aria-label="hour"]')[0];
-  this.i = el.querySelectorAll('input[type="number"][aria-label="minute"]')[0];
-  this.am = el.querySelectorAll('button[value="am"]')[0];
-  this.pm = el.querySelectorAll('button[value="pm"]')[0];
-  this.am.addEventListener('click', _onMeridiem);
-  this.pm.addEventListener('click', _onMeridiem);
 }
