@@ -1,5 +1,5 @@
 @use "sass:math";
-@use "../modules/responsive";
+@use "../tokens/system";
 
 $rules-columns: 12 !default;
 
@@ -58,7 +58,7 @@ section {
 
 @mixin responsive-layout-up($bp) {
   :root {
-    --max-width: #{map-get(responsive.$breakpoints-up, $bp)};
+    --max-width: #{map-get(system.$screen-up, $bp)};
   }
 
   $infix: "-#{$bp}";
@@ -74,7 +74,7 @@ section {
 
 @mixin responsive-layout-down($bp) {
   :root {
-    --max-width: #{map-get(responsive.$breakpoints-down, $bp)};
+    --max-width: #{map-get(system.$screen-down, $bp)};
   }
 
   $infix: "-#{$bp}";

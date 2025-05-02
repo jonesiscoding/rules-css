@@ -141,7 +141,7 @@ button {
   justify-content: center;
   align-items: center;
   font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-input);
+  font-size: var(--input-font-size);
   line-height: var(--input-line-height);
   white-space: nowrap;
   align-content: center;
@@ -219,16 +219,16 @@ button {
   }
 
   &.-lg {
-    --font-size-input: #{system.$font-lg-size};
+    --input-font-size: #{system.$font-lg-size};
   }
 
   &.-sm {
-    --font-size-input: #{system.$font-sm-size};
+    --input-font-size: #{system.$font-sm-size};
     --input-padding-x: #{math.div(system.$spacer, 2)};
   }
 
   &.-xs {
-    --font-size-input: #{system.$font-sm-size};
+    --input-font-size: #{system.$font-sm-size};
     --input-padding-x: #{math.div(system.$spacer, 4)};
     letter-spacing: 0;
   }
