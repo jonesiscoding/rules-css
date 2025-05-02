@@ -291,8 +291,6 @@ $app-on-c3-link: feature.$on-alt-link !default;
   --theme-link-on-color-rgb: var(--app-link-on-a1-rgb);
   --theme-c1-rgb: var(--app-c1-rgb);
   --theme-link-on-c1-rgb: var(--app-link-on-c1-rgb);
-  --theme-c2-rgb: var(--app-c2-rgb);
-  --theme-link-on-c2-rgb: var(--app-link-on-c2-rgb);
   --theme-outline-rgb: var(--app-outline-rgb);
   // Actual Values
   --theme-bg: var(--app-n1);
@@ -313,9 +311,6 @@ $app-on-c3-link: feature.$on-alt-link !default;
   --theme-c1: var(--app-c1);
   --theme-on-c1: var(--app-on-c1);
   --theme-link-on-c1: var(--app-link-on-c1);
-  --theme-c2: var(--app-c2);
-  --theme-on-c2: var(--app-on-c2);
-  --theme-link-on-c2: var(--app-link-on-c2);
 }
 
 @mixin color() {
