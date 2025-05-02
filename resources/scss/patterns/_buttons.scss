@@ -19,17 +19,17 @@
 
 // CSS Custom Variables
 button, *[role="button"], .btn {
-  --color-bg: var(--theme-c2);
+  --color-bg: var(--theme-c1);
   --color-outline: transparent;
-  --color-link: var(--theme-link-on-c2);
-  --color-icon: var(--theme-link-on-c2);
+  --color-link: var(--theme-link-on-c1);
+  --color-icon: var(--theme-link-on-c1);
   @include buttons.hover-after {
     // TODO: Elevation
-    --color-tint-rgb: var(--theme-link-on-c2-rgb);
+    --color-tint-rgb: var(--theme-link-on-c1-rgb);
     --color-tint: rgb(var(--color-tint-rgb) / var(--opacity-hover));
   }
   @include buttons.focus-after {
-    --color-tint-rgb: var(--theme-link-on-c2-rgb);
+    --color-tint-rgb: var(--theme-link-on-c1-rgb);
     --color-tint: rgb(var(--color-tint-rgb) / var(--opacity-focus));
   }
   @include buttons.disabled {
@@ -38,7 +38,7 @@ button, *[role="button"], .btn {
     --color-icon: rgba(var(--theme-color-rgb) / var(--opacity-disabled));
   }
   @include buttons.pressed-after {
-    --color-tint-rgb: var(--theme-link-on-c2-rgb);
+    --color-tint-rgb: var(--theme-link-on-c1-rgb);
     --color-tint: rgb(var(--color-tint-rgb) / var(--opacity-pressed));
   }
 
