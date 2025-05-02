@@ -29,11 +29,17 @@
 .-success {
   @include system.success();
 }
-.-feature {
+.-feature, .-a3 {
   @include system.feature();
 }
+.-a1 {
+  @include system.a1()
+}
+.-a2 {
+  @include system.a1()
+}
 
-.-warning, .-danger, .-success, .-feature {
+.-warning, .-danger, .-success, .-feature, .-a1, .-a2, .-a3 {
   @include system.color;
 }
 
