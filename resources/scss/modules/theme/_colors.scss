@@ -7,9 +7,9 @@
 @use "neutrals";
 @use "bg";
 
-$major: palette.generate(base.$a1);
-$minor: palette.generate(base.$a2);
-$feature: palette.generate(base.$a3);
+$a1: palette.generate(base.$a1);
+$a2: palette.generate(base.$a2);
+$a3: palette.generate(base.$a3);
 $danger: palette.generate(base.$danger);
 $success: palette.generate(base.$success);
 $warning: palette.generate(base.$warning);
@@ -21,11 +21,11 @@ $neutral: if(base.$neutral, palette.generate(base.$neutral), null);
   $quoted: string.quote($name);
 
   @if $quoted == "a1" {
-    @return major($tone);
+    @return a1($tone);
   } @else if $quoted == "a2" {
-    @return minor($tone);
+    @return a2($tone);
   } @else if $quoted == "a3" {
-    @return feature($tone);
+    @return a3($tone);
   } @else if $quoted == "danger" {
     @return danger($tone);
   } @else if $quoted == "warning" {
@@ -35,17 +35,11 @@ $neutral: if(base.$neutral, palette.generate(base.$neutral), null);
   }
 
   @if $quoted == "major" {
-    @return major($tone);
+    @return a1($tone);
   } @else if $quoted == "minor" {
-    @return minor($tone);
+    @return a2($tone);
   } @else if $quoted == "feature" {
-    @return feature($tone);
-  } @else if $quoted == "danger" {
-    @return danger($tone);
-  } @else if $quoted == "warning" {
-    @return warning($tone);
-  } @else if $quoted == "success" {
-    @return success($tone)
+    @return a3($tone);
   } @else if $quoted == "default" {
     @return default($tone);
   } @else if $quoted == "bg" {
@@ -55,20 +49,16 @@ $neutral: if(base.$neutral, palette.generate(base.$neutral), null);
   }
 }
 
-@function major($tone) {
-  @return map.get($major, string.quote(#{$tone}));
+@function a1($tone) {
+  @return map.get($a1, string.quote(#{$tone}));
 }
 
-@function minor($tone) {
-  @return map.get($minor, string.quote(#{$tone}));
+@function a2($tone) {
+  @return map.get($a2, string.quote(#{$tone}));
 }
 
-@function feature($tone) {
-  @return map.get($feature, string.quote(#{$tone}));
-}
-
-@function danger($tone) {
-  @return map.get($danger, string.quote(#{$tone}));
+@function a3($tone) {
+  @return map.get($a3, string.quote(#{$tone}));
 }
 
 @function danger($tone) {
