@@ -64,7 +64,7 @@
 }
 
 @mixin focus() {
-  &:focus {
+  &:focus-visible {
     @content
   }
 }

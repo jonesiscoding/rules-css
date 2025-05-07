@@ -24,6 +24,8 @@ dialog[role="menu"] {
   --color-divider: var(--theme-divider);
   > * {
     --color-bg: transparent;
+    --color-bg-hover: rgb(var(--theme-color-rgb) / var(--opacity-hover));
+    --color-bg-focus: rgb(var(--theme-color-rgb) / var(--opacity-focus));
     --color-icon: var(--theme-color);
     --color-link: var(--theme-link-on-bg);
     --color-text: var(--theme-on-bg);

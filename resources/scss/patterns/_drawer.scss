@@ -15,6 +15,7 @@
     }
     a {
       --color-bg: transparent;
+      --color-bg-hover: rgb(var(--theme-color-rgb) / var(--opacity-hover));
       --color-link: var(--theme-on-n2);
       --color-icon: var(--theme-on-n2);
       --color-shadow: transparent;

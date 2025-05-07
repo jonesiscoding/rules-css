@@ -20,14 +20,12 @@
 // CSS Custom Variables
 button, *[role="button"], .btn {
   --color-bg: var(--theme-c1);
+  --color-bg-hover: var(--theme-hc);
+  --color-bg-focus: var(--theme-fc);
+  --color-bg-pressed: var(--theme-pc);
   --color-outline: transparent;
   --color-link: var(--theme-link-on-c1);
   --color-icon: var(--theme-link-on-c1);
-  @include buttons.hover-after {
-    // TODO: Elevation
-    --color-tint-rgb: var(--theme-link-on-c1-rgb);
-    --color-tint: rgb(var(--color-tint-rgb) / var(--opacity-hover));
-  }
   @include buttons.focus-after {
     --color-tint-rgb: var(--theme-link-on-c1-rgb);
     --color-tint: rgb(var(--color-tint-rgb) / var(--opacity-focus));
@@ -44,6 +42,9 @@ button, *[role="button"], .btn {
 
   &.-filled, &.-fab {
     --color-bg: var(--theme-color);
+    --color-bg-hover: var(--theme-ha);
+    --color-bg-focus: var(--theme-fa);
+    --color-bg-pressed: var(--theme-pa);
     --color-shadow: transparent;
     --color-outline: transparent;
     --color-text: var(--theme-on-color);
@@ -52,25 +53,21 @@ button, *[role="button"], .btn {
     &:focus {
       --color-outline: var(--theme-outline);
     }
-    @include buttons.hover-after {
-      --color-tint-rgb: var(--theme-on-color-rgb);
-      --color-tint: rgb(var(--color-tint-rgb) / var(--opacity-hover));
-    }
-    @include buttons.focus-after {
-      --color-tint-rgb: var(--theme-on-color-rgb);
-      --color-tint: rgb(var(--color-tint-rgb) / var(--opacity-focus));
-    }
+
     @include buttons.pressed {
       --color-shadow: transparent;
     }
-    @include buttons.pressed-after {
-      --color-tint-rgb: var(--theme-on-color-rgb);
-      --color-tint: rgb(var(--color-tint-rgb) / var(--opacity-pressed));
-    }
+    //@include buttons.pressed-after {
+    //  --color-tint-rgb: var(--theme-on-color-rgb);
+    //  --color-tint: rgb(var(--color-tint-rgb) / var(--opacity-pressed));
+    //}
   }
 
   &.-outline {
     --color-bg: transparent;
+    --color-bg-hover: rgb(var(--theme-color-rgb) / var(--opacity-hover));
+    --color-bg-focus: rgb(var(--theme-color-rgb) / var(--opacity-focus));
+    --color-bg-pressed: rgb(var(--theme-color-rgb) / var(--opacity-pressed));
     --color-shadow: transparent;
     --color-outline: var(--theme-outline);
     --color-text: var(--theme-color);
@@ -81,20 +78,14 @@ button, *[role="button"], .btn {
     }
     @include buttons.hover {
       --color-shadow: transparent;
-      --color-tint-rgb: var(--theme-color-rgb);
-      --color-tint: rgb(var(--theme-color) / var(--opacity-hover));
       --color-outline: var(--theme-color);
     }
     @include buttons.focus {
       --color-shadow: transparent;
       --color-outline: var(--theme-color);
-      --color-tint-rgb: var(--theme-color-rgb);
-      --color-tint: rgb(var(--theme-color) / var(--opacity-focus));
     }
     @include buttons.pressed {
       --color-shadow: transparent;
-      --color-tint-rgb: var(--theme-color-rgb);
-      --color-tint: rgb(var(--theme-color) / var(--opacity-pressed));
     }
   }
 
@@ -105,14 +96,9 @@ button, *[role="button"], .btn {
     --color-text: var(--theme-color);
     --color-icon: var(--theme-color);
     --color-bg: transparent;
-    @include buttons.hover-focus {
-      --color-tint-rgb: var(--theme-color-rgb);
-      --color-tint: rgb(var(--theme-color) / var(--opacity-hover));
-    }
-    @include buttons.pressed {
-      --color-tint-rgb: var(--theme-color-rgb);
-      --color-tint: rgb(var(--theme-color) / var(--opacity-hover));
-    }
+    --color-bg-hover: rgb(var(--theme-color-rgb) / var(--opacity-hover));
+    --color-bg-focus: rgb(var(--theme-color-rgb) / var(--opacity-focus));
+    --color-bg-pressed: rgb(var(--theme-color-rgb) / var(--opacity-pressed));
   }
 
 }
@@ -162,8 +148,16 @@ button {
     cursor: system.$cursor-strong;
   }
 
-  @include elevation.tint-after-hover {
-    background-color: var(--color-tint);
+  @include buttons.hover() {
+    --color-bg: var(--color-bg-hover);
+  }
+
+  @include buttons.focus() {
+    --color-bg: var(--color-bg-focus);
+  }
+
+  @include buttons.pressed() {
+    --color-bg: var(--color-bg-pressed);
   }
 
   &[disabled]:not([disabled="false"]) {
