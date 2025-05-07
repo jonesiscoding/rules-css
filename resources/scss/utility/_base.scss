@@ -3,9 +3,11 @@
 
 /** CSS Custom Variables **/
 :root {
+  @include system.accents-rgb;
+  @include system.neutrals-rgb;
   @include system.accents;
   @include system.neutrals;
-  @include system.app;
+  @include system.contexts;
   @include system.theme;
   @include system.color;
   @include system.typography;
@@ -29,17 +31,17 @@
 .-success {
   @include system.success();
 }
-.-feature, .-a3 {
-  @include system.feature();
-}
 .-a1 {
   @include system.a1()
 }
 .-a2 {
-  @include system.a1()
+  @include system.a2()
+}
+.-a3 {
+  @include system.a3()
 }
 
-.-warning, .-danger, .-success, .-feature, .-a1, .-a2, .-a3 {
+.-warning, .-danger, .-success, .-a1, .-a2, .-a3 {
   @include system.color;
 }
 

@@ -1,22 +1,86 @@
-
 @use "../../modules/theme/colors";
 @use "../../modules/theme/neutrals";
+@use "../../modules/theme/bg";
+@use "../../modules/theme/elevation";
+@use "../../modules/theme/context";
+@use "roles";
+
+$shade: "a1";
 
 // Tones
-$tone-0:  colors.tone("major", 0) !default;
-$tone-5: colors.tone("major", 5) !default;
-$tone-10: colors.tone("major", 10) !default;
-$tone-15: colors.tone("major", 15) !default;
-$tone-20: colors.tone("major", 20) !default;
-$tone-25: colors.tone("major", 25) !default;
-$tone-30: colors.tone("major", 30) !default;
-$tone-40: colors.tone("major", 40) !default;
-$tone-50: colors.tone("major", 50) !default;
-$tone-60: colors.tone("major", 60) !default;
-$tone-70: colors.tone("major", 70) !default;
-$tone-80: colors.tone("major", 80) !default;
-$tone-90: colors.tone("major", 90) !default;
-$tone-95: colors.tone("major", 95) !default;
-$tone-98: colors.tone("major", 98) !default;
-$tone-99: colors.tone("major", 99) !default;
-$tone-100: colors.tone("major", 100) !default;
+$tone-0:  colors.tone($shade, 0) !default;
+$tone-5: colors.tone($shade, 5) !default;
+$tone-10: colors.tone($shade, 10) !default;
+$tone-15: colors.tone($shade, 15) !default;
+$tone-20: colors.tone($shade, 20) !default;
+$tone-25: colors.tone($shade, 25) !default;
+$tone-30: colors.tone($shade, 30) !default;
+$tone-40: colors.tone($shade, 40) !default;
+$tone-50: colors.tone($shade, 50) !default;
+$tone-60: colors.tone($shade, 60) !default;
+$tone-70: colors.tone($shade, 70) !default;
+$tone-80: colors.tone($shade, 80) !default;
+$tone-90: colors.tone($shade, 90) !default;
+$tone-95: colors.tone($shade, 95) !default;
+$tone-98: colors.tone($shade, 98) !default;
+$tone-99: colors.tone($shade, 99) !default;
+$tone-100: colors.tone($shade, 100) !default;
+
+//
+// Role Colors
+//
+
+// Color Palette
+$color: colors.tone($shade, roles.$accent) !default;
+$on-color: colors.tone($shade, roles.$on-accent);
+$on-color-link: colors.tone($shade, roles.$on-accent-link) !default;
+$c1: colors.tone($shade, roles.$container) !default;
+$on-c1: colors.tone($shade, roles.$on-container) !default;
+$on-c1-link: colors.tone($shade, roles.$link-on-container) !default;
+$on-bg-link: colors.tone($shade, roles.$on-bg-link) !default;
+$on-n2: colors.tone($shade, roles.$on-neutral) !default;
+$on-n2-link: colors.tone($shade, roles.$on-neutral-link) !default;
+$on-inverse-link: bg.tone($shade, roles.$on-inverse-link) !default;
+
+// BG Palette
+$body: bg.tone($shade, roles.$body) !default;
+$bg: bg.tone($shade, roles.$bg) !default;
+$on-bg: bg.tone($shade, roles.$on-bg) !default;
+$shadow: bg.tone($shade, roles.$shadow) !default;
+$on-inverse: bg.tone($shade, roles.$on-inverse) !default;
+
+// Neutral Palette
+$n2: neutrals.tone($shade, roles.$neutral) !default;
+$inverse: neutrals.tone($shade, roles.$inverse) !default;
+$outline: neutrals.tone($shade, roles.$outline) !default;
+$divider: neutrals.tone($shade, roles.$divider) !default;
+
+// Elevation Palette
+$e2: elevation.level($shade, 2) !default;
+$e3: elevation.level($shade, 3) !default;
+$e4: elevation.level($shade, 4) !default;
+$e5: elevation.level($shade, 5) !default;
+$hc: elevation.hover($shade,"container") !default;
+$ha: elevation.hover($shade,"accent") !default;
+$fc: elevation.focus($shade,"container") !default;
+$fa: elevation.focus($shade,"accent") !default;
+$pc: elevation.pressed($shade,"container") !default;
+$pa: elevation.pressed($shade,"accent") !default;
+
+@mixin rgb() {
+  /* Accent 1 RGB Color Variables */
+  @include context.color-rgb($shade, $color, $on-color, $on-color-link, $c1, $on-c1, $on-c1-link, $on-bg-link, $on-n2, $on-n2-link, $on-inverse-link);
+  @include context.bg-rgb($shade, $bg, $on-bg, $on-inverse, $shadow);
+  @include context.n2-rgb($shade, $n2, $inverse, $outline, $divider);
+  @include context.elevation-rgb($shade, $e2, $e3, $e4, $e5, $hc, $ha, $fc, $fa, $pc, $pa);
+}
+
+@mixin properties() {
+  /* Accent 1 Color Variables */
+  @include context.properties($shade);
+}
+
+@mixin theme() {
+  /* Theme Color Variables for Accent 1 */
+  @include context.theme($shade);
+}

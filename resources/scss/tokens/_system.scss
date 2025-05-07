@@ -21,16 +21,13 @@
 @use "config/a1";
 @use "config/a2";
 @use "config/a3";
+@use "config/success";
+@use "config/danger";
+@use "config/warning";
+@use "config/a3";
 @use "config/n1";
 @use "config/n2";
-// Color Tokens
-@use "colors/major";
-@use "colors/minor";
-@use "colors/feature";
-@use "colors/success";
-@use "colors/danger";
-@use "colors/warning";
-@use "colors/context";
+@use "config/roles";
 
 // region //////////////////////////////////////////////// Features
 
@@ -46,271 +43,234 @@ $feature-grid: features.$grid;
 // region //////////////////////////////////////////////// Color & Theme
 
 // App Background & Neutrals
-$app-body: major.$body;
-$app-bg: major.$bg;
-$app-n1: major.$bg;
-$app-e2: major.$e2;
-$app-e3: major.$e3;
-$app-e4: major.$e4;
-$app-e5: major.$e5;
-$app-on-n1: major.$on-bg;
-$app-on-n1-link: major.$on-bg-link;
-$app-n2: major.$neutral !default;
-$app-on-n2: major.$on-neutral !default;
-$app-on-n2-link: major.$on-neutral-link !default;
-$app-outline: major.$outline !default;
-$app-divider: major.$divider !default;
-$app-shadow: major.$shadow !default;
-$app-inverse: major.$inverse !default;
-$app-on-inverse: major.$on-inverse !default;
-$app-on-inverse-link: major.$on-inverse-link !default;
+$a1-body: a1.$body;
+$a1-bg: a1.$bg;
+$a1-e2: a1.$e2;
+$a1-e3: a1.$e2;
+$a1-e4: a1.$e2;
+$a1-e5: a1.$e2;
+$a1-on-n1: a1.$on-bg;
+$a1-on-n1-link: a1.$on-bg-link;
+$a1-n2: a1.$n2;
+$a1-on-n2: a1.$on-n2;
+$a1-on-n2-link: a1.$on-n2-link;
+$a1-outline: a1.$outline;
+$a1-divider: a1.$divider;
+$a1-shadow: a1.$shadow;
+$a1-inverse: a1.$inverse;
+$a1-on-inverse: a1.$on-inverse;
+$a1-on-inverse-link: a1.$on-inverse-link;
 
 // Theme Accent #1
-$app-a1: major.$color !default;
-$app-on-a1: major.$on-color !default;
-$app-on-a1-link: major.$on-color-link !default;
-$app-c1: major.$alt !default;
-$app-on-c1: major.$on-alt !default;
-$app-on-c1-link: major.$on-alt-link !default;
+$a1-color: a1.$color;
+$a1-on-color: a1.$on-color;
+$a1-on-color-link: a1.$on-color-link;
+$a1-c1: a1.$c1;
+$a1-on-c1: a1.$on-c1;
+$a1-on-c1-link: a1.$on-c1-link;
 
 // Theme Accent #2
-$app-a2: minor.$color !default;
-$app-on-a2: minor.$on-color !default;
-$app-on-a2-link: minor.$on-color-link !default;
-$app-c2: minor.$alt !default;
-$app-on-c2: minor.$on-alt !default;
-$app-on-c2-link: minor.$on-alt-link !default;
+$a2-color: a2.$color;
+$a2-on-color: a2.$on-color;
+$a2-on-color-link: a2.$on-color-link;
+$a2-c1: a2.$c1;
+$a2-on-c1: a2.$on-c1;
+$a2-on-c1-link: a2.$on-c1-link;
 
 // Theme Accent #3
-$app-a3: feature.$color !default;
-$app-on-a3: feature.$on-color !default;
-$app-on-a3-link: feature.$on-color-link !default;
-$app-c3: feature.$alt !default;
-$app-on-c3: feature.$on-alt !default;
-$app-on-c3-link: feature.$on-alt-link !default;
+$a3-color: a3.$color;
+$a3-on-color: a3.$on-color;
+$a3-on-color-link: a3.$on-color-link;
+$a3-c1: a3.$c1;
+$a3-on-c1: a3.$on-c1;
+$a3-on-c1-link: a3.$on-c1-link;
+
+@mixin accents-rgb() {
+  --a1-0-rgb: #{color.rgb(a1.$tone-0)};
+  --a1-10-rgb: #{color.rgb(a1.$tone-10)};
+  --a1-20-rgb: #{color.rgb(a1.$tone-20)};
+  --a1-25-rgb: #{color.rgb(a1.$tone-25)};
+  --a1-30-rgb: #{color.rgb(a1.$tone-30)};
+  --a1-40-rgb: #{color.rgb(a1.$tone-40)};
+  --a1-50-rgb: #{color.rgb(a1.$tone-50)};
+  --a1-60-rgb: #{color.rgb(a1.$tone-60)};
+  --a1-70-rgb: #{color.rgb(a1.$tone-70)};
+  --a1-80-rgb: #{color.rgb(a1.$tone-80)};
+  --a1-90-rgb: #{color.rgb(a1.$tone-90)};
+  --a1-95-rgb: #{color.rgb(a1.$tone-95)};
+  --a1-98-rgb: #{color.rgb(a1.$tone-98)};
+  --a1-99-rgb: #{color.rgb(a1.$tone-99)};
+  --a1-100-rgb: #{color.rgb(a1.$tone-100)};
+  --a2-0-rgb: #{color.rgb(a2.$tone-0)};
+  --a2-10-rgb: #{color.rgb(a2.$tone-10)};
+  --a2-20-rgb: #{color.rgb(a2.$tone-20)};
+  --a2-25-rgb: #{color.rgb(a2.$tone-25)};
+  --a2-30-rgb: #{color.rgb(a2.$tone-30)};
+  --a2-40-rgb: #{color.rgb(a2.$tone-40)};
+  --a2-50-rgb: #{color.rgb(a2.$tone-50)};
+  --a2-60-rgb: #{color.rgb(a2.$tone-60)};
+  --a2-70-rgb: #{color.rgb(a2.$tone-70)};
+  --a2-80-rgb: #{color.rgb(a2.$tone-80)};
+  --a2-90-rgb: #{color.rgb(a2.$tone-90)};
+  --a2-95-rgb: #{color.rgb(a2.$tone-95)};
+  --a2-98-rgb: #{color.rgb(a2.$tone-98)};
+  --a2-99-rgb: #{color.rgb(a2.$tone-99)};
+  --a2-100-rgb: #{color.rgb(a2.$tone-100)};
+  --a3-0-rgb: #{color.rgb(a3.$tone-0)};
+  --a3-10-rgb: #{color.rgb(a3.$tone-10)};
+  --a3-20-rgb: #{color.rgb(a3.$tone-20)};
+  --a3-25-rgb: #{color.rgb(a3.$tone-25)};
+  --a3-30-rgb: #{color.rgb(a3.$tone-30)};
+  --a3-40-rgb: #{color.rgb(a3.$tone-40)};
+  --a3-50-rgb: #{color.rgb(a3.$tone-50)};
+  --a3-60-rgb: #{color.rgb(a3.$tone-60)};
+  --a3-70-rgb: #{color.rgb(a3.$tone-70)};
+  --a3-80-rgb: #{color.rgb(a3.$tone-80)};
+  --a3-90-rgb: #{color.rgb(a3.$tone-90)};
+  --a3-95-rgb: #{color.rgb(a3.$tone-95)};
+  --a3-98-rgb: #{color.rgb(a3.$tone-98)};
+  --a3-99-rgb: #{color.rgb(a3.$tone-99)};
+  --a3-100-rgb: #{color.rgb(a3.$tone-100)};
+}
+
+@mixin neutrals-rgb() {
+  --n1-0-rgb: #{color.rgb(n1.$tone-0)};
+  --n1-10-rgb: #{color.rgb(n1.$tone-10)};
+  --n1-20-rgb: #{color.rgb(n1.$tone-20)};
+  --n1-25-rgb: #{color.rgb(n1.$tone-25)};
+  --n1-30-rgb: #{color.rgb(n1.$tone-30)};
+  --n1-40-rgb: #{color.rgb(n1.$tone-40)};
+  --n1-50-rgb: #{color.rgb(n1.$tone-50)};
+  --n1-60-rgb: #{color.rgb(n1.$tone-60)};
+  --n1-70-rgb: #{color.rgb(n1.$tone-70)};
+  --n1-80-rgb: #{color.rgb(n1.$tone-80)};
+  --n1-90-rgb: #{color.rgb(n2.$tone-90)};
+  --n1-92-rgb: #{color.rgb(n2.$tone-92)};
+  --n1-94-rgb: #{color.rgb(n2.$tone-94)};
+  --n1-95-rgb: #{color.rgb(n1.$tone-95)};
+  --n1-96-rgb: #{color.rgb(n1.$tone-96)};
+  --n1-98-rgb: #{color.rgb(n1.$tone-98)};
+  --n1-99-rgb: #{color.rgb(n1.$tone-99)};
+  --n1-100-rgb: #{color.rgb(n1.$tone-100)};
+  --n2-0-rgb: #{color.rgb(n2.$tone-0)};
+  --n2-10-rgb: #{color.rgb(n2.$tone-10)};
+  --n2-20-rgb: #{color.rgb(n2.$tone-20)};
+  --n2-25-rgb: #{color.rgb(n2.$tone-25)};
+  --n2-30-rgb: #{color.rgb(n2.$tone-30)};
+  --n2-40-rgb: #{color.rgb(n2.$tone-40)};
+  --n2-50-rgb: #{color.rgb(n2.$tone-50)};
+  --n2-60-rgb: #{color.rgb(n2.$tone-60)};
+  --n2-70-rgb: #{color.rgb(n2.$tone-70)};
+  --n2-80-rgb: #{color.rgb(n2.$tone-80)};
+  --n2-90-rgb: #{color.rgb(n2.$tone-90)};
+  --n2-92-rgb: #{color.rgb(n2.$tone-92)};
+  --n2-94-rgb: #{color.rgb(n2.$tone-94)};
+  --n2-95-rgb: #{color.rgb(n2.$tone-95)};
+  --n2-96-rgb: #{color.rgb(n2.$tone-96)};
+  --n2-98-rgb: #{color.rgb(n2.$tone-98)};
+  --n2-99-rgb: #{color.rgb(n2.$tone-99)};
+  --n2-100-rgb: #{color.rgb(n2.$tone-100)};
+}
 
 @mixin accents() {
-  --a1-0: #{a1.$tone-0};
-  --a1-10: #{a1.$tone-10};
-  --a1-20: #{a1.$tone-20};
-  --a1-25: #{a1.$tone-25};
-  --a1-30: #{a1.$tone-30};
-  --a1-40: #{a1.$tone-40};
-  --a1-50: #{a1.$tone-50};
-  --a1-60: #{a1.$tone-60};
-  --a1-70: #{a1.$tone-70};
-  --a1-80: #{a1.$tone-80};
-  --a1-90: #{a1.$tone-90};
-  --a1-95: #{a1.$tone-95};
-  --a1-98: #{a1.$tone-98};
-  --a1-99: #{a1.$tone-99};
-  --a1-100: #{a1.$tone-100};
-  --a2-0: #{a2.$tone-0};
-  --a2-10: #{a2.$tone-10};
-  --a2-20: #{a2.$tone-20};
-  --a2-25: #{a2.$tone-25};
-  --a2-30: #{a2.$tone-30};
-  --a2-40: #{a2.$tone-40};
-  --a2-50: #{a2.$tone-50};
-  --a2-60: #{a2.$tone-60};
-  --a2-70: #{a2.$tone-70};
-  --a2-80: #{a2.$tone-80};
-  --a2-90: #{a2.$tone-90};
-  --a2-95: #{a2.$tone-95};
-  --a2-98: #{a2.$tone-98};
-  --a2-99: #{a2.$tone-99};
-  --a2-100: #{a2.$tone-100};
-  --a3-0: #{a3.$tone-0};
-  --a3-10: #{a3.$tone-10};
-  --a3-20: #{a3.$tone-20};
-  --a3-25: #{a3.$tone-25};
-  --a3-30: #{a3.$tone-30};
-  --a3-40: #{a3.$tone-40};
-  --a3-50: #{a3.$tone-50};
-  --a3-60: #{a3.$tone-60};
-  --a3-70: #{a3.$tone-70};
-  --a3-80: #{a3.$tone-80};
-  --a3-90: #{a3.$tone-90};
-  --a3-95: #{a3.$tone-95};
-  --a3-98: #{a3.$tone-98};
-  --a3-99: #{a3.$tone-99};
-  --a3-100: #{a3.$tone-100};
+  --a1-0: rgb(var(--a1-0-rgb) / 1);
+  --a1-10: rgb(var(--a1-10-rgb) / 1);
+  --a1-20: rgb(var(--a1-20-rgb) / 1);
+  --a1-25: rgb(var(--a1-25-rgb) / 1);
+  --a1-30: rgb(var(--a1-30-rgb) / 1);
+  --a1-40: rgb(var(--a1-40-rgb) / 1);
+  --a1-50: rgb(var(--a1-50-rgb) / 1);
+  --a1-60: rgb(var(--a1-60-rgb) / 1);
+  --a1-70: rgb(var(--a1-70-rgb) / 1);
+  --a1-80: rgb(var(--a1-80-rgb) / 1);
+  --a1-90: rgb(var(--a1-90-rgb) / 1);
+  --a1-95: rgb(var(--a1-95-rgb) / 1);
+  --a1-98: rgb(var(--a1-98-rgb) / 1);
+  --a1-99: rgb(var(--a1-99-rgb) / 1);
+  --a1-100: rgb(var(--a1-100-rgb) / 1);
+  --a2-0: rgb(var(--a2-0-rgb) / 1);
+  --a2-10: rgb(var(--a2-10-rgb) / 1);
+  --a2-20: rgb(var(--a2-20-rgb) / 1);
+  --a2-25: rgb(var(--a2-25-rgb) / 1);
+  --a2-30: rgb(var(--a2-30-rgb) / 1);
+  --a2-40: rgb(var(--a2-40-rgb) / 1);
+  --a2-50: rgb(var(--a2-50-rgb) / 1);
+  --a2-60: rgb(var(--a2-60-rgb) / 1);
+  --a2-70: rgb(var(--a2-70-rgb) / 1);
+  --a2-80: rgb(var(--a2-80-rgb) / 1);
+  --a2-90: rgb(var(--a2-90-rgb) / 1);
+  --a2-95: rgb(var(--a2-95-rgb) / 1);
+  --a2-98: rgb(var(--a2-98-rgb) / 1);
+  --a2-99: rgb(var(--a2-99-rgb) / 1);
+  --a2-100: rgb(var(--a2-100-rgb) / 1);
+  --a3-0: rgb(var(--a3-0-rgb) / 1);
+  --a3-10: rgb(var(--a3-10-rgb) / 1);
+  --a3-20: rgb(var(--a3-20-rgb) / 1);
+  --a3-25: rgb(var(--a3-25-rgb) / 1);
+  --a3-30: rgb(var(--a3-30-rgb) / 1);
+  --a3-40: rgb(var(--a3-40-rgb) / 1);
+  --a3-50: rgb(var(--a3-50-rgb) / 1);
+  --a3-60: rgb(var(--a3-60-rgb) / 1);
+  --a3-70: rgb(var(--a3-70-rgb) / 1);
+  --a3-80: rgb(var(--a3-80-rgb) / 1);
+  --a3-90: rgb(var(--a3-90-rgb) / 1);
+  --a3-95: rgb(var(--a3-95-rgb) / 1);
+  --a3-98: rgb(var(--a3-98-rgb) / 1);
+  --a3-99: rgb(var(--a3-99-rgb) / 1);
+  --a3-100: rgb(var(--a3-100-rgb) / 1);
 }
 
 @mixin neutrals() {
-  --n1-0: #{n1.$tone-0};
-  --n1-10: #{n1.$tone-10};
-  --n1-20: #{n1.$tone-20};
-  --n1-25: #{n1.$tone-25};
-  --n1-30: #{n1.$tone-30};
-  --n1-40: #{n1.$tone-40};
-  --n1-50: #{n1.$tone-50};
-  --n1-60: #{n1.$tone-60};
-  --n1-70: #{n1.$tone-70};
-  --n1-80: #{n1.$tone-80};
-  --n1-90: #{n1.$tone-90};
-  --n1-92: #{n1.$tone-92};
-  --n1-94: #{n1.$tone-94};
-  --n1-95: #{n1.$tone-95};
-  --n1-96: #{n1.$tone-96};
-  --n1-98: #{n1.$tone-98};
-  --n1-99: #{n1.$tone-99};
-  --n1-100: #{n1.$tone-100};
-  --n2-0: #{n2.$tone-0};
-  --n2-10: #{n2.$tone-10};
-  --n2-20: #{n2.$tone-20};
-  --n2-25: #{n2.$tone-25};
-  --n2-30: #{n2.$tone-30};
-  --n2-40: #{n2.$tone-40};
-  --n2-50: #{n2.$tone-50};
-  --n2-60: #{n2.$tone-60};
-  --n2-70: #{n2.$tone-70};
-  --n2-80: #{n2.$tone-80};
-  --n2-90: #{n2.$tone-90};
-  --n2-92: #{n2.$tone-92};
-  --n2-94: #{n2.$tone-94};
-  --n2-95: #{n2.$tone-95};
-  --n2-96: #{n2.$tone-96};
-  --n2-98: #{n2.$tone-98};
-  --n2-99: #{n2.$tone-99};
-  --n2-100: #{n2.$tone-100};
+  --n1-0: rgb(var(--n1-0-rgb) / 1);
+  --n1-10: rgb(var(--n1-10-rgb) / 1);
+  --n1-20: rgb(var(--n1-20-rgb) / 1);
+  --n1-25: rgb(var(--n1-25-rgb) / 1);
+  --n1-30: rgb(var(--n1-30-rgb) / 1);
+  --n1-40: rgb(var(--n1-40-rgb) / 1);
+  --n1-50: rgb(var(--n1-50-rgb) / 1);
+  --n1-60: rgb(var(--n1-60-rgb) / 1);
+  --n1-70: rgb(var(--n1-70-rgb) / 1);
+  --n1-80: rgb(var(--n1-80-rgb) / 1);
+  --n1-90: rgb(var(--n1-90-rgb) / 1);
+  --n1-92: rgb(var(--n1-92-rgb) / 1);
+  --n1-94: rgb(var(--n1-94-rgb) / 1);
+  --n1-95: rgb(var(--n1-95-rgb) / 1);
+  --n1-96: rgb(var(--n1-96-rgb) / 1);
+  --n1-98: rgb(var(--n1-98-rgb) / 1);
+  --n1-99: rgb(var(--n1-99-rgb) / 1);
+  --n1-100: rgb(var(--n1-100-rgb) / 1);
+  --n2-0: rgb(var(--n2-0-rgb) / 1);
+  --n2-10: rgb(var(--n2-10-rgb) / 1);
+  --n2-20: rgb(var(--n2-20-rgb) / 1);
+  --n2-25: rgb(var(--n2-25-rgb) / 1);
+  --n2-30: rgb(var(--n2-30-rgb) / 1);
+  --n2-40: rgb(var(--n2-40-rgb) / 1);
+  --n2-50: rgb(var(--n2-50-rgb) / 1);
+  --n2-60: rgb(var(--n2-60-rgb) / 1);
+  --n2-70: rgb(var(--n2-70-rgb) / 1);
+  --n2-80: rgb(var(--n2-80-rgb) / 1);
+  --n2-90: rgb(var(--n2-90-rgb) / 1);
+  --n2-92: rgb(var(--n2-92-rgb) / 1);
+  --n2-94: rgb(var(--n2-94-rgb) / 1);
+  --n2-95: rgb(var(--n2-95-rgb) / 1);
+  --n2-96: rgb(var(--n2-96-rgb) / 1);
+  --n2-98: rgb(var(--n2-98-rgb) / 1);
+  --n2-99: rgb(var(--n2-99-rgb) / 1);
+  --n2-100: rgb(var(--n2-100-rgb) / 1);
 }
 
-@mixin app() {
-
-  // App Accent #1
-  --app-a1-rgb: #{color.red($app-a1)} #{color.green($app-a1)} #{color.blue($app-a1)};
-  --app-on-a1-rgb: #{color.red($app-on-a1)} #{color.green($app-on-a1)} #{color.blue($app-on-a1)};
-  --app-link-on-a1-rgb: #{color.red($app-on-a1-link)} #{color.green($app-on-a1-link)} #{color.blue($app-on-a1-link)};
-  --app-a1: rgb(var(--app-a1-rgb) / 1);
-  --app-on-a1: rgb(var(--app-on-a1-rgb) / 1);
-  --app-link-on-a1: rgb(var(--app-link-on-a1-rgb) / 1);
-
-  // App Accent #2
-  --app-a2-rgb: #{color.red($app-a2)} #{color.green($app-a2)} #{color.blue($app-a2)};
-  --app-on-a2-rgb: #{color.red($app-on-a2)} #{color.green($app-on-a2)} #{color.blue($app-on-a2)};
-  --app-link-on-a2-rgb: #{color.red($app-on-a2-link)} #{color.green($app-on-a2-link)} #{color.blue($app-on-a2-link)};
-  --app-a2: rgb(var(--app-a2-rgb) / 1);
-  --app-on-a2: rgb(var(--app-on-a2-rgb) / 1);
-  --app-link-on-a2: rgb(var(--app-link-on-a2-rgb) / 1);
-
-  // App Accent #3
-  --app-a3-rgb: #{color.red($app-a3)} #{color.green($app-a3)} #{color.blue($app-a3)};
-  --app-on-a3-rgb: #{color.red($app-on-a3)} #{color.green($app-on-a3)} #{color.blue($app-on-a3)};
-  --app-link-on-a3-rgb: #{color.red($app-on-a3-link)} #{color.green($app-on-a3-link)} #{color.blue($app-on-a3-link)};
-  --app-a3: rgb(var(--app-a3-rgb) / 1);
-  --app-on-a3: rgb(var(--app-on-a3-rgb) / 1);
-  --app-link-on-a3: rgb(var(--app-link-on-a3-rgb) / 1);
-
-  // App Container #1
-  --app-c1-rgb: #{color.red($app-c1)} #{color.green($app-c1)} #{color.blue($app-c1)};
-  --app-on-c1-rgb: #{color.red($app-on-c1)} #{color.green($app-on-c1)} #{color.blue($app-on-c1)};
-  --app-link-on-c1-rgb: #{color.red($app-on-c1-link)} #{color.green($app-on-c1-link)} #{color.blue($app-on-c1-link)};
-  --app-c1: rgb(var(--app-c1-rgb) / 1);
-  --app-on-c1: rgb(var(--app-on-c1-rgb) / 1);
-  --app-link-on-c1: rgb(var(--app-link-on-c1-rgb) / 1);
-
-  // App Container #2
-  --app-c2-rgb: #{color.red($app-c2)} #{color.green($app-c2)} #{color.blue($app-c2)};
-  --app-on-c2-rgb: #{color.red($app-on-c2)} #{color.green($app-on-c2)} #{color.blue($app-on-c2)};
-  --app-link-on-c2-rgb: #{color.red($app-on-c2-link)} #{color.green($app-on-c2-link)} #{color.blue($app-on-c2-link)};
-  --app-c2: rgb(var(--app-c2-rgb) / 1);
-  --app-on-c2: rgb(var(--app-on-c2-rgb) / 1);
-  --app-link-on-c2: rgb(var(--app-link-on-c2-rgb) / 1);
-
-  // App Container #3
-  --app-c3-rgb: #{color.red($app-c3)} #{color.green($app-c3)} #{color.blue($app-c3)};
-  --app-on-c3-rgb: #{color.red($app-on-c3)} #{color.green($app-on-c3)} #{color.blue($app-on-c3)};
-  --app-link-on-c3-rgb: #{color.red($app-on-c3-link)} #{color.green($app-on-c3-link)} #{color.blue($app-on-c3-link)};
-  --app-c3: rgb(var(--app-c3-rgb) / 1);
-  --app-on-c3: rgb(var(--app-on-c3-rgb) / 1);
-  --app-link-on-c3: rgb(var(--app-link-on-c3-rgb) / 1);
-
-  // App Neutral #1
-  --app-n1-rgb: #{color.red($app-n1)} #{color.green($app-n1)} #{color.blue($app-n1)};
-  --app-e2-rgb: #{color.rgb($app-e2)};
-  --app-e3-rgb: #{color.rgb($app-e3)};
-  --app-e4-rgb: #{color.rgb($app-e4)};
-  --app-e5-rgb: #{color.rgb($app-e5)};
-  --app-on-n1-rgb: #{color.red($app-on-n1)} #{color.green($app-on-n1)} #{color.blue($app-on-n1)};
-  --app-link-on-n1-rgb: #{color.red($app-on-n1-link)} #{color.green($app-on-n1-link)} #{color.blue($app-on-n1-link)};
-  --app-n1: rgb(var(--app-n1-rgb) / 1);
-  --app-on-n1: rgb(var(--app-on-n1-rgb) / 1);
-  --app-link-on-n1: rgb(var(--app-link-on-n1-rgb) / 1);
-
-  // App Neutral #2
-  --app-n2-rgb: #{color.red($app-n2)} #{color.green($app-n2)} #{color.blue($app-n2)};
-  --app-on-n2-rgb: #{color.red($app-on-n2)} #{color.green($app-on-n2)} #{color.blue($app-on-n2)};
-  --app-link-on-n2-rgb: #{color.red($app-on-n2-link)} #{color.green($app-on-n2-link)} #{color.blue($app-on-n2-link)};
-  --app-n2: rgb(var(--app-n2-rgb) / 1);
-  --app-on-n2: rgb(var(--app-on-n2-rgb) / 1);
-  --app-link-on-n2: rgb(var(--app-link-on-n2-rgb) / 1);
-
-  // App Outline
-  --app-outline-rgb: #{color.red($app-outline)} #{color.green($app-outline)} #{color.blue($app-outline)};
-  --app-outline: rgb(var(--app-outline-rgb) / 1);
-  --app-divider: #{$app-divider};
-  --app-shadow: #{$app-shadow};
-
-  // App Inverse
-  --app-inverse-rgb: #{color.red($app-inverse)} #{color.green($app-inverse)} #{color.blue($app-inverse)};
-  --app-on-inverse-rgb: #{color.red($app-on-inverse)} #{color.green($app-on-inverse)} #{color.blue($app-on-inverse)};
-  --app-link-on-inverse-rgb: #{color.red($app-on-inverse-link)} #{color.green($app-on-inverse-link)} #{color.blue($app-on-inverse-link)};
-  --app-inverse: rgb(var(--app-inverse-rgb) / 1);
-  --app-on-inverse: rgb(var(--app-on-inverse-rgb) / 1);
-  --app-link-on-inverse: rgb(var(--app-link-on-inverse-rgb) / 1);
-
-  // App Context Colors
-  --body-bg: #{$app-body};
-  --app-bg:#{$app-bg};
-  --app-success: #{success.$color};
-  --app-on-success: #{success.$on-color};
-  --app-warning: #{warning.$color};
-  --app-on-warning: #{warning.$on-color};
-  --app-danger: #{danger.$color};
-  --app-on-danger: #{danger.$on-color};
+@mixin contexts() {
+  @include a1.properties;
+  @include a2.properties;
+  @include a3.properties;
+  @include success.properties;
+  @include danger.properties;
+  @include warning.properties;
 }
 
 //noinspection DuplicatedCode
 @mixin theme() {
-  // RGB
-  --theme-bg-rgb: var(--app-n1-rgb);
-  --theme-e2-rgb: var(--app-e2-rgb);
-  --theme-e3-rgb: var(--app-e3-rgb);
-  --theme-e4-rgb: var(--app-e4-rgb);
-  --theme-e5-rgb: var(--app-e5-rgb);
-  --theme-on-bg-rgb: var(--app-on-n1-rgb);
-  --theme-link-on-bg-rgb: var(--app-link-on-n1-rgb);
-  --theme-n2-rgb: var(--app-n2-rgb);
-  --theme-on-n2-rgb: var(--app-on-n2-rgb);
-  --theme-link-on-n2-rgb: var(--app-link-on-n2-rgb);
-  --theme-inverse-rgb: var(--app-inverse-rgb);
-  --theme-link-on-inverse-rgb: var(--app-link-on-inverse-rgb);
-  --theme-color-rgb: var(--app-a1-rgb);
-  --theme-on-color-rgb: var(--app-on-a1-rgb);
-  --theme-link-on-color-rgb: var(--app-link-on-a1-rgb);
-  --theme-c1-rgb: var(--app-c1-rgb);
-  --theme-link-on-c1-rgb: var(--app-link-on-c1-rgb);
-  --theme-outline-rgb: var(--app-outline-rgb);
-  // Actual Values
-  --theme-bg: var(--app-n1);
-  --theme-on-bg: var(--app-on-n1);
-  --theme-link-on-bg: var(--app-link-on-n1);
-  --theme-n2: var(--app-n2);
-  --theme-on-n2: var(--app-on-n2);
-  --theme-link-on-n2: var(--app-link-on-n2);
-  --theme-outline: var(--app-outline);
-  --theme-divider: var(--app-divider);
-  --theme-shadow: var(--app-shadow);
-  --theme-inverse: var(--app-inverse);
-  --theme-on-inverse: var(--app-on-inverse);
-  --theme-link-on-inverse: var(--app-link-on-inverse);
-  --theme-color: var(--app-a1);
-  --theme-on-color: var(--app-on-a1);
-  --theme-link-on-color: var(--app-link-on-a1);
-  --theme-c1: var(--app-c1);
-  --theme-on-c1: var(--app-on-c1);
-  --theme-link-on-c1: var(--app-link-on-c1);
+  @include a1.theme;
 }
 
 @mixin color() {
@@ -320,6 +280,12 @@ $app-on-c3-link: feature.$on-alt-link !default;
   --color-e3-rgb: var(--theme-e3-rgb);
   --color-e4-rgb: var(--theme-e4-rgb);
   --color-e5-rgb: var(--theme-e5-rgb);
+  --color-ha-rgb: var(--theme-ha-rgb);
+  --color-hc-rgb: var(--theme-hc-rgb);
+  --color-fa-rgb: var(--theme-fa-rgb);
+  --color-fc-rgb: var(--theme-fc-rgb);
+  --color-pa-rgb: var(--theme-pa-rgb);
+  --color-pc-rgb: var(--theme-pc-rgb);
   --color-link-on-bg-rgb: var(--theme-link-on-bg-rgb);
   --color-n2-rgb: var(--theme-n2-rgb);
   --color-link-on-n2-rgb: var(--theme-link-on-n2-rgb);
@@ -335,6 +301,12 @@ $app-on-c3-link: feature.$on-alt-link !default;
   --color-e3: rgb(var(--color-e3-rgb) / 1);
   --color-e4: rgb(var(--color-e4-rgb) / 1);
   --color-e5: rgb(var(--color-e5-rgb) / 1);
+  --color-ha: rgb(var(--color-ha-rgb) / 1);
+  --color-hc: rgb(var(--color-hc-rgb) / 1);
+  --color-fa: rgb(var(--color-fa-rgb) / 1);
+  --color-fc: rgb(var(--color-fc-rgb) / 1);
+  --color-pa: rgb(var(--color-pa-rgb) / 1);
+  --color-pc: rgb(var(--color-pc-rgb) / 1);
   --color-text: var(--theme-on-bg);
   --color-icon: var(--theme-on-bg);
   --color-link: rgb(var(--color-link-on-bg-rgb) / 1);
@@ -353,31 +325,27 @@ $app-on-c3-link: feature.$on-alt-link !default;
 // region //////////////////////////////////////////////// Context
 
 @mixin success() {
-  @include success.custom-properties;
-}
-
-@mixin feature() {
-  @include feature.custom-properties;
+  @include success.theme;
 }
 
 @mixin danger() {
-  @include danger.custom-properties;
+  @include danger.theme;
 }
 
 @mixin warning() {
-  @include warning.custom-properties;
+  @include warning.theme;
 }
 
 @mixin a1() {
-  @include major.custom-properties;
+  @include a1.theme;
 }
 
 @mixin a2() {
-  @include minor.custom-properties;
+  @include a2.theme;
 }
 
 @mixin a3() {
-  @include feature.custom-properties;
+  @include a3.theme;
 }
 
 // endregion ///////////////////////////////////////////// End Context

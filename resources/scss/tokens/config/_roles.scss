@@ -26,3 +26,7 @@ $elevation-2: 5% !default;
 $elevation-3: 8% !default;
 $elevation-4: 11% !default;
 $elevation-5: 16% !default;
+
+$hover: $elevation-3 !default;
+$focus: $elevation-4 !default;
+$pressed: $elevation-4 !default;

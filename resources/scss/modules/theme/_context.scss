@@ -1,0 +1,135 @@
+@use "../../modules/color/sass-color" as color;
+
+@mixin color-rgb($context, $color, $on-color, $on-color-link, $c1, $on-c1, $on-c1-link, $on-bg-link, $on-n2, $on-n2-link, $on-inverse-link) {
+  --#{$context}-color-rgb: #{color.rgb($color)};
+  --#{$context}-on-color-rgb: #{color.rgb($on-color)};
+  --#{$context}-link-on-color-rgb: #{color.rgb($on-color-link)};
+  --#{$context}-c1-rbg: #{color.rgb($c1)};
+  --#{$context}-on-c1-rbg: #{color.rgb($on-c1)};
+  --#{$context}-link-on-c1-rbg: #{color.rgb($on-c1)};
+  --#{$context}-link-on-bg-rgb: #{color.rgb($on-bg-link)};
+  --#{$context}-on-n2-rgb: #{color.rgb($on-n2)};
+  --#{$context}-link-on-n2-rgb: #{color.rgb($on-n2-link)};
+  --#{$context}-link-on-inverse-rgb:  #{color.rgb($on-inverse-link)};
+}
+
+@mixin bg-rgb($context, $bg, $on-bg, $on-inverse, $shadow) {
+  --#{$context}-bg-rgb: #{color.rgb($bg)};
+  --#{$context}-on-bg-rgb: #{color.rgb($on-bg)};
+  --#{$context}-on-inverse-rgb: #{color.rgb($on-inverse)};
+  --#{$context}-shadow-rgb: #{color.rgb($shadow)};
+}
+
+@mixin n2-rgb($context, $n2, $inverse, $outline, $divider) {
+  --#{$context}-n2-rgb: #{color.rgb($n2)};
+  --#{$context}-inverse-rgb: #{color.rgb($inverse)};
+  --#{$context}-outline-rgb: #{color.rgb($outline)};
+  --#{$context}-divider-rgb: #{color.rgb($divider)};
+}
+
+@mixin elevation-rgb($context, $e2, $e3, $e4, $e5, $hc, $ha, $fc, $fa, $pc, $pa) {
+  --#{$context}-e2-rgb: #{color.rgb($e2)};
+  --#{$context}-e3-rgb: #{color.rgb($e3)};
+  --#{$context}-e4-rgb: #{color.rgb($e4)};
+  --#{$context}-e5-rgb: #{color.rgb($e5)};
+  --#{$context}-hc-rgb: #{color.rgb($hc)};
+  --#{$context}-ha-rgb: #{color.rgb($ha)};
+  --#{$context}-fc-rgb: #{color.rgb($fc)};
+  --#{$context}-fa-rgb: #{color.rgb($fa)};
+  --#{$context}-pc-rgb: #{color.rgb($pc)};
+  --#{$context}-pa-rgb: #{color.rgb($pa)};
+}
+
+@mixin properties($context) {
+  --#{$context}-bg: rgb(var(--#{$context}-bg-rgb) / 1);
+  --#{$context}-on-bg: rgb(var(--#{$context}-on-bg-rgb) / 1);
+  --#{$context}-link-on-bg: rgb(var(--#{$context}-link-on-bg-rgb) / 1);
+  --#{$context}-n2: rgb(var(--#{$context}-n2-rgb) / 1);
+  --#{$context}-on-n2: rgb(var(--#{$context}-on-n2-rgb) / 1);
+  --#{$context}-link-on-n2: rgb(var(--#{$context}-link-on-n2-rgb) / 1);
+  --#{$context}-inverse: rgb(var(--#{$context}-inverse-rgb) / 1);
+  --#{$context}-on-inverse: rgb(var(--#{$context}-on-inverse-rgb) / 1);
+  --#{$context}-link-on-inverse: rgb(var(--#{$context}-link-on-inverse-rgb) / 1);
+  --#{$context}-color: rgb(var(--#{$context}-color-rgb) / 1);
+  --#{$context}-on-color: rgb(var(--#{$context}-on-color-rgb) / 1);
+  --#{$context}-on-color-hover: rgb(var(--#{$context}-on-color-hover-rgb) / 1);
+  --#{$context}-link-on-color: rgb(var(--#{$context}-link-on-color-rgb) / 1);
+  --#{$context}-c1: rgb(var(--#{$context}-c1-rgb) / 1);
+  --#{$context}-on-c1: rgb(var(--#{$context}-on-c1-rgb) / 1);
+  --#{$context}-link-on-c1: rgb(var(--#{$context}-link-on-c1-rgb) / 1);
+  --#{$context}-outline: rgb(var(--#{$context}-outline-rgb) / 1);
+  --#{$context}-divider: rgb(var(--#{$context}-divider-rgb) / 1);
+  --#{$context}-shadow: rgb(var(--#{$context}-shadow-rgb) / 1);
+  --#{$context}-e2: rgb(var(--#{$context}-e2-rgb) / 1);
+  --#{$context}-e3: rgb(var(--#{$context}-e3-rgb) / 1);
+  --#{$context}-e4: rgb(var(--#{$context}-e4-rgb) / 1);
+  --#{$context}-e5: rgb(var(--#{$context}-e5-rgb) / 1);
+  --#{$context}-hc: rgb(var(--#{$context}-hc-rgb) / 1);
+  --#{$context}-ha: rgb(var(--#{$context}-ha-rgb) / 1);
+  --#{$context}-fc: rgb(var(--#{$context}-fc-rgb) / 1);
+  --#{$context}-fa: rgb(var(--#{$context}-fa-rgb) / 1);
+  --#{$context}-pc: rgb(var(--#{$context}-pc-rgb) / 1);
+  --#{$context}-pa: rgb(var(--#{$context}-pa-rgb) / 1);
+}
+
+@mixin theme($context) {
+  --theme-bg-rgb: var(--#{$context}-bg-rgb);
+  --theme-on-bg-rgb: var(--#{$context}-on-bg-rgb);
+  --theme-link-on-bg-rgb: var(--#{$context}-link-on-bg-rgb);
+  --theme-n2-rgb: var(--#{$context}-n2-rgb);
+  --theme-on-n2-rgb: var(--#{$context}-on-n2-rgb);
+  --theme-link-on-n2-rgb: var(--#{$context}-link-on-n2-rgb);
+  --theme-inverse-rgb: var(--#{$context}-inverse-rgb);
+  --theme-on-inverse-rgb: var(--#{$context}-on-inverse-rgb);
+  --theme-link-on-inverse-rgb: var(--#{$context}-link-on-inverse-rgb);
+  --theme-color-rgb: var(--#{$context}-color-rgb);
+  --theme-on-color-rgb: var(--#{$context}-on-color-rgb);
+  --theme-on-color-hover-rgb: var(--#{$context}-on-color-hover-rgb);
+  --theme-link-on-color-rgb: var(--#{$context}-link-on-color-rgb);
+  --theme-c1-rgb: var(--#{$context}-c1-rgb);
+  --theme-on-c1-rgb: var(--#{$context}-on-c1-rgb);
+  --theme-link-on-c1-rgb: var(--#{$context}-link-on-c1-rgb);
+  --theme-outline-rgb: var(--#{$context}-outline-rgb);
+  --theme-divider-rgb: var(--#{$context}-divider-rgb);
+  --theme-shadow-rgb: var(--#{$context}-shadow-rgb);
+  --theme-e2-rgb: var(--#{$context}-e2-rgb);
+  --theme-e3-rgb: var(--#{$context}-e3-rgb);
+  --theme-e4-rgb: var(--#{$context}-e4-rgb);
+  --theme-e5-rgb: var(--#{$context}-e5-rgb);
+  --theme-hc-rgb: var(--#{$context}-hc-rgb);
+  --theme-ha-rgb: var(--#{$context}-ha-rgb);
+  --theme-fc-rgb: var(--#{$context}-fc-rgb);
+  --theme-fa-rgb: var(--#{$context}-fa-rgb);
+  --theme-pc-rgb: var(--#{$context}-pc-rgb);
+  --theme-pa-rgb: var(--#{$context}-pa-rgb);
+  // Actual Values
+  --theme-bg: rgb(var(--theme-bg-rgb) / 1);
+  --theme-on-bg: rgb(var(--theme-on-bg-rgb) / 1);
+  --theme-link-on-bg: rgb(var(--theme-link-on-bg-rgb) / 1);
+  --theme-n2: rgb(var(--theme-n2-rgb) / 1);
+  --theme-on-n2: rgb(var(--theme-on-n2-rgb) / 1);
+  --theme-link-on-n2: rgb(var(--theme-link-on-n2-rgb) / 1);
+  --theme-outline: rgb(var(--theme-outline-rgb) /1);
+  --theme-divider: rgb(var(--theme-divider-rgb) /1);
+  --theme-shadow: rgb(var(--theme-shadow-rgb) /1);
+  --theme-inverse: rgb(var(--theme-inverse-rgb) /1);
+  --theme-on-inverse: rgb(var(--theme-on-inverse-rgb) /1);
+  --theme-link-on-inverse: rgb(var(--theme-link-on-inverse-rgb) / 1);
+  --theme-color: rgb(var(--theme-color-rgb) / 1);
+  --theme-on-color: rgb(var(--theme-on-color-rgb) / 1);
+  --theme-link-on-color: rgb(var(--theme-link-on-color-rgb) / 1);
+  --theme-c1: rgb(var(--theme-c1-rgb) / 1);
+  --theme-c1-hover: rgb(var(--theme-c1-hover-rgb) / 1);
+  --theme-on-c1: rgb(var(--theme-on-c1-rgb) /1);
+  --theme-link-on-c1: rgb(var(--theme-link-on-c1-rgb) / 1);
+  --theme-e2: rgb(var(--theme-e2-rgb) / 1);
+  --theme-e3: rgb(var(--theme-e3-rgb) / 1);
+  --theme-e4: rgb(var(--theme-e4-rgb) / 1);
+  --theme-e5: rgb(var(--theme-e5-rgb) / 1);
+  --theme-hc: rgb(var(--theme-hc-rgb) / 1);
+  --theme-ha: rgb(var(--theme-ha-rgb) / 1);
+  --theme-fc: rgb(var(--theme-fc-rgb) / 1);
+  --theme-fa: rgb(var(--theme-fa-rgb) / 1);
+  --theme-pc: rgb(var(--theme-pc-rgb) / 1);
+  --theme-pa: rgb(var(--theme-pa-rgb) / 1);
+}

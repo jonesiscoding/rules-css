@@ -18,6 +18,21 @@ $default: palette.generate(neutral.generate-single(base.$default), 0) !default;
 
 @function tone($name, $tone) {
   $quoted: string.quote($name);
+
+  @if $quoted == "a1" {
+    @return major($tone);
+  } @else if $quoted == "a2" {
+    @return minor($tone);
+  } @else if $quoted == "a3" {
+    @return feature($tone);
+  } @else if $quoted == "danger" {
+    @return danger($tone);
+  } @else if $quoted == "warning" {
+    @return warning($tone);
+  } @else if $quoted == "success" {
+    @return success($tone)
+  }
+
   @if $quoted == "major" {
     @return major($tone);
   } @else if $quoted == "minor" {

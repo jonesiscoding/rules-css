@@ -1,8 +1,59 @@
 @use "sass:map";
 @use "sass:math";
 @use "sass:string";
+@use "sass:color" as color-native;
 @use "../palette/palette";
+@use "colors";
+@use "bg";
 @use "../../tokens/config/decoration";
+@use "../../tokens/config/roles";
+
+$elevations: () !default;
+
+@function generate($p) {
+  $output: ();
+  $color: colors.tone($p, roles.$accent);
+  $bg: bg.tone($p, roles.$bg);
+  $container: colors.tone($p, roles.$container);
+  $on-accent: colors.tone($p, roles.$on-accent);
+  $output: map.set($output, "hover-container", color-native.mix($color, $container, roles.$hover));
+  $output: map.set($output, "hover-accent", color-native.mix($on-accent, $color, roles.$hover));
+  $output: map.set($output, "focus-container", color-native.mix($color, $container, roles.$focus));
+  $output: map.set($output, "focus-accent", color-native.mix($on-accent, $color, roles.$focus));
+  $output: map.set($output, "pressed-container", color-native.mix($color, $container, roles.$pressed));
+  $output: map.set($output, "pressed-accent", color-native.mix($on-accent, $color, roles.$pressed));
+  $output: map.set($output, "2", color-native.mix($color, $bg, roles.$elevation-2));
+  $output: map.set($output, "3", color-native.mix($color, $bg, roles.$elevation-3));
+  $output: map.set($output, "4", color-native.mix($color, $bg, roles.$elevation-4));
+  $output: map.set($output, "5", color-native.mix($color, $bg, roles.$elevation-5));
+
+  @return $output;
+}
+
+@function level($shade, $level) {
+  $shade-name: string.quote($shade);
+  $shade-level: string.quote(#{$level});
+
+  @if map.has-key($elevations, $shade-name) {
+    @return map.get($elevations,$shade-name,$shade-level);
+  } @else {
+    $elevations: map.set($elevations, $shade-name, generate($shade));
+
+    @return map.get($elevations,$shade-name,$shade-level);
+  }
+}
+
+@function hover($shade, $on) {
+  @return level($shade, "hover-#{$on}")
+}
+
+@function focus($shade, $on) {
+  @return level($shade, "focus-#{$on}")
+}
+
+@function pressed($shade, $on) {
+  @return level($shade, "pressed-#{$on}")
+}
 
 @function opacity($level: 0) {
   @if $level > 0 {
