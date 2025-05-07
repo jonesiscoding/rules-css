@@ -6,11 +6,11 @@
 @use "../palette/palette";
 @use "../palette/neutral";
 
-$neutral-base: if(base.$neutral, base.$neutral, neutral.generate-single(base.$major, 6, 8));
+$neutral-base: if(base.$neutral, base.$neutral, neutral.generate-single($a1, 6, 8));
 
-$major: palette.generate($neutral-base, 0) !default;
-$minor: palette.generate(neutral.generate-single(base.$minor, 6, 8), 0) !default;
-$feature: palette.generate(neutral.generate-single(base.$feature, 6, 8), 0) !default;
+$a1: palette.generate($neutral-base, 0) !default;
+$a2: palette.generate(neutral.generate-single(base.$a2, 6, 8), 0) !default;
+$a3: palette.generate(neutral.generate-single(base.$a3, 6, 8), 0) !default;
 $danger: palette.generate(neutral.generate-single(base.$danger, 6, 8), 0) !default;
 $success: palette.generate(neutral.generate-single(base.$success, 6, 8), 0) !default;
 $warning: palette.generate(neutral.generate-single(base.$warning, 6, 8), 0) !default;
@@ -20,11 +20,11 @@ $default: palette.generate(neutral.generate-single(base.$default, 6, 8), 0) !def
   $quoted: string.quote($name);
 
   @if $quoted == "a1" {
-    @return major($tone);
+    @return a1($tone);
   } @else if $quoted == "a2" {
-    @return minor($tone);
+    @return a2($tone);
   } @else if $quoted == "a3" {
-    @return feature($tone);
+    @return a3($tone);
   } @else if $quoted == "danger" {
     @return danger($tone);
   } @else if $quoted == "warning" {
@@ -34,32 +34,26 @@ $default: palette.generate(neutral.generate-single(base.$default, 6, 8), 0) !def
   }
 
   @if $quoted == "major" {
-    @return major($tone);
+    @return a1($tone);
   } @else if $quoted == "minor" {
-    @return minor($tone);
+    @return a2($tone);
   } @else if $quoted == "feature" {
-    @return feature($tone);
-  } @else if $quoted == "danger" {
-    @return danger($tone);
-  } @else if $quoted == "warning" {
-    @return warning($tone);
-  } @else if $quoted == "success" {
-    @return success($tone)
+    @return a3($tone);
   } @else if $quoted == "default" {
     @return default($tone);
   }
 }
 
-@function major($tone) {
-  @return map.get($major, string.quote(#{$tone}));
+@function a1($tone) {
+  @return map.get($a1, string.quote(#{$tone}));
 }
 
-@function minor($tone) {
-  @return map.get($minor, string.quote(#{$tone}));
+@function a2($tone) {
+  @return map.get($a2, string.quote(#{$tone}));
 }
 
-@function feature($tone) {
-  @return map.get($feature, string.quote(#{$tone}));
+@function a3($tone) {
+  @return map.get($a3, string.quote(#{$tone}));
 }
 
 @function danger($tone) {

@@ -5,10 +5,11 @@
 @use "../../tokens/config/color" as base;
 @use "../palette/palette";
 @use "neutrals";
+@use "bg";
 
-$major: palette.generate(base.$major);
-$minor: palette.generate(base.$minor);
-$feature: palette.generate(base.$feature);
+$major: palette.generate(base.$a1);
+$minor: palette.generate(base.$a2);
+$feature: palette.generate(base.$a3);
 $danger: palette.generate(base.$danger);
 $success: palette.generate(base.$success);
 $warning: palette.generate(base.$warning);
@@ -87,11 +88,11 @@ $neutral: if(base.$neutral, palette.generate(base.$neutral), null);
 }
 
 @function bg($tone) {
-  @return neutrals.major($tone);
+  @return bg.a1($tone);
 }
 
 @function neutral($tone) {
-  @return neutrals.major-alt($tone);
+  @return neutrals.a1($tone);
 }
 
 @function tint($foreground, $percent-opacity) {

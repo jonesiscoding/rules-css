@@ -7,9 +7,9 @@
 
 @use "../reference" as ref;
 
-$major: ref.$color-base-major !default;
-$minor: ref.$color-base-minor !default;
-$feature: ref.$color-base-feature !default;
+$a1: ref.$color-base-a1 !default;
+$a2: ref.$color-base-a2 !default;
+$a3: ref.$color-base-a3 !default;
 $warning: ref.$color-base-warning !default;
 $danger: ref.$color-base-danger !default;
 $success: ref.$color-base-success !default;
