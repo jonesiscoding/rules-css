@@ -6,10 +6,10 @@
     &:before {
       align-items: center;
       aspect-ratio: 1/1;
-      background-color: var(--theme-a2);
-      border: 3px solid var(--theme-bg);
+      background-color: var(--theme-color);
+      border: 3px solid var(--theme-color);
       border-radius: 10rem;
-      color: var(--theme-on-a2);
+      color: var(--theme-on-color);
       content: attr(data-badge);
       display: inline-flex;
       font-size: calc(var(--font-size-sm) * .75);
@@ -18,8 +18,13 @@
       min-width: 1rem;
       padding: 3px;
       position: absolute;
-      right: 20%;
-      top: 20%;
+      right: 5%;
+      top: 5%;
     }
+  }
+  .-inverse [data-badge]:before {
+    background-color: var(--theme-link-on-inverse);
+    border-color: var(--theme-link-on-inverse);
+    color: var(--theme-color);
   }
 }
