@@ -317,7 +317,7 @@ $a3-on-c1-link: a3.$on-c1-link;
   --color-text: var(--theme-on-bg);
   --color-icon: var(--theme-on-bg);
   --color-link: rgb(var(--color-link-on-bg-rgb) / 1);
-  --color-neutral: rgb(var(--color-n2-rgb));
+  --color-neutral: rgb(var(--color-n2-rgb) / 1);
   --color-on-neutral: var(--theme-on-n2);
   --color-on-neutral-link: rgb(var(--color-link-on-n2-rgb) / 1);
   --color-outline: var(--theme-outline);
