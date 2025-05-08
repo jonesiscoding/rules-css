@@ -21,7 +21,7 @@
     $h: list.nth($from,1);
     $c: list.nth($from,2);
     $t: list.nth($from,3);
-    $color: hct.hct($h, math.max(math.div($c,$parts),$min), 40);
+    $color: hct.hct($h, math.min(math.div($c,$parts),$min), 40);
   } @else {
     $h: color.hue($from-color);
     $s: color.saturation($from-color);
@@ -29,7 +29,7 @@
 
     $new-saturation: math.div($s,$parts);
     $min-saturation: math.percentage(math.div($min, 100));
-    $color: hsl($h, math.max($new-saturation, $min-saturation), $l);
+    $color: hsl($h, math.min($new-saturation, $min-saturation), $l);
   }
 
   @return $color;
