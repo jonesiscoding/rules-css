@@ -6,7 +6,7 @@
 @use "../palette/palette";
 @use "../palette/neutral";
 
-$base-bg: if(base.$surface, base.$surface, neutral.generate-single($a1));
+$base-bg: if(base.$surface, base.$surface, neutral.generate-single(base.$a1));
 
 $a1: palette.generate($base-bg, 0) !default;
 $a2: palette.generate(neutral.generate-single(base.$a2), 0) !default;
