@@ -52,7 +52,6 @@
   --#{$context}-link-on-inverse: rgb(var(--#{$context}-link-on-inverse-rgb) / 1);
   --#{$context}-color: rgb(var(--#{$context}-color-rgb) / 1);
   --#{$context}-on-color: rgb(var(--#{$context}-on-color-rgb) / 1);
-  --#{$context}-on-color-hover: rgb(var(--#{$context}-on-color-hover-rgb) / 1);
   --#{$context}-link-on-color: rgb(var(--#{$context}-link-on-color-rgb) / 1);
   --#{$context}-c1: rgb(var(--#{$context}-c1-rgb) / 1);
   --#{$context}-on-c1: rgb(var(--#{$context}-on-c1-rgb) / 1);
@@ -119,7 +118,7 @@
   --theme-on-color: rgb(var(--theme-on-color-rgb) / 1);
   --theme-link-on-color: rgb(var(--theme-link-on-color-rgb) / 1);
   --theme-c1: rgb(var(--theme-c1-rgb) / 1);
-  --theme-c1-hover: rgb(var(--theme-c1-hover-rgb) / 1);
+  --theme-c1-hover: rgb(var(--theme-hc-rgb) / 1);
   --theme-on-c1: rgb(var(--theme-on-c1-rgb) /1);
   --theme-link-on-c1: rgb(var(--theme-link-on-c1-rgb) / 1);
   --theme-e2: rgb(var(--theme-e2-rgb) / 1);
