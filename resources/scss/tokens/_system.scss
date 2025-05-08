@@ -270,6 +270,7 @@ $a3-on-c1-link: a3.$on-c1-link;
 
 //noinspection DuplicatedCode
 @mixin theme() {
+  --body-bg: #{$a1-body};
   @include a1.theme;
 }
 
