@@ -67,17 +67,20 @@ $fa: elevation.focus($shade,"accent") !default;
 $pc: elevation.pressed($shade,"container") !default;
 $pa: elevation.pressed($shade,"accent") !default;
 
-@mixin properties() {
-  /* Accent 1 RGB Color Variables */
+@mixin rgb() {
+  /* Danger RGB Color Variables */
   @include context.color-rgb($shade, $color, $on-color, $on-color-link, $c1, $on-c1, $on-c1-link, $on-bg-link, $on-n2, $on-n2-link, $on-inverse-link);
   @include context.bg-rgb($shade, $bg, $on-bg, $on-inverse, $shadow);
   @include context.n2-rgb($shade, $n2, $inverse, $outline, $divider);
   @include context.elevation-rgb($shade, $e2, $e3, $e4, $e5, $hc, $ha, $fc, $fa, $pc, $pa);
-  /* Accent 1 Color Variables */
+}
+
+@mixin properties() {
+  /* Danger Color Variables */
   @include context.properties($shade);
 }
 
 @mixin theme() {
-  /* Theme Color Variables for Accent 1 */
+  /* Danger Theme Color Variables */
   @include context.theme($shade);
 }
