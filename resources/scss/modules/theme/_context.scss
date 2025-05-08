@@ -4,9 +4,9 @@
   --#{$context}-color-rgb: #{color.rgb($color)};
   --#{$context}-on-color-rgb: #{color.rgb($on-color)};
   --#{$context}-link-on-color-rgb: #{color.rgb($on-color-link)};
-  --#{$context}-c1-rbg: #{color.rgb($c1)};
-  --#{$context}-on-c1-rbg: #{color.rgb($on-c1)};
-  --#{$context}-link-on-c1-rbg: #{color.rgb($on-c1)};
+  --#{$context}-c1-rgb: #{color.rgb($c1)};
+  --#{$context}-on-c1-rgb: #{color.rgb($on-c1)};
+  --#{$context}-link-on-c1-rgb: #{color.rgb($on-c1)};
   --#{$context}-link-on-bg-rgb: #{color.rgb($on-bg-link)};
   --#{$context}-on-n2-rgb: #{color.rgb($on-n2)};
   --#{$context}-link-on-n2-rgb: #{color.rgb($on-n2-link)};
