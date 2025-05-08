@@ -40,7 +40,7 @@ $on-c1-link: colors.tone($shade, roles.$link-on-container) !default;
 $on-bg-link: colors.tone($shade, roles.$on-bg-link) !default;
 $on-n2: colors.tone($shade, roles.$on-neutral) !default;
 $on-n2-link: colors.tone($shade, roles.$on-neutral-link) !default;
-$on-inverse-link: bg.tone($shade, roles.$on-inverse-link) !default;
+$on-inverse-link: colors.tone($shade, roles.$on-inverse-link) !default;
 
 // BG Palette
 $body: bg.tone($shade, roles.$body) !default;
