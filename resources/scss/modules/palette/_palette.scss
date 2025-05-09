@@ -3,15 +3,17 @@
 @use "sass:map";
 @use "sass:list";
 @use "sass:string";
+@use "sass:meta";
 @use "../color/sass-color" as color;
 @use "material-foundation/libmonet/libmonet.scss" as hct;
 @use "../../tokens/config/features";
 
 $palettes: () !default;
+$steps: (10,20,25,30,40,50,60,70,80,90,92,94,95,96,98,99);
 
 @function generate($base, $adjust: -1) {
   $output: ();
-  $steps: (10,20,25,30,40,50,60,70,80,90,92,94,95,96,98,99);
+
   @if features.$hct {
     // Generate Colors based on HCT
     $base-hct: hct.hct_from_color($base);
@@ -26,6 +28,27 @@ $palettes: () !default;
     }
 
     $output: map.set($output, "100", hct.hct($h, $c, 100));
+  } @else if(meta.function-exists("to-space", "color-native")) {
+    $lch-color: color-native.to-space($base,lch);
+    $h: color-native.channel($lch-color, "hue");
+    $c: color-native.channel($lch-color, "chroma");
+    $base-0: color-native.to-gamut(color-native.to-space(lch(0% $c $h), rgb), $method: local-minde);
+    $output: ("0": $base-0);
+    $previous: 0;
+    $shade: null;
+    @each $key in $steps {
+      $shade: null;
+      $shade: color-native.to-gamut(color-native.to-space(lch($key $c $h), rgb), $method: local-minde);
+      @if($shade == rgb(255,255,255)) {
+        $newKey: adjust($c, $h, $key,$previous);
+        $shade: color-native.to-gamut(color-native.to-space(lch($newKey $c $h), rgb), $method: local-minde);
+        $previous: $newKey
+      } @else {
+        $previous: $key;
+      }
+      $output: map.set($output, string.quote(#{$key}), $shade);
+    }
+    $output: map.set($output, "100", #ffffff);
   } @else {
     // Generate Colors based on HSL
     $base: color-native.adjust($base, $lightness: -5%); // Just a little darker
@@ -45,6 +68,20 @@ $palettes: () !default;
   }
 
   @return $output;
+}
+
+@function adjust($c, $h, $cur, $prev) {
+  $upper: $cur * 100;
+  $lower: $prev * 100;
+  @for $subkey from $upper through $lower  {
+    $deck: math.div($subkey, 100);
+    $shade: color-native.to-gamut(color-native.to-space(lch($deck $c $h), rgb), $method: local-minde);
+    @if($shade != rgb(255,255,255)) {
+      @return $deck;
+    }
+  }
+
+  @return $cur;
 }
 
 @function tone($name, $tone) {
