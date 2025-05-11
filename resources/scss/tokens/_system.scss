@@ -18,16 +18,15 @@
 @use "config/icons";
 @use "config/table";
 @use "config/decoration" as decor;
+@use "config/roles";
+@use "config/n1";
+@use "config/n2";
 @use "config/a1";
 @use "config/a2";
 @use "config/a3";
 @use "config/success";
 @use "config/danger";
 @use "config/warning";
-@use "config/a3";
-@use "config/n1";
-@use "config/n2";
-@use "config/roles";
 
 // region //////////////////////////////////////////////// Features
 
@@ -263,9 +262,6 @@ $a3-on-c1-link: a3.$on-c1-link;
   @include a1.rgb;
   @include a2.rgb;
   @include a3.rgb;
-  @include success.rgb;
-  @include danger.rgb;
-  @include warning.rgb;
   @include a1.properties;
   @include a2.properties;
   @include a3.properties;
@@ -276,7 +272,7 @@ $a3-on-c1-link: a3.$on-c1-link;
 
 //noinspection DuplicatedCode
 @mixin theme() {
-  --body-bg: #{$a1-body};
+  --body-bg: #{a1.$body};
   @include a1.theme;
 }
 
@@ -317,7 +313,7 @@ $a3-on-c1-link: a3.$on-c1-link;
   --color-text: var(--theme-on-bg);
   --color-icon: var(--theme-on-bg);
   --color-link: rgb(var(--color-link-on-bg-rgb) / 1);
-  --color-neutral: rgb(var(--color-n2-rgb) / 1);
+  --color-neutral: rgb(var(--color-n2-rgb));
   --color-on-neutral: var(--theme-on-n2);
   --color-on-neutral-link: rgb(var(--color-link-on-n2-rgb) / 1);
   --color-outline: var(--theme-outline);
@@ -494,6 +490,7 @@ $layout-height-footer: layout.$height-footer;
   --width-device:  #{$screen-device-min};
   --width-desktop: #{$screen-desktop-min};
   --overflow-body: #{$screen-overflow};
+  --max-width: 100%;
 }
 
 // Stacking
