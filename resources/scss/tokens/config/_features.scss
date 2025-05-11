@@ -8,6 +8,7 @@
 @use "../reference" as ref;
 
 $hct: ref.$feature-hct !default;
+$hsl: ref.$feature-hsl !default;
 $header: ref.$rules-header !default;
 $footer: ref.$rules-footer !default;
 $drawer: ref.$feature-drawer !default;
