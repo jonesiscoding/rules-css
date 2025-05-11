@@ -33,27 +33,39 @@
   }
 }
 
-@function hue($color) {
-  @if meta.function-exists('channel', color) {
-    @return color.channel($color, "hue", $space: hsl);
+@function hue($color, $space: hsl) {
+  @if(meta.function-exists("to-space", color)) {
+    //noinspection CssInvalidFunction
+    @return color.channel(color.to-space($color, $space), "hue");
   } @else {
     @return color.hue($color);
   }
 }
 
 @function saturation($color) {
-  @if meta.function-exists("channel", "color") {
-    @return color.channel($color, "saturation", $space: hsl);
+  @if(meta.function-exists("to-space", color)) {
+    //noinspection CssInvalidFunction
+    @return color.channel(color.to-space($color, hsl), "saturation");
   } @else {
     @return color.saturation($color);
   }
 }
 
 @function lightness($color) {
-  @if meta.function-exists("channel", "color") {
-    @return color.channel($color, "lightness", $space: hsl);
+  @if(meta.function-exists("to-space", color)) {
+    //noinspection CssInvalidFunction
+    @return color.channel(color.to-space($color, hsl), "lightness");
   } @else {
     @return color.lightness($color);
+  }
+}
+
+@function chroma($color, $space: lch) {
+  @if(meta.function-exists("to-space", color)) {
+    //noinspection CssInvalidFunction
+    @return color.channel(color.to-space($color, $space), "hue");
+  } @else {
+    @error "DartSASS v1.79 is required for this function."
   }
 }
 
