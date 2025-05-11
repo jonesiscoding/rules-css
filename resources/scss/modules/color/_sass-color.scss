@@ -1,6 +1,11 @@
 @use "sass:color";
 @use "sass:meta";
 
+@function to-rgb($color, $method: local-minde) {
+  //noinspection CssInvalidFunction
+  @return color.to-gamut(color.to-space($color, rgb),$method: $method)
+}
+
 @function red($color) {
   @if meta.function-exists("channel", "color") {
     @return color.channel($color, "red", $space: rgb);
