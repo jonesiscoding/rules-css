@@ -1,35 +1,26 @@
 @use "sass:math";
-@use "../color/sass-color" as color;
+@use "sass:color" as color-native;
 @use "sass:map";
 @use "sass:list";
+@use "sass:meta";
 @use "palette";
+@use "../color/sass-color" as color;
 @use "material-foundation/libmonet/libmonet.scss" as hct;
 @use "../../tokens/config/features";
+@use "../../tokens/config/color" as tokens;
 
-@function -get-saturation-val($recommended: 8%, $min: .04) {
-  //$calc: percentage(1 - math.div(1,$parts));
-  $calc: 100% - $recommended;
-  $min: percentage(1 - $min);
+// region //////////////////////////////////////////////// Universal Functions
 
-  @return $calc * -1;
-}
-
-@function generate-single($from-color, $parts: 12, $min: 4) {
+@function generate-single($from-color, $is-variant: false, $is-force: true) {
   $color: $from-color;
   @if features.$hct {
-    $from: hct.hct_from_color($from-color);
-    $h: list.nth($from,1);
-    $c: list.nth($from,2);
-    $t: list.nth($from,3);
-    $color: hct.hct($h, math.min(math.div($c,$parts),$min), 40);
+    $color: generate-single-hct($from-color, $is-variant, $is-force);
+  } @else if not(features.$hsl) and (meta.function-exists("to-space", color-native)) {
+    $lch-neutral: generate-single-lch($from-color, $is-variant, $is-force);
+    $color: color.to-rgb($lch-neutral, rgb);
   } @else {
-    $h: color.hue($from-color);
-    $s: color.saturation($from-color);
-    $l: color.lightness($from-color);
-
-    $new-saturation: math.div($s,$parts);
-    $min-saturation: math.percentage(math.div($min, 100));
-    $color: hsl($h, math.min($new-saturation, $min-saturation), $l);
+    $hsl-neutral: generate-single-hsl($from-color, $is-variant, $is-force);
+    $color: $hsl-neutral;
   }
 
   @return $color;
@@ -38,3 +29,169 @@
 @function generate($from-color, $parts: 12, $min: .04) {
   @return palette.generate(generate-single($from-color, $parts, $min), 0);
 }
+
+// endregion ///////////////////////////////////////////// End Universal Functions
+
+// region //////////////////////////////////////////////// HCT Functions
+
+@function generate-single-hct($from-color, $is-variant, $is-force) {
+  $hct-color: hct.hct_from_color($from-color);
+  $h: list.nth($hct-color, 1);
+  $c: list.nth($hct-color, 2);
+  $t: list.nth($hct-color, 3);
+  $hct-neutral: hct.hct($h, $c, 40);
+  @if ($is-force) or not(is-neutral-hct($c, $is-variant)) {
+    $new-chroma: math.div($c, 8);
+    $max-chroma: tokens.$surface-max;
+    @if($is-variant) {
+      $max-chroma: tokens.$neutral-max;
+      $new-chroma: $new-chroma + 4;
+    }
+    @if(is-disliked-hct($h, $c, 40)) {
+      $new-chroma: $new-chroma - 1;
+    }
+
+    $new-chroma: math.min($new-chroma, $max-chroma);
+    $hct-neutral: hct.hct($h, $new-chroma, 40);
+  }
+
+  @return $hct-neutral;
+}
+
+@function is-disliked-hct($h, $c, $t) {
+  @if(math.round($h) >= 65) and (math.round($h) <= 111) {
+    @if(math.round($c) > 16) {
+      @if(math.round($t) < 65) {
+        @return true;
+      }
+    }
+  }
+
+  @return false;
+}
+
+@function is-neutral-hct($chroma, $is-variant: false) {
+  $max: if($is-variant, tokens.$neutral-max, tokens.$surface-max);
+  @if($chroma > ($max - 2)) {
+    @return false;
+  }
+
+  @return true;
+}
+
+
+// region //////////////////////////////////////////////// HSL Functions
+
+@function generate-single-hsl($from-color, $is-variant, $is-force) {
+  $h: color.hue($from-color);
+  $s: color.saturation($from-color);
+  $l: color.lightness($from-color);
+  $hsl-neutral: hsl($h $s 40%);
+  @if ($is-force) or not(is-neutral-hsl($s, $is-variant)) {
+    $factor: math.div(8 * tokens.$hsl-max-s, tokens.$hct-max-c);
+    $new-sat: math.div($s, $factor);
+    $max: tokens.$surface-max;
+    @if($is-variant) {
+      $mod: math.div(4 * tokens.$hsl-max-s, tokens.$hct-max-c);
+      $max: tokens.$neutral-max;
+      $new-sat: $new-sat + $mod;
+    }
+    @if(is-disliked-hsl($h, $s, 40%)) {
+      $mod: math.div(1 * tokens.$hsl-max-s, tokens.$hct-max-c);
+      $new-sat: $new-sat - $mod;
+    }
+
+    $max-sat: math.div($max * tokens.$hsl-max-s, tokens.$hct-max-c);
+    $new-sat: math.min($new-sat, $max-sat);
+
+    $hsl-neutral: hsl($h, $new-sat, 40%);
+  }
+
+  @return $hsl-neutral;
+}
+
+@function is-disliked-hsl($h, $s, $l) {
+  $max-sat: math.round(math.div(16 * tokens.$hsl-max-s, tokens.$hct-max-c));
+  @if(math.round($h) >= 39deg) and (math.round($h) <= 57deg) {
+    @if(math.round($s) > $max-sat) {
+      @if(math.round($l) < 58%) {
+        @return true;
+      }
+    }
+  }
+
+  @return false;
+}
+
+@function is-neutral-hsl($saturation, $is-variant: false) {
+  $threshold: if($is-variant, tokens.$neutral-max, tokens.$surface-max);
+  $max: math.div(($threshold - 2) * tokens.$hsl-max-s, tokens.$hct-max-c);
+  @if($saturation > $max) {
+    @return false;
+  }
+
+  @return true;
+}
+
+// endregion ///////////////////////////////////////////// End HSL Functions
+
+// region //////////////////////////////////////////////// LCH Functions
+
+//noinspection CssInvalidFunction
+@function generate-single-lch($from-color, $is-variant, $is-force) {
+  $lch-color: color-native.to-space($from-color, lch);
+  $h: color-native.channel($lch-color, "hue");
+  $c: color-native.channel($lch-color, "chroma");
+  $l: color-native.channel($lch-color, "lightness");
+  //noinspection SassScssResolvedByNameOnly
+  $lch-neutral: lch(40% $c $h);
+
+  @if ($is-force) or not(is-neutral-lch($c, $is-variant)) {
+    $factor: math.div(8 * tokens.$lch-max-c, tokens.$hct-max-c);
+    $new-chroma: math.div($c, $factor);
+    $max: tokens.$surface-max;
+    @if($is-variant) {
+      $mod: math.div(4 * tokens.$hsl-max-s, tokens.$hct-max-c);
+      $max: tokens.$neutral-max;
+      $new-chroma: $new-chroma + $mod;
+    }
+    @if(is-disliked-lch(40%, $c, $h)) {
+      $mod: math.div(1 * tokens.$lch-max-c, tokens.$hct-max-c);
+      $new-chroma: $new-chroma - $mod;
+    }
+    $max-chroma: math.div($max * tokens.$hsl-max-s, tokens.$hct-max-c);
+    $new-chroma: math.min($new-chroma, $max-chroma);
+
+    //noinspection SassScssResolvedByNameOnly
+    $lch-neutral: lch(40% $new-chroma $h);
+  }
+
+  @return $lch-neutral;
+}
+
+@function is-disliked-lch($l, $c, $h) {
+  $max-chroma: math.round(math.div(16 * tokens.$lch-max-c, tokens.$hct-max-c));
+  @if(math.round($h) >= 85deg) and (math.round($h) <= 101deg) {
+    @if(math.round($c) > $max-chroma) {
+      @if(math.round($l) < 65%) {
+        @return true;
+      }
+    }
+  }
+
+  @return false;
+}
+
+@function is-neutral-lch($chroma, $is-variant: false) {
+  $threshold: if($is-variant, tokens.$neutral-max, tokens.$surface-max);
+  $max: math.div(($threshold - 2) * tokens.$lch-max-c, tokens.$hct-max-c);
+  @if($chroma > $max) {
+    @return false;
+  }
+
+  @return true;
+}
+
+
+// endregion ///////////////////////////////////////////// End LCH functions
+

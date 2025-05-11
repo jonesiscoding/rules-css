@@ -6,15 +6,15 @@
 @use "../palette/palette";
 @use "../palette/neutral";
 
-$neutral-base: if(base.$neutral, base.$neutral, neutral.generate-single(base.$a1, 6, 8));
+$neutral-base: if(base.$neutral, neutral.generate-single(base.$neutral, true, false), neutral.generate-single(base.$a1, true));
 
 $a1: palette.generate($neutral-base, 0) !default;
-$a2: palette.generate(neutral.generate-single(base.$a2, 6, 8), 0) !default;
-$a3: palette.generate(neutral.generate-single(base.$a3, 6, 8), 0) !default;
-$danger: palette.generate(neutral.generate-single(base.$danger, 6, 8), 0) !default;
-$success: palette.generate(neutral.generate-single(base.$success, 6, 8), 0) !default;
-$warning: palette.generate(neutral.generate-single(base.$warning, 6, 8), 0) !default;
-$default: palette.generate(neutral.generate-single(base.$default, 6, 8), 0) !default;
+$a2: palette.generate(neutral.generate-single(base.$a2, true), 0) !default;
+$a3: palette.generate(neutral.generate-single(base.$a3, true), 0) !default;
+$danger: palette.generate(neutral.generate-single(base.$danger, true), 0) !default;
+$success: palette.generate(neutral.generate-single(base.$success, true), 0) !default;
+$warning: palette.generate(neutral.generate-single(base.$warning, true), 0) !default;
+$default: palette.generate(neutral.generate-single(base.$default, true), 0) !default;
 
 @function tone($name, $tone) {
   $quoted: string.quote($name);

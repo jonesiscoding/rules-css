@@ -16,3 +16,10 @@ $success: ref.$color-base-success !default;
 $default: ref.$color-base-default !default;
 $surface: ref.$color-base-surface !default;
 $neutral: ref.$color-base-neutral !default;
+
+// Color Conversion Values
+$neutral-max: 8;
+$surface-max: 6;
+$hsl-max-s: 100;
+$lch-max-c: 131;
+$hct-max-c: 120;
