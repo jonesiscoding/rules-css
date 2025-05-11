@@ -11,8 +11,12 @@
 $palettes: () !default;
 $steps: (10,20,25,30,40,50,60,70,80,90,92,94,95,96,98,99);
 
+// region //////////////////////////////////////////////// Generation Functions
+
+//noinspection CssInvalidFunction
 @function generate($base, $adjust: -1) {
   $output: ();
+  $actual: ();
 
   @if features.$hct {
     // Generate Colors based on HCT
@@ -27,62 +31,62 @@ $steps: (10,20,25,30,40,50,60,70,80,90,92,94,95,96,98,99);
       $output: map.set($output, string.quote(#{$key}), $shade);
     }
 
-    $output: map.set($output, "100", hct.hct($h, $c, 100));
-  } @else if(meta.function-exists("to-space", "color-native")) {
+    $output: map.set($output, "100", #ffffff);
+  } @else if not(features.$hsl) and (meta.function-exists("to-space", color-native)) {
     $lch-color: color-native.to-space($base,lch);
     $h: color-native.channel($lch-color, "hue");
     $c: color-native.channel($lch-color, "chroma");
-    $base-0: color-native.to-gamut(color-native.to-space(lch(0% $c $h), rgb), $method: local-minde);
+    //noinspection SassScssResolvedByNameOnly
+    $base-0: color.to-rgb(lch(0% $c $h));
     $output: ("0": $base-0);
     $previous: 0;
     $shade: null;
     @each $key in $steps {
       $shade: null;
-      $shade: color-native.to-gamut(color-native.to-space(lch($key $c $h), rgb), $method: local-minde);
+      //noinspection SassScssResolvedByNameOnly
+      $shade: color.to-rgb(lch($key $c $h));
       @if($shade == rgb(255,255,255)) {
-        $newKey: adjust($c, $h, $key,$previous);
-        $shade: color-native.to-gamut(color-native.to-space(lch($newKey $c $h), rgb), $method: local-minde);
-        $previous: $newKey
+        $newKey: -nudge-down($c, $h, $key, map.get($actual, $previous));
+        //noinspection SassScssResolvedByNameOnly
+        $shade: color.to-rgb(lch($newKey $c $h));
+        $actual: map.set($actual, $key, $newKey);
+      } @else if($shade == rgb(0,0,0)) {
+        $newKey: -nudge-up($c, $h, $key, -next-step($key));
+        //noinspection SassScssResolvedByNameOnly
+        $shade: color.to-rgb(lch($newKey $c $h));
+        $actual: map.set($actual, $key, $newKey);
       } @else {
-        $previous: $key;
+        $actual: map.set($actual, $key, $key);
       }
+      $previous: $key;
       $output: map.set($output, string.quote(#{$key}), $shade);
     }
     $output: map.set($output, "100", #ffffff);
   } @else {
     // Generate Colors based on HSL
-    $base: color-native.adjust($base, $lightness: -5%); // Just a little darker
-    $h: math.round(color.hue($base));
-    $s: math.round(color.saturation($base) * 1.05); // Increase saturation a little
+    $h: color.hue($base);
+    $s: color.saturation($base) * .85;
     $l: color.lightness($base);
-    $base-10: hsl($h, $s, 10%);
-    $output: ("0": #000, "10": $base-10);
+    $output: ("0": #000000);
 
     @each $key in $steps {
       $scale: math.percentage(math.div($key, 100));
       $shade: hsl($h, $s, $scale);
+      @if(meta.function-exists("to-space", color-native)) {
+        $shade: color.to-rgb($shade, rgb);
+      }
       $output: map.set($output, string.quote(#{$key}), $shade);
     }
 
-    $output: map.set($output, "100", #fff);
+    $output: map.set($output, "100", #ffffff);
   }
 
   @return $output;
 }
 
-@function adjust($c, $h, $cur, $prev) {
-  $upper: $cur * 100;
-  $lower: $prev * 100;
-  @for $subkey from $upper through $lower  {
-    $deck: math.div($subkey, 100);
-    $shade: color-native.to-gamut(color-native.to-space(lch($deck $c $h), rgb), $method: local-minde);
-    @if($shade != rgb(255,255,255)) {
-      @return $deck;
-    }
-  }
+// endregion ///////////////////////////////////////////// End Generation Functions
 
-  @return $cur;
-}
+// region //////////////////////////////////////////////// Getters
 
 @function tone($name, $tone) {
   $shade-name: string.quote($name);
@@ -110,3 +114,52 @@ $steps: (10,20,25,30,40,50,60,70,80,90,92,94,95,96,98,99);
 
   @return rgba($r,$g,$b,$opacity);
 }
+
+// endregion ///////////////////////////////////////////// End Getters
+
+// region //////////////////////////////////////////////// Helper Functions
+
+@function -next-step($step) {
+  @each $key in $steps {
+    @if($step > $key) {
+      @return $step;
+    }
+  }
+
+  @return 100;
+}
+
+
+
+@function -nudge-down($c, $h, $cur, $prev) {
+  $upper: ($cur * 100);
+  $lower: ($prev * 100);
+  @for $subkey from $upper through $lower  {
+    $deck: math.div($subkey, 100);
+    //noinspection SassScssResolvedByNameOnly
+    $shade: color.to-rgb(lch($deck $c $h), rgb);
+    @if($shade != rgb(255,255,255)) {
+      @return $deck;
+    }
+  }
+
+  @return $cur;
+}
+
+@function -nudge-up($c, $h, $cur, $next) {
+  $lower: ($cur * 100);
+  $upper: ($next * 100);
+  @for $subkey from $lower through $upper  {
+    $deck: math.div($subkey, 100);
+    //noinspection SassScssResolvedByNameOnly
+    $shade: color.to-rgb(lch($deck $c $h));
+    @if($shade != rgb(0,0,0)) {
+      @return $deck;
+    }
+  }
+
+  @return $cur;
+}
+
+// endregion ///////////////////////////////////////////// End Helper Functions
+
