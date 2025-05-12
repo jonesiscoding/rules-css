@@ -17,7 +17,7 @@
     $color: generate-single-hct($from-color, $is-variant, $is-force);
   } @else if not(features.$hsl) and (meta.function-exists("to-space", color-native)) {
     $lch-neutral: generate-single-lch($from-color, $is-variant, $is-force);
-    $color: color.to-rgb($lch-neutral, rgb);
+    $color: color.to-rgb($lch-neutral);
   } @else {
     $hsl-neutral: generate-single-hsl($from-color, $is-variant, $is-force);
     $color: $hsl-neutral;
