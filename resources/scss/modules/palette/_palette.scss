@@ -135,7 +135,7 @@ $steps: (10,20,25,30,40,50,60,70,80,90,92,94,95,96,98,99);
   @for $subkey from $upper through $lower  {
     $deck: math.div($subkey, 100);
     //noinspection SassScssResolvedByNameOnly
-    $shade: color.to-rgb(lch($deck $c $h), rgb);
+    $shade: color.to-rgb(lch($deck $c $h));
     @if($shade != rgb(255,255,255)) {
       @return $deck;
     }
