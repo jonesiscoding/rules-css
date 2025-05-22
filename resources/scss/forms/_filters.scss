@@ -1,0 +1,108 @@
+@use "../modules/buttons";
+
+form fieldset.filters {
+  & > label {
+    --color-bg: var(--theme-c1);
+    --color-bg-hover: var(--theme-hc);
+    --color-bg-focus: var(--theme-fc);
+    --color-bg-pressed: var(--theme-color);
+    --color-shadow: transparent;
+    --color-outline: var(--theme-c1);
+    --color-text: var(--theme-on-c1);
+    --color-link: var(--theme-link-on-c1);
+    --color-icon: var(--theme-link-on-c1);
+    --font-size-label: var(--font-size-sm);
+    --input-padding-x: var(--padding-half-x);
+    --input-padding-y: var(--padding-half-y);
+    @include buttons.disabled {
+      --color-bg: rgb(var(--theme-bg-rgb) / var(--opacity-disabled));
+    }
+    @include buttons.hover {
+      --color-bg: var(--color-bg-hover);
+    }
+    @include buttons.focus {
+      --color-bg: var(--color-bg-focus);
+    }
+    @include buttons.pressed {
+      --color-bg: var(--color-bg-pressed);
+    }
+
+    &:has(:checked) {
+      --color-outline: var(--color-bg-pressed);
+      --color-bg: var(--color-bg-pressed);
+      --color-value: var(--theme-link-on-color);
+      --color-label: var(--theme-link-on-color);
+      --color-icon: var(--theme-link-on-color);
+      --color-text: var(--theme-on-color);
+      input {
+        --color-icon: var(--theme-link-on-color);
+      }
+    }
+  }
+}
+
+form fieldset.filters > label {
+  position: relative;
+  display: grid;
+  align-items: center;
+  padding: var(--input-padding-y) var(--input-padding-x);
+  text-transform: none !important;
+  color: var(--color-label);
+  border: var(--border-width) solid var(--color-outline) !important;
+  border-radius: calc(var(--border-radius) * 2);
+  background: var(--color-bg) var(--input-symbol) var(--input-padding-x) center no-repeat calc(var(--icon-size) * .75);
+  grid-template-columns: var(--icon-size) 1fr;
+  column-gap: var(--padding-half-x);
+
+  &:focus {
+    // noinspection CssOverwrittenProperties
+    outline: 1px dotted; // IE Transparent Button Focus Bug
+    //noinspection CssOverwrittenProperties
+    outline: 5px auto -webkit-focus-ring-color; // Firefox Transparent Button Focus Bug
+  }
+
+  &[data-value="none"] {
+    display: none;
+  }
+
+  &:has(input:checked) {
+    background-image: none;
+  }
+
+  input[type="checkbox"], input[type="radio"] {
+    appearance: none;
+    border: none;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    position: relative;
+    background-color: transparent;
+
+    &:focus {
+      background-color: transparent !important;
+    }
+
+    &:after {
+      display: block;
+      position: absolute;
+      background: transparent;
+      top: calc(50% - 8px);
+      left: calc(var(--input-padding-x) - 4px);
+      width: 8px;
+      height: 8px;
+      color: var(--color-icon);
+      content: ' ';
+    }
+
+    &:checked {
+      &:after {
+        content: "\2713";
+      }
+    }
+  }
+}
+
+form.has-filters, form:has(fieldset.filters) {
+  [aria-busy="true"] table tbody {
+    display: none;
+  }
+}
