@@ -12,7 +12,8 @@ class Rules {
     tooltip: Tooltip,
     table: Table,
     timeInput: TimeInput,
-    time: Time
+    time: Time,
+    filters: FilterFieldset,
   };
 
   fn = {};
