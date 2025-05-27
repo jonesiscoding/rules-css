@@ -44,6 +44,4 @@ class Rules {
   }
 }
 
-( function ( w ) {
-  w.rules = new Rules();
-}( window ) );
+w.rules = new Rules();
