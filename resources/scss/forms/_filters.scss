@@ -41,7 +41,7 @@ form fieldset.filters {
   }
 }
 
-form fieldset.filters > label {
+form fieldset.filters > label, .filters-count {
   position: relative;
   display: grid;
   align-items: center;

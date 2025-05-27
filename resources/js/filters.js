@@ -93,7 +93,7 @@ class FilterFieldset extends Component {
 
     this.container = this.table.closest("section, article") || this.table;
     this.rows = this.table.querySelectorAll('& > tbody > tr');
-    this.counter = this.form.querySelector('.filters-count > span');
+    this.counter = this.form.querySelector('.filters-count');
 
     if(options.timing) {
       this.timing = options.timing;
