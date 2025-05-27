@@ -55,7 +55,11 @@ form fieldset.filters > label, .filters-count {
   color: var(--color-label);
   border: var(--border-width) solid var(--color-outline) !important;
   border-radius: calc(var(--border-radius) * 2);
-  background: var(--color-bg) var(--input-symbol) var(--input-padding-x) center no-repeat calc(var(--icon-size) * .75);
+  background-color: var(--color-bg);
+  background-image: var(--input-symbol);
+  background-position: var(--input-padding-x) center;
+  background-size: calc(var(--icon-size) * .75);
+  background-repeat: no-repeat;
   grid-template-columns: var(--icon-size) 1fr;
   column-gap: var(--padding-half-x);
 
