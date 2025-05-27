@@ -139,7 +139,7 @@ class FilterFieldset extends Component {
 
   hide() {
     let self = this;
-    let tbody = self.table.querySelectorAll('tbody');
+    let tbody = self.table.querySelectorAll('& > tbody');
     tbody = tbody ? Array.from(tbody) : tbody;
 
     this.container.setAttribute("aria-busy", "true");
