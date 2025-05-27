@@ -177,11 +177,11 @@ class FilterFieldset extends Component {
 
         if (allShown) {
           clearInterval(checkInterval);
-          self.form.querySelector('.table-filter-count > span').innerText = self.count();
+          self.counter.setAttribute('data-count', self.count());
           resolve();
         } else if (self.timing.timeout && (Date.now() - startTime) > self.timing.timeout) {
           clearInterval(checkInterval);
-          self.form.querySelector('.table-filter-count > span').innerText = self.count();
+          self.counter.setAttribute('data-count', self.count());
           resolve(false); // Indicate timeout
         }
       }, self.timing.interval);
