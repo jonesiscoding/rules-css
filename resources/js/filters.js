@@ -80,7 +80,7 @@ class FilterFieldset extends Component {
   container;
   counter;
 
-  constructor(el, options) {
+  constructor(el, options = {}) {
     super(el);
 
     this.form = options.form ?? this.el.closest('form');
